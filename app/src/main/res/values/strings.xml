@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyArmy</string>
+
+    <string name="tab_resume">내 이력서 관리</string>
+    <string name="tab_smartmatch">스마트매치</string>
+    <string name="tab_jobgroup">직군별정보</string>
+    <string name="tab_regionalgroup">지역별정보</string>
+
+</resources>
