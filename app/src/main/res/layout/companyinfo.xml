@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="7dp"
+        android:gravity="center_horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="200dp"
+           android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="13dp"
+            android:textColor="#9b9b9b"
+            android:text="(주) 한국 공항공사"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="15dp"
+            android:gravity="center_horizontal"
+            android:text="2017상반기 산업대체복무자채용"
+            android:textColor="#4a4a4a"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ec7063"
+            android:text="관심기업"
+            android:textSize="12dp"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+
+    <!--탭-->
+    <android.support.v4.app.FragmentTabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+            </FrameLayout>
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/navy_a"
+                android:layout_gravity="bottom"
+                android:weightSum="3"/>
+
+        </LinearLayout>
+    </android.support.v4.app.FragmentTabHost>
+
+
+
+
+
+</LinearLayout>

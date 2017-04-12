@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/img_comLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ivory_a"
+        android:src="@mipmap/ic_launcher"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_comTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="한국공항공사"
+            android:padding="5dp"
+            android:textColor="@color/orange_a"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_comContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2017년도 상반기 신입사원"
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+</LinearLayout>

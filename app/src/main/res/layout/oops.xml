@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/navy_a"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="이런! 이력서는 작성하셨나요?"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/oops_resume"
+        android:textStyle="bold"
+        />
+
+
+    <Button
+        android:id="@+id/oops_resume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_a"
+        android:text="이력서 작성하기"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

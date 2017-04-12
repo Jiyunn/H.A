@@ -15,23 +15,29 @@ import kr.happy.myarmy.R;
 
 public class RegionGroupFragment extends Fragment {
 
+
+
     public RegionGroupFragment(){} //기본생성자
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Nullable
+      @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.regiongroup, container, false);
+          ViewGroup view=(ViewGroup)inflater.inflate(R.layout.regiongroup, container, false);
+
+
+          return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
 
     }
