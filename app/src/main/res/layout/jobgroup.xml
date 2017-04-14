@@ -42,6 +42,13 @@
             app:layout_constraintRight_toRightOf="parent"
             />
 
+        <TextView
+            android:id="@+id/job_gaebal"
+            style="@style/jobBtn"
+            android:drawableTop="@drawable/gaebal"
+            android:text="연구 / 개발"
+            />
+
 
 
 
