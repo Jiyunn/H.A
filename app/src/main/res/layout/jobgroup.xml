@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,15 +17,20 @@
             android:id="@+id/job_gigye"
             style="@style/jobBtn"
             android:drawableTop="@drawable/gigye"
+            android:text="기계"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:text="기계" />
+            app:layout_constraintDimensionRatio="1"
+          />
 
         <TextView
             android:id="@+id/job_jeonja"
             style="@style/jobBtn"
             android:drawableTop="@drawable/jeonja"
             android:text="전기 / 전자"
-            app:layout_constraintLeft_toRightOf="@+id/job_gigye"/>
+            app:layout_constraintLeft_toRightOf="@+id/job_gigye"
+            app:layout_constraintRight_toLeftOf="@+id/job_saengsan"
+            app:layout_constraintDimensionRatio="1"
+            />
 
         <TextView
             android:id="@+id/job_saengsan"
@@ -32,6 +38,8 @@
             android:drawableTop="@drawable/saengsan"
             android:text="생산"
             app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
+            app:layout_constraintRight_toLeftOf="@+id/job_euiyak"
+            app:layout_constraintDimensionRatio="1"
             />
 
         <TextView
@@ -40,21 +48,7 @@
             android:drawableTop="@drawable/euiyak"
             android:text="의료 / 의약"
             app:layout_constraintRight_toRightOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/job_gaebal"
-            style="@style/jobBtn"
-            android:drawableTop="@drawable/gaebal"
-            android:text="연구 / 개발"
-            />
-
-
-
-
-
-
-
+             />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
