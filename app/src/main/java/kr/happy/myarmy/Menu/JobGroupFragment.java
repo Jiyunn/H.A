@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.RecyclerviewHome.ItemHome;
-import kr.happy.myarmy.RecyclerviewHome.RecyclerAdapter;
+import kr.happy.myarmy.Recyclerview.ItemHome;
+import kr.happy.myarmy.Recyclerview.RecyclerAdapter;
 
 /**
  * Created by JY on 2017-04-11.

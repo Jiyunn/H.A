@@ -1,52 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_home"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="kr.happy.myarmy.MainActivity"
-    >
+    android:background="@color/graybacground"
+    tools:context="kr.happy.myarmy.MainActivity">
 
     <!--toolbar-->
-        <include
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v4.app.FragmentTabHost
-            android:id="@+id/tabhost"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+    <FrameLayout
+        android:id="@+id/frag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/bottomTab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/navy_a"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
+        <TextView
+            android:id="@+id/tab_resume"
+            style="@style/bottomTabIcon"
+            android:drawableTop="@drawable/rr"
+            android:text="내 이력서관리" />
 
+        <TextView
+            android:id="@+id/tab_smartmatch"
+            style="@style/bottomTabIcon"
+            android:drawableTop="@drawable/ss"
+            android:text="스마트매치   " />
 
-                </FrameLayout>
+        <TextView
+            android:id="@+id/tab_HOME"
+            style="@style/bottomTabIcon"
+            android:drawableTop="@drawable/hh"
+            android:text="HOME" />
 
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/navy_a"
-                    android:layout_gravity="bottom"
-                    android:weightSum="5"/>
+        <TextView
+            android:id="@+id/tab_jobgroup"
+            style="@style/bottomTabIcon"
+            android:drawableTop="@drawable/jj"
+            android:text="직군별정보" />
 
-            </LinearLayout>
-        </android.support.v4.app.FragmentTabHost>
+        <TextView
+            android:id="@+id/tab_regiongroup"
+            style="@style/bottomTabIcon"
+            android:drawableTop="@drawable/rr"
+            android:text="지역별정보" />
 
-</LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
+

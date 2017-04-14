@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.RecyclerviewHome.ItemHome;
-import kr.happy.myarmy.RecyclerviewHome.RecyclerAdapter;
+import kr.happy.myarmy.Recyclerview.ItemHome;
+import kr.happy.myarmy.Recyclerview.RecyclerAdapter;
 
 
 /**
@@ -33,7 +33,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
 
 
         ViewGroup view=(ViewGroup)inflater.inflate(R.layout.home, container, false);
@@ -64,7 +63,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         for(int i=0; i<20; i++)
-            dataSet.add(new ItemHome(R.mipmap.ic_launcher, "2017년도 상반기 신입사원", "(채용형인턴) 공개채용" , "d-5 경력무관 대졸"));
+            dataSet.add(new ItemHome(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
 
     }
 

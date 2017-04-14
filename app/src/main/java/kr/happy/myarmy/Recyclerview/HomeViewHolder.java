@@ -1,4 +1,4 @@
-package kr.happy.myarmy.RecyclerviewHome;
+package kr.happy.myarmy.Recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,7 +26,7 @@ public class HomeViewHolder extends RecyclerView.ViewHolder {
 
        logo=(ImageView)itemView.findViewById(R.id.img_comLogo);
        title=(TextView)itemView.findViewById(R.id.tv_comTitle);
-        content =(TextView)itemView.findViewById(R.id.tv_comContent);
+        content =(TextView)itemView.findViewById(R.id.tv_comContent1);
         content2 =(TextView)itemView.findViewById(R.id.tv_comContent2);
         content2 =(TextView)itemView.findViewById(R.id.tv_comContent3);
 

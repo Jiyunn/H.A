@@ -1,4 +1,4 @@
-package kr.happy.myarmy.RecyclerviewHome;
+package kr.happy.myarmy.Recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,7 +22,7 @@ public class RegionViewHolder extends RecyclerView.ViewHolder {
 
         logo=(ImageView)itemView.findViewById(R.id.img_comLogo);
         title=(TextView)itemView.findViewById(R.id.tv_comTitle);
-        content=(TextView)itemView.findViewById(R.id.tv_comContent);
+        content=(TextView)itemView.findViewById(R.id.tv_comContent1);
 
     }
 }

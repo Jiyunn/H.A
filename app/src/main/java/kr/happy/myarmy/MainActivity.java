@@ -1,16 +1,17 @@
 package kr.happy.myarmy;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.happy.myarmy.Menu.HomeFragment;
 import kr.happy.myarmy.Menu.JobGroupFragment;
 import kr.happy.myarmy.Menu.MyResumeFragment;
@@ -22,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.tabhost)
-    FragmentTabHost tabHost;
+    FragmentTransaction fgTransaction;
+    FragmentManager fgManager;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,52 +33,51 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setTabHost(); //탭 설정
+        setSupportActionBar(toolbar);
+        toolbar.setContentInsetsAbsolute(0,0); //툴바 양쪽 공백없애기
+
+        context=this;
+        fgManager=getSupportFragmentManager();
+
+        /*home fragment*/
+        fgTransaction=fgManager.beginTransaction();
+        fgTransaction.add(R.id.frag, new HomeFragment());
+        fgTransaction.commit();
     }
 
+    /*when click tab,*/
+    @OnClick({R.id.tab_resume, R.id.tab_smartmatch, R.id.tab_HOME, R.id.tab_jobgroup, R.id.tab_regiongroup})
+    public void tabClickListnener(View v){
+        int tabId=v.getId();
 
-    /*add tab*/
-    private void setTabHost(){
-        tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+        switch (tabId){
+            case R.id.tab_resume:
+                changeFragment(new MyResumeFragment());
+                break;
 
+            case R.id.tab_smartmatch:
+                changeFragment(new SmartMatchFragment());
+                break;
 
-        tabHost.addTab(tabHost.newTabSpec("myresume")
-            .setIndicator(createTabView(getString(R.string.tab_resume),R.drawable.rr)),
-                MyResumeFragment.class, null);
+            case R.id.tab_HOME:
+                changeFragment(new HomeFragment());
+                break;
 
-        tabHost.addTab(tabHost.newTabSpec("smartmatch")
-                .setIndicator(createTabView( getString(R.string.tab_smartmatch),R.drawable.ss)),
-                SmartMatchFragment.class, null);
+            case R.id.tab_jobgroup:
+                changeFragment(new JobGroupFragment());
+                break;
 
-        tabHost.addTab(tabHost.newTabSpec("HOME")
-                .setIndicator(createTabView("HOME", R.drawable.hh)),
-                HomeFragment.class, null);
-
-        tabHost.addTab(tabHost.newTabSpec("jobgroup")
-                .setIndicator(createTabView(getString(R.string.tab_jobgroup),R.drawable.jj)),
-                JobGroupFragment.class, null);
-
-        tabHost.addTab(tabHost.newTabSpec("regiongroup")
-                .setIndicator(createTabView( getString(R.string.tab_regionalgroup),R.drawable.rrr)),
-                RegionGroupFragment.class, null);
-
-           tabHost.setCurrentTab(2); //초기 탭 설정
+            case R.id.tab_regiongroup:
+                changeFragment(new RegionGroupFragment());
+                break;
+        }
     }
 
-
-    /* create tab icon view*/
-    private View createTabView( final String title,final int id){
-        View tabIcon= LayoutInflater.from(this).inflate(R.layout.tabicon, null);
-
-        ImageView imgTab=(ImageView)tabIcon.findViewById(R.id.img_tab);
-        TextView tvTab=(TextView)tabIcon.findViewById(R.id.tv_tab);
-
-        imgTab.setImageResource(id);
-        tvTab.setText(title);
-
-        return tabIcon;
+    /*change fragment*/
+    private void changeFragment(Fragment fg){
+        fgTransaction=fgManager.beginTransaction();
+        fgTransaction.replace(R.id.frag, fg); //change fragment
+        fgTransaction.addToBackStack(null); //backstack
+        fgTransaction.commit();
     }
-
-
-
 }

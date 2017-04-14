@@ -1,101 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    android:orientation="vertical"
+    android:weightSum="10">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/procon"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="3"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="5dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="3"
         android:background="@color/white">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
+            style="@style/profileImg"
+            android:src="@drawable/img1"
+            app:civ_border_color="#F4F4F4"
+            app:civ_border_width="5dp"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/profileTvTitle"
+            android:text="이름"
+            app:layout_constraintVertical_bias="0.3"
+            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/age"
+            style="@style/profileTvTitle"
+            android:text="나이"
+            />
+
+        <TextView
+            android:id="@+id/tv_profileName"
+            style="@style/profileTvContent"
+            android:text="이지윤"
+            app:layout_constraintLeft_toRightOf="@+id/name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/name"
+            app:layout_constraintHorizontal_bias="0.2"
+            />
+
+        <TextView
+            android:id="@+id/tv_profileAge"
+            style="@style/profileTvContent"
+            android:text="26세"
+            app:layout_constraintLeft_toRightOf="@+id/age"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/age"
+            app:layout_constraintHorizontal_bias="0.2"/>
+
+        <TextView
+            android:id="@+id/tv_profileMS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="15dp"
-            android:background="@color/ivory_a"
-            android:layout_weight="33"/>
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:text="병역근무대상자"
             android:gravity="center"
-            android:layout_weight="37">
+            android:textColor="@color/orange_a"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/age"
+            app:layout_constraintLeft_toLeftOf="@+id/age"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            />
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#4a4a4a"
-                android:textSize="16sp"
-                android:text="이름" />
+        <ImageButton
+            android:id="@+id/btn_profileEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/group_1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_profileMS"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileAge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.7"
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="16sp"
-                android:textColor="#9b9b9b"
-                android:text="아무개"/>
+            />
 
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/name"
-                android:layout_below="@+id/name"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_alignTop="@+id/tv_age"
-                android:textSize="16sp"
-                android:textColor="#4a4a4a"
-                android:text="나이"/>
+    </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tv_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/tv_name"
-                android:layout_marginTop="5dp"
-                android:textSize="16sp"
-                android:textColor="#9b9b9b"
-                android:text="26"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="병역근무대상자"
-                android:layout_below="@+id/tv_age"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/orange_a"/>
-
-
-
-        </RelativeLayout>
-
-
-    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_myresume"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="7"
-        android:background="@color/white">
+        android:layout_height="0dp"
+        android:layout_weight="7">
     </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>

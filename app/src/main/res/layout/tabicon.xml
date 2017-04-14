@@ -3,19 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/white"
    android:paddingTop="7dp">
 
     <ImageView
-        android:id="@+id/img_tab"
+        android:id="@+id/img_tab_resume"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/rr"
         android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/tv_tab"
+        android:id="@+id/tv_tab_resume"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="10dp"

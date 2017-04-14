@@ -1,74 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="3"
+        android:layout_height="0dp"
+        android:layout_weight="7"
         android:padding="20dp"
-        android:orientation="horizontal"
         android:background="@color/navy_a">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="4">
+        <TextView
+            android:id="@+id/job_gigye"
+            style="@style/jobBtn"
+            android:drawableTop="@drawable/gigye"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:text="기계" />
 
-            <ImageView
-                android:id="@+id/mach"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:background="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/job_jeonja"
+            style="@style/jobBtn"
+            android:drawableTop="@drawable/jeonja"
+            android:text="전기 / 전자"
+            app:layout_constraintLeft_toRightOf="@+id/job_gigye"/>
 
-            <ImageView
-                android:id="@+id/elec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_toRightOf="@+id/mach"
-                android:layout_weight="1"
-                android:background="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/job_saengsan"
+            style="@style/jobBtn"
+            android:drawableTop="@drawable/saengsan"
+            android:text="생산"
+            app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
+            />
 
-            <ImageView
-                android:id="@+id/product"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_toRightOf="@+id/elec"
-                android:layout_weight="1"
-                android:background="@mipmap/ic_launcher"/>
-
-            <ImageView
-                android:id="@+id/medical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_toRightOf="@+id/product"
-                android:layout_weight="1"
-                android:background="@mipmap/ic_launcher"/>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/job_euiyak"
+            style="@style/jobBtn"
+            android:drawableTop="@drawable/euiyak"
+            android:text="의료 / 의약"
+            app:layout_constraintRight_toRightOf="parent"
+            />
 
 
-        <!--여기부터아래-->
-        <ImageView
-            android:id="@+id/IT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/mach"
-            android:background="@mipmap/ic_launcher"/>
 
 
-    </LinearLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_region"
         android:layout_width="match_parent"
-        android:layout_height="0px"
+        android:layout_height="0dp"
         android:layout_weight="2">
 
     </android.support.v7.widget.RecyclerView>
