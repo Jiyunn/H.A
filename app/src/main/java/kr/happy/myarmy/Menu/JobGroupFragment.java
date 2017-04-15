@@ -40,6 +40,8 @@ public class JobGroupFragment extends Fragment {
         View view=inflater.inflate(R.layout.jobgroup, container, false);
         ButterKnife.bind(this, view);
 
+        setData();
+
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -58,7 +60,7 @@ public class JobGroupFragment extends Fragment {
     public void setData() {
         dataSet = new ArrayList<ItemHomenJob>();
 
-        for (int i = 0; i < itemName.length; i++) { //임시 실험데이터
+        for (int i = 0; i < 20; i++) { //임시 실험데이터
             dataSet.add(new ItemHomenJob(R.drawable.daehantong, "(주)한국공항공사", "2017년 하반기 신입사원", "(채용형인턴) 비공개채용", "D-7 | 경력유관 | 고졸"));
         }
     }

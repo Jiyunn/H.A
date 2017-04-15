@@ -85,7 +85,7 @@
 
     <style name="itemJobContent">
         <item name="android:gravity">left</item>
-        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
         <item name="layout_constraintLeft_toRightOf">@+id/line</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintHorizontal_weight">1</item>

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.CompanyAdapter;
+import kr.happy.myarmy.Recyclerview.HomeAdapter;
 import kr.happy.myarmy.Recyclerview.ItemHomenJob;
 
 
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
 
     @Nullable @BindView(R.id.rv_home) RecyclerView mRecyclerview;
 
-    private CompanyAdapter adapter;
+    private HomeAdapter adapter;
     private StaggeredGridLayoutManager  mLayoutManager;
     private ArrayList<ItemHomenJob> dataSet=new ArrayList<ItemHomenJob>();
 
@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
         mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS); //알아서 잘조정
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter=new CompanyAdapter(getActivity(), dataSet, R.layout.item_home); //어댑터 등록
+        adapter=new HomeAdapter(getActivity(), dataSet, R.layout.item_home); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
