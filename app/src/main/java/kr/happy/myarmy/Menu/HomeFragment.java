@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.CompanyAdapter;
-import kr.happy.myarmy.Recyclerview.ItemHome;
+import kr.happy.myarmy.Recyclerview.ItemHomenJob;
 
 
 /**
@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
 
     private CompanyAdapter adapter;
     private StaggeredGridLayoutManager  mLayoutManager;
-    private ArrayList<ItemHome> dataSet=new ArrayList<ItemHome>();
+    private ArrayList<ItemHomenJob> dataSet=new ArrayList<ItemHomenJob>();
 
     public HomeFragment(){} //기본생성자
 
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
 
     public void setData(){
         for(int i=0; i<20; i++)
-            dataSet.add(new ItemHome(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
+            dataSet.add(new ItemHomenJob(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
 
     }
 

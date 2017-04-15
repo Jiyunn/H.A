@@ -19,7 +19,6 @@ public class ResumeViewHolder extends RecyclerView.ViewHolder {
     @Nullable @BindView(R.id.item_resContent) TextView content;
 
     public ResumeViewHolder(View itemView) {
-        super(itemView);
-        ButterKnife.bind(this, itemView);
+        super(itemView);        ButterKnife.bind(this, itemView);
     }
 }

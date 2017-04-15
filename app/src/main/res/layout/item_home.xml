@@ -23,7 +23,7 @@
           >
 
         <ImageView
-            android:id="@+id/img_comLogo"
+            android:id="@+id/item_comLogo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -40,7 +40,7 @@
            />
 
         <TextView
-            android:id="@+id/tv_comTitle"
+            android:id="@+id/item_comTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -55,7 +55,7 @@
 
 
         <TextView
-            android:id="@+id/tv_comContent1"
+            android:id="@+id/item_comContent1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -68,7 +68,7 @@
             />
 
         <TextView
-            android:id="@+id/tv_comContent2"
+            android:id="@+id/item_comContent2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -81,7 +81,7 @@
             />
 
         <TextView
-            android:id="@+id/tv_comContent3"
+            android:id="@+id/item_comContent3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

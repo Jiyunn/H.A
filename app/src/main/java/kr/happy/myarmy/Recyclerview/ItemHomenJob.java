@@ -4,7 +4,7 @@ package kr.happy.myarmy.Recyclerview;
  * Created by JY on 2017-04-12.
  */
 
-public class ItemHome {
+public class ItemHomenJob {
 
     private int img; //기업 로고
     private String title; //기업 이름
@@ -13,11 +13,11 @@ public class ItemHome {
     private String content3;
 
 
-    public ItemHome(String title) {
+    public ItemHomenJob(String title) {
         this.title = title;
     }
 
-    public ItemHome(int img, String title,String content1, String content2, String content3) {
+    public ItemHomenJob(int img, String title, String content1, String content2, String content3) {
 
         this.img = img;
         this.title = title;
@@ -26,7 +26,7 @@ public class ItemHome {
         this.content3 = content3;
     }
 
-    public ItemHome(String title, String content1, String content2, String content3) {
+    public ItemHomenJob(String title, String content1, String content2, String content3) {
         this.content1 = content1;
         this.content2 = content2;
         this.content3 = content3;

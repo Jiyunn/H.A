@@ -74,4 +74,21 @@
         <item name="android:textColor">#4A4A4A</item>
     </style>
 
+    <style name="resAndInfo">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="layout_constraintHorizontal_weight">1</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="itemJobContent">
+        <item name="android:gravity">left</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="layout_constraintLeft_toRightOf">@+id/line</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintHorizontal_weight">1</item>
+    </style>
+
 </resources>

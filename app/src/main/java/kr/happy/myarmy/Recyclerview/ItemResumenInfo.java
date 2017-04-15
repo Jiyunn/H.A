@@ -2,16 +2,16 @@ package kr.happy.myarmy.Recyclerview;
 
 
 
-public class ItemResume  {
+public class ItemResumenInfo {
     String title;
     String content;
 
-    public ItemResume(String title, String content) {
-        this.content = content;
+    public ItemResumenInfo(String title, String content) {
         this.title = title;
+        this.content = content;
     }
 
-    public ItemResume(String content) {
+    public ItemResumenInfo(String content) {
         this.content = content;
     }
 

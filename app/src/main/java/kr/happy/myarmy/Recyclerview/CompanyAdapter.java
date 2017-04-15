@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class CompanyAdapter extends RecyclerView.Adapter<HomeViewHolder> {
 
     private Context context;
-    private ArrayList<ItemHome> items;
+    private ArrayList<ItemHomenJob> items;
     private int itemLayout; //레이아웃 형식
 
-    public CompanyAdapter(Context context, ArrayList<ItemHome> items, int itemLayout) {
+    public CompanyAdapter(Context context, ArrayList<ItemHomenJob> items, int itemLayout) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
