@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 
 /**
@@ -22,7 +23,8 @@ public class RegionGroupFragment extends Fragment {
       @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-          ViewGroup view=(ViewGroup)inflater.inflate(R.layout.regiongroup, container, false);
+          View view=inflater.inflate(R.layout.regiongroup, container, false);
+          ButterKnife.bind(this, view);
 
 
           return view;

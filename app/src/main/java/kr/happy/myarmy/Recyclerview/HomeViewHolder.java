@@ -1,10 +1,13 @@
 package kr.happy.myarmy.Recyclerview;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 
 /**
@@ -13,22 +16,16 @@ import kr.happy.myarmy.R;
 
 public class HomeViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView logo;
-    TextView title;
-    TextView content;
-    TextView content2;
-    TextView content3;
-
+    @Nullable @BindView(R.id.img_comLogo)ImageView logo;
+    @Nullable @BindView(R.id.tv_comTitle)TextView title;
+    @Nullable @BindView(R.id.tv_comContent1)TextView content1;
+    @Nullable @BindView(R.id.tv_comContent2)TextView content2;
+    @Nullable @BindView(R.id.tv_comContent3)TextView content3;
 
 
     public HomeViewHolder(View itemView) {
         super(itemView);
-
-       logo=(ImageView)itemView.findViewById(R.id.img_comLogo);
-       title=(TextView)itemView.findViewById(R.id.tv_comTitle);
-        content =(TextView)itemView.findViewById(R.id.tv_comContent1);
-        content2 =(TextView)itemView.findViewById(R.id.tv_comContent2);
-        content2 =(TextView)itemView.findViewById(R.id.tv_comContent3);
+        ButterKnife.bind(this, itemView);
 
 
     }

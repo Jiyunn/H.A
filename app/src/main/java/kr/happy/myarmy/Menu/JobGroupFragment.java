@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 
 /**
@@ -14,7 +15,6 @@ import kr.happy.myarmy.R;
  */
 
 public class JobGroupFragment extends Fragment {
-
 
 
     public JobGroupFragment(){} //기본생성자
@@ -29,9 +29,8 @@ public class JobGroupFragment extends Fragment {
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ViewGroup view=(ViewGroup)inflater.inflate(R.layout.jobgroup, container, false);
-
-
+        View view=inflater.inflate(R.layout.jobgroup, container, false);
+        ButterKnife.bind(this, view);
 
         return view;
     }
@@ -39,8 +38,5 @@ public class JobGroupFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-
     }
 }

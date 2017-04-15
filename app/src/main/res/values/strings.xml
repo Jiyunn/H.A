@@ -6,4 +6,16 @@
     <string name="tab_jobgroup">직군별정보</string>
     <string name="tab_regionalgroup">지역별정보</string>
 
+    <string name="enrolid">등록아이디</string>
+    <string name="name">이름</string>
+    <string name="birth">생년월일</string>
+    <string name="wantjob">희망직종</string>
+    <string name="specialnote">특기사항</string>
+    <string name="certificate">자격증</string>
+    <string name="education">최종학력</string>
+    <string name="living">거주지역</string>
+    <string name="etccareer">기타 경력사항</string>
+    <string name="phone">연락처</string>
+
+
 </resources>

@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
+import kr.happy.myarmy.Recyclerview.CompanyAdapter;
 import kr.happy.myarmy.Recyclerview.ItemHome;
-import kr.happy.myarmy.Recyclerview.RecyclerAdapter;
 
 
 /**
@@ -23,8 +25,9 @@ import kr.happy.myarmy.Recyclerview.RecyclerAdapter;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView mRecyclerview;
-    private RecyclerAdapter adapter;
+    @Nullable @BindView(R.id.rv_home) RecyclerView mRecyclerview;
+
+    private CompanyAdapter adapter;
     private StaggeredGridLayoutManager  mLayoutManager;
     private ArrayList<ItemHome> dataSet=new ArrayList<ItemHome>();
 
@@ -34,23 +37,30 @@ public class HomeFragment extends Fragment {
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View view=inflater.inflate(R.layout.home, container, false);
+        ButterKnife.bind(this, view);
 
-        ViewGroup view=(ViewGroup)inflater.inflate(R.layout.home, container, false);
+        setData(); //데이터 생성
 
-        mRecyclerview=(RecyclerView) view.findViewById(R.id.rv_home);
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager=new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS); //알아서 잘조정
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter=new RecyclerAdapter(getActivity(), dataSet, R.layout.item_home); //어댑터 등록
+        adapter=new CompanyAdapter(getActivity(), dataSet, R.layout.item_home); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
 
 
         return view;
+    }
+
+    public void setData(){
+        for(int i=0; i<20; i++)
+            dataSet.add(new ItemHome(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
+
     }
 
     @Override
@@ -61,9 +71,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        for(int i=0; i<20; i++)
-            dataSet.add(new ItemHome(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
 
     }
 

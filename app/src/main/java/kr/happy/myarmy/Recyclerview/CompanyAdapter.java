@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-
-public class RecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder> {
+/*regionviewholder use this?*/
+public class CompanyAdapter extends RecyclerView.Adapter<HomeViewHolder> {
 
     private Context context;
     private ArrayList<ItemHome> items;
     private int itemLayout; //레이아웃 형식
 
-    public RecyclerAdapter(Context context, ArrayList<ItemHome> items, int itemLayout) {
+    public CompanyAdapter(Context context, ArrayList<ItemHome> items, int itemLayout) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
@@ -32,6 +32,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder> {
     public void onBindViewHolder(HomeViewHolder holder, int position) { //뿌려주기
         holder.logo.setImageResource(items.get(position).getImg());
         holder.title.setText(items.get(position).getTitle());
+        holder.content1.setText(items.get(position).getContent1());
+        holder.content2.setText(items.get(position).getContent2());
+        holder.content3.setText(items.get(position).getContent3());
     }
 
     @Override
