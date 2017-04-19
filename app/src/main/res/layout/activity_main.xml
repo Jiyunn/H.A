@@ -24,52 +24,27 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottomTab"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <LinearLayout
-        android:id="@+id/bottomTab"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:bb_activeTabColor="@color/white"
+        app:bb_inActiveTabColor="#b1b1b1"
         android:background="@color/navy_a"
-        android:orientation="horizontal"
-        android:padding="3dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/frag"
+        app:bb_titleTextAppearance="@style/CustomTitleTextAppearance"
+        app:bb_tabXmlResource="@xml/bottomtabbar"
+        >
 
-        <TextView
-            android:id="@+id/tab_resume"
-            style="@style/bottomTabIcon"
-            android:drawableTop="@drawable/rr"
-            android:text="내 이력서관리" />
-
-        <TextView
-            android:id="@+id/tab_smartmatch"
-            style="@style/bottomTabIcon"
-            android:drawableTop="@drawable/ss"
-            android:text="스마트매치   " />
-
-        <TextView
-            android:id="@+id/tab_HOME"
-            style="@style/bottomTabIcon"
-            android:drawableTop="@drawable/hh"
-            android:text="HOME" />
-
-        <TextView
-            android:id="@+id/tab_jobgroup"
-            style="@style/bottomTabIcon"
-            android:drawableTop="@drawable/jj"
-            android:text="직군별정보" />
-
-        <TextView
-            android:id="@+id/tab_regiongroup"
-            style="@style/bottomTabIcon"
-            android:drawableTop="@drawable/rr"
-            android:text="지역별정보" />
-
-    </LinearLayout>
+    </com.roughike.bottombar.BottomBar>
 </android.support.constraint.ConstraintLayout>
 

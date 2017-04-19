@@ -2,16 +2,18 @@ package kr.happy.myarmy;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import kr.happy.myarmy.Menu.HomeFragment;
 import kr.happy.myarmy.Menu.JobGroupFragment;
 import kr.happy.myarmy.Menu.MyResumeFragment;
@@ -23,9 +25,32 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    FragmentTransaction fgTransaction;
-    FragmentManager fgManager;
-    Context context;
+    @BindView(R.id.bottom_bar)
+    BottomBar bottomBar;
+
+    private FragmentTransaction fgTransaction;
+    private FragmentManager fgManager;
+    private Context context;
+
+    private BackButtonHandler backButtonHandler;
+
+    /*back btn */
+    @Override
+    public void onBackPressed() {
+        int fgStackCnt = fgManager.getBackStackEntryCount();
+        int home= R.id.tab_HOME;
+        //super.onBackPressed();
+
+
+            if (bottomBar.getCurrentTabId() == home) {
+                backButtonHandler.onBackPressed();
+            }
+            else {
+                bottomBar.selectTabWithId(home);
+            }
+        }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,48 +59,49 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        toolbar.setContentInsetsAbsolute(0,0); //툴바 양쪽 공백없애기
+        toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
 
-        context=this;
-        fgManager=getSupportFragmentManager();
+        /*set home tab*/
+        bottomBar.setDefaultTab(R.id.tab_HOME);
 
-        /*home fragment*/
-        fgTransaction=fgManager.beginTransaction();
-        fgTransaction.add(R.id.frag, new HomeFragment());
-        fgTransaction.commit();
-    }
+        context = this;
+        fgManager = getSupportFragmentManager();
 
-    /*when click tab,*/
-    @OnClick({R.id.tab_resume, R.id.tab_smartmatch, R.id.tab_HOME, R.id.tab_jobgroup, R.id.tab_regiongroup})
-    public void tabClickListnener(View v){
-        int tabId=v.getId();
+        backButtonHandler = new BackButtonHandler(this);
 
-        switch (tabId){
-            case R.id.tab_resume:
-                changeFragment(new MyResumeFragment());
-                break;
 
-            case R.id.tab_smartmatch:
-                changeFragment(new SmartMatchFragment());
-                break;
+        /*tab클릭시*/
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId) {
+                    case R.id.tab_resume:
+                        changeFragment(new MyResumeFragment());
+                        break;
 
-            case R.id.tab_HOME:
-                changeFragment(new HomeFragment());
-                break;
+                    case R.id.tab_smartmatch:
+                        changeFragment(new SmartMatchFragment());
+                        break;
 
-            case R.id.tab_jobgroup:
-                changeFragment(new JobGroupFragment());
-                break;
+                    case R.id.tab_HOME:
+                        changeFragment(new HomeFragment());
+                        break;
 
-            case R.id.tab_regiongroup:
-                changeFragment(new RegionGroupFragment());
-                break;
-        }
+                    case R.id.tab_jobgroup:
+                        changeFragment(new JobGroupFragment());
+                        break;
+
+                    case R.id.tab_regiongroup:
+                        changeFragment(new RegionGroupFragment());
+                        break;
+                }
+            }
+        });
     }
 
     /*change fragment*/
-    private void changeFragment(Fragment fg){
-        fgTransaction=fgManager.beginTransaction();
+    private void changeFragment(Fragment fg) {
+        fgTransaction = fgManager.beginTransaction();
         fgTransaction.replace(R.id.frag, fg); //change fragment
         fgTransaction.addToBackStack(null); //backstack
         fgTransaction.commit();

@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kr.happy.myarmy.Recyclerview.InfoAdapter;
 import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
-import kr.happy.myarmy.Recyclerview.TestAdapter;
 
 /**
  * Created by JY on 2017-04-15.
@@ -39,7 +39,7 @@ public class InfoEditFragment extends Fragment {
     @Nullable @BindString(R.string.etccareer) String etcCareer;
     @Nullable @BindString(R.string.phone)  String phone;
 
-    private TestAdapter adapter;
+    private InfoAdapter adapter;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<ItemResumenInfo> dataSet;
     private String[] itemName; //항목 이름들
@@ -61,7 +61,7 @@ public class InfoEditFragment extends Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter = new TestAdapter(getActivity(), dataSet, R.layout.infoedit); //어댑터 등록
+        adapter = new InfoAdapter(getActivity(), dataSet, R.layout.item_info); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
@@ -69,6 +69,7 @@ public class InfoEditFragment extends Fragment {
         return view;
     }
 
+    /*set data*/
     public void setData() {
 
         dataSet = new ArrayList<ItemResumenInfo>();
@@ -76,17 +77,19 @@ public class InfoEditFragment extends Fragment {
 
         for (int i = 0; i < itemName.length; i++) { //임시 실험데이터
             dataSet.add(new ItemResumenInfo(itemName[i], String.valueOf(i)));
-            Log.d("jy", itemName[i] + " /" +String.valueOf(i));
         }
     }
 
+
     @Override
     public void onAttach(Context context) {
+        Log.d("jy", "infodedit attach");
         super.onAttach(context);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("jy", "infoedit create");
         super.onCreate(savedInstanceState);
     }
 

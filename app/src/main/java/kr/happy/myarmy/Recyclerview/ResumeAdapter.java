@@ -19,7 +19,7 @@ import kr.happy.myarmy.R;
  */
 
 /*myresume recyclerview adapter*/
-public class ResumenInfoAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
+public class ResumeAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
 
     private Context context;
     private ArrayList<ItemResumenInfo> items;
@@ -27,7 +27,7 @@ public class ResumenInfoAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
     private int cnt=0; //항목 갯수
 
 
-    public ResumenInfoAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout, int  cnt) {
+    public ResumeAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout, int  cnt) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
@@ -57,9 +57,11 @@ public class ResumenInfoAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
  class ResumeViewHolder extends RecyclerView.ViewHolder {
      @Nullable
      @BindView(R.id.item_resTitle) TextView title;
-     @Nullable @BindView(R.id.item_resContent) TextView content;
+     @Nullable
+     @BindView(R.id.item_resContent) TextView content;
 
      public ResumeViewHolder(View itemView) {
-         super(itemView);        ButterKnife.bind(this, itemView);
+         super(itemView);
+         ButterKnife.bind(this, itemView);
      }
  }

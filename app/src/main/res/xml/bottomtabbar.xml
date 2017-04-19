@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tabs>
+    <tab
+        id="@+id/tab_resume"
+        icon="@drawable/rr"
+        title="@string/tab_resume"
+        titleSize="10dp"
+        />
+    <tab
+        id="@+id/tab_smartmatch"
+        icon="@drawable/ss"
+        title="@string/tab_smartmatch"
+        margin_bottom="10dp"/>
+    <tab
+        id="@+id/tab_HOME"
+        icon="@drawable/hh"
+        title="HOME" />
+    <tab
+        id="@+id/tab_jobgroup"
+        icon="@drawable/jj"
+        title="@string/tab_jobgroup" />
+    <tab
+        id="@+id/tab_regiongroup"
+        icon="@drawable/rrr"
+        title="@string/tab_regiongroup" />
+</tabs>

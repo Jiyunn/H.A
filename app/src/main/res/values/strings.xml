@@ -4,7 +4,7 @@
     <string name="tab_resume">내 이력서 관리</string>
     <string name="tab_smartmatch">스마트매치</string>
     <string name="tab_jobgroup">직군별정보</string>
-    <string name="tab_regionalgroup">지역별정보</string>
+    <string name="tab_regiongroup">지역별정보</string>
 
     <string name="enrolid">등록아이디</string>
     <string name="name">이름</string>
@@ -16,6 +16,8 @@
     <string name="living">거주지역</string>
     <string name="etccareer">기타 경력사항</string>
     <string name="phone">연락처</string>
+
+    <string name="quitApp">뒤로가기 버튼을 한번 더 누르면 종료합니다</string>
 
 
 </resources>

@@ -46,4 +46,8 @@ dependencies {
     /*constraintlayout*/
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+
+    /*bottomnavi*/
+    compile  'com.roughike:bottom-bar:2.3.1'
+
 }

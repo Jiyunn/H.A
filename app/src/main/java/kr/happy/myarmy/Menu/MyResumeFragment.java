@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import butterknife.OnClick;
 import kr.happy.myarmy.InfoEditFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
-import kr.happy.myarmy.Recyclerview.ResumenInfoAdapter;
+import kr.happy.myarmy.Recyclerview.ResumeAdapter;
 
 /**
  * Created by JY on 2017-04-11.
@@ -38,7 +39,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @Nullable @BindString(R.string.living)  String living;
     @Nullable @BindString(R.string.etccareer) String etcCareer;
 
-    private ResumenInfoAdapter adapter;
+    private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<ItemResumenInfo> dataSet;
     private String[] itemName; //항목 이름들
@@ -63,7 +64,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter = new ResumenInfoAdapter(getActivity(), dataSet, R.layout.item_myresume, itemName.length); //어댑터 등록
+        adapter = new ResumeAdapter(getActivity(), dataSet, R.layout.item_myresume, itemName.length); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
@@ -85,8 +86,10 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @OnClick(R.id.btn_profileEdit)
     public void profileEdit() {
 
+        fgManager=getFragmentManager();
         fgTransaction=fgManager.beginTransaction();
-        fgTransaction.add(R.id.frag, new InfoEditFragment());
+        fgTransaction.replace(R.id.frag, new InfoEditFragment());
+//        fgTransaction.addToBackStack(null);
         fgTransaction.commit();
     }
 
@@ -102,5 +105,17 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
 
 
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("jy", "myrewume destory");
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        Log.d("jy", "myrewume destory");
+        super.onDetach();
     }
 }
