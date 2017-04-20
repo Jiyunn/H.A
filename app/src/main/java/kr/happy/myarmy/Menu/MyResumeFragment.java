@@ -1,5 +1,8 @@
 package kr.happy.myarmy.Menu;
 
+import android.Manifest;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -12,13 +15,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
 import java.util.ArrayList;
 
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kr.happy.myarmy.InfoEditFragment;
+import de.hdodenhof.circleimageview.CircleImageView;
+import gun0912.tedbottompicker.TedBottomPicker;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
 import kr.happy.myarmy.Recyclerview.ResumeAdapter;
@@ -29,15 +38,30 @@ import kr.happy.myarmy.Recyclerview.ResumeAdapter;
 
 public class MyResumeFragment extends android.support.v4.app.Fragment {
 
-    @Nullable @BindView(R.id.rv_myresume)
+    @Nullable
+    @BindView(R.id.rv_myresume)
     RecyclerView mRecyclerview;
 
-    @Nullable @BindString(R.string.wantjob)  String wantJob;
-    @Nullable @BindString(R.string.specialnote)  String specialNote;
-    @Nullable @BindString(R.string.certificate)  String certificate;
-    @Nullable @BindString(R.string.education)  String edu;
-    @Nullable @BindString(R.string.living)  String living;
-    @Nullable @BindString(R.string.etccareer) String etcCareer;
+    @Nullable @BindView(R.id.img_profile)CircleImageView img_profile;
+
+    @Nullable
+    @BindString(R.string.wantjob)
+    String wantJob;
+    @Nullable
+    @BindString(R.string.specialnote)
+    String specialNote;
+    @Nullable
+    @BindString(R.string.certificate)
+    String certificate;
+    @Nullable
+    @BindString(R.string.education)
+    String edu;
+    @Nullable
+    @BindString(R.string.living)
+    String living;
+    @Nullable
+    @BindString(R.string.etccareer)
+    String etcCareer;
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
@@ -47,13 +71,17 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     FragmentTransaction fgTransaction;
     FragmentManager fgManager;
 
-    public MyResumeFragment(){} //기본생성자
+    private Uri selectedUri; //선택한 사진
+    public RequestManager mGlideRequestManager;
+
+
+    public MyResumeFragment() { }
 
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ViewGroup view=(ViewGroup)inflater.inflate(R.layout.myresume, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.myresume, container, false);
         ButterKnife.bind(this, view);
 
         setData(); //데이터 설정
@@ -72,6 +100,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
+
     /*temp data */
     public void setData() {
         dataSet = new ArrayList<ItemResumenInfo>();
@@ -82,29 +111,22 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         }
     }
 
+
     /*when click profile edit btn*/
     @OnClick(R.id.btn_profileEdit)
     public void profileEdit() {
 
-        fgManager=getFragmentManager();
-        fgTransaction=fgManager.beginTransaction();
+        fgManager = getFragmentManager();
+        fgTransaction = fgManager.beginTransaction();
         fgTransaction.replace(R.id.frag, new InfoEditFragment());
-//        fgTransaction.addToBackStack(null);
         fgTransaction.commit();
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-
+        mGlideRequestManager=Glide.with(getActivity());
     }
 
     @Override
@@ -118,4 +140,69 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         Log.d("jy", "myrewume destory");
         super.onDetach();
     }
+
+
+    /* click profile image, check sdk version and check permission*/
+    @OnClick(R.id.img_profile)
+    public void SetProfileImg() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            CheckPermission();
+
+        ShowTedBottomPicker();
+    }
+
+    /*get permission camera and gallery*/
+    public void CheckPermission() {
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
+            }
+        };
+        new TedPermission(getActivity())
+                .setPermissionListener(permissionListener)
+                .setRationaleMessage(R.string.rationaleMessage)
+                .setDeniedMessage(R.string.deniedMessage)
+                .setGotoSettingButtonText(R.string.gotoSettingBottom)
+                .setPermissions(Manifest.permission.CAMERA,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .check();
+    }
+
+
+    /*show bottom picker this library extends bottomsheetdialogfragment*/
+    protected void ShowTedBottomPicker() {
+
+        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getActivity())
+                .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
+                    @Override
+                    public void onImageSelected(final Uri uri) {
+                        selectedUri=uri;
+
+                        img_profile.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mGlideRequestManager.load(uri).into(img_profile); //set image
+                            }
+                        });
+                    }
+                })
+                .setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
+                .setSelectedUri(selectedUri)
+                .create();
+
+        tedBottomPicker.show(getFragmentManager()); //show picker
+
+
+    }
 }
+
+
+

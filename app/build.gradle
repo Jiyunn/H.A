@@ -50,4 +50,8 @@ dependencies {
     /*bottomnavi*/
     compile  'com.roughike:bottom-bar:2.3.1'
 
+    /*bottom picker*/
+    compile 'gun0912.ted:tedbottompicker:1.0.11'
+    compile 'gun0912.ted:tedpermission:1.0.3'
+
 }

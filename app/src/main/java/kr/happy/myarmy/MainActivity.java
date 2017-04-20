@@ -1,6 +1,5 @@
 package kr.happy.myarmy;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -30,27 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentTransaction fgTransaction;
     private FragmentManager fgManager;
-    private Context context;
 
     private BackButtonHandler backButtonHandler;
-
-    /*back btn */
-    @Override
-    public void onBackPressed() {
-        int fgStackCnt = fgManager.getBackStackEntryCount();
-        int home= R.id.tab_HOME;
-        //super.onBackPressed();
-
-
-            if (bottomBar.getCurrentTabId() == home) {
-                backButtonHandler.onBackPressed();
-            }
-            else {
-                bottomBar.selectTabWithId(home);
-            }
-        }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         /*set home tab*/
         bottomBar.setDefaultTab(R.id.tab_HOME);
 
-        context = this;
         fgManager = getSupportFragmentManager();
 
         backButtonHandler = new BackButtonHandler(this);
@@ -106,4 +85,23 @@ public class MainActivity extends AppCompatActivity {
         fgTransaction.addToBackStack(null); //backstack
         fgTransaction.commit();
     }
+
+    /*back btn */
+    @Override
+    public void onBackPressed() {
+        int fgStackCnt = fgManager.getBackStackEntryCount();
+        int home = R.id.tab_HOME;
+        //super.onBackPressed();
+
+        if (bottomBar.getCurrentTabId() == home) {
+            backButtonHandler.onBackPressed();
+        } else {
+            bottomBar.selectTabWithId(home);
+        }
+    }
+
+
+
+
+
 }

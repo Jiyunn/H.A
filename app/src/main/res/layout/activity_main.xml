@@ -32,7 +32,7 @@
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottom_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         app:bb_activeTabColor="@color/white"
         app:bb_inActiveTabColor="#b1b1b1"

@@ -1,4 +1,4 @@
-package kr.happy.myarmy;
+package kr.happy.myarmy.Menu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.InfoAdapter;
 import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
 
@@ -26,18 +27,37 @@ import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
 
 public class InfoEditFragment extends Fragment {
 
-    @Nullable @BindView(R.id.rv_info)
+    @Nullable
+    @BindView(R.id.rv_info)
     RecyclerView mRecyclerview;
 
-    @Nullable @BindString(R.string.name)  String name;
-    @Nullable @BindString(R.string.birth)  String birth;
-    @Nullable @BindString(R.string.wantjob)  String wantJob;
-    @Nullable @BindString(R.string.specialnote)  String specialNote;
-    @Nullable @BindString(R.string.certificate)  String certificate;
-    @Nullable @BindString(R.string.education)  String edu;
-    @Nullable @BindString(R.string.living)  String living;
-    @Nullable @BindString(R.string.etccareer) String etcCareer;
-    @Nullable @BindString(R.string.phone)  String phone;
+    @Nullable
+    @BindString(R.string.name)
+    String name;
+    @Nullable
+    @BindString(R.string.birth)
+    String birth;
+    @Nullable
+    @BindString(R.string.wantjob)
+    String wantJob;
+    @Nullable
+    @BindString(R.string.specialnote)
+    String specialNote;
+    @Nullable
+    @BindString(R.string.certificate)
+    String certificate;
+    @Nullable
+    @BindString(R.string.education)
+    String edu;
+    @Nullable
+    @BindString(R.string.living)
+    String living;
+    @Nullable
+    @BindString(R.string.etccareer)
+    String etcCareer;
+    @Nullable
+    @BindString(R.string.phone)
+    String phone;
 
     private InfoAdapter adapter;
     private LinearLayoutManager mLayoutManager;
@@ -50,7 +70,7 @@ public class InfoEditFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.infoedit, container, false);
+        View view = inflater.inflate(R.layout.infoedit, container, false);
         ButterKnife.bind(this, view);
 
         setData();
@@ -103,4 +123,7 @@ public class InfoEditFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
+
 }

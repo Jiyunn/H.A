@@ -19,5 +19,9 @@
 
     <string name="quitApp">뒤로가기 버튼을 한번 더 누르면 종료합니다</string>
 
+    <string name="rationaleMessage">사용자 프로필 사진을 변경하려면\n갤러리와 카메라 접근권한이 필요합니다</string>
+    <string name="deniedMessage">휴대폰의 [설정] -> [권한] 메뉴에서 변경할 수 있습니다</string>
+    <string name="gotoSettingBottom">설정</string>
+
 
 </resources>
