@@ -22,6 +22,8 @@
         android:layout_height="match_parent"
         android:background="@drawable/searchshape"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:drawableRight="@drawable/ic_search_black_24dp"
         android:drawableTint="@color/navy_a"
         android:padding="8dp"

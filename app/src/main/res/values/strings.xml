@@ -22,6 +22,19 @@
     <string name="rationaleMessage">사용자 프로필 사진을 변경하려면\n갤러리와 카메라 접근권한이 필요합니다</string>
     <string name="deniedMessage">휴대폰의 [설정] -> [권한] 메뉴에서 변경할 수 있습니다</string>
     <string name="gotoSettingBottom">설정</string>
+    
+    <string name="cheolgang">철강</string>
+    <string name="hyunjang">현장관리 / 정비</string>
+    <string name="jeonja">전기 / 전자</string>
+    <string name="saengsan">생산</string>
+    <string name="somyou">섬유</string>
+    <string name="whahak">화학</string>
+    <string name="euiryu">의류</string>
+    <string name="euiyak">의료 / 의약</string>
+    <string name="gaebal">개발</string>
+    <string name="gigye">기계</string>
+
+    <string name="oops">이런! \n이력서는 작성하셨나요?</string>
 
 
 </resources>

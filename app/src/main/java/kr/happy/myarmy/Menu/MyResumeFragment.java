@@ -42,7 +42,9 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @BindView(R.id.rv_myresume)
     RecyclerView mRecyclerview;
 
-    @Nullable @BindView(R.id.img_profile)CircleImageView img_profile;
+    @Nullable
+    @BindView(R.id.img_profile)
+    CircleImageView img_profile;
 
     @Nullable
     @BindString(R.string.wantjob)
@@ -71,11 +73,13 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     FragmentTransaction fgTransaction;
     FragmentManager fgManager;
 
+    private Uri cameraImageUri;
     private Uri selectedUri; //선택한 사진
     public RequestManager mGlideRequestManager;
 
 
-    public MyResumeFragment() { }
+    public MyResumeFragment() {
+    }
 
     @Nullable
     @Override //뷰 생성
@@ -126,7 +130,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGlideRequestManager=Glide.with(getActivity());
+        mGlideRequestManager = Glide.with(getActivity());
     }
 
     @Override
@@ -148,7 +152,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             CheckPermission();
 
-        ShowTedBottomPicker();
+
     }
 
     /*get permission camera and gallery*/
@@ -156,13 +160,13 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
         PermissionListener permissionListener = new PermissionListener() {
             @Override
-            public void onPermissionGranted() {
-
+            public void onPermissionGranted() { //if granted permission then show tem bottom picker.
+                ShowTedBottomPicker();
             }
 
             @Override
             public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-
+                return;
             }
         };
         new TedPermission(getActivity())
@@ -176,7 +180,6 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
                 .check();
     }
 
-
     /*show bottom picker this library extends bottomsheetdialogfragment*/
     protected void ShowTedBottomPicker() {
 
@@ -184,24 +187,28 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
                 .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
                     @Override
                     public void onImageSelected(final Uri uri) {
-                        selectedUri=uri;
+                        selectedUri = uri;
 
                         img_profile.post(new Runnable() {
                             @Override
                             public void run() {
-                                mGlideRequestManager.load(uri).into(img_profile); //set image
+                                mGlideRequestManager
+                                        .load(selectedUri)
+                                        .into(img_profile); //set image
+                                Log.d("jy", selectedUri.toString());
                             }
                         });
                     }
                 })
-                .setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
+                .setPeekHeight(getResources().getDisplayMetrics().heightPixels / 2)
                 .setSelectedUri(selectedUri)
                 .create();
 
         tedBottomPicker.show(getFragmentManager()); //show picker
 
-
     }
+
+
 }
 
 

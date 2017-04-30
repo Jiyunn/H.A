@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,9 @@ public class JobGroupFragment extends Fragment {
 
     @Nullable @BindView(R.id.rv_job)
     RecyclerView mRecyclerview;
+
+    @Nullable @BindView(R.id.item_favorite)
+    ImageButton favorite;
 
     private JobAdapter adapter;
     private LinearLayoutManager mLayoutManager;
@@ -56,6 +60,13 @@ public class JobGroupFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
     /*temp data */
     public void setData() {
         dataSet = new ArrayList<ItemHomenJob>();
@@ -71,8 +82,5 @@ public class JobGroupFragment extends Fragment {
 
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
+
 }

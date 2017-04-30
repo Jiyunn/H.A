@@ -9,8 +9,9 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:text="이런! 이력서는 작성하셨나요?"
+        android:text="@string/oops"
         android:layout_centerInParent="true"
+        android:padding="10dp"
         android:layout_above="@+id/oops_resume"
         android:textStyle="bold"
         />
