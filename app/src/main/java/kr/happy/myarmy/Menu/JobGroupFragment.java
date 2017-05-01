@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.ItemHomenJob;
 import kr.happy.myarmy.Recyclerview.JobAdapter;
@@ -60,10 +62,14 @@ public class JobGroupFragment extends Fragment {
         return view;
     }
 
+    @OnClick(R.id.rv_job)
+    public void recyclerViewClickEvent(View v){
+        Log.d("jy", String.valueOf(mRecyclerview.getChildAdapterPosition(v)));
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
     }
 
@@ -80,7 +86,8 @@ public class JobGroupFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
+   }
+
 
 
 }

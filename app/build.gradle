@@ -61,4 +61,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile('com.github.ihsanbal:LoggingInterceptor:2.0.0') {
         exclude group: 'org.json', module: 'json'}
+
+    /*behavior*/
+    compile "me.henrytao:smooth-app-bar-layout:25.1.0.1"
 }

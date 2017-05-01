@@ -22,7 +22,7 @@
     <string name="rationaleMessage">사용자 프로필 사진을 변경하려면\n갤러리와 카메라 접근권한이 필요합니다</string>
     <string name="deniedMessage">휴대폰의 [설정] -> [권한] 메뉴에서 변경할 수 있습니다</string>
     <string name="gotoSettingBottom">설정</string>
-    
+
     <string name="cheolgang">철강</string>
     <string name="hyunjang">현장관리 / 정비</string>
     <string name="jeonja">전기 / 전자</string>

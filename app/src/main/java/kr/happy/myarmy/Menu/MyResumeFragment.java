@@ -122,7 +122,8 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
         fgManager = getFragmentManager();
         fgTransaction = fgManager.beginTransaction();
-        fgTransaction.replace(R.id.frag, new InfoEditFragment());
+        fgTransaction.add(R.id.frag, new InfoEditFragment());
+        fgTransaction.addToBackStack(null); //save this state
         fgTransaction.commit();
     }
 

@@ -89,6 +89,11 @@ public class InfoEditFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
     /*set data*/
     public void setData() {
 
@@ -116,13 +121,16 @@ public class InfoEditFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        Log.d("jy", "infoedit destory");
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
+        Log.d("jy", "infoedit detach");
         super.onDetach();
     }
+
 
 
 

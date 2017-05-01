@@ -3,6 +3,7 @@ package kr.happy.myarmy.Menu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +39,21 @@ public class RegionGroupFragment extends Fragment {
     }
 
     @Override
+    public void onDetach() {
+        Log.d("jy", "regiongroup fragment detach");
+        super.onDetach();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("jy", "region fragment destroy");
+        super.onDestroy();
     }
 }

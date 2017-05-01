@@ -22,7 +22,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
             style="@style/profileImg"
-            android:src="@drawable/img1"
+            android:src="@mipmap/ic_launcher"
             app:civ_border_color="#F4F4F4"
             app:civ_border_width="5dp"
             android:scaleType="centerCrop"
@@ -96,6 +96,7 @@
         android:id="@+id/rv_myresume"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_gravity="bottom"
         android:layout_weight="7">
     </android.support.v7.widget.RecyclerView>
 

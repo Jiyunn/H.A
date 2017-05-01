@@ -7,6 +7,7 @@ package kr.happy.myarmy.Recyclerview;
 public class ItemHomenJob {
 
     private int img; //기업 로고
+    private int favorite; //즐찾버튼
     private String title; //기업 이름
     private String content1; //설명들
     private String content2;
@@ -72,6 +73,14 @@ public class ItemHomenJob {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
     }
 }
 
