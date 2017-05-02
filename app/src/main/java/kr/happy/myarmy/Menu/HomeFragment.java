@@ -59,9 +59,12 @@ public class HomeFragment extends Fragment {
     }
 
     public void setData(){
-        for(int i=0; i<20; i++)
-            dataSet.add(new ItemHomenJob(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원","(채용형인턴) 공개채용" , "D-5 | 경력무관 | 대졸"));
-
+        for(int i=0; i<20; i++) {
+            if( i %2 ==0)
+            dataSet.add(new ItemHomenJob(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원", "(채용형인턴) 공개채용", "D-5 | 경력무관 | 대졸"));
+            else
+                dataSet.add(new ItemHomenJob(R.mipmap.ic_launcher, "한국공항공사", "2017년도 상반기 신입사원", "(채용형인턴) 공개채용", "D-5 | 경력무관 | 대졸"));
+        }
     }
 
     @Override

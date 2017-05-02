@@ -15,6 +15,7 @@
         app:layout_constraintRight_toLeftOf="@+id/item_resContent"
         app:layout_constraintHorizontal_chainStyle="spread"
         android:text="희망직종"
+        android:paddingLeft="4dp"
         android:textColor="#4A4A4A"
         android:textSize="16dp"
         android:gravity="left"
@@ -25,7 +26,8 @@
         style="@style/resAndInfo"
         app:layout_constraintLeft_toRightOf="@+id/item_resTitle"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="엔지니어링"
+        android:hint="@string/plzinput"
+        android:textColorHint="#9b9b9b"
         android:gravity="right"
         android:textColor="@color/orange_a"
         android:textSize="14dp" />

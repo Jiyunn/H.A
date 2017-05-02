@@ -11,8 +11,8 @@ public class ItemResumenInfo {
         this.content = content;
     }
 
-    public ItemResumenInfo(String content) {
-        this.content = content;
+    public ItemResumenInfo(String title) {
+        this.title=title;
     }
 
     public String getContent() {

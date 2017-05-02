@@ -13,7 +13,7 @@
     <string name="specialnote">특기사항</string>
     <string name="certificate">자격증</string>
     <string name="education">최종학력</string>
-    <string name="living">거주지역</string>
+    <string name="address">거주지역</string>
     <string name="etccareer">기타 경력사항</string>
     <string name="phone">연락처</string>
 
@@ -35,6 +35,15 @@
     <string name="gigye">기계</string>
 
     <string name="oops">이런! \n이력서는 작성하셨나요?</string>
+
+    <string name="giupinfo">기업정보</string>
+    <string name="chaeyonginfo">채용정보</string>
+    <string name="yeonbonginfo">연봉정보</string>
+
+    <string name="notInterested">notInterest</string>
+    <string name="interested">interest</string>
+
+    <string name="plzinput">정보없음</string>
 
 
 </resources>

@@ -59,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeViewHolder> {
     @Nullable @BindView(R.id.item_comContent1)TextView content1;
     @Nullable @BindView(R.id.item_comContent2)TextView content2;
     @Nullable @BindView(R.id.item_comContent3)TextView content3;
-
+    @Nullable @BindView(R.id.line) View line;
 
     public HomeViewHolder(View itemView) {
         super(itemView);

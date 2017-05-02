@@ -1,104 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/basic_margin"
     android:layout_marginTop="@dimen/basic_margin"
-    >
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        card_view:cardElevation="0dp"
         card_view:cardBackgroundColor="@color/white"
-        card_view:contentPadding="20dp">
+        card_view:cardElevation="0dp"
+        card_view:contentPadding="18dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-          >
-
-        <ImageView
-            android:id="@+id/item_comLogo"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="fitCenter"
-            android:layout_weight="2"
-         />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_margin="3dp"
-            android:src="@drawable/photoline"
-           />
+            android:orientation="vertical"
+            android:weightSum="15">
 
-        <TextView
-            android:id="@+id/item_comTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="한국공항공사"
-            android:padding="7dp"
-            android:textSize="12dp"
-            android:textColor="@color/orange_a"
-            android:textStyle="bold"
-            android:layout_weight="1"
-          />
+            <ImageView
+                android:id="@+id/item_comLogo"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3dp"
+                android:layout_weight="5"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
 
+                />
 
-        <TextView
-            android:id="@+id/item_comContent1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="2017년도 상반기 신입사원"
-            android:textSize="10dp"
-            android:padding="2dp"
-            android:textColor="#484848"
-            android:layout_weight="1"
-            />
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="3dp"
+                android:background="#dcdcdc" />
 
-        <TextView
-            android:id="@+id/item_comContent2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="채용형인턴 공개채용"
-            android:textSize="10dp"
-            android:padding="2dp"
-            android:textColor="#484848"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:id="@+id/item_comContent3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="D-5 경력무관 대졸"
-            android:textSize="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#484848"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/item_comTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:padding="7dp"
+                android:text="한국공항공사"
+                android:textColor="@color/orange_a"
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
 
+            <TextView
+                android:id="@+id/item_comContent1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="2017년도 상반기 신입사원"
+                android:textColor="#484848"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/item_comContent2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="채용형인턴 공개채용"
+                android:textColor="#484848"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/item_comContent3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="D-5 경력무관 대졸"
+                android:textColor="#484848"
+                android:textSize="10dp"
+                android:textStyle="bold" />
 
 
-
-    </LinearLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

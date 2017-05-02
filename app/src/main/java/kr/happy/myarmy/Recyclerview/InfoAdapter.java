@@ -20,6 +20,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoViewHolder> {
     private Context context;
     private ArrayList<ItemResumenInfo> items;
     private int itemLayout;
+    private final int CNT=9;
 
     public InfoAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout) {
         this.context = context;
@@ -37,12 +38,12 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoViewHolder> {
     @Override
     public void onBindViewHolder(InfoViewHolder holder, int position) {
         holder.title.setText(items.get(position).getTitle());
-        holder.content.setText(items.get(position).getTitle());
+        holder.content.setText(items.get(position).getContent());
     }
 
     @Override
     public int getItemCount() {
-        return (items !=null) ? items.size() : 0;
+        return (items !=null) ? 9 : 0;
     }
 }
 

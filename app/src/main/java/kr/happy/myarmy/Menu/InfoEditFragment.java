@@ -1,6 +1,5 @@
 package kr.happy.myarmy.Menu;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -50,7 +49,7 @@ public class InfoEditFragment extends Fragment {
     @BindString(R.string.education)
     String edu;
     @Nullable
-    @BindString(R.string.living)
+    @BindString(R.string.address)
     String living;
     @Nullable
     @BindString(R.string.etccareer)
@@ -63,6 +62,7 @@ public class InfoEditFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private ArrayList<ItemResumenInfo> dataSet;
     private String[] itemName; //항목 이름들
+    private String[] itemContent;//입력한 항목 내용들
 
     public InfoEditFragment() {
     }
@@ -90,31 +90,19 @@ public class InfoEditFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        Log.d("jy", "onaccreated");
+        super.onActivityCreated(savedInstanceState);
     }
-
-    /*set data*/
-    public void setData() {
-
-        dataSet = new ArrayList<ItemResumenInfo>();
-        itemName = new String[]{name, birth, wantJob, specialNote, certificate, edu, living, etcCareer, phone};
-
-        for (int i = 0; i < itemName.length; i++) { //임시 실험데이터
-            dataSet.add(new ItemResumenInfo(itemName[i], String.valueOf(i)));
-        }
-    }
-
 
     @Override
-    public void onAttach(Context context) {
-        Log.d("jy", "infodedit attach");
-        super.onAttach(context);
+    public void onPause() { //여기서 데이터 작업할거.
+        Log.d("jy", "infoedit pause");
+        super.onPause();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.d("jy", "infoedit create");
         super.onCreate(savedInstanceState);
     }
 
@@ -131,7 +119,16 @@ public class InfoEditFragment extends Fragment {
         super.onDetach();
     }
 
+    /*set data*/
+    public void setData() {
 
+        dataSet = new ArrayList<ItemResumenInfo>();
+        itemName = new String[]{name, birth, wantJob, specialNote, certificate, edu, living, etcCareer, phone}; //항목이름
+
+        for (int i = 0; i < itemName.length; i++) { //임시 실험데이터
+            dataSet.add(new ItemResumenInfo(itemName[i], String.valueOf(i)));
+        }
+    }
 
 
 }

@@ -1,5 +1,7 @@
 package kr.happy.myarmy;
 
+import android.content.res.Configuration;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -11,26 +13,24 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kr.happy.myarmy.Menu.EditTextOnKey;
 import kr.happy.myarmy.Menu.HomeFragment;
 import kr.happy.myarmy.Menu.JobGroupFragment;
 import kr.happy.myarmy.Menu.MyResumeFragment;
 import kr.happy.myarmy.Menu.RegionGroupFragment;
 import kr.happy.myarmy.Menu.SmartMatchFragment;
+import kr.happy.myarmy.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
+
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-    @BindView(R.id.bottom_bar)
-    BottomBar bottomBar;
-
     @BindView(R.id.toolbar_search)
     EditText search;
 
@@ -42,30 +42,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
         search.setOnKeyListener(new EditTextOnKey());
 
-        bottomBar.setDefaultTab(R.id.tab_HOME);
+        binding.bottomBar.setDefaultTab(R.id.tab_HOME);
 
         fgManager = getSupportFragmentManager();
         backButtonHandler = new BackButtonHandler(this);
+
 
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                binding.bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(@IdRes int tabId) {
-                        bottomBar.getShySettings().showBar(); //다시보이게
+                        binding.bottomBar.getShySettings().showBar(); //다시보이게
 
                         switch (tabId) {
                             case R.id.tab_resume:
-                                Log.d("jy", "myresume tab");
                                 changeFragment(new MyResumeFragment());
                                 break;
 
@@ -92,31 +92,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.d("jy", "onconfig?");
+        super.onConfigurationChanged(newConfig);
+    }
+
+
     /*change fragment*/
     private void changeFragment(Fragment fg) {
 
-        fgTransaction = fgManager.beginTransaction();
-        fgTransaction.replace(R.id.frag, fg); //change fragment
-        fgTransaction.commit();
+        fgManager
+                .beginTransaction()
+                .replace(R.id.frag, fg)
+                .commit(); //change fragment
+
     }
 
     /*back btn */
     @Override
     public void onBackPressed() {
+        Log.d("jy", "back pre");
         int fgStackCnt = fgManager.getBackStackEntryCount();
+        int curTab=binding.bottomBar.getCurrentTabId();
         int homeTab = R.id.tab_HOME;
 
-        if (bottomBar.getCurrentTabId() == homeTab) {
+        if (curTab == homeTab) {
             backButtonHandler.onBackPressed();
 
-        }else if(bottomBar.getCurrentTabId() == R.id.tab_resume){
+        }else if(curTab  == R.id.tab_resume
+                || curTab  == R.id.tab_jobgroup
+                || curTab  == R.id.tab_regiongroup){
             if(fgStackCnt !=0)
                 fgManager.popBackStack();
             else
-                bottomBar.selectTabWithId(homeTab);
+                binding.bottomBar.selectTabWithId(homeTab);
 
         }else {
-            bottomBar.selectTabWithId(homeTab);
+            binding.bottomBar.selectTabWithId(homeTab);
         }
         }
     }

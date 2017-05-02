@@ -28,16 +28,19 @@ public class JobAdapter extends RecyclerView.Adapter<JobViewHolder> {
     private Context context;
     private ArrayList<ItemHomenJob> items;
     private int itemLayout; //레이아웃 형식
+    private View.OnClickListener clickEvent;
 
-    public JobAdapter(Context context, ArrayList<ItemHomenJob> items, int itemLayout) {
+    public JobAdapter(Context context, ArrayList<ItemHomenJob> items, int itemLayout, View.OnClickListener clickEvent) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
+        this.clickEvent=clickEvent;
     }
 
     @Override
     public JobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
+        itemView.setOnClickListener(clickEvent);
 
         return new JobViewHolder(itemView);
     }
@@ -79,7 +82,7 @@ class JobViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.item_jobLogo)
     ImageView logo;
     @Nullable
-    @BindView(R.id.item_favorite)
+    @BindView(R.id.item_jobFavorite)
     ImageButton favorite;
     @Nullable
     @BindView(R.id.item_jobTitle)

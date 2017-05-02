@@ -94,7 +94,22 @@
     <style name="CustomTitleTextAppearance">
         <item name="android:textSize">10dp</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
 
+    <style name="tabLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="tabMode">fixed</item>
+        <item name="android:background">@color/white</item>
+        <item name="tabTextColor">#9B9B9B</item>
+        <item name="tabSelectedTextColor">@color/orange_a</item>
+        <item name="tabIndicatorColor">@color/orange_a</item>
+         <item name="tabIndicatorHeight">3dp</item>
+    </style>
+
+    <style name="tabLayoutText">
+        <item name="android:textSize">14dp</item>
     </style>
 
 </resources>

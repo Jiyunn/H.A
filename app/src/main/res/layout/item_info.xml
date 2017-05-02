@@ -26,10 +26,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/item_infoTitle"
         app:layout_constraintBaseline_toBaselineOf="@+id/item_infoTitle"
-        android:hint="입력칸"
+        android:hint="입력해주세요"
         android:maxLines="1"
         android:inputType="text"
-        android:textColorHint="#4a4a4a"
+        android:textColorHint="#9b9b9b"
         android:textColor="#4a4a4a"
         android:textSize="14dp"
 
