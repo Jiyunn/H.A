@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<kr.happy.myarmy.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<kr.happy.myarmy.Custom.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -151,4 +151,4 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</kr.happy.myarmy.NestedCoordinatorLayout>
+</kr.happy.myarmy.Custom.NestedCoordinatorLayout>

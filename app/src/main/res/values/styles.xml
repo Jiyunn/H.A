@@ -16,14 +16,14 @@
 
 
     <style name="profileImg">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">130dp</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintHorizontal_bias">0.1</item>
-       </style>
+    </style>
 
 
     <style name="profileTvTitle">
@@ -63,7 +63,6 @@
 
     <style name="infoID">
         <item name="android:padding">13dp</item>
-        <item name="android:background">@color/white</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textColorHint">#9B9B9B</item>
         <item name="android:inputType">textCapWords</item>
@@ -110,6 +109,43 @@
 
     <style name="tabLayoutText">
         <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="firstScreen">
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="constraintCenter">
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+    </style>
+
+    <style name="ellipsize">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
+    <style name="login_signupEdittext">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:textColorHint">@color/nineb</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textCursorDrawable">@null</item>
     </style>
 
 </resources>

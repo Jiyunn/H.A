@@ -45,5 +45,15 @@
 
     <string name="plzinput">정보없음</string>
 
+   <string name="id">아이디</string>
+    <string name="email">이메일주소</string>
+    <string name="pwd">패스워드</string>
+    <string name="signup">회원가입</string>
+    <string name="login">로그인</string>
+    <string name="birth_signup">생년월일&#160;&#160;&#160;&#160;ex)19980413</string>
+    <string name="inputPlz">입력해주세요</string>
 
+    <string name="send">전송</string>
+
+    <string name="matching">매칭중입니다 · · · .</string>
 </resources>

@@ -12,23 +12,23 @@
         android:layout_height="match_parent"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardElevation="0dp"
-        card_view:contentPadding="18dp">
+        card_view:contentPadding="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="15">
+            android:weightSum="14">
 
             <ImageView
                 android:id="@+id/item_comLogo"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="3dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="5"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/oneff"
 
                 />
 
@@ -39,16 +39,20 @@
                 android:layout_margin="3dp"
                 android:background="#dcdcdc" />
 
+
+
             <TextView
                 android:id="@+id/item_comTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                style="@style/ellipsize"
                 android:layout_weight="3"
                 android:gravity="center"
                 android:padding="7dp"
-                android:text="한국공항공사"
+                android:text="기업이름"
                 android:textColor="@color/orange_a"
+                android:maxLines="1"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
@@ -59,10 +63,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
-                android:gravity="center"
-                android:padding="2dp"
-                android:text="2017년도 상반기 신입사원"
+                style="@style/ellipsize"
+                android:gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:text="(채용제목)"
                 android:textColor="#484848"
+                android:maxLines="2"
+                android:minLines="2"
                 android:textSize="10dp" />
 
             <TextView
@@ -71,9 +78,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
+                style="@style/ellipsize"
                 android:gravity="center"
-                android:padding="2dp"
-                android:text="채용형인턴 공개채용"
+                android:padding="1dp"
+                android:text="담당업무"
+                android:maxLines="1"
                 android:textColor="#484848"
                 android:textSize="10dp" />
 
@@ -82,11 +91,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="1dp"
+                style="@style/ellipsize"
+                android:layout_marginTop="8dp"
+                android:text="지역 | 연봉"
+                android:maxLines="1"
+                android:textColor="#85C1E9"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/item_comContent4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="D-5 경력무관 대졸"
+                android:text="d-day|경력|학력"
+                android:maxLines="1"
                 android:textColor="#484848"
                 android:textSize="10dp"
                 android:textStyle="bold" />

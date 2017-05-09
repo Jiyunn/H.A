@@ -1,55 +1,53 @@
 package kr.happy.myarmy;
 
 import android.content.res.Configuration;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kr.happy.myarmy.Custom.BackButtonHandler;
 import kr.happy.myarmy.Menu.HomeFragment;
 import kr.happy.myarmy.Menu.JobGroupFragment;
 import kr.happy.myarmy.Menu.MyResumeFragment;
 import kr.happy.myarmy.Menu.RegionGroupFragment;
 import kr.happy.myarmy.Menu.SmartMatchFragment;
-import kr.happy.myarmy.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    ActivityMainBinding binding;
-
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_search)
     EditText search;
 
-    private FragmentTransaction fgTransaction;
-    private FragmentManager fgManager;
+    @BindView(R.id.bottom_bar)
+    BottomBar bottomBar;
 
+    private FragmentManager fgManager;
     private BackButtonHandler backButtonHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
-        search.setOnKeyListener(new EditTextOnKey());
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        binding.bottomBar.setDefaultTab(R.id.tab_HOME);
+       bottomBar.setDefaultTab(R.id.tab_HOME);
 
         fgManager = getSupportFragmentManager();
         backButtonHandler = new BackButtonHandler(this);
@@ -59,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                binding.bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(@IdRes int tabId) {
-                        binding.bottomBar.getShySettings().showBar(); //다시보이게
+                      bottomBar.getShySettings().showBar(); //다시보이게
 
                         switch (tabId) {
                             case R.id.tab_resume:
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         Log.d("jy", "back pre");
         int fgStackCnt = fgManager.getBackStackEntryCount();
-        int curTab=binding.bottomBar.getCurrentTabId();
+        int curTab=bottomBar.getCurrentTabId();
         int homeTab = R.id.tab_HOME;
 
         if (curTab == homeTab) {
@@ -126,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
             if(fgStackCnt !=0)
                 fgManager.popBackStack();
             else
-                binding.bottomBar.selectTabWithId(homeTab);
+                bottomBar.selectTabWithId(homeTab);
 
         }else {
-            binding.bottomBar.selectTabWithId(homeTab);
+            bottomBar.selectTabWithId(homeTab);
         }
         }
     }

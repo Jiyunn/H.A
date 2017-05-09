@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="activity"
+            type="kr.happy.myarmy.SignupActivity"/>
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    tools:context="kr.happy.myarmy.SignupActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:background="@color/navy_a">
+
+    <ImageView
+        android:id="@+id/signup_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/constraintCenter"
+        android:src="@drawable/logo_transparent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintVertical_bias="0.08"
+        />
+
+    <kr.happy.myarmy.Custom.LPEdittext
+        android:id="@+id/signup_id"
+        style="@style/login_signupEdittext"
+        android:hint="@string/id"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/signup_logo"
+        app:layout_constraintVertical_bias="0.21" />
+
+    <kr.happy.myarmy.Custom.LPEdittext
+        android:id="@+id/signup_name"
+        style="@style/login_signupEdittext"
+        android:hint="@string/name"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/signup_id"
+        app:layout_constraintVertical_bias="0.31"
+      />
+
+    <!--email-->
+    <kr.happy.myarmy.Custom.LPEdittext
+        android:id="@+id/signup_email"
+        style="@style/login_signupEdittext"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/signup_name"
+       app:layout_constraintRight_toLeftOf="@+id/signup_sendEmail"
+        android:layout_marginRight="5dp"
+        app:layout_constraintVertical_bias="0.41"
+        />
+
+    <TextView
+        android:id="@+id/signup_sendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/sendtnshape"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintRight_toRightOf="@+id/signup_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.41"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_name"/>
+
+    <TextView
+        android:id="@+id/gijae"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_email"
+        app:layout_constraintTop_toBottomOf="@id/signup_email"
+        android:textColor="@color/orange_a"
+        android:textSize="10dp"
+        android:gravity="center"
+        android:text=" 기재된 이메일주소로 인증번호가 전송됩니다"/>
+
+
+    <!--이메일 인증-->
+    <EditText
+        android:id="@+id/signup_cEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_email"
+        android:background="@color/white"
+        android:hint="인증번호 입력        "
+        android:textSize="14dp"
+        android:padding="15dp"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:textColor="@color/nineb"
+        android:maxLength="8"
+        android:textColorHint="#CBCBCB"
+        app:layout_constraintTop_toBottomOf="@+id/gijae"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/signup_birth"
+        />
+
+
+    <kr.happy.myarmy.Custom.LPEdittext
+        android:id="@+id/signup_birth"
+        style="@style/login_signupEdittext"
+        android:hint="@string/birth_signup"
+        android:inputType="number"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/signup_email"
+        app:layout_constraintVertical_bias="0.71"
+        />
+
+
+    <kr.happy.myarmy.Custom.LPEdittext
+        android:id="@+id/signup_pwd"
+        style="@style/login_signupEdittext"
+        android:hint="@string/pwd"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@+id/signup_birth"
+        app:layout_constraintVertical_bias="0.81"
+        />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btnshape_blue"
+        android:text="회원가입"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+        app:layout_constraintTop_toBottomOf="@id/signup_pwd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/nineb"
+        android:textSize="14dp"
+        android:text="이미 회원이신가요?"
+        app:layout_constraintTop_toBottomOf="@id/signup_pwd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/signup_pwd"/>
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>

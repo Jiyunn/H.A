@@ -3,6 +3,7 @@ package kr.happy.myarmy.Menu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -17,31 +18,41 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.HomeAdapter;
-import kr.happy.myarmy.Recyclerview.ItemHomenJob;
+import kr.happy.myarmy.Retrofit2.Item;
+import kr.happy.myarmy.Retrofit2.RetroInterface;
+import kr.happy.myarmy.Retrofit2.ServerGenerator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
  * Created by JY on 2017-04-11.
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     @Nullable @BindView(R.id.rv_home) RecyclerView mRecyclerview;
+    @BindView(R.id.swipeLayout)SwipeRefreshLayout swipeLayout;
 
     private HomeAdapter adapter;
     private StaggeredGridLayoutManager  mLayoutManager;
-    private ArrayList<ItemHomenJob> dataSet=new ArrayList<ItemHomenJob>();
+    private ArrayList<Item> dataSet;
+
+    static final String KEY = "service key";
+    int curPage=1;
+    int totalCnt=0;
 
     public HomeFragment(){} //기본생성자
 
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view=inflater.inflate(R.layout.home, container, false);
         ButterKnife.bind(this, view);
 
-        setData(); //데이터 생성
+        swipeLayout.setColorSchemeResources(R.color.navy_a);
+        swipeLayout.setOnRefreshListener(this);
 
         mRecyclerview.setHasFixedSize(true);
 
@@ -54,40 +65,53 @@ public class HomeFragment extends Fragment {
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
 
+        callAPI(ServerGenerator.getAPIService()); //API불러오기 시작
+
 
         return view;
     }
 
-    public void setData(){
-        for(int i=0; i<20; i++) {
-            if( i %2 ==0)
-            dataSet.add(new ItemHomenJob(R.drawable.daehantong, "한국공항공사", "2017년도 상반기 신입사원", "(채용형인턴) 공개채용", "D-5 | 경력무관 | 대졸"));
-            else
-                dataSet.add(new ItemHomenJob(R.mipmap.ic_launcher, "한국공항공사", "2017년도 상반기 신입사원", "(채용형인턴) 공개채용", "D-5 | 경력무관 | 대졸"));
-        }
-    }
+    /* get data*/
+    public void callAPI(RetroInterface apiService){
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+        Call<Chaeyong> call=apiService.getList(20, curPage++,"json", KEY ); //인터페이스의 getList메소드를 통해, 원하는 데이터 가져오기.
 
-    @Override
-    public void onDestroy() {
-        Log.d("jy", "home fragment destroy");
-        super.onDestroy();
-    }
+        call.enqueue(new Callback<Chaeyong>() { //콜백으로 받아오기
+            @Override
+            public void onResponse(Call<Chaeyong> call, Response<Chaeyong> response) {
+                if (response.isSuccessful()) { //성공했을 경우,
 
-    @Override
-    public void onDetach() {
-        Log.d("jy", "home fragment detach");
-        super.onDetach();
+                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList()); //items의 항목들을 받아온다.
+                    totalCnt = response.body().getResponse().getBody().getTotalCount();
+                    curPage = response.body().getResponse().getBody().getPageNo();
+
+                    adapter.setGongos(dataSet);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chaeyong> call, Throwable t) {
+                if(t.getMessage() !=null)
+                    Log.d("jy", "call API on Failure.. : " +t.getMessage());
+            }
+        });
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        dataSet= new ArrayList<>();
+    }
+
+    @Override
+    public void onRefresh() {
+         dataSet.clear();
+        adapter.notifyDataSetChanged();
+        callAPI(ServerGenerator.getAPIService());
+        swipeLayout.setRefreshing(false);
     }
 
 

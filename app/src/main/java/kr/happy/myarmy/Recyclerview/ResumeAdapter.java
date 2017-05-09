@@ -19,24 +19,22 @@ import kr.happy.myarmy.R;
  */
 
 /*myresume recyclerview adapter*/
-public class ResumeAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
+public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder> {
 
     private Context context;
     private ArrayList<ItemResumenInfo> items;
     private int itemLayout;
-    private int cnt=0; //항목 갯수
 
 
-    public ResumeAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout, int  cnt) {
+    public ResumeAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
-        this.cnt=cnt;
     }
 
     @Override
     public ResumeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
 
         return new ResumeViewHolder(itemView);
     }
@@ -49,19 +47,22 @@ public class ResumeAdapter extends RecyclerView.Adapter<ResumeViewHolder> {
 
     @Override
     public int getItemCount() {
-        return (items !=null) ? cnt : 0;
+        return (items != null) ? items.size() : 0;
+    }
+
+
+    /*ResumeViewHolder class*/
+    static class ResumeViewHolder extends RecyclerView.ViewHolder {
+        @Nullable
+        @BindView(R.id.item_resTitle)
+        TextView title;
+        @Nullable
+        @BindView(R.id.item_resContent)
+        TextView content;
+
+        public ResumeViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 }
-
- /*ResumeViewHolder class*/
- class ResumeViewHolder extends RecyclerView.ViewHolder {
-     @Nullable
-     @BindView(R.id.item_resTitle) TextView title;
-     @Nullable
-     @BindView(R.id.item_resContent) TextView content;
-
-     public ResumeViewHolder(View itemView) {
-         super(itemView);
-         ButterKnife.bind(this, itemView);
-     }
- }

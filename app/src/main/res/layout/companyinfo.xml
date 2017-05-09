@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<kr.happy.myarmy.NestedCoordinatorLayout
+<kr.happy.myarmy.Custom.NestedCoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="13dp"
-            android:textColor="#9b9b9b"
+            android:textColor="@color/nineb"
             android:text="(주) 한국 공항공사"
             android:padding="3dp"
             android:layout_weight="3"
@@ -66,7 +66,7 @@
             android:id="@+id/com_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#9b9b9b"
+            android:textColor="@color/nineb"
             android:text="     관심기업"
             android:textSize="12dp"
             android:layout_weight="3"
@@ -101,6 +101,6 @@
     </android.support.v4.view.ViewPager>
     </android.support.constraint.ConstraintLayout>
 
-</kr.happy.myarmy.NestedCoordinatorLayout>
+</kr.happy.myarmy.Custom.NestedCoordinatorLayout>
 
 

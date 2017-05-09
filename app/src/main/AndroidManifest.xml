@@ -12,7 +12,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".MyApplication"
+        android:name=".Custom.MyApplication"
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -25,17 +25,24 @@
         </provider>
 
         <activity android:name=".SplashActivity">
+
+
+        </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SignupActivity"/>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:configChanges="screenSize|orientation"
-            android:screenOrientation="sensor"
-            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

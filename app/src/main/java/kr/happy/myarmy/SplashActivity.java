@@ -1,29 +1,30 @@
 package kr.happy.myarmy;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.WindowManager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-public class SplashActivity extends Activity {
+import kr.happy.myarmy.databinding.ActivitySplashBinding;
+
+public class SplashActivity extends AppCompatActivity {
+
+    ActivitySplashBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        Handler handler=new Handler();
-        handler.postDelayed(new Runnable(){
-            @Override
-            public void run(){
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },2000);
+        binding= DataBindingUtil.setContentView(this, R.layout.activity_splash);
+        binding.setActivity(this);
 
     }
+    public void onClick(View v) {
+        if (v.getId()==R.id.signIn)
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        else if(v.getId() == R.id.signUp)
+            startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+    }
+
+
 }

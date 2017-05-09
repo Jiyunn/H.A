@@ -23,7 +23,7 @@
         android:id="@+id/oops_resume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btnshape"
+        android:background="@drawable/btnshape_orange"
         android:text="이력서 작성하기"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"

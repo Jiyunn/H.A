@@ -1,7 +1,10 @@
 package kr.happy.myarmy.Menu;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,17 +13,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -47,6 +58,11 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @BindView(R.id.img_profile)
     CircleImageView img_profile;
 
+    @BindView(R.id.tv_profileName)
+    TextView name_profile;
+
+    @BindView(R.id.tv_profileAge)
+    TextView age_profile;
 
     @BindString(R.string.wantjob)
     String wantJob;
@@ -61,7 +77,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     String edu;
 
     @BindString(R.string.address)
-    String living;
+    String address;
 
     @BindString(R.string.etccareer)
     String etcCareer;
@@ -75,7 +91,6 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     FragmentManager fgManager;
 
-    private Uri cameraImageUri;
     private Uri selectedUri; //선택한 사진
     public RequestManager mGlideRequestManager;
     public UserDBManager mDBManager=null;
@@ -86,11 +101,10 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.myresume, container, false);
         ButterKnife.bind(this, view);
 
-        setData(); //데이터 설정
+        setResumeData(); //데이터 설정
 
         mRecyclerview.setHasFixedSize(true);
 
@@ -98,9 +112,8 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter = new ResumeAdapter(getActivity(), dataSet, R.layout.item_myresume, itemName.length); //어댑터 등록
+        adapter = new ResumeAdapter(getActivity(), dataSet, R.layout.item_myresume); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
-
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
 
         return view;
@@ -109,71 +122,98 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGlideRequestManager = Glide.with(getActivity());
+        mGlideRequestManager = Glide.with(getActivity()); //glide
         mDBManager=UserDBManager.getInstance(getActivity()); //dbmanager
 
-        columns=new String[]{"name", "birth", "wantjob", "certificate","specialnote", "edu", "address", "etccareer", "phone"};
-        itemContent=new String[6];
+    }
+
+
+    /*data data */
+    public void setResumeData() {
+        columns=new String[]{"proimg", "name", "birth", "wantjob", "specialnote", "certificate","edu", "address", "etccareer"};
+
+        itemName=new String[]{wantJob, specialNote, certificate, edu, address, etcCareer};
+        itemContent=new String[columns.length-1]; //except proimg
+        dataSet = new ArrayList<>();
+
 
         Cursor c=mDBManager.query(columns, null, null, null, null, null);
 
-        if(c !=null){
-            int i=0;
-            while(c.moveToNext())
-                itemContent[i++]= c.getString( i+3);
+        if ( c != null  && c.moveToFirst()) {
+            /* get profile img. and set profileimg*/
+                byte[] img= c.getBlob(0);
+            if(img !=null) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(img, 0, img.length);
+                img_profile.setImageBitmap(bmp);
+            }
+
+            for (int i = 0; i < itemContent.length; i++) {
+                itemContent[i] = c.getString(i+1);
+            }
+            name_profile.setText(itemContent[0]);
+            age_profile.setText(countAge(itemContent[1])+ " 세");
+        }
+        c.close();
+
+
+        for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기
+            dataSet.add(new ItemResumenInfo( itemName[i] , itemContent[i+2] )); //itemcontent is start wantjob
         }
     }
 
-    @Override
-    public void onDestroy() {
-        Log.d("jy", "myrewume destory");
-        super.onDestroy();
-    }
+    /*countn age*/
+    public String countAge(String birth){
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyyMMdd");
+        Calendar today=Calendar.getInstance(Locale.KOREA);
+        Calendar birthday= Calendar.getInstance();
 
-    @Override
-    public void onDetach() {
-        Log.d("jy", "myrewume detach");
-        super.onDetach();
-    }
+        String age="";
 
-    /*temp data */
-    public void setData() {
-        itemName=new String[]{wantJob, specialNote, certificate, edu, living, etcCareer};
-        dataSet = new ArrayList<ItemResumenInfo>();
+        try{
+            birthday.setTime(dateFormat.parse(birth));
 
-        for (int i = 0; i < itemName.length; i++) { //임시 실험데이터
-            dataSet.add(new ItemResumenInfo(itemName[i], itemContent[i]));
+            if(today.get(Calendar.MONTH) >= birthday.get(Calendar.MONTH)  //생일지남
+                    && today.get(Calendar.DATE) <= birthday.get(Calendar.DATE)){
 
+                age= String.valueOf(today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR));
+            }
+
+            else
+                age= String.valueOf(today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR) -1);
+
+        }catch (ParseException e){
+            e.printStackTrace();
         }
-    }
 
+        return age;
+    }
 
     /*when click profile edit btn*/
     @OnClick(R.id.btn_profileEdit)
-    public void profileEdit() {
+    public void goProfileEdit() {
 
         fgManager = getFragmentManager();
         fgManager
                 .beginTransaction()
-                .add(R.id.frag, new InfoEditFragment())
+                .replace(R.id.frag, new InfoEditFragment())
                 .addToBackStack(null) //saved state
                 .commit();
     }
 
     /* click profile image, check sdk version and check permission*/
     @OnClick(R.id.img_profile)
-    public void SetProfileImg() {
+    public void setProfileImg() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            CheckPermission();
+            checkPermission();
     }
 
     /*get permission camera and gallery*/
-    public void CheckPermission() {
+    public void checkPermission() {
 
         PermissionListener permissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() { //if granted permission then show tem bottom picker.
-                ShowTedBottomPicker();
+                showTedBottomPicker();
             }
 
             @Override
@@ -193,7 +233,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     }
 
     /*show bottom picker this library extends bottomsheetdialogfragment*/
-    protected void ShowTedBottomPicker() {
+    protected void showTedBottomPicker() {
 
         TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getActivity())
                 .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
@@ -207,19 +247,52 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
                                 mGlideRequestManager
                                         .load(selectedUri)
                                         .into(img_profile); //set image
-                                Log.d("jy", selectedUri.toString());
+
                             }
                         });
+                        saveImg(selectedUri); //save img db
                     }
+
                 })
                 .setPeekHeight(getResources().getDisplayMetrics().heightPixels / 2)
                 .setSelectedUri(selectedUri)
                 .create();
 
         tedBottomPicker.show(getFragmentManager()); //show picker
-
     }
 
+    /*save img into db*/
+    protected void saveImg(Uri selectedUri) {
+        byte[] imgProfile =getBytes(selectedUri);
+
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("proimg", imgProfile);
+
+        mDBManager.update(contentValues, "_id =?", new String[]{"1"});
+    }
+
+    /*convert uri to bytearray*/
+    public byte[] getBytes(Uri selectedUri) {
+        ByteArrayOutputStream bos = null;
+
+        try {
+            InputStream inputStream = getContext().getContentResolver().openInputStream(selectedUri);
+
+            byte[] buffer = new byte[1024];
+            bos = new ByteArrayOutputStream();
+            for (int len; (len = inputStream.read(buffer)) != -1; ) {
+                bos.write(buffer, 0, len);
+            }
+            inputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bos != null ? bos.toByteArray() : null;
+    }
 
 }
 

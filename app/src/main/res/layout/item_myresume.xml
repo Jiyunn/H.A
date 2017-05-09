@@ -2,11 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="58dp"
+    android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:layout_marginBottom="3dp"
-    android:padding="15dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/item_resTitle"
@@ -19,7 +19,7 @@
         android:textColor="#4A4A4A"
         android:textSize="16dp"
         android:gravity="left"
-       />
+        />
 
     <TextView
         android:id="@+id/item_resContent"
@@ -30,6 +30,7 @@
         android:textColorHint="#9b9b9b"
         android:gravity="right"
         android:textColor="@color/orange_a"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+     />
 
 </android.support.constraint.ConstraintLayout>

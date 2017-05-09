@@ -17,15 +17,16 @@ public class UserDBManager extends SQLiteOpenHelper {
     static final String DB_USER = "Users.db";
     static final String TABLE_USER = "User";
     static final int DB_VERSION = 1;
+
     Context mContext = null;
     private static UserDBManager mDBManager = null;
 
 
     //DB매니저는 싱글톤
-    public static UserDBManager getInstance(Context context) {
-        if (mDBManager == null)
+    public static synchronized UserDBManager getInstance(Context context) {
+        if (mDBManager == null) {
             mDBManager = new UserDBManager(context, DB_USER, null, DB_VERSION);
-
+        }
         return mDBManager;
     }
 
@@ -39,7 +40,9 @@ public class UserDBManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER + //CREATE TABLE
-                    "(" + "id STRING PRIMARY KEY, " +
+                    "(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "proimg             BLOB, " +
+                    "id                     TEXT, " +
                     "name               TEXT , " +
                     "birth                TEXT , " +
                     "wantjob          TEXT, " +
@@ -49,6 +52,10 @@ public class UserDBManager extends SQLiteOpenHelper {
                     "address            TEXT, " +
                     "etccareer          TEXT, " +
                     "phone              TEXT ); ");
+
+            db.execSQL("INSERT INTO " + TABLE_USER + "( name, birth, wantjob, specialnote, edu, certificate, address, etccareer, phone) " +
+                    "VALUES ('홍길동' , '19891115', '부자', '춤추기', '대졸', '정보처리기사', '강서', '프리3년','010-1234-5678' ); "); //test
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,12 +71,14 @@ public class UserDBManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        if(oldVersion < newVersion) {
-            //기존 테이블 삭제하고 새 테이블 생성
+        if (oldVersion < newVersion) {
+            //create new table
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
             onCreate(db);
         }
     }
+
+
     /*read*/
     public Cursor query(String[] columns,
                         String selection,
@@ -77,6 +86,7 @@ public class UserDBManager extends SQLiteOpenHelper {
                         String groupBy,
                         String having,
                         String orderBy) {
+
 
         return getReadableDatabase().query(TABLE_USER, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
@@ -115,5 +125,4 @@ public class UserDBManager extends SQLiteOpenHelper {
     public int delete(String whereClause, String[] whereArgs) {
         return getWritableDatabase().delete(TABLE_USER, whereClause, whereArgs);
     }
-
 }

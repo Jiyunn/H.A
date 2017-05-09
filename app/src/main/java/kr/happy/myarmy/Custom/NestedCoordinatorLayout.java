@@ -1,4 +1,4 @@
-package kr.happy.myarmy;
+package kr.happy.myarmy.Custom;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

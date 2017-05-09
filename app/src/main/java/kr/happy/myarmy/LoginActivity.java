@@ -1,0 +1,22 @@
+package kr.happy.myarmy;
+
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
+import kr.happy.myarmy.databinding.LoginBinding;
+
+
+
+public class LoginActivity extends AppCompatActivity {
+
+    LoginBinding binding;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding= DataBindingUtil.setContentView(this, R.layout.login);
+
+    }
+}

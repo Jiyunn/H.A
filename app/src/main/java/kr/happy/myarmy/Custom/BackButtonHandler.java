@@ -1,8 +1,10 @@
-package kr.happy.myarmy;
+package kr.happy.myarmy.Custom;
 
 import android.app.Activity;
 import android.os.Handler;
 import android.widget.Toast;
+
+import kr.happy.myarmy.R;
 
 
 public class BackButtonHandler extends Handler {
