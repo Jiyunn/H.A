@@ -40,7 +40,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import gun0912.tedbottompicker.TedBottomPicker;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
+import kr.happy.myarmy.Recyclerview.Object;
 import kr.happy.myarmy.Recyclerview.ResumeAdapter;
 import kr.happy.myarmy.UserDB.UserDBManager;
 
@@ -84,7 +84,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<ItemResumenInfo> dataSet;
+    private ArrayList<Object> dataSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent; //항목 내용들
     private String[] columns; //데이터베이스 컬럼
@@ -104,17 +104,20 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.myresume, container, false);
         ButterKnife.bind(this, view);
 
-        setResumeData(); //데이터 설정
+
 
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
+        mRecyclerview.smoothScrollToPosition(mRecyclerview.getVerticalScrollbarPosition() +1);
 
         adapter = new ResumeAdapter(getActivity(), dataSet, R.layout.item_myresume); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
+
+        setResumeData(); //데이터 설정
 
         return view;
     }
@@ -139,7 +142,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
         Cursor c=mDBManager.query(columns, null, null, null, null, null);
 
-        if ( c != null  && c.moveToFirst()) {
+        if ( c != null && c.moveToFirst()) {
             /* get profile img. and set profileimg*/
                 byte[] img= c.getBlob(0);
             if(img !=null) {
@@ -152,13 +155,15 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
             }
             name_profile.setText(itemContent[0]);
             age_profile.setText(countAge(itemContent[1])+ " 세");
+
+            c.close();
         }
-        c.close();
-
-
         for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기
-            dataSet.add(new ItemResumenInfo( itemName[i] , itemContent[i+2] )); //itemcontent is start wantjob
+            dataSet.add(new Object( itemName[i] , itemContent[i+2] )); //itemcontent is start wantjob
         }
+
+        adapter.setItems(dataSet);
+        adapter.notifyDataSetChanged();
     }
 
     /*countn age*/

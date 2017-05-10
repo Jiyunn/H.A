@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,14 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.ItemHomenJob;
+import kr.happy.myarmy.Recyclerview.EndlessRecyclerViewScrollListener;
 import kr.happy.myarmy.Recyclerview.GroupAdapter;
+import kr.happy.myarmy.Retrofit2.Item;
+import kr.happy.myarmy.Retrofit2.RetroInterface;
+import kr.happy.myarmy.Retrofit2.ServerGenerator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by JY on 2017-04-11.
@@ -28,13 +35,17 @@ public class JobGroupFragment extends Fragment {
 
     @Nullable @BindView(R.id.rv_job)
     RecyclerView mRecyclerview;
-
     @Nullable @BindView(R.id.item_jobFavorite)
     ImageButton favorite;
 
     private GroupAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<ItemHomenJob> dataSet;
+    private ArrayList<Item> dataSet;
+    private EndlessRecyclerViewScrollListener mScrollListener;
+
+    static final String KEY = "";
+    int curPage = 1;
+    int totalCnt = 0;
 
     FragmentManager fgManager;
 
@@ -48,59 +59,61 @@ public class JobGroupFragment extends Fragment {
 
         mRecyclerview.setHasFixedSize(true);
 
+        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, mRecyclerview,fgManager); //어댑터 등록
+        mRecyclerview.setAdapter(adapter);
+
+        callAPI(ServerGenerator.getAPIService()); //API불러오기 시작
+
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, clickEvent); //어댑터 등록
-        mRecyclerview.setAdapter(adapter);
+        /*more load data*/
+        mScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager, 5) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                callAPI(ServerGenerator.getAPIService());
+            }
+        };
 
+        mRecyclerview.addOnScrollListener(mScrollListener);
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
-
-        setCompanyData();
 
         return view;
     }
 
-    /* click items*/
-    public View.OnClickListener clickEvent=new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            final int itemPosition = mRecyclerview.getChildAdapterPosition(v);
-                showSpecificCompany();
-        }
-    };
+    /* get data*/
+    public void callAPI(RetroInterface apiService) {
 
+        Call<Chaeyong> call = apiService.getList(20, curPage++, "json", KEY); //인터페이스의 getList메소드를 통해, 원하는 데이터 가져오기.
 
-    /*temp data */
-    public void setCompanyData() {
-        dataSet = new ArrayList<>();
+        call.enqueue(new Callback<Chaeyong>() {
+            @Override
+            public void onResponse(Call<Chaeyong> call, Response<Chaeyong> response) {
+                if (response.isSuccessful()) {
+                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList()); //items의 항목들을 받아온다.
+                    totalCnt = response.body().getResponse().getBody().getTotalCount();
 
-        for (int i = 0; i < 200; i++) { //임시 실험데이터
-            if( i%2==0)
-            dataSet.add(new ItemHomenJob(R.drawable.daehantong, "(주)한국공항공사", "2017년 하반기 신입사원", "(채용형인턴) 비공개채용", "D-7 | 경력유관 | 고졸"));
-            else
-                dataSet.add(new ItemHomenJob(R.mipmap.ic_launcher, "(주)한국공항공사", "2017년 하반기 신입사원", "(채용형인턴) 비공개채용", "D-7 | 경력유관 | 고졸"));
-        }
-        adapter.setItems(dataSet);
-        adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chaeyong> call, Throwable t) {
+                if (t.getMessage() != null)
+                    Log.d("jy", "call API on Failure.. : " + t.getMessage());
+            }
+        });
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-   }
-    /*show company's info specific*/
-    public void showSpecificCompany() {
+        fgManager=getFragmentManager();
+        dataSet = new ArrayList<>();
 
-        fgManager = getFragmentManager();
-        fgManager
-                .beginTransaction()
-                .replace(R.id.frag, new CompanyInfoFragment())
-                .addToBackStack(null) //saved state
-                .commit();
-    }
+   }
 
 
 }

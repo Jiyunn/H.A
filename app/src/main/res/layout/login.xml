@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.3"
         android:text="Log In"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         />
 
     <kr.happy.myarmy.Custom.LPEdittext

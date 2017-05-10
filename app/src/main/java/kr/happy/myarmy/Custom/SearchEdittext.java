@@ -24,7 +24,7 @@ public class SearchEdittext extends android.support.v7.widget.AppCompatEditText 
 
     @Override
     public boolean onKeyPreIme(int keyCode, KeyEvent event) {
-        if(keyCode == event.KEYCODE_ENTER  || keyCode == event.KEYCODE_BACK){
+        if(keyCode == event.KEYCODE_SEARCH  || keyCode == event.KEYCODE_BACK){
             clearFocus();
             InputMethodManager inputManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(

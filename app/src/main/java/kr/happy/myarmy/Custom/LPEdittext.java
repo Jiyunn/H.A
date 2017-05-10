@@ -13,9 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.roughike.bottombar.BottomBar;
-
-import kr.happy.myarmy.MainActivity;
 import kr.happy.myarmy.R;
 
 /**
@@ -27,8 +24,6 @@ public class LPEdittext extends android.support.v7.widget.AppCompatEditText impl
     private Drawable clearX;
     private OnFocusChangeListener onFocusChangeListener;
     private OnTouchListener onTouchListener;
-    private BottomBar bottomBar;
-
 
 
     public LPEdittext(Context context) {
@@ -45,6 +40,7 @@ public class LPEdittext extends android.support.v7.widget.AppCompatEditText impl
         super(context, attrs, defStyleAttr);
         initDrawable();
     }
+
 
     @Override
     public void setOnFocusChangeListener(OnFocusChangeListener onFocusChangeListener) {
@@ -74,17 +70,16 @@ public class LPEdittext extends android.support.v7.widget.AppCompatEditText impl
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        bottomBar=(BottomBar)(((MainActivity)getContext()).findViewById(R.id.bottom_bar));
 
         if(hasFocus) {
             setClearIconVisible(getText().length() > 0); //글씨치는지에따라 보여지게, 안보여지게하기.
             v.getBackground().setColorFilter(getCurrentHintTextColor(), PorterDuff.Mode.SRC_IN); //밑줄색깔
-            bottomBar.getShySettings().hideBar();
+
 
         }else {
             setClearIconVisible(false);
             v.getBackground().setColorFilter(null);
-            bottomBar.getShySettings().showBar();
+
         }
         if(onFocusChangeListener !=null)
             onFocusChangeListener.onFocusChange(v, hasFocus);

@@ -28,7 +28,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_weight="5"
                 android:scaleType="centerCrop"
-                android:src="@drawable/oneff"
+                android:src="@drawable/logo_transparent_small"
 
                 />
 

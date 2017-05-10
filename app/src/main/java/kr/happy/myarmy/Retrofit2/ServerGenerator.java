@@ -22,7 +22,7 @@ public class ServerGenerator {
     public static OkHttpClient getClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
-                .addInterceptor(new LoggingInterceptor.Builder() //인터셉터 만들기
+                .addInterceptor(new LoggingInterceptor.Builder()
                         .loggable(BuildConfig.DEBUG)
                         .setLevel(Level.BASIC)
                         .log(Platform.INFO)
@@ -45,6 +45,5 @@ public class ServerGenerator {
 
     public static RetroInterface getAPIService(){
         return getRetrofitInstance().create(RetroInterface.class); //retrofit 구현체에게 인터페이스의 class정보를 보내면, 서비스의 구현체가 반환된다
-
     }
 }

@@ -8,28 +8,29 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.roughike.bottombar.BottomBar;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.Custom.LPEdittext;
+import kr.happy.myarmy.MainActivity;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.InfoAdapter;
-import kr.happy.myarmy.Recyclerview.ItemResumenInfo;
+import kr.happy.myarmy.Recyclerview.Object;
 import kr.happy.myarmy.UserDB.UserDBManager;
 
 /**
  * Created by JY on 2017-04-15.
  */
 
-public class InfoEditFragment extends Fragment {
+public class InfoEditFragment extends Fragment  {
 
     @Nullable    @BindView(R.id.rv_info)
     RecyclerView mRecyclerview;
@@ -58,12 +59,14 @@ public class InfoEditFragment extends Fragment {
 
     private InfoAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<ItemResumenInfo> dataSet;
+    private ArrayList<Object> dataSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent;//입력한 항목 내용들
     private String[] columns; //데이터베이스 컬럼
 
     public UserDBManager mDBManager=null;
+
+    BottomBar bottomBar;
 
     public InfoEditFragment() {
     }
@@ -74,20 +77,18 @@ public class InfoEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.infoedit, container, false);
         ButterKnife.bind(this, view);
 
-        float x=view.getTop();
-        float y=view.getY();
-
         setUserData(); //디비에서 데이터 받아와서 세팅
 
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
-        mLayoutManager.setSmoothScrollbarEnabled(true);
         mLayoutManager.setStackFromEnd(true);
+        mLayoutManager.scrollToPosition(0); //firstScrollposition
+
         mRecyclerview.setLayoutManager(mLayoutManager);
 
-        adapter = new InfoAdapter(getActivity(), dataSet, R.layout.item_info); //어댑터 등록
+        adapter = new InfoAdapter(getActivity(), dataSet, R.layout.item_info, mLayoutManager); //어댑터 등록
         adapter.setmItemContent(itemContent); //변경될 내용, 즉 정보를 담은 배열을 넘겨줌
 
         mRecyclerview.setAdapter(adapter);
@@ -99,19 +100,22 @@ public class InfoEditFragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        bottomBar=(BottomBar)(((MainActivity)getContext()).findViewById(R.id.bottom_bar)); //바텀바 안보이게
+        bottomBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
     public void onPause() { //여기서 데이터 작업할거.
-        Log.d("jy", "onpause호출됨.");
         updateUserData();
-
-
+        bottomBar.setVisibility(View.VISIBLE);
         super.onPause();
     }
 
     /* update user data */
-    public void updateUserData() {
-        Log.d("jy", Arrays.toString(adapter.getmItemContent()));
+    public void updateUserData() {;
         itemContent=adapter.getmItemContent();
-
         ContentValues contentValues = new ContentValues();
 
         for(int i=0; i< mRecyclerview.getAdapter().getItemCount(); i++){
@@ -126,8 +130,6 @@ public class InfoEditFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mDBManager=UserDBManager.getInstance(getActivity()); //dbmanager
     }
-
-
 
     /*set data*/
     public void setUserData() {
@@ -149,7 +151,8 @@ public class InfoEditFragment extends Fragment {
         c.close();
 
         for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기.
-            dataSet.add(new ItemResumenInfo(itemName[i], itemContent[i]));
+            dataSet.add(new Object(itemName[i], itemContent[i]));
         }
     }
+
 }

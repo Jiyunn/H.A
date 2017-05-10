@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kr.happy.myarmy.Custom.NestedCoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,15 +13,12 @@
    >
 
     <LinearLayout
-        android:id="@+id/com_linear"
+        android:id="@+id/spe_linear"
+        style="@style/constraintCenter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.0"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
@@ -31,39 +27,42 @@
      >
 
         <ImageView
+            android:id="@+id/spe_comLogo"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="15dp"
             android:padding="10dp"
             android:layout_weight="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/daehantong"/>
 
         <TextView
+            android:id="@+id/spe_comTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="13dp"
+            android:textSize="12dp"
             android:textColor="@color/nineb"
-            android:text="(주) 한국 공항공사"
+            android:text="기업이름"
             android:padding="3dp"
             android:layout_weight="3"
             android:layout_marginBottom="10dp"/>
 
         <TextView
+            android:id="@+id/spe_comContent1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:gravity="center_horizontal"
-            android:text="2017상반기 산업대체복무자채용"
+            android:text="채용제목"
             android:textColor="#4a4a4a"
             android:layout_weight="4"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/com_favorite"
+            android:id="@+id/spe_comFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/nineb"
@@ -79,22 +78,21 @@
 
     <!--탭-->
     <android.support.design.widget.TabLayout
-        android:id="@+id/com_tab"
+        android:id="@+id/spe_tab"
         style="@style/tabLayout"
+        android:layout_marginLeft="1dp"
         app:tabTextAppearance="@style/tabLayoutText"
-        app:layout_constraintTop_toBottomOf="@+id/com_linear"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/com_vp"
+        app:layout_constraintTop_toBottomOf="@+id/spe_linear"
+        app:layout_constraintBottom_toTopOf="@+id/spe_vp"
      />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/com_vp"
+        android:id="@+id/spe_vp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/com_tab"
+        app:layout_constraintTop_toBottomOf="@+id/spe_tab"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 

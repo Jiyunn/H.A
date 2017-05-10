@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kr.happy.myarmy.Custom.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/basic_margin"
@@ -27,17 +26,15 @@
             android:textSize="12dp"
             android:textColor="@color/nineb"/>
 
-        <kr.happy.myarmy.Custom.LPEdittext
+        <EditText
             android:id="@+id/info_id"
             style="@style/infoID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/id"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/rv_info"
             android:hint="입력칸입니다"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/basic_margin"
             />
 
         <android.support.v7.widget.RecyclerView

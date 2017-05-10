@@ -2,11 +2,11 @@ package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +16,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
+import kr.happy.myarmy.Retrofit2.Item;
 
 import static kr.happy.myarmy.R.drawable.group_4;
 import static kr.happy.myarmy.R.drawable.group_5;
@@ -25,44 +27,61 @@ import static kr.happy.myarmy.R.drawable.group_5;
  * Created by JY on 2017-04-15.
  */
 
-public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolder> {
+public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolder> implements View.OnClickListener{
 
     private Context context;
-    private ArrayList<ItemHomenJob> items;
+    private ArrayList<Item> gongos;
     private int itemLayout; //레이아웃 형식
-    private View.OnClickListener clickEvent;
+    private RecyclerView mRecyclerview;
+    private FragmentManager fgManager;
 
-    public GroupAdapter(Context context, ArrayList<ItemHomenJob> items, int itemLayout, View.OnClickListener clickEvent) {
+    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
         this.context = context;
-        this.items = items;
+        this.gongos=gongos;
         this.itemLayout = itemLayout;
-        this.clickEvent = clickEvent;
+        this.mRecyclerview= mRecyclerview;
+        this.fgManager=fgManager;
     }
 
     @Override
     public JobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
-        itemView.setOnClickListener(clickEvent);
+        itemView.setOnClickListener(this);
         return new JobViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(JobViewHolder holder, final int position) {
-        holder.logo.setImageResource(items.get(position).getImg());
-        holder.title.setText(items.get(position).getTitle());
-        holder.content1.setText(items.get(position).getContent1());
-        holder.content2.setText(items.get(position).getContent2());
-        holder.content3.setText(items.get(position).getContent3());
+        holder.companyName.setText(gongos.get(position).getEopcheNm());
+        holder.companyJaemok.setText(gongos.get(position).getCyjemokNm());
+        holder.companyUpmoo.setText(gongos.get(position).getDdeopmuNm());
+        holder.companyLocaPay.setText(gongos.get(position).convertGeunmujySido() + " | " +
+                gongos.get(position).getGyjogeonCdNm());
+        holder.companyDGyeongEdu.setText(
+                (gongos.get(position).convertMagamDt()) + " | "+
+                        (gongos.get(position).getGyeongryeokGbcdNm()) + " | " +
+                        (gongos.get(position).getCjhakryeok()));
 
     }
 
     @Override
     public int getItemCount() {
-        return (items != null) ? items.size() : 0;
+        return (gongos != null) ? gongos.size() : 0;
     }
 
-    public void setItems(ArrayList<ItemHomenJob> items) {
-        this.items = items;
+    public void setItems(ArrayList<Item> gongos) {
+        this.gongos =gongos;
+    }
+
+    /*show company's info specific*/
+    @Override
+    public void onClick(View v) {
+
+        fgManager
+                .beginTransaction()
+                .replace(R.id.frag, new CompanyInfoFragment())
+                .addToBackStack(null) //saved state
+                .commit();
     }
 
     /*JobViewHolder class*/
@@ -70,16 +89,11 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
         @Nullable        @BindView(R.id.item_jobLogo)
         ImageView logo;
-        @Nullable        @BindView(R.id.item_jobFavorite)
-        ImageButton favorite;
-        @Nullable        @BindView(R.id.item_jobTitle)
-        TextView title;
-        @Nullable        @BindView(R.id.item_jobContent1)
-        TextView content1;
-        @Nullable        @BindView(R.id.item_jobContent2)
-        TextView content2;
-        @Nullable        @BindView(R.id.item_jobContent3)
-        TextView content3;
+        @BindView(R.id.item_jobTitle)TextView companyName; //업체이름
+        @BindView(R.id.item_jobContent1)TextView companyJaemok; //채용제목
+        @BindView(R.id.item_jobContent2)TextView companyUpmoo; //담당업무
+        @BindView(R.id.item_jobContent3)TextView companyLocaPay; //지역과 연봉
+        @BindView(R.id.item_jobContent4)TextView companyDGyeongEdu; //마감일자(상시채용여부), 경력과 학력
 
         public JobViewHolder(View itemView) {
             super(itemView);

@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/name"
             style="@style/profileTvTitle"
-
+            android:text="@string/name"
             app:layout_constraintVertical_bias="0.3"
             android:layout_marginBottom="10dp"
             />
@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/age"
             style="@style/profileTvTitle"
-            android:text="나이"
+            android:text="@string/age"
             />
 
         <TextView

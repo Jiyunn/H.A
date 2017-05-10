@@ -14,7 +14,7 @@ public interface RetroInterface { //이걸 초기화 해야 통신준비가 완�
         @GET("list")
         Call<Chaeyong> getList
                 (@Query("numOfRows") int rows,
-                 @Query("pg") int pg,
+                 @Query("pageNo") int pg,
                  @Query("_type") String _type,
                  @Query(value = "serviceKey", encoded = true) String serviceKey); //물음표 뒤에있는 것들은 이런형식으로 보내기
     }

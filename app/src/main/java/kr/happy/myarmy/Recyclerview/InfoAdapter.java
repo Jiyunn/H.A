@@ -2,9 +2,11 @@ package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +20,19 @@ import kr.happy.myarmy.Custom.LPEdittext;
 import kr.happy.myarmy.R;
 
 
-public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder> {
+public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder>  {
 
     private Context context;
-    private ArrayList<ItemResumenInfo> items;
+    private ArrayList<Object> items;
     private int itemLayout;
     private String[] mItemContent; //변경되는 내용을 저장할 배열??
+    private LinearLayoutManager mLayoutManager;
 
-    public InfoAdapter(Context context, ArrayList<ItemResumenInfo> items, int itemLayout) {
+    public InfoAdapter(Context context, ArrayList<Object> items, int itemLayout, LinearLayoutManager mLayoutManager) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
+        this.mLayoutManager= mLayoutManager;
     }
 
     @Override
@@ -43,7 +47,6 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         holder.customEditTextListener.updatePosition(position);
         holder.title.setText(items.get(position).getTitle());
         holder.content.setText(items.get(position).getContent());
-
     }
 
     @Override
@@ -51,13 +54,15 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         return (items != null) ? items.size() : 0;
     }
 
-      public void setmItemContent(String[] mItemContent) {
+    public void setmItemContent(String[] mItemContent) {
         this.mItemContent = mItemContent;
     }
 
     public String[] getmItemContent() {
         return mItemContent;
     }
+
+
 
 
     /*info view holder*/
@@ -76,12 +81,13 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
 
             this.customEditTextListener=customEditTextListener;
             content.addTextChangedListener(customEditTextListener);
+            content.setOnEditorActionListener(customEditTextListener);
         }
     }
 
 
-    /*custom edittext listener can read current position */
-    private class CustomEditTextListener implements TextWatcher {
+    /*custom edittext listener can read focused view text */
+    private class CustomEditTextListener implements TextWatcher, TextView.OnEditorActionListener{
         private int position;
 
         public void updatePosition(int position){
@@ -98,6 +104,13 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         }
         @Override
         public void afterTextChanged(Editable s) {
+        }
+
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            mLayoutManager.scrollToPosition(this.position+1);
+
+            return false;
         }
     }
 }

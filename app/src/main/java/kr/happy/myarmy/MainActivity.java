@@ -24,7 +24,7 @@ import kr.happy.myarmy.Menu.RegionGroupFragment;
 import kr.happy.myarmy.Menu.SmartMatchFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-       bottomBar.setDefaultTab(R.id.tab_HOME);
+        bottomBar.setDefaultTab(R.id.tab_HOME);
 
         fgManager = getSupportFragmentManager();
         backButtonHandler = new BackButtonHandler(this);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(@IdRes int tabId) {
-                      bottomBar.getShySettings().showBar(); //다시보이게
+                        bottomBar.getShySettings().showBar(); //다시보이게
 
                         switch (tabId) {
                             case R.id.tab_resume:
@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         Log.d("jy", "onconfig?");
@@ -104,31 +103,33 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.frag, fg)
                 .commit(); //change fragment
-
     }
 
     /*back btn */
     @Override
     public void onBackPressed() {
-        Log.d("jy", "back pre");
         int fgStackCnt = fgManager.getBackStackEntryCount();
-        int curTab=bottomBar.getCurrentTabId();
+        int curTab = bottomBar.getCurrentTabId();
         int homeTab = R.id.tab_HOME;
 
         if (curTab == homeTab) {
-            backButtonHandler.onBackPressed();
-
-        }else if(curTab  == R.id.tab_resume
-                || curTab  == R.id.tab_jobgroup
-                || curTab  == R.id.tab_regiongroup){
-            if(fgStackCnt !=0)
+            if(fgStackCnt ==0)
+                 backButtonHandler.onBackPressed();
+            else
+                fgManager.popBackStack();
+        } else if (curTab == R.id.tab_resume
+                || curTab == R.id.tab_jobgroup
+                || curTab == R.id.tab_regiongroup) {
+            if (fgStackCnt != 0)
                 fgManager.popBackStack();
             else
                 bottomBar.selectTabWithId(homeTab);
 
-        }else {
+        } else {
             bottomBar.selectTabWithId(homeTab);
         }
-        }
     }
+
+
+}
 

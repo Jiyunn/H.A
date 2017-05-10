@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,11 +23,11 @@ import kr.happy.myarmy.R;
 public class CompanyInfoFragment extends Fragment {
 
     @Nullable
-    @BindView(R.id.com_vp)
+    @BindView(R.id.spe_vp)
     ViewPager vp;
 
     @Nullable
-    @BindView(R.id.com_tab)
+    @BindView(R.id.spe_tab)
     TabLayout tabLayout;
 
     public CompanyInfoFragment() {
@@ -36,7 +37,7 @@ public class CompanyInfoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.companyinfo, container, false);
+        View view = inflater.inflate(R.layout.speinfo, container, false);
         ButterKnife.bind(this, view);
 
         vp.setAdapter(new ComPagerAdapter(getChildFragmentManager()));
@@ -46,18 +47,20 @@ public class CompanyInfoFragment extends Fragment {
     }
 
     /*click favorite btn, change background*/
-    @OnClick(R.id.com_favorite)
+    @OnClick(R.id.spe_comFavorite)
     public void addFavorite(View view) {
         TextView v=(TextView) view;
 
         if (v.getTag().equals(R.string.notInterested)) {
             v.setBackgroundResource(R.drawable.interested_active);
             v.setTextColor(ContextCompat.getColor(getContext(), R.color.orange_a));
+            Toast.makeText(getContext(), "관심기업에 추가되었습니다", Toast.LENGTH_SHORT).show();
             v.setTag(R.string.interested);
 
         } else {
             v.setBackgroundResource(R.drawable.interested);
             v.setTextColor(Color.parseColor("#9b9b9b"));
+            Toast.makeText(getContext(), "관심기업이 해제되었습니다", Toast.LENGTH_SHORT).show();
             v.setTag(R.string.notInterested);
         }
     }
