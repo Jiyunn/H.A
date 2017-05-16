@@ -3,6 +3,7 @@ package kr.happy.myarmy.Recyclerview;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Retrofit2.Item;
+import kr.happy.myarmy.Server.Item;
 
 /*regionviewholder use this?*/
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener {
@@ -63,6 +64,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onClick(View v) {
         int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
+
+        Item clickGongo=gongos.get(curPos); //클릭한 공고
+
+        Log.d("jy", "클릭한 포지션은 : "+ String.valueOf(curPos));
 
         fgManager
                 .beginTransaction()

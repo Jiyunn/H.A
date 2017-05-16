@@ -30,6 +30,7 @@
             android:id="@+id/info_id"
             style="@style/infoID"
             android:layout_width="0dp"
+            android:inputType="text"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/id"
             app:layout_constraintBottom_toTopOf="@+id/rv_info"

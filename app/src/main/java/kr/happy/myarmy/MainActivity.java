@@ -1,5 +1,6 @@
 package kr.happy.myarmy;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import com.roughike.bottombar.BottomBar;
@@ -16,6 +18,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.happy.myarmy.Custom.BackButtonHandler;
 import kr.happy.myarmy.Menu.HomeFragment;
 import kr.happy.myarmy.Menu.JobGroupFragment;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity  {
 
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
+
 
     private FragmentManager fgManager;
     private BackButtonHandler backButtonHandler;
@@ -93,6 +97,12 @@ public class MainActivity extends AppCompatActivity  {
     public void onConfigurationChanged(Configuration newConfig) {
         Log.d("jy", "onconfig?");
         super.onConfigurationChanged(newConfig);
+    }
+
+    /*back!*/
+    @OnClick(R.id.toolbar_back)
+    public void backArrowClick(View v){
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 
 

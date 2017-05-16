@@ -4,7 +4,7 @@ package kr.happy.myarmy.Menu;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import kr.happy.myarmy.Retrofit2.Items;
+import kr.happy.myarmy.Server.Items;
 
 public class Chaeyong {
 
@@ -30,20 +30,10 @@ public class Chaeyong {
         @Expose
         private Body body;
 
-        public Header getHeader() {
-            return header;
-        }
 
-        public void setHeader(Header header) {
-            this.header = header;
-        }
 
         public Body getBody() {
             return body;
-        }
-
-        public void setBody(Body body) {
-            this.body = body;
         }
 
 
@@ -55,22 +45,6 @@ public class Chaeyong {
             @SerializedName("resultMsg")
             @Expose
             private String resultMsg;
-
-            public String getResultCode() {
-                return resultCode;
-            }
-
-            public void setResultCode(String resultCode) {
-                this.resultCode = resultCode;
-            }
-
-            public String getResultMsg() {
-                return resultMsg;
-            }
-
-            public void setResultMsg(String resultMsg) {
-                this.resultMsg = resultMsg;
-            }
 
         }
 
@@ -93,33 +67,21 @@ public class Chaeyong {
                 return items;
             }
 
-            public void setItems(Items items) {
-                this.items = items;
-            }
 
             public int getNumOfRows() {
                 return numOfRows;
-            }
-
-            public void setNumOfRows(int numOfRows) {
-                this.numOfRows = numOfRows;
             }
 
             public int getPageNo() {
                 return pageNo;
             }
 
-            public void setPageNo(int pageNo) {
-                this.pageNo = pageNo;
-            }
 
             public int getTotalCount() {
                 return totalCount;
             }
 
-            public void setTotalCount(int totalCount) {
-                this.totalCount = totalCount;
-            }
+
 
         }
 

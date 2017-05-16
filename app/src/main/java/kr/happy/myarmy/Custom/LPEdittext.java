@@ -72,14 +72,11 @@ public class LPEdittext extends android.support.v7.widget.AppCompatEditText impl
     public void onFocusChange(View v, boolean hasFocus) {
 
         if(hasFocus) {
-            setClearIconVisible(getText().length() > 0); //글씨치는지에따라 보여지게, 안보여지게하기.
+            setClearIconVisible(getText().length() > 0);
             v.getBackground().setColorFilter(getCurrentHintTextColor(), PorterDuff.Mode.SRC_IN); //밑줄색깔
-
-
         }else {
-            setClearIconVisible(false);
             v.getBackground().setColorFilter(null);
-
+            setClearIconVisible(false);
         }
         if(onFocusChangeListener !=null)
             onFocusChangeListener.onFocusChange(v, hasFocus);

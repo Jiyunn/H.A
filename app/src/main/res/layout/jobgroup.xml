@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<kr.happy.myarmy.Custom.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="jobgroup"
+            type="kr.happy.myarmy.Menu.JobGroupFragment"/>
+    </data>
+
+    <kr.happy.myarmy.Custom.NestedCoordinatorLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -20,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/navy_a"
-                android:paddingTop="@dimen/basic_margin"
                 android:paddingBottom="@dimen/basic_margin"
                 app:layout_collapseMode="pin">
 
@@ -33,26 +40,28 @@
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_jeonja"
-
+                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
                 <TextView
                     android:id="@+id/job_jeonja"
                     style="@style/jobBtn"
-                    android:drawableTop="@drawable/jeonja"
+                    android:drawableTop="@drawable/hyunjang"
                     android:text="@string/jeonja"
                     app:layout_constraintLeft_toRightOf="@+id/job_gigye"
-                    app:layout_constraintRight_toLeftOf="@+id/job_saengsan"
+                    app:layout_constraintRight_toLeftOf="@+id/job_jeongi"
+                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
                 <TextView
-                    android:id="@+id/job_saengsan"
+                    android:id="@+id/job_jeongi"
                     style="@style/jobBtn"
-                    android:drawableTop="@drawable/saengsan"
-                    android:text="@string/saengsan"
+                    android:drawableTop="@drawable/jeonja"
+                    android:text="@string/jeongi"
                     app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
                     app:layout_constraintRight_toLeftOf="@+id/job_euiyak"
                     app:layout_constraintVertical_chainStyle="spread"
+                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
 
@@ -61,8 +70,9 @@
                     style="@style/jobBtn"
                     android:drawableTop="@drawable/euiyak"
                     android:text="@string/euiyak"
-                    app:layout_constraintLeft_toRightOf="@+id/job_saengsan"
+                    app:layout_constraintLeft_toRightOf="@+id/job_jeongi"
                     app:layout_constraintRight_toRightOf="parent"
+                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
 
@@ -75,7 +85,10 @@
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_gaebal"
-                    app:layout_constraintTop_toBottomOf="@+id/job_gigye" />
+                    app:layout_constraintTop_toBottomOf="@+id/job_gigye"
+                    android:onClick="@{jobgroup::onJobClick}"
+                    />
+
 
                 <TextView
                     android:id="@+id/job_gaebal"
@@ -86,7 +99,9 @@
                     app:layout_constraintBottom_toTopOf="@+id/job_somyou"
                     app:layout_constraintLeft_toRightOf="@+id/job_it"
                     app:layout_constraintRight_toLeftOf="@+id/job_whahak"
-                    app:layout_constraintTop_toBottomOf="@+id/job_jeonja" />
+                    app:layout_constraintTop_toBottomOf="@+id/job_jeonja"
+                    android:onClick="@{jobgroup::onJobClick}"
+                    />
 
                 <TextView
                     android:id="@+id/job_whahak"
@@ -95,7 +110,9 @@
                     android:text="@string/whahak"
                     app:layout_constraintLeft_toRightOf="@+id/job_gaebal"
                     app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
-                    app:layout_constraintTop_toBottomOf="@+id/job_saengsan" />
+                    app:layout_constraintTop_toBottomOf="@+id/job_jeongi"
+                    android:onClick="@{jobgroup::onJobClick}"
+                    />
 
                 <TextView
                     android:id="@+id/job_cheolgang"
@@ -104,7 +121,9 @@
                     android:text="@string/cheolgang"
                     app:layout_constraintLeft_toRightOf="@+id/job_whahak"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/job_euiyak" />
+                    app:layout_constraintTop_toBottomOf="@+id/job_euiyak"
+                    android:onClick="@{jobgroup::onJobClick}"
+                    />
 
                 <!--셋째줄-->
 
@@ -117,6 +136,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_somyou"
                     app:layout_constraintTop_toBottomOf="@+id/job_it"
+                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
                 <TextView
@@ -125,20 +145,23 @@
                     android:drawableTop="@drawable/somyou"
                     android:text="@string/somyou"
                     app:layout_constraintLeft_toRightOf="@+id/job_euiryu"
-                    app:layout_constraintRight_toLeftOf="@+id/job_hyunjang"
+                    app:layout_constraintRight_toLeftOf="@+id/job_saengsan"
                     app:layout_constraintTop_toBottomOf="@+id/job_gaebal"
+                    android:onClick="@{jobgroup::onJobClick}"
 
                     />
 
                 <TextView
-                    android:id="@+id/job_hyunjang"
+                    android:id="@+id/job_saengsan"
                     style="@style/jobBtn"
-                    android:drawableTop="@drawable/hyunjang"
-                    android:text="@string/hyunjang"
+                    android:drawableTop="@drawable/saengsan"
+                    android:text="@string/saengsan"
                     android:textSize="10dp"
                     app:layout_constraintLeft_toRightOf="@+id/job_somyou"
                     app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
-                    app:layout_constraintTop_toBottomOf="@+id/job_whahak" />
+                    app:layout_constraintTop_toBottomOf="@+id/job_whahak"
+                    android:onClick="@{jobgroup::onJobClick}"
+                    />
 
 
             </android.support.constraint.ConstraintLayout>
@@ -152,3 +175,4 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </kr.happy.myarmy.Custom.NestedCoordinatorLayout>
+</layout>

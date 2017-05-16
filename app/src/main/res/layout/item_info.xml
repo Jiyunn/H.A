@@ -27,8 +27,10 @@
         app:layout_constraintLeft_toRightOf="@+id/item_infoTitle"
         app:layout_constraintBaseline_toBaselineOf="@+id/item_infoTitle"
         android:hint="@string/inputPlz"
-        android:maxLines="1"
         android:inputType="text"
+        android:maxLines="1"
+        android:paddingRight="5dp"
+        android:background="@android:color/transparent"
         android:textColorHint="@color/nineb"
         android:textColor="#4a4a4a"
         android:textSize="14dp" />

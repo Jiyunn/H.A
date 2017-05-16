@@ -80,7 +80,6 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/spe_tab"
         style="@style/tabLayout"
-        android:layout_marginLeft="1dp"
         app:tabTextAppearance="@style/tabLayoutText"
         app:layout_constraintTop_toBottomOf="@+id/spe_linear"
         app:layout_constraintBottom_toTopOf="@+id/spe_vp"
@@ -91,6 +90,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spe_tab"
         app:layout_constraintBottom_toBottomOf="parent"

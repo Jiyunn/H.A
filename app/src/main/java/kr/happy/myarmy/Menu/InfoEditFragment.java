@@ -22,8 +22,8 @@ import butterknife.ButterKnife;
 import kr.happy.myarmy.Custom.LPEdittext;
 import kr.happy.myarmy.MainActivity;
 import kr.happy.myarmy.R;
+import kr.happy.myarmy.Recyclerview.Data;
 import kr.happy.myarmy.Recyclerview.InfoAdapter;
-import kr.happy.myarmy.Recyclerview.Object;
 import kr.happy.myarmy.UserDB.UserDBManager;
 
 /**
@@ -59,7 +59,7 @@ public class InfoEditFragment extends Fragment  {
 
     private InfoAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<Object> dataSet;
+    private ArrayList<Data> dataSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent;//입력한 항목 내용들
     private String[] columns; //데이터베이스 컬럼
@@ -133,7 +133,7 @@ public class InfoEditFragment extends Fragment  {
 
     /*set data*/
     public void setUserData() {
-        columns=new String[]{"id","name", "birth", "wantjob", "specialnote", "certificate","edu", "address", "etccareer", "phone"}; //받아올 컬럼들
+        columns=new String[]{"email","name", "birth", "wantjob", "specialnote", "certificate","edu", "address", "etccareer", "phone"}; //받아올 컬럼들
 
         itemName = new String[]{name, birth, wantJob, specialNote, certificate, edu, address, etcCareer, phone}; //항목이름
         itemContent=new String[itemName.length]; //내용 배열
@@ -151,8 +151,18 @@ public class InfoEditFragment extends Fragment  {
         c.close();
 
         for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기.
-            dataSet.add(new Object(itemName[i], itemContent[i]));
+            dataSet.add(new Data(itemName[i], itemContent[i]));
         }
+    }
+
+    /*전달하기*/
+    public static InfoEditFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        InfoEditFragment fragment = new InfoEditFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
 }

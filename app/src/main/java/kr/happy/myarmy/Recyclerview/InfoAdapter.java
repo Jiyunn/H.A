@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,12 +24,12 @@ import kr.happy.myarmy.R;
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder>  {
 
     private Context context;
-    private ArrayList<Object> items;
+    private ArrayList<Data> items;
     private int itemLayout;
     private String[] mItemContent; //변경되는 내용을 저장할 배열??
     private LinearLayoutManager mLayoutManager;
 
-    public InfoAdapter(Context context, ArrayList<Object> items, int itemLayout, LinearLayoutManager mLayoutManager) {
+    public InfoAdapter(Context context, ArrayList<Data> items, int itemLayout, LinearLayoutManager mLayoutManager) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
@@ -47,6 +48,9 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         holder.customEditTextListener.updatePosition(position);
         holder.title.setText(items.get(position).getTitle());
         holder.content.setText(items.get(position).getContent());
+
+        if(position==1 || position==8) //생년월일, 연락처
+            holder.content.setInputType(InputType.TYPE_CLASS_NUMBER);
     }
 
     @Override

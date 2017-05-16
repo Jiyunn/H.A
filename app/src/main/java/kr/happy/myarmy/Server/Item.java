@@ -1,5 +1,5 @@
 
-package kr.happy.myarmy.Retrofit2;
+package kr.happy.myarmy.Server;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -11,21 +11,22 @@ import java.util.Locale;
 
 public class Item {
 
+
     @SerializedName("bokrihs")
     @Expose
-    private String bokrihs;
+    private String bokri;
     @SerializedName("ccdatabalsaengDtm")
     @Expose
-    private long ccdatabalsaengDtm;
+    private long ccdLDtm;
     @SerializedName("cjdatabyeongyeongDtm")
     @Expose
-    private long cjdatabyeongyeongDtm;
+    private long cjdLDtm;
     @SerializedName("cjhakryeok")
     @Expose
     private String cjhakryeok;
     @SerializedName("cygonggoNo")
     @Expose
-    private long cygonggoNo;
+    private long gongoNo;
     @SerializedName("cyjemokNm")
     @Expose
     private String cyjemokNm;
@@ -96,120 +97,69 @@ public class Item {
     @Expose
     private String yuhyoYn;
 
-    public String getBokrihs() {
-        return bokrihs;
+    public String getBokri() {
+        return bokri;
     }
 
-    public void setBokrihs(String bokrihs) {
-        this.bokrihs = bokrihs;
-    }
-
-    public long getCcdatabalsaengDtm() {
-        return ccdatabalsaengDtm;
-    }
-
-    public void setCcdatabalsaengDtm(long ccdatabalsaengDtm) {
-        this.ccdatabalsaengDtm = ccdatabalsaengDtm;
-    }
-
-    public long getCjdatabyeongyeongDtm() {
-        return cjdatabyeongyeongDtm;
-    }
-
-    public void setCjdatabyeongyeongDtm(long cjdatabyeongyeongDtm) {
-        this.cjdatabyeongyeongDtm = cjdatabyeongyeongDtm;
-    }
 
     public String getCjhakryeok() {
         if (this.cjhakryeok.equals("고등학교졸업"))
             return "고졸";
+        else if(this.cjhakryeok.equals("고등학교중퇴"))
+            return "고교중퇴";
 
         return cjhakryeok;
     }
 
-    public void setCjhakryeok(String cjhakryeok) {
 
-    }
-
-    public long getCygonggoNo() {
-        return cygonggoNo;
-    }
-
-    public void setCygonggoNo(long cygonggoNo) {
-        this.cygonggoNo = cygonggoNo;
-    }
 
     public String getCyjemokNm() {
         return cyjemokNm;
     }
 
-    public void setCyjemokNm(String cyjemokNm) {
-        this.cyjemokNm = cyjemokNm;
-    }
+
 
     public String getDamdangjaFnm() {
         return damdangjaFnm;
     }
 
-    public void setDamdangjaFnm(String damdangjaFnm) {
-        this.damdangjaFnm = damdangjaFnm;
-    }
 
     public String getDdeopmuNm() {
         return ddeopmuNm;
     }
 
-    public void setDdeopmuNm(String ddeopmuNm) {
-        this.ddeopmuNm = ddeopmuNm;
-    }
 
     public String getDdjyeonrakcheoNo() {
         return ddjyeonrakcheoNo;
     }
 
-    public void setDdjyeonrakcheoNo(String ddjyeonrakcheoNo) {
-        this.ddjyeonrakcheoNo = ddjyeonrakcheoNo;
-    }
+
 
     public String getDpyeonrakcheoNo() {
         return dpyeonrakcheoNo;
     }
 
-    public void setDpyeonrakcheoNo(String dpyeonrakcheoNo) {
-        this.dpyeonrakcheoNo = dpyeonrakcheoNo;
-    }
 
     public String getEopcheNm() {
         return eopcheNm;
     }
 
-    public void setEopcheNm(String eopcheNm) {
-        this.eopcheNm = eopcheNm;
-    }
+
 
     public long getEopjongGbcd() {
         return eopjongGbcd;
     }
 
-    public void setEopjongGbcd(long eopjongGbcd) {
-        this.eopjongGbcd = eopjongGbcd;
-    }
 
     public String getEopjongGbcdNm() {
         return eopjongGbcdNm;
     }
 
-    public void setEopjongGbcdNm(String eopjongGbcdNm) {
-        this.eopjongGbcdNm = eopjongGbcdNm;
-    }
 
     public String getGeunmujy() {
         return geunmujy;
     }
 
-    public void setGeunmujy(String geunmujy) {
-        this.geunmujy = geunmujy;
-    }
 
 
     /*edit genmujysideo*/
@@ -251,45 +201,28 @@ public class Item {
         return geunmujysido;
     }
 
-    public void setGeunmujysido(String geunmujysido) {
-        this.geunmujysido = geunmujysido;
-    }
 
     public long getGmjybjusoCd() {
         return gmjybjusoCd;
     }
 
-    public void setGmjybjusoCd(long gmjybjusoCd) {
-        this.gmjybjusoCd = gmjybjusoCd;
-    }
 
     public String getGyeongryeokGbcdNm() {
         return gyeongryeokGbcdNm;
     }
 
-    public void setGyeongryeokGbcdNm(String gyeongryeokGbcdNm) {
-        this.gyeongryeokGbcdNm = gyeongryeokGbcdNm;
-    }
+
 
     public String getGyjogeonCd() {
         return gyjogeonCd;
     }
 
-    public void setGyjogeonCd(String gyjogeonCd) {
-        this.gyjogeonCd = gyjogeonCd;
-    }
 
     public String getGyjogeonCdNm() {
         return gyjogeonCdNm;
     }
 
-    public void setGyjogeonCdNm(String gyjogeonCdNm) {
-        this.gyjogeonCdNm = gyjogeonCdNm;
-    }
 
-    public void setHomepg (String homepg){
-        this.homepg=homepg;
-    }
     public String getHomepg(){
         return homepg;
     }
@@ -298,9 +231,6 @@ public class Item {
         return jeopsubb;
     }
 
-    public void setJeopsubb(String jeopsubb) {
-        this.jeopsubb = jeopsubb;
-    }
 
 
     public String convertMagamDt() {//마감일자
@@ -334,57 +264,54 @@ public class Item {
         return magamDt;
     }
 
-    public void setMagamDt(long magamDt) {
-        this.magamDt = magamDt;
-    }
-
-    public String getSschaeyongYn() { //상시채용여부
+    public String getSschaeyongYn() {
 
         return sschaeyongYn;
     }
 
-    public void setSschaeyongYn(String sschaeyongYn) {
 
-    }
 
     public String getYeokjongBrcd() {
         return yeokjongBrcd;
     }
 
-    public void setYeokjongBrcd(String yeokjongBrcd) {
-        this.yeokjongBrcd = yeokjongBrcd;
-    }
+
 
     public String getYeokjongBrcdNm() {
         return yeokjongBrcdNm;
     }
 
-    public void setYeokjongBrcdNm(String yeokjongBrcdNm) {
-        this.yeokjongBrcdNm = yeokjongBrcdNm;
-    }
+
 
     public long getYowonGbcd() {
         return yowonGbcd;
     }
 
-    public void setYowonGbcd(long yowonGbcd) {
-        this.yowonGbcd = yowonGbcd;
-    }
+
 
     public String getYowonGbcdNm() {
         return yowonGbcdNm;
     }
 
-    public void setYowonGbcdNm(String yowonGbcdNm) {
-        this.yowonGbcdNm = yowonGbcdNm;
-    }
 
     public String getYuhyoYn() {
         return yuhyoYn;
     }
 
-    public void setYuhyoYn(String yuhyoYn) {
-        this.yuhyoYn = yuhyoYn;
+
+
+    public long getCcdLDtm() {
+        return ccdLDtm;
+    }
+
+
+    public long getCjdLDtm() {
+        return cjdLDtm;
+    }
+
+
+    public long getGongoNo() {
+        return gongoNo;
     }
 
 }

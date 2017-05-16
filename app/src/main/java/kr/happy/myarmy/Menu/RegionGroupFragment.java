@@ -19,9 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.GroupAdapter;
-import kr.happy.myarmy.Retrofit2.Item;
-import kr.happy.myarmy.Retrofit2.RetroInterface;
-import kr.happy.myarmy.Retrofit2.ServerGenerator;
+import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.Server.RetroInterface;
+import kr.happy.myarmy.Server.ServerGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +32,7 @@ import retrofit2.Response;
 
 public class RegionGroupFragment extends Fragment {
 
-    @Nullable @BindView(R.id.rv_job)
+    @Nullable @BindView(R.id.rv_region)
     RecyclerView mRecyclerview;
 
     @Nullable @BindView(R.id.item_jobFavorite)
@@ -53,12 +53,12 @@ public class RegionGroupFragment extends Fragment {
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.jobgroup, container, false);
+        View view=inflater.inflate(R.layout.regiongroup, container, false);
         ButterKnife.bind(this, view);
 
         mRecyclerview.setHasFixedSize(true);
 
-        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, mRecyclerview,fgManager); //어댑터 등록
+        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, fgManager); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         callAPI(ServerGenerator.getAPIService()); //API불러오기 시작

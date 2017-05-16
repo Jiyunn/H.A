@@ -22,11 +22,11 @@ import kr.happy.myarmy.R;
 public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder> {
 
     private Context context;
-    private ArrayList<Object> items;
+    private ArrayList<Data> items;
     private int itemLayout;
 
 
-    public ResumeAdapter(Context context, ArrayList<Object> items, int itemLayout) {
+    public ResumeAdapter(Context context, ArrayList<Data> items, int itemLayout) {
         this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
@@ -50,7 +50,7 @@ public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeView
         return (items != null) ? items.size() : 0;
     }
 
-    public void setItems(ArrayList<Object> items) {
+    public void setItems(ArrayList<Data> items) {
         this.items = items;
     }
 

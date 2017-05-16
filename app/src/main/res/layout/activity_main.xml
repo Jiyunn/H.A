@@ -49,10 +49,10 @@
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="59dp"
         android:layout_gravity="bottom"
         android:background="@color/navy_a"
-        app:bb_activeTabAlpha="0.8"
+        app:bb_activeTabAlpha="0.9"
         app:bb_activeTabColor="@color/white"
         app:bb_behavior="shy"
         app:bb_inActiveTabAlpha="1"

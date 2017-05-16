@@ -40,7 +40,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import gun0912.tedbottompicker.TedBottomPicker;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.Object;
+import kr.happy.myarmy.Recyclerview.Data;
 import kr.happy.myarmy.Recyclerview.ResumeAdapter;
 import kr.happy.myarmy.UserDB.UserDBManager;
 
@@ -84,7 +84,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<Object> dataSet;
+    private ArrayList<Data> dataSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent; //항목 내용들
     private String[] columns; //데이터베이스 컬럼
@@ -104,14 +104,11 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.myresume, container, false);
         ButterKnife.bind(this, view);
 
-
-
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         mRecyclerview.setLayoutManager(mLayoutManager);
-        mRecyclerview.smoothScrollToPosition(mRecyclerview.getVerticalScrollbarPosition() +1);
 
         adapter = new ResumeAdapter(getActivity(), dataSet, R.layout.item_myresume); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
@@ -159,7 +156,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
             c.close();
         }
         for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기
-            dataSet.add(new Object( itemName[i] , itemContent[i+2] )); //itemcontent is start wantjob
+            dataSet.add(new Data( itemName[i] , itemContent[i+2] )); //itemcontent is start wantjob
         }
 
         adapter.setItems(dataSet);
@@ -177,8 +174,9 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         try{
             birthday.setTime(dateFormat.parse(birth));
 
-            if(today.get(Calendar.MONTH) >= birthday.get(Calendar.MONTH)  //생일지남
-                    && today.get(Calendar.DATE) <= birthday.get(Calendar.DATE)){
+            if((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)  //생일지남
+                    && today.get(Calendar.DATE) <= birthday.get(Calendar.DATE))||
+                    today.get(Calendar.MONTH) > birthday.get(Calendar.MONTH)){
 
                 age= String.valueOf(today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR));
             }

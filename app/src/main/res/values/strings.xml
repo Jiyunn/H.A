@@ -25,8 +25,8 @@
     <string name="gotoSettingBottom">설정</string>
 
     <string name="cheolgang">철강</string>
-    <string name="hyunjang">현장관리 / 정비</string>
-    <string name="jeonja">전기 / 전자</string>
+    <string name="jeongi">전기</string>
+    <string name="jeonja">전자</string>
     <string name="saengsan">생산</string>
     <string name="somyou">섬유</string>
     <string name="whahak">화학</string>
@@ -34,6 +34,15 @@
     <string name="euiyak">의료 / 의약</string>
     <string name="gaebal">개발</string>
     <string name="gigye">기계</string>
+
+    <string name="gyeongi">경기도</string>
+    <string name="gangwon">강원도</string>
+    <string name="chungbook">충청북도</string>
+    <string name="chungnam">충청남도</string>
+    <string name="kyeongbook">경상북도</string>
+    <string name="kyeongnam">경상남도</string>
+    <string name="jeonbook">전라북도</string>
+    <string name="jeonnam">전라남도</string>
 
     <string name="oops">이런! \n이력서는 작성하셨나요?</string>
 
@@ -53,6 +62,9 @@
     <string name="login">로그인</string>
     <string name="birth_signup">생년월일&#160;&#160;&#160;&#160;ex)19980413</string>
     <string name="inputPlz">입력해주세요</string>
+
+    <string name="wrongEmail">&#160;올바른 이메일 형식이 아닙니다</string>
+    <string name="wrongPwd">&#160;8 ~20 자의 문자만 사용 가능합니다 </string>
 
     <string name="send">전송</string>
 

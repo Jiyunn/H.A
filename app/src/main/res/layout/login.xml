@@ -16,8 +16,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
     android:background="@color/navy_a">
 
     <ImageView
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         style="@style/constraintCenter"
         android:src="@drawable/logo_transparent_small"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0.1"
       />
 
@@ -35,18 +35,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/constraintCenter"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0.3"
         android:text="Log In"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         />
 
     <kr.happy.myarmy.Custom.LPEdittext
         android:id="@+id/login_id"
         style="@style/login_signupEdittext"
         android:hint="@string/id"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintVertical_bias="0.45"
         app:layout_constraintLeft_toLeftOf="@+id/login_logo"
         />
@@ -69,6 +69,7 @@
         android:text="@string/login"
         app:layout_constraintVertical_bias="0.87"
         android:background="@drawable/btnshape_orange"
+        android:onClick="@{activity::loginClick}"
       />
 
 

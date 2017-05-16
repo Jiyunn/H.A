@@ -2,16 +2,16 @@ package kr.happy.myarmy.Recyclerview;
 
 
 
-public class Object {
+public class Data {
     String title;
     String content;
 
-    public Object(String title, String content) {
+    public Data(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    public Object(String title) {
+    public Data(String title) {
         this.title=title;
     }
 

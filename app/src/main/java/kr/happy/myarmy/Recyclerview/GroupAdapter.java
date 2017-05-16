@@ -1,7 +1,6 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Retrofit2.Item;
+import kr.happy.myarmy.Server.Item;
 
 import static kr.happy.myarmy.R.drawable.group_4;
 import static kr.happy.myarmy.R.drawable.group_5;
@@ -32,14 +31,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     private Context context;
     private ArrayList<Item> gongos;
     private int itemLayout; //레이아웃 형식
-    private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
+    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, FragmentManager fgManager) {
         this.context = context;
         this.gongos=gongos;
         this.itemLayout = itemLayout;
-        this.mRecyclerview= mRecyclerview;
         this.fgManager=fgManager;
     }
 
@@ -47,6 +44,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     public JobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
         itemView.setOnClickListener(this);
+
         return new JobViewHolder(itemView);
     }
 
@@ -87,8 +85,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     /*JobViewHolder class*/
     class JobViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Nullable        @BindView(R.id.item_jobLogo)
-        ImageView logo;
+        @BindView(R.id.item_jobLogo) ImageView logo;
         @BindView(R.id.item_jobTitle)TextView companyName; //업체이름
         @BindView(R.id.item_jobContent1)TextView companyJaemok; //채용제목
         @BindView(R.id.item_jobContent2)TextView companyUpmoo; //담당업무

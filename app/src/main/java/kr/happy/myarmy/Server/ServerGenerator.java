@@ -1,4 +1,4 @@
-package kr.happy.myarmy.Retrofit2;
+package kr.happy.myarmy.Server;
 
 import com.facebook.stetho.okhttp3.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServerGenerator {
 
     static final String BASE_URL = "http://apis.data.go.kr/1300000/CyJeongBo/";
+    static final String REQUEST_URL="http://win3win.me/api/v1/";
 
 
     public static OkHttpClient getClient() {
@@ -28,7 +29,7 @@ public class ServerGenerator {
                         .log(Platform.INFO)
                         .tag("LoggingI")
                         .request("Request")
-                        .response("Chaeyong")
+                        .response("response")
                         .addHeader("version", BuildConfig.VERSION_NAME)
                         .build());
         return client.build();
@@ -40,7 +41,18 @@ public class ServerGenerator {
                 .addConverterFactory(GsonConverterFactory.create())    //Gson컨버터를 추가해서, retrofit이 응답을 json으로 받을 수 있도록하기
                 .client(getClient())
                 .build();
+    }
 
+    public static Retrofit getRequestInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(REQUEST_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(getClient())
+                .build();
+    }
+
+    public static RetroInterface getRequestService(){
+        return getRequestInstance().create(RetroInterface.class);
     }
 
     public static RetroInterface getAPIService(){

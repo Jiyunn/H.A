@@ -15,7 +15,7 @@ public class UserDBManager extends SQLiteOpenHelper {
 
     /*db명, 테이블명, 디비 버전*/
     static final String DB_USER = "Users.db";
-    static final String TABLE_USER = "Object";
+    static final String TABLE_USER = "Data";
     static final int DB_VERSION = 1;
 
     Context mContext = null;
@@ -41,8 +41,10 @@ public class UserDBManager extends SQLiteOpenHelper {
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER + //CREATE TABLE
                     "(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "token                TEXT, "+
                     "proimg             BLOB, " +
-                    "id                     TEXT, " +
+                    "email                TEXT, " +
+                    "pwd                  TEXT, "+
                     "name               TEXT , " +
                     "birth                TEXT , " +
                     "wantjob          TEXT, " +
@@ -53,8 +55,8 @@ public class UserDBManager extends SQLiteOpenHelper {
                     "etccareer          TEXT, " +
                     "phone              TEXT ); ");
 
-            db.execSQL("INSERT INTO " + TABLE_USER + "( name, birth, wantjob, specialnote, edu, certificate, address, etccareer, phone) " +
-                    "VALUES ('' , '', '', '', '', '', '', '','' ); "); //test
+            db.execSQL("INSERT INTO " + TABLE_USER + "(email, pwd, name, birth, wantjob, specialnote, edu, certificate, address, etccareer, phone) " +
+                    "VALUES ('jygr0309@gmail.com', '12341234', '' , '', '', '', '', '', '', '','' ); "); //test
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -27,7 +27,7 @@ public class BackButtonHandler extends Handler {
         }
         if (System.currentTimeMillis() <= backButtonPressedTime + 2000) {
             toast.cancel();
-            activity.finish();
+            activity.finishAffinity();
 
         }
     }

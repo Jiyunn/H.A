@@ -1,4 +1,4 @@
-package kr.happy.myarmy.Recyclerview;
+package kr.happy.myarmy.Custom;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

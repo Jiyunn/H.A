@@ -17,12 +17,12 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kr.happy.myarmy.Custom.EndlessRecyclerViewScrollListener;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.EndlessRecyclerViewScrollListener;
 import kr.happy.myarmy.Recyclerview.HomeAdapter;
-import kr.happy.myarmy.Retrofit2.Item;
-import kr.happy.myarmy.Retrofit2.RetroInterface;
-import kr.happy.myarmy.Retrofit2.ServerGenerator;
+import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.Server.RetroInterface;
+import kr.happy.myarmy.Server.ServerGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         adapter = new HomeAdapter(getActivity(), dataSet, R.layout.item_home, mRecyclerview, fgManager); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
-        callAPI(ServerGenerator.getAPIService()); //API불러오기 시작
+        callAPI(ServerGenerator.getAPIService());
 
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS); //알아서 잘조정
@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         mScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager,10) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                    callAPI(ServerGenerator.getAPIService());
+                callAPI(ServerGenerator.getAPIService());
             }
         };
         mRecyclerview.addOnScrollListener(mScrollListener);
@@ -87,16 +87,16 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         return view;
     }
 
-    /* get data*/
+    /* call API and get data*/
     public void callAPI(RetroInterface apiService) {
 
-        Call<Chaeyong> call = apiService.getList(20, curPage++, "json", KEY); //인터페이스의 getList메소드를 통해, 원하는 데이터 가져오기.
+        Call<Chaeyong> call = apiService.getList(20, curPage++, "json", KEY);
 
         call.enqueue(new Callback<Chaeyong>() {
             @Override
             public void onResponse(Call<Chaeyong> call, Response<Chaeyong> response) {
                 if (response.isSuccessful()) {
-                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList()); //items의 항목들을 받아온다.
+                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList());
                     totalCnt = response.body().getResponse().getBody().getTotalCount();
 
                     adapter.notifyDataSetChanged();
@@ -121,10 +121,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     /*refresh scroll*/
     @Override
     public void onRefresh() {
+        curPage = 1;
         dataSet.clear();
         adapter.notifyDataSetChanged();
         mScrollListener.resetState();
-        curPage = 1;
         callAPI(ServerGenerator.getAPIService());
         swipeLayout.setRefreshing(false);
     }
