@@ -39,7 +39,6 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
     @Override
     public InfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
-
         return new InfoViewHolder(itemView, new CustomEditTextListener());
     }
 

@@ -44,7 +44,7 @@ public interface RetroInterface {
 
     /*GET Occupation List*/
     @GET("category/occupation/{occupation}")
-    Call<Items> getJobList  (
+    Call<ReqItems> getJobList  (
             @Header("x-auth-token") String token,
             @Path(value = "occupation", encoded = true) String occupation);
 

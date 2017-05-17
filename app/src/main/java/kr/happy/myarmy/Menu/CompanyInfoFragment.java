@@ -1,13 +1,10 @@
 package kr.happy.myarmy.Menu;
 
-import android.graphics.Color;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,74 +13,96 @@ import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import kr.happy.myarmy.CompanyVp.ComPagerAdapter;
 import kr.happy.myarmy.MainActivity;
 import kr.happy.myarmy.R;
+import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.databinding.SpeinfoBinding;
 
 
 public class CompanyInfoFragment extends Fragment {
 
-    @Nullable
-    @BindView(R.id.spe_vp)
-    ViewPager vp;
+    SpeinfoBinding binding;
 
-    @Nullable
-    @BindView(R.id.spe_tab)
-    TabLayout tabLayout;
+    private BottomBar bottomBar;
+    private static Item item;
+    private static String favTag;
 
-    BottomBar bottomBar;
+    private String speTitle;
+    private String speContent;
 
     public CompanyInfoFragment() {
     }
 
+    /*
+    setArgument
+     */
+    public static CompanyInfoFragment newInstance(Item item) {
+        Bundle args = new Bundle();
+        CompanyInfoFragment fragment = new CompanyInfoFragment();
+
+        args.putParcelable(Item.class.getName(), item);
+
+        fragment.setArguments(args);
+
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.speinfo, container, false);
-        ButterKnife.bind(this, view);
+        binding = DataBindingUtil.inflate(inflater, R.layout.speinfo, container, false);
+        View view = binding.getRoot();
+        binding.setSpeinfo(this);
 
-        vp.setAdapter(new ComPagerAdapter(getChildFragmentManager()));
-        tabLayout.setupWithViewPager(vp);
+        binding.speVp.setAdapter(new ComPagerAdapter(getChildFragmentManager(), item));
+        binding.speTab.setupWithViewPager(binding.speVp);
+
+        binding.speComTitle.setText(speTitle);
+        binding.speComContent1.setText(speContent);
 
         return view;
     }
 
 
-    /*click favorite btn, change background*/
-    @OnClick(R.id.spe_comFavorite)
+    /*    click favorite btn, change background    */
     public void addFavorite(View view) {
-        TextView v=(TextView) view;
+        TextView v = (TextView) view;
 
-        Log.d("jy", String.valueOf(v.getTag()));
-
-        if (v.getTag().equals(getString(R.string.notInterested))) {
+        if (v.getTag() == null || v.getTag().equals(R.string.notInterested)) {
             v.setBackgroundResource(R.drawable.interested_active);
             v.setTextColor(ContextCompat.getColor(getContext(), R.color.orange_a));
-            Toast.makeText(getContext(), "관심기업에 추가되었습니다", Toast.LENGTH_SHORT).show();
             v.setTag(R.string.interested);
+            Toast.makeText(getContext(), "관심기업에 추가되었습니다", Toast.LENGTH_SHORT).show();
 
-        } else if(v.getTag().equals(getString(R.string.interested))) {
+        } else if (v.getTag().equals(R.string.interested)) {
             v.setBackgroundResource(R.drawable.interested);
-            v.setTextColor(Color.parseColor("#9b9b9b"));
+            v.setTextColor(ContextCompat.getColor(getContext(), R.color.nineb));
             Toast.makeText(getContext(), "관심기업이 해제되었습니다", Toast.LENGTH_SHORT).show();
             v.setTag(R.string.notInterested);
         }
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*        꺼내오기         */
+        if (getArguments() != null) {
+            item = getArguments().getParcelable(Item.class.getName());
+            favTag=getArguments().getString("fagTag");
+
+            speTitle = item.getEopcheNm();
+            speContent = item.getCyjemokNm();
+
+
+        }
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        bottomBar=(BottomBar)(((MainActivity)getContext()).findViewById(R.id.bottom_bar));
+        bottomBar = (BottomBar) (((MainActivity) getContext()).findViewById(R.id.bottom_bar));
         bottomBar.setVisibility(View.INVISIBLE);
     }
 

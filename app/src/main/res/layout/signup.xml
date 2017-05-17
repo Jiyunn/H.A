@@ -10,12 +10,13 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/layout_parent"
+        android:id="@+id/signupparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/navy_a"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
+        android:onClick="@{activity::hideSoftKeyboard}"
         tools:context="kr.happy.myarmy.SignupActivity">
 
         <ImageView
@@ -24,8 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_transparent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintVertical_bias="0.08" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.08"
+       />
 
         <kr.happy.myarmy.Custom.LPEdittext
             android:id="@+id/signup_id"
@@ -34,7 +36,8 @@
             android:inputType="textUri"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
             app:layout_constraintTop_toBottomOf="@+id/signup_logo"
-            app:layout_constraintVertical_bias="0.21" />
+            app:layout_constraintVertical_bias="0.21"
+           />
 
         <TextView
             android:id="@+id/warnId"
@@ -45,7 +48,7 @@
             android:textColor="@color/orange_a"
             android:textSize="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/signup_id"
-            app:layout_constraintTop_toBottomOf="@id/signup_id" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_id" />
 
         <kr.happy.myarmy.Custom.LPEdittext
             android:id="@+id/signup_name"
@@ -54,7 +57,8 @@
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
             app:layout_constraintTop_toBottomOf="@+id/signup_id"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.31"
+           />
 
         <!--email-->
         <kr.happy.myarmy.Custom.LPEdittext
@@ -66,7 +70,8 @@
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
             app:layout_constraintRight_toLeftOf="@+id/signup_sendEmail"
             app:layout_constraintTop_toBottomOf="@+id/signup_name"
-            app:layout_constraintVertical_bias="0.41" />
+            app:layout_constraintVertical_bias="0.41"
+           />
 
         <TextView
             android:id="@+id/signup_sendEmail"
@@ -85,7 +90,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="@+id/signup_name"
             app:layout_constraintTop_toBottomOf="@+id/signup_name"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.41"
             android:onClick="@{activity::sendCodeClick}"/>
 
@@ -98,7 +102,7 @@
             android:textColor="@color/orange_a"
             android:textSize="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/signup_email"
-            app:layout_constraintTop_toBottomOf="@id/signup_email" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_email" />
 
 
         <!--이메일 인증-->
@@ -129,7 +133,8 @@
             android:inputType="number"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
             app:layout_constraintTop_toBottomOf="@+id/signup_email"
-            app:layout_constraintVertical_bias="0.69" />
+            app:layout_constraintVertical_bias="0.69"
+          />
 
         <TextView
             android:id="@+id/warnBirth"
@@ -140,7 +145,7 @@
             android:textColor="@color/orange_a"
             android:textSize="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/signup_birth"
-            app:layout_constraintTop_toBottomOf="@id/signup_birth" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_birth" />
 
 
         <kr.happy.myarmy.Custom.LPEdittext
@@ -150,17 +155,21 @@
             android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
             app:layout_constraintTop_toBottomOf="@+id/signup_birth"
-            app:layout_constraintVertical_bias="0.79" />
+            app:layout_constraintVertical_bias="0.79"
+
+       />
 
         <TextView
             android:id="@+id/warnPwd"
-            android:layout_width="match_parent"
+            android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:text=" "
             android:textColor="@color/orange_a"
             android:textSize="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/signup_pwd"
-            app:layout_constraintTop_toBottomOf="@id/signup_pwd" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"/>
 
         <Button
             android:id="@+id/signUp"
@@ -172,7 +181,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
-            app:layout_constraintTop_toBottomOf="@id/signup_pwd" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -182,7 +191,7 @@
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="@+id/signup_pwd"
-            app:layout_constraintTop_toBottomOf="@id/signup_pwd" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd" />
 
 
     </android.support.constraint.ConstraintLayout>

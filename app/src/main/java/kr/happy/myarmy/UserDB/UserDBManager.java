@@ -56,7 +56,7 @@ public class UserDBManager extends SQLiteOpenHelper {
                     "phone              TEXT ); ");
 
             db.execSQL("INSERT INTO " + TABLE_USER + "(email, pwd, name, birth, wantjob, specialnote, edu, certificate, address, etccareer, phone) " +
-                    "VALUES ('jygr0309@gmail.com', '12341234', '' , '', '', '', '', '', '', '','' ); "); //test
+                    "VALUES ('', '', '' , '', '', '', '', '', '', '','' ); "); //test
 
         } catch (SQLException e) {
             e.printStackTrace();

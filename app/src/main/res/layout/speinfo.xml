@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<kr.happy.myarmy.Custom.NestedCoordinatorLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="speinfo"
+            type="kr.happy.myarmy.Menu.CompanyInfoFragment"/>
+
+    </data>
+
+<kr.happy.myarmy.Custom.NestedCoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/graybacground"
     android:paddingTop="8dp">
 
@@ -35,7 +44,7 @@
             android:padding="10dp"
             android:layout_weight="5"
             android:scaleType="centerCrop"
-            android:src="@drawable/daehantong"/>
+            android:src="@drawable/oneff"/>
 
         <TextView
             android:id="@+id/spe_comTitle"
@@ -46,6 +55,8 @@
             android:textColor="@color/nineb"
             android:text="기업이름"
             android:padding="3dp"
+            android:maxLines="1"
+            android:textStyle="bold"
             android:layout_weight="3"
             android:layout_marginBottom="10dp"/>
 
@@ -57,6 +68,8 @@
             android:textSize="14dp"
             android:gravity="center_horizontal"
             android:text="채용제목"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="#4a4a4a"
             android:layout_weight="4"
             android:textStyle="bold"/>
@@ -70,9 +83,9 @@
             android:textSize="12dp"
             android:layout_weight="3"
             android:gravity="center"
-            android:tag="@string/notInterested"
             android:background="@drawable/interested"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:onClick="@{speinfo::addFavorite}"/>
 
     </LinearLayout>
 
@@ -90,7 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
-        android:paddingLeft="20dp"
+        android:paddingLeft="15dp"
         android:paddingRight="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spe_tab"
@@ -103,3 +116,4 @@
 </kr.happy.myarmy.Custom.NestedCoordinatorLayout>
 
 
+</layout>

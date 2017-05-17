@@ -1,6 +1,7 @@
 package kr.happy.myarmy;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -10,8 +11,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
-import kr.happy.myarmy.Custom.BackButtonHandler;
 import kr.happy.myarmy.Server.RetroInterface;
 import kr.happy.myarmy.Server.ServerGenerator;
 import kr.happy.myarmy.UserDB.UserDBManager;
@@ -34,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
     private Cursor c;
 
     UserDBManager mDBManager;
-    BackButtonHandler backButtonHandler;
-
 
 
     @Override
@@ -51,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         if(c!=null && c.moveToFirst() && c.getString(0) !=null)
             binding.loginId.setText(c.getString(0));
         c.close();
-
 
 
     }
@@ -70,8 +68,12 @@ public class LoginActivity extends AppCompatActivity {
         c.close();
 
         if(id.equals(dId) && pwd.equals(dPwd)){ //데이터베이스와 비교
+            binding.warnPwd.setText("");
             callToken(ServerGenerator.getRequestService());
         }
+        else
+            binding.warnPwd.setText(getString(R.string.wrongPwdTwo));
+
     }
 
     /*get Token from server*/
@@ -83,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
                     token=response.headers().get("x-auth-token");
-                    Log.d("jy", token);
                     try{
                         ContentValues contentValues=new ContentValues();
                         contentValues.put("token", token);
@@ -104,9 +105,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        backButtonHandler=new BackButtonHandler(this);
-        backButtonHandler.onBackPressed();
+    /*when click btn , hide soft keyboard*/
+    public void hideSoftKeyboard(View v) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
+
 }

@@ -1,6 +1,7 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kr.happy.myarmy.CompanyVp.ComPagerFragment;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
@@ -31,12 +33,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     private Context context;
     private ArrayList<Item> gongos;
     private int itemLayout; //레이아웃 형식
+    private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, FragmentManager fgManager) {
+    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
         this.context = context;
         this.gongos=gongos;
         this.itemLayout = itemLayout;
+        this.mRecyclerview=mRecyclerview;
         this.fgManager=fgManager;
     }
 
@@ -67,17 +71,23 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
         return (gongos != null) ? gongos.size() : 0;
     }
 
-    public void setItems(ArrayList<Item> gongos) {
-        this.gongos =gongos;
-    }
-
     /*show company's info specific*/
     @Override
     public void onClick(View v) {
+        int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
+        Item clickGongo=gongos.get(curPos); //클릭한 공고
+        String favTag= v.findViewById(R.id.item_jobFavorite).getTag().toString();
+
+        CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
+        ComPagerFragment comPagerFragment=new ComPagerFragment();
+
+        Bundle args=new Bundle();
+        args.putParcelable(Item.class.getName(), clickGongo);
+        comPagerFragment.setArguments(args);
 
         fgManager
                 .beginTransaction()
-                .replace(R.id.frag, new CompanyInfoFragment())
+                .add(R.id.frag, companyInfoFragment.newInstance(clickGongo))
                 .addToBackStack(null) //saved state
                 .commit();
     }

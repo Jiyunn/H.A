@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +15,10 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import kr.happy.myarmy.Custom.EndlessRecyclerViewScrollListener;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.GroupAdapter;
 import kr.happy.myarmy.Server.Item;
-import kr.happy.myarmy.Server.Items;
+import kr.happy.myarmy.Server.ReqItems;
 import kr.happy.myarmy.Server.RetroInterface;
 import kr.happy.myarmy.Server.ServerGenerator;
 import kr.happy.myarmy.UserDB.UserDBManager;
@@ -60,7 +58,7 @@ public class JobGroupFragment extends Fragment {
 
         binding.rvJob.setHasFixedSize(true);
         binding.rvJob.setItemAnimator(new DefaultItemAnimator());
-        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job,  fgManager);
+        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, binding.rvJob, fgManager);
         binding.rvJob.setAdapter(adapter);
 
         callJobAPI(ServerGenerator.getRequestService(), nowJob); //API불러오기 시작
@@ -69,36 +67,30 @@ public class JobGroupFragment extends Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
         binding.rvJob.setLayoutManager(mLayoutManager);
 
-        /*more load data*/
-            binding.rvJob.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutManager, 5) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                callJobAPI(ServerGenerator.getAPIService(), nowJob) ;
-            }
-        });
-
 
         return view;
     }
 
     /* get data*/
     public void callJobAPI(RetroInterface apiService, String job) {
-        Call<Items> call= apiService.getJobList(token, job);
+        Call<ReqItems> call= apiService.getJobList(token, job);
 
-        call.enqueue(new Callback<Items>() {
+        dataSet.clear();
+        adapter.notifyDataSetChanged();
+
+
+        call.enqueue(new Callback<ReqItems>() {
             @Override
-            public void onResponse(Call<Items> call, Response<Items> response) {
+            public void onResponse(Call<ReqItems> call, Response<ReqItems> response) {
                 if (response.isSuccessful()) {
-//                    dataSet.addAll(dataSet.size(), response.body().getResultList());
-//                    Log.d("jy", "성공?0");
-
+                    dataSet.addAll(dataSet.size(), response.body().getRequestList());
                     adapter.notifyDataSetChanged();
                 }
             }
-
             @Override
-            public void onFailure(Call<Items> call, Throwable t) {
+            public void onFailure(Call<ReqItems> call, Throwable t) {
                 if (t.getMessage() != null)
+                    t.printStackTrace();
                     Log.d("jy", "call API on Failure.. : " + t.getMessage());
             }
         });

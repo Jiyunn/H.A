@@ -65,8 +65,29 @@
 
     <string name="wrongEmail">&#160;올바른 이메일 형식이 아닙니다</string>
     <string name="wrongPwd">&#160;8 ~20 자의 문자만 사용 가능합니다 </string>
+    <string name="wrongPwdTwo">&#160;아이디 혹은 비밀번호가 일치하지 않습니다</string>
 
     <string name="send">전송</string>
 
     <string name="matching">매칭중입니다 · · · .</string>
+
+    <string name="magam">마감일</string>
+    <string name="jiwon">지원방법</string>
+    <string name="eopmu">담당업무</string>
+    <string name="jiwonJakuk">지원자격</string>
+    <string name="jeongong">전공</string>
+    <string name="whygok">어학능력</string>
+    <string name="yeok">고용형태</string>
+
+    <string name="website">웹사이트</string>
+    <string name="bonsa">근무지역</string>
+    <string name="daepyoNm">대표전화</string>
+    <string name="eopjong">업종</string>
+    <string name="damdangja">담당자</string>
+    <string name="damdangjaNm">담당자 연락처</string>
+
+    <string name="yeonbong">연봉</string>
+    <string name="bokri">복리후생</string>
+
+
 </resources>

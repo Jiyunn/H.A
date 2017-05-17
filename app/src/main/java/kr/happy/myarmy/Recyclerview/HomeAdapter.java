@@ -1,9 +1,9 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kr.happy.myarmy.CompanyVp.ComPagerFragment;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
@@ -64,14 +65,23 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onClick(View v) {
         int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
-
         Item clickGongo=gongos.get(curPos); //클릭한 공고
 
-        Log.d("jy", "클릭한 포지션은 : "+ String.valueOf(curPos));
+
+        CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
+        ComPagerFragment comPagerFragment=new ComPagerFragment();
+
+        Bundle args=new Bundle();
+        args.putParcelable(Item.class.getName(), clickGongo);
+        comPagerFragment.setArguments(args);
+
+        /*
+        save data
+         */
 
         fgManager
                 .beginTransaction()
-                .replace(R.id.frag, new CompanyInfoFragment())
+                .replace(R.id.frag, companyInfoFragment.newInstance(clickGongo))
                 .addToBackStack(null) //saved state
                 .commit();
     }

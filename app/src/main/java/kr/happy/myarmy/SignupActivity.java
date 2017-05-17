@@ -2,6 +2,7 @@ package kr.happy.myarmy;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.SQLException;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -73,6 +74,13 @@ public class SignupActivity extends AppCompatActivity {
             callJoinAPI(ServerGenerator.getRequestService());
     }
 
+    /*
+    already
+     */
+    public void alreadySignUp(View v) {
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+    }
+
 
     /* request join*/
     public void callJoinAPI(RetroInterface apiService) {
@@ -99,6 +107,8 @@ public class SignupActivity extends AppCompatActivity {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
+                    confirmDialog("회원가입이 완료되었습니다");
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
             }
 
@@ -158,7 +168,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     /*when click btn , hide soft keyboard*/
-    protected void hideSoftKeyboard(View v) {
+    public void hideSoftKeyboard(View v) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }

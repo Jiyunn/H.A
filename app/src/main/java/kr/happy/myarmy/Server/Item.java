@@ -1,15 +1,19 @@
 
 package kr.happy.myarmy.Server;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
-public class Item {
+public class Item implements Parcelable {
 
 
     @SerializedName("bokrihs")
@@ -45,9 +49,6 @@ public class Item {
     @SerializedName("eopcheNm")
     @Expose
     private String eopcheNm;
-    @SerializedName("eopjongGbcd")
-    @Expose
-    private long eopjongGbcd;
     @SerializedName("eopjongGbcdNm")
     @Expose
     private String eopjongGbcdNm;
@@ -57,15 +58,9 @@ public class Item {
     @SerializedName("geunmujysido")
     @Expose
     private String geunmujysido;
-    @SerializedName("gmjybjusoCd")
-    @Expose
-    private long gmjybjusoCd;
     @SerializedName("gyeongryeokGbcdNm")
     @Expose
     private String gyeongryeokGbcdNm;
-    @SerializedName("gyjogeonCd")
-    @Expose
-    private String gyjogeonCd;
     @SerializedName("gyjogeonCdNm")
     @Expose
     private String gyjogeonCdNm;
@@ -74,28 +69,36 @@ public class Item {
     private String homepg;
     @SerializedName("jeopsubb")
     @Expose
-    private String jeopsubb;
+    private String jeopsu;
+    @SerializedName("jggyeyeolCdNm")
+    @Expose
+    private String jeonGong;
     @SerializedName("magamDt")
     @Expose
     private long magamDt;
+    @SerializedName("Oegukeo")
+    @Expose
+    private String Oegukeo;
+    @SerializedName("ogegsneungryeokCdNm")
+    @Expose
+    private String OegukeoGusa;
     @SerializedName("sschaeyongYn")
     @Expose
     private String sschaeyongYn;
-    @SerializedName("yeokjongBrcd")
-    @Expose
-    private String yeokjongBrcd;
     @SerializedName("yeokjongBrcdNm")
     @Expose
     private String yeokjongBrcdNm;
-    @SerializedName("yowonGbcd")
-    @Expose
-    private long yowonGbcd;
     @SerializedName("yowonGbcdNm")
     @Expose
     private String yowonGbcdNm;
     @SerializedName("yuhyoYn")
     @Expose
     private String yuhyoYn;
+
+
+    public Item(Parcel in){
+        readFromParcel(in);
+    }
 
     public String getBokri() {
         return bokri;
@@ -105,18 +108,16 @@ public class Item {
     public String getCjhakryeok() {
         if (this.cjhakryeok.equals("고등학교졸업"))
             return "고졸";
-        else if(this.cjhakryeok.equals("고등학교중퇴"))
+        else if (this.cjhakryeok.equals("고등학교중퇴"))
             return "고교중퇴";
 
         return cjhakryeok;
     }
 
 
-
     public String getCyjemokNm() {
         return cyjemokNm;
     }
-
 
 
     public String getDamdangjaFnm() {
@@ -134,7 +135,6 @@ public class Item {
     }
 
 
-
     public String getDpyeonrakcheoNo() {
         return dpyeonrakcheoNo;
     }
@@ -142,12 +142,6 @@ public class Item {
 
     public String getEopcheNm() {
         return eopcheNm;
-    }
-
-
-
-    public long getEopjongGbcd() {
-        return eopjongGbcd;
     }
 
 
@@ -161,37 +155,36 @@ public class Item {
     }
 
 
-
     /*edit genmujysideo*/
-    public String convertGeunmujySido(){
-        String guen=""; //수정된 근무지 시도 나타냄
+    public String convertGeunmujySido() {
+        String guen = ""; //수정된 근무지 시도 나타냄
         StringBuilder builder;
 
-        String[] temp=this.geunmujysido.split("[, ]+"); //콤마나 공백을 기준으로 문자열을 자름.
+        String[] temp = this.geunmujysido.split("[, ]+"); //콤마나 공백을 기준으로 문자열을 자름.
 
-        for(int i=0; i<temp.length; i++){
-            switch(temp[i].length()){
-                case 3:{
-                    builder=new StringBuilder(temp[i]);
-                    temp[i]=(builder.substring(0, 2)).toString();
+        for (int i = 0; i < temp.length; i++) {
+            switch (temp[i].length()) {
+                case 3: {
+                    builder = new StringBuilder(temp[i]);
+                    temp[i] = (builder.substring(0, 2)).toString();
 
                     break;
                 }
-                case 4:{
-                    builder=new StringBuilder(temp[i]);
-                    temp[i]=(builder.deleteCharAt(1).deleteCharAt(2)).toString();
+                case 4: {
+                    builder = new StringBuilder(temp[i]);
+                    temp[i] = (builder.deleteCharAt(1).deleteCharAt(2)).toString();
                     break;
                 }
-                case 5:{
-                    builder=new StringBuilder(temp[i]);
-                    temp[i]=(builder.substring(0, 2)).toString();
+                case 5: {
+                    builder = new StringBuilder(temp[i]);
+                    temp[i] = (builder.substring(0, 2)).toString();
                     break;
                 }
             }
-            if(i<temp.length-1)
-                guen+=temp[i]+", ";
+            if (i < temp.length - 1)
+                guen += temp[i] + ", ";
             else
-                guen+=temp[i];
+                guen += temp[i];
         }
 
         return guen;
@@ -201,20 +194,8 @@ public class Item {
         return geunmujysido;
     }
 
-
-    public long getGmjybjusoCd() {
-        return gmjybjusoCd;
-    }
-
-
     public String getGyeongryeokGbcdNm() {
         return gyeongryeokGbcdNm;
-    }
-
-
-
-    public String getGyjogeonCd() {
-        return gyjogeonCd;
     }
 
 
@@ -223,14 +204,31 @@ public class Item {
     }
 
 
-    public String getHomepg(){
+    public String getHomepg() {
         return homepg;
     }
 
-    public String getJeopsubb() {
-        return jeopsubb;
-    }
 
+    public String hangleMagamDt(){
+        if(this.magamDt==0)
+            return "";
+
+        else{
+            SimpleDateFormat rawFormat=new SimpleDateFormat("yyyyMMdd");
+            SimpleDateFormat realFormat=new SimpleDateFormat("yyyy년 MM월 dd일");
+            String dDay="";
+
+            try{
+                Date date=rawFormat.parse(String.valueOf(this.magamDt));
+                dDay=realFormat.format(date);
+
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
+            return dDay;
+        }
+
+    }
 
 
     public String convertMagamDt() {//마감일자
@@ -264,29 +262,16 @@ public class Item {
         return magamDt;
     }
 
+
     public String getSschaeyongYn() {
 
         return sschaeyongYn;
     }
 
 
-
-    public String getYeokjongBrcd() {
-        return yeokjongBrcd;
-    }
-
-
-
     public String getYeokjongBrcdNm() {
         return yeokjongBrcdNm;
     }
-
-
-
-    public long getYowonGbcd() {
-        return yowonGbcd;
-    }
-
 
 
     public String getYowonGbcdNm() {
@@ -298,7 +283,20 @@ public class Item {
         return yuhyoYn;
     }
 
+    public String getJeopsu() {
+        return jeopsu;
+    }
 
+    public String getJeonGong() {
+        return jeonGong;
+    }
+
+    public String convertJeonGong(){
+        if(this.jeonGong ==null )
+            return "무관";
+        else
+            return this.jeonGong;
+    }
 
     public long getCcdLDtm() {
         return ccdLDtm;
@@ -314,4 +312,80 @@ public class Item {
         return gongoNo;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public Item(){
+
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(homepg);
+        dest.writeString(geunmujy);
+        dest.writeString(dpyeonrakcheoNo);
+        dest.writeString(eopjongGbcdNm);
+        dest.writeString(damdangjaFnm);
+        dest.writeString(ddjyeonrakcheoNo);
+
+        dest.writeLong(magamDt);
+        dest.writeString(jeopsu);
+        dest.writeString(cyjemokNm);
+        dest.writeString(ddeopmuNm);
+        dest.writeString(cjhakryeok);
+        dest.writeString(jeonGong);
+        dest.writeString(Oegukeo);
+        dest.writeString(OegukeoGusa);
+        dest.writeString(yeokjongBrcdNm);
+
+        dest.writeString(gyjogeonCdNm);
+        dest.writeString(bokri);
+    }
+
+    public void readFromParcel(Parcel in){
+        homepg = in.readString();
+        geunmujy= in.readString();
+        dpyeonrakcheoNo= in.readString();
+        eopjongGbcdNm= in.readString();
+        damdangjaFnm= in.readString();
+        ddjyeonrakcheoNo= in.readString();
+
+        magamDt= in.readLong();
+        jeopsu= in.readString();
+        cyjemokNm= in.readString();
+        ddeopmuNm= in.readString();
+        cjhakryeok= in.readString();
+        jeonGong= in.readString();
+        Oegukeo= in.readString();
+        OegukeoGusa= in.readString();
+        yeokjongBrcdNm= in.readString();
+
+        gyjogeonCdNm= in.readString();
+        bokri= in.readString();
+    }
+
+
+    public String getOegukeo() {
+        return Oegukeo;
+    }
+
+    public String getOegukeoGusa() {
+        return OegukeoGusa;
+    }
+
+
+/* un-marshal, / de-serialize*/
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 }

@@ -1,12 +1,8 @@
 package kr.happy.myarmy.Server;
 
-import com.facebook.stetho.okhttp3.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.ihsanbal.logging.Level;
-import com.ihsanbal.logging.LoggingInterceptor;
 
 import okhttp3.OkHttpClient;
-import okhttp3.internal.platform.Platform;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -21,18 +17,10 @@ public class ServerGenerator {
 
 
     public static OkHttpClient getClient() {
-        OkHttpClient.Builder client = new OkHttpClient.Builder()
+
+        return new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
-                .addInterceptor(new LoggingInterceptor.Builder()
-                        .loggable(BuildConfig.DEBUG)
-                        .setLevel(Level.BASIC)
-                        .log(Platform.INFO)
-                        .tag("LoggingI")
-                        .request("Request")
-                        .response("response")
-                        .addHeader("version", BuildConfig.VERSION_NAME)
-                        .build());
-        return client.build();
+                .build();
     }
 
     public static Retrofit getRetrofitInstance() {

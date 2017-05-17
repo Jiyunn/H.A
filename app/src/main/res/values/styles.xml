@@ -147,6 +147,7 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintHorizontal_bias">0</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="android:textColorHint">@color/nineb</item>
         <item name="android:textSize">14dp</item>

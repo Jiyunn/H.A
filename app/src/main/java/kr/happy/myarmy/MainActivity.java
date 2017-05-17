@@ -1,7 +1,6 @@
 package kr.happy.myarmy;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -93,11 +91,7 @@ public class MainActivity extends AppCompatActivity  {
         });
 
     }
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        Log.d("jy", "onconfig?");
-        super.onConfigurationChanged(newConfig);
-    }
+
 
     /*back!*/
     @OnClick(R.id.toolbar_back)

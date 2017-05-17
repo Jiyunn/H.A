@@ -58,7 +58,7 @@ public class RegionGroupFragment extends Fragment {
 
         mRecyclerview.setHasFixedSize(true);
 
-        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, fgManager); //어댑터 등록
+//        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, fgManager); //어댑터 등록
         mRecyclerview.setAdapter(adapter);
 
         callAPI(ServerGenerator.getAPIService()); //API불러오기 시작

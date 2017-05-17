@@ -54,13 +54,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public HomeFragment() {
     } //기본생성자
 
+
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home, container, false);
         ButterKnife.bind(this, view);
 
-        swipeLayout.setColorSchemeResources(R.color.navy_a);
+        swipeLayout.setColorSchemeResources(R.color.orange_a);
         swipeLayout.setOnRefreshListener(this);
 
         mRecyclerview.setHasFixedSize(true);

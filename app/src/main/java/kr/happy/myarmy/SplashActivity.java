@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import kr.happy.myarmy.Custom.BackButtonHandler;
 import kr.happy.myarmy.UserDB.UserDBManager;
 import kr.happy.myarmy.databinding.ActivitySplashBinding;
 
@@ -16,11 +17,15 @@ public class SplashActivity extends AppCompatActivity {
     UserDBManager mDBManager;
     Cursor c;
 
+    BackButtonHandler backButtonHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this, R.layout.activity_splash);
         binding.setActivity(this);
+
+        backButtonHandler=new BackButtonHandler(this);
 
         mDBManager=UserDBManager.getInstance(this);
 
@@ -30,13 +35,12 @@ public class SplashActivity extends AppCompatActivity {
 //        if (c.getString(0) !=null )
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-//        c.close();
+        c.close();
     }
 
     public void onClick(View v) {
@@ -44,6 +48,13 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         else if(v.getId() == R.id.signUp)
             startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        backButtonHandler.onBackPressed();
     }
 
 

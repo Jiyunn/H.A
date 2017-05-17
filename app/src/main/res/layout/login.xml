@@ -12,13 +12,15 @@
     </data>
 
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/loginParent"
     tools:context="kr.happy.myarmy.LoginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:paddingLeft="50dp"
     android:paddingRight="50dp"
-    android:background="@color/navy_a">
+    android:background="@color/navy_a"
+    android:onClick="@{activity::hideSoftKeyboard}">
 
     <ImageView
         android:id="@+id/login_logo"
@@ -26,7 +28,7 @@
         android:layout_height="wrap_content"
         style="@style/constraintCenter"
         android:src="@drawable/logo_transparent_small"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.1"
       />
 
@@ -35,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/constraintCenter"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.3"
         android:text="Log In"
         android:textColor="@color/white"
@@ -49,7 +51,9 @@
         android:inputType="textEmailAddress"
         app:layout_constraintVertical_bias="0.45"
         app:layout_constraintLeft_toLeftOf="@+id/login_logo"
-        />
+        app:layout_constraintRight_toRightOf="parent"
+
+     />
 
     <kr.happy.myarmy.Custom.LPEdittext
         android:id="@+id/login_pwd"
@@ -59,7 +63,22 @@
         app:layout_constraintLeft_toLeftOf="@+id/login_logo"
         app:layout_constraintTop_toBottomOf="@+id/login_id"
         app:layout_constraintVertical_bias="0.58"
- />
+        app:layout_constraintRight_toRightOf="parent"
+       />
+    <TextView
+        android:id="@+id/warnPwd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textColor="@color/orange_a"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@+id/login_pwd"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        android:maxLines="1"
+        />
 
     <Button
         android:id="@+id/signIn"
@@ -68,9 +87,11 @@
         style="@style/firstScreen"
         android:text="@string/login"
         app:layout_constraintVertical_bias="0.87"
+        app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/btnshape_orange"
         android:onClick="@{activity::loginClick}"
-      />
+
+         />
 
 
 

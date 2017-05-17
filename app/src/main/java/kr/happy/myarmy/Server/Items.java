@@ -12,23 +12,12 @@ public class Items {
     @Expose
     private ArrayList<Item> itemList= null;
 
-    @SerializedName("code")
-    private long code;
-
-    @SerializedName("result")
-    @Expose
-    private ArrayList<ArrayList<Item>> resultList= null;
-
-    public Items(ArrayList<ArrayList<Item>> resultList) {
-        this.resultList = resultList;
-    }
-
 
     public ArrayList<Item> getItemList() {
         return itemList;
     }
 
-    public ArrayList<ArrayList<Item>> getResultList() {
-        return resultList;
+    public void setItemList(ArrayList<Item> itemList) {
+        this.itemList = itemList;
     }
 }
