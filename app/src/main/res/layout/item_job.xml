@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="132dp"
-    android:padding="@dimen/basic_margin"
+    android:layout_height="130dp"
+    android:padding="8dp"
     android:layout_marginTop="8dp"
     android:background="@color/white">
 
@@ -20,6 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/item_jobLogo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
         />
 
     <ImageView
@@ -53,24 +54,13 @@
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/item_jobContent1"
+        app:layout_constraintBottom_toTopOf="@+id/item_jobContent2"
         android:text="기업이름"
         android:maxLines="1"
         android:textColor="@color/orange_a"
         android:textSize="14dp"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/item_jobContent1"
-        style="@style/itemJobContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@+id/item_jobTitle"
-        app:layout_constraintBottom_toTopOf="@+id/item_jobContent2"
-        android:text="채용제목"
-        android:textColor="#484848"
-        android:textSize="12dp"/>
 
     <TextView
         android:id="@+id/item_jobContent2"
@@ -78,7 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingTop="1dp"
-        app:layout_constraintTop_toBottomOf="@+id/item_jobContent1"
+        app:layout_constraintTop_toBottomOf="@+id/item_jobTitle"
         app:layout_constraintBottom_toTopOf="@+id/item_jobContent3"
         android:text="담당업무"
         android:maxLines="1"

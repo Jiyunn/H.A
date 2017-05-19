@@ -1,7 +1,6 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kr.happy.myarmy.CompanyVp.ComPagerFragment;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
@@ -69,19 +67,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
 
         CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
-        ComPagerFragment comPagerFragment=new ComPagerFragment();
-
-        Bundle args=new Bundle();
-        args.putParcelable(Item.class.getName(), clickGongo);
-        comPagerFragment.setArguments(args);
-
         /*
         save data
          */
 
         fgManager
                 .beginTransaction()
-                .replace(R.id.frag, companyInfoFragment.newInstance(clickGongo))
+                .replace(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId()))
                 .addToBackStack(null) //saved state
                 .commit();
     }

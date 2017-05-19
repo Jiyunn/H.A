@@ -4,6 +4,11 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="AppSpinnerDropDownItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:background">@drawable/infobackground</item>
+
+    </style>
+
     <style name="bottomTabIcon">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -154,5 +159,14 @@
         <item name="android:maxLines">1</item>
         <item name="android:textCursorDrawable">@null</item>
     </style>
+
+    <style name="infoCheckbox">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/nineb</item>
+
+    </style>
+
 
 </resources>

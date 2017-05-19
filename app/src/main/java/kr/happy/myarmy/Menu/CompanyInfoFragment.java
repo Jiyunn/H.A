@@ -16,7 +16,6 @@ import com.roughike.bottombar.BottomBar;
 import kr.happy.myarmy.CompanyVp.ComPagerAdapter;
 import kr.happy.myarmy.MainActivity;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Server.Item;
 import kr.happy.myarmy.databinding.SpeinfoBinding;
 
 
@@ -25,8 +24,7 @@ public class CompanyInfoFragment extends Fragment {
     SpeinfoBinding binding;
 
     private BottomBar bottomBar;
-    private static Item item;
-    private static String favTag;
+    private static int id; //공고의 아이디 번호
 
     private String speTitle;
     private String speContent;
@@ -37,11 +35,11 @@ public class CompanyInfoFragment extends Fragment {
     /*
     setArgument
      */
-    public static CompanyInfoFragment newInstance(Item item) {
+    public static CompanyInfoFragment newInstance(int id) {
         Bundle args = new Bundle();
         CompanyInfoFragment fragment = new CompanyInfoFragment();
 
-        args.putParcelable(Item.class.getName(), item);
+        args.putInt("CUR_ID", id);
 
         fragment.setArguments(args);
 
@@ -55,7 +53,7 @@ public class CompanyInfoFragment extends Fragment {
         View view = binding.getRoot();
         binding.setSpeinfo(this);
 
-        binding.speVp.setAdapter(new ComPagerAdapter(getChildFragmentManager(), item));
+        binding.speVp.setAdapter(new ComPagerAdapter(getChildFragmentManager() , id));
         binding.speTab.setupWithViewPager(binding.speVp);
 
         binding.speComTitle.setText(speTitle);
@@ -87,16 +85,9 @@ public class CompanyInfoFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*        꺼내오기         */
-        if (getArguments() != null) {
-            item = getArguments().getParcelable(Item.class.getName());
-            favTag=getArguments().getString("fagTag");
+        if(getArguments() !=null)
+            id=getArguments().getInt("CUR_ID");
 
-            speTitle = item.getEopcheNm();
-            speContent = item.getCyjemokNm();
-
-
-        }
     }
 
     @Override

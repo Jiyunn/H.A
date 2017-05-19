@@ -32,10 +32,10 @@
     <string name="whahak">화학</string>
     <string name="euiryu">의류</string>
     <string name="euiyak">의료 / 의약</string>
-    <string name="gaebal">개발</string>
+    <string name="gaebal">연구 / 개발</string>
     <string name="gigye">기계</string>
 
-    <string name="gyeongi">경기도</string>
+    <string name="gyeongi">경기/서울</string>
     <string name="gangwon">강원도</string>
     <string name="chungbook">충청북도</string>
     <string name="chungnam">충청남도</string>
@@ -88,6 +88,22 @@
 
     <string name="yeonbong">연봉</string>
     <string name="bokri">복리후생</string>
+
+
+    <string-array name="month">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 
 
 </resources>

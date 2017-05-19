@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import kr.happy.myarmy.Server.Item;
-
 /**
  * Created by JY on 2017-05-02.
  */
@@ -13,17 +11,17 @@ import kr.happy.myarmy.Server.Item;
 public class ComPagerAdapter extends FragmentStatePagerAdapter {
     private final int PAGE_CNT =3;
     private final String tabTitle[] =new String[] {"기업정보", "채용정보" , "연봉정보"};
-    private Item item;
+    private int id;
 
-   public ComPagerAdapter(FragmentManager fm, Item item) {
+   public ComPagerAdapter(FragmentManager fm, int id) {
         super(fm);
-        this.item=item;
+        this.id=id;
     }
 
     @Override
     public Fragment getItem(int position) {
 
-        return ComPagerFragment.newInstance(position, item);
+        return ComPagerFragment.newInstance(position, id);
     } //send compagerfragment , position .
 
     @Override

@@ -28,7 +28,6 @@
         android:text="www.win3win.me"
         android:ellipsize="end"
         android:textColor="@color/nineb"
-        android:textStyle="bold"
         android:textSize="14dp" />
 
 </LinearLayout>

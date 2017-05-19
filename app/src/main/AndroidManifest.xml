@@ -27,7 +27,6 @@
         </provider>
 
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +34,12 @@
             </intent-filter>
 
         </activity>
+
+        <activity android:name=".XpracActivity">
+
+
+        </activity>
+
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity

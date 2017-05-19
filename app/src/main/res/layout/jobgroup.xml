@@ -156,7 +156,6 @@
                     style="@style/jobBtn"
                     android:drawableTop="@drawable/saengsan"
                     android:text="@string/saengsan"
-                    android:textSize="10dp"
                     app:layout_constraintLeft_toRightOf="@+id/job_somyou"
                     app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
                     app:layout_constraintTop_toBottomOf="@+id/job_whahak"

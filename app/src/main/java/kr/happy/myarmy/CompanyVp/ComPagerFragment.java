@@ -1,5 +1,6 @@
 package kr.happy.myarmy.CompanyVp;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -18,6 +22,12 @@ import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.Data;
 import kr.happy.myarmy.Recyclerview.SpeAdapter;
 import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.Server.RetroInterface;
+import kr.happy.myarmy.Server.ServerGenerator;
+import kr.happy.myarmy.UserDB.UserDBManager;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ComPagerFragment extends Fragment {
@@ -31,20 +41,25 @@ public class ComPagerFragment extends Fragment {
     private SpeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Data> dataSet;
+    private ArrayList<Item> dataSet2;
     private String[] itemTitle;
     private String[] itemContent;
-    private static Item item; //프래그먼트로부터 받아온 item객체
+    private Item item;
+    private String token;
+    private int id;
+    private static final String CUR_ID = "CUR_ID";
+
+    private UserDBManager mDBManager;
 
     public ComPagerFragment() {
     }
 
-    public static ComPagerFragment newInstance(int page, Item item) {
+    public static ComPagerFragment newInstance(int page, int id) {
         ComPagerFragment fragment = new ComPagerFragment();
         Bundle args = new Bundle();
 
         args.putInt(CUR_PAGE, page);
-        args.putParcelable(Item.class.getName(), item);
-
+        args.putInt(CUR_ID, id);
         fragment.setArguments(args);
 
         return fragment;
@@ -57,7 +72,6 @@ public class ComPagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.spe_view, container, false);
         ButterKnife.bind(this, view);
 
-        item = getArguments().getParcelable(Item.class.getName());
         mRecyclerview.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -70,34 +84,78 @@ public class ComPagerFragment extends Fragment {
         mRecyclerview.setAdapter(adapter);
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
 
-
-        switch (mPage) { //페이지마다 모두 형식은 같지만,  dataSet만 다르게 뿌려주자.
-            case 0:
-                setCompanyData();
-                break;
-            case 1:
-                setChaeyongData();
-                break;
-            case 2:
-                setYeonbongData();
-                break;
-        }
+        /*
+        기업, 채용, 연봉정보 데이터 뿌려주기
+         */
+        callSpeAPI(ServerGenerator.getRequestService(), id, mPage);
 
         return view;
     }
 
+    /*
+    get data
+    */
+    public void callSpeAPI(RetroInterface apiService, int id, final int mPage) {
+        Call<JsonObject> call = apiService.getSpeList(token, id);
+
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if (response.isSuccessful()) {
+
+                    Gson gson = new Gson();
+                    item = gson.fromJson(response.body().get("result").getAsJsonObject(), Item.class);
+
+                    adapter.notifyDataSetChanged();
+
+                    switch (mPage) {
+                        case 0:
+                            setCompanyData();
+                            break;
+                        case 1:
+                            setChaeyongData();
+                            break;
+                        case 2:
+                            setYeonbongData();
+                            break;
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null)
-            mPage = getArguments().getInt(CUR_PAGE);
+        mDBManager = UserDBManager.getInstance(getActivity());
         dataSet = new ArrayList<>();
+        dataSet2 = new ArrayList<>();
+        /*
+        get TOKEN
+         */
+        Cursor c = mDBManager.query(new String[]{"token"}, null, null, null, null, null);
+
+        if (c != null && c.moveToFirst())
+            token = c.getString(0);
+
+        if (getArguments() != null) {
+            mPage = getArguments().getInt(CUR_PAGE);
+            id = getArguments().getInt(CUR_ID);
+        }
     }
 
-    /* set company data method*/
+    /*
+    set company data method
+    */
     private void setCompanyData() {
+
+
         itemTitle = new String[]{getString(R.string.website), getString(R.string.bonsa), getString(R.string.daepyoNm),
                 getString(R.string.eopjong), getString(R.string.damdangja), getString(R.string.damdangjaNm)};
 
@@ -107,48 +165,49 @@ public class ComPagerFragment extends Fragment {
         adapter.notifyDataSetChanged();
 
         for (int i = 0; i < itemTitle.length; i++) {
-            if(itemContent[i] == null)
-                itemContent[i]=" ";
+            if (itemContent[i] == null)
+                itemContent[i] = " ";
 
             dataSet.add(new Data(itemTitle[i], itemContent[i]));
         }
     }
 
-    /* set chaeyong data*/
+    /*
+     set chaeyong data
+     */
     private void setChaeyongData() {
-        //지원자격 : 신입/경력여부 + 학력 , 고용형태: 역종
         itemTitle = new String[]{getString(R.string.magam), getString(R.string.jiwon), getString(R.string.eopmu), getString(R.string.jiwonJakuk),
-                getString(R.string.jeongong), getString(R.string.whygok), getString(R.string.yeok)};
+                getString(R.string.jeongong), getString(R.string.yeok)};
 
-        itemContent= new String[]{item.hangleMagamDt(), item.getJeopsu(), item.getDdeopmuNm(), item.getGyeongryeokGbcdNm()+" | "+item.getCjhakryeok(),
-                item.convertJeonGong(), item.getOegukeo()+" "+item.getOegukeoGusa(), item.getYeokjongBrcdNm()};
+        itemContent = new String[]{item.hangleMagamDt(), item.getJeopsu(), item.getDdeopmuNm(), item.getGyeongryeokGbcdNm() + " | " + item.getCjhakryeok(),
+                item.convertJeonGong(), item.getYeokjongBrcdNm()};
 
         dataSet.clear();
         adapter.notifyDataSetChanged();
 
-        for(int i=0; i< itemTitle.length; i++){
-            if(itemContent[i] == null)
-                itemContent[i]=" ";
+        for (int i = 0; i < itemTitle.length; i++) {
+            if (itemContent[i] == null)
+                itemContent[i] = " ";
 
-            itemContent[i].replace("null"," ");
             dataSet.add(new Data(itemTitle[i], itemContent[i]));
         }
     }
 
-    /*set yeonbong data*/
+    /*
+    set yeonbong data
+    */
     private void setYeonbongData() {
-        //연봉, 복리후생
-        itemTitle = new String[]{getString(R.string.bokri),getString(R.string.yeonbong), };
-        itemContent = new String[] {item.getBokri(), item.getGyeongryeokGbcdNm()};
+
+        itemTitle = new String[]{getString(R.string.bokri), getString(R.string.yeonbong),};
+        itemContent = new String[]{item.getBokri(), item.getGyeongryeokGbcdNm()};
 
         dataSet.clear();
         adapter.notifyDataSetChanged();
 
-        for(int i=0; i< itemTitle.length; i++){
-            if(itemContent[i] == null)
-                itemContent[i]=" ";
+        for (int i = 0; i < itemTitle.length; i++) {
+            if (itemContent[i] == null)
+                itemContent[i] = " ";
 
-            itemContent[i].replace("null"," ");
             dataSet.add(new Data(itemTitle[i], itemContent[i]));
         }
 

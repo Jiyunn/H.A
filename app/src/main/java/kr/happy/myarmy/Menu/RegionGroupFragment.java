@@ -1,27 +1,28 @@
 package kr.happy.myarmy.Menu;
 
+import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Recyclerview.GroupAdapter;
 import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.Server.ReqItems;
 import kr.happy.myarmy.Server.RetroInterface;
 import kr.happy.myarmy.Server.ServerGenerator;
+import kr.happy.myarmy.UserDB.UserDBManager;
+import kr.happy.myarmy.databinding.RegiongroupBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,81 +33,126 @@ import retrofit2.Response;
 
 public class RegionGroupFragment extends Fragment {
 
-    @Nullable @BindView(R.id.rv_region)
-    RecyclerView mRecyclerview;
-
-    @Nullable @BindView(R.id.item_jobFavorite)
-    ImageButton favorite;
+    RegiongroupBinding binding;
 
     private GroupAdapter adapter;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Item> dataSet;
-
-    static final String KEY = "";
-    int curPage = 1;
-    int totalCnt = 0;
+    private String nowArea;
+    private String token;
 
     FragmentManager fgManager;
+    UserDBManager mDBManager;
 
-    public RegionGroupFragment(){} //기본생성자
+    public RegionGroupFragment() {
+    }
 
     @Nullable
-    @Override //뷰 생성
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.regiongroup, container, false);
-        ButterKnife.bind(this, view);
+        binding = DataBindingUtil.inflate(inflater, R.layout.regiongroup, container, false);
+        View view = binding.getRoot();
+        binding.setRegiongroup(this);
 
-        mRecyclerview.setHasFixedSize(true);
-
-//        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, fgManager); //어댑터 등록
-        mRecyclerview.setAdapter(adapter);
-
-        callAPI(ServerGenerator.getAPIService()); //API불러오기 시작
+        binding.rvRegion.setHasFixedSize(true);
+        binding.rvRegion.setItemAnimator(new DefaultItemAnimator());
+        adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, binding.rvRegion, fgManager);
+        binding.rvRegion.setAdapter(adapter);
+        /*
+        지역별 데이터 가져오기
+         */
+        callRegionAPI(ServerGenerator.getRequestService(), nowArea);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
-        mRecyclerview.setLayoutManager(mLayoutManager);
-
-        mRecyclerview.setItemAnimator(new DefaultItemAnimator());
-
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.rvRegion.setLayoutManager(mLayoutManager);
 
         return view;
     }
 
 
     /* get data*/
-    public void callAPI(RetroInterface apiService) {
+    public void callRegionAPI(RetroInterface apiService, String nowArea) {
+        Call<ReqItems> call = apiService.getAreaList(token, nowArea);
 
-        Call<Chaeyong> call = apiService.getList(20, curPage++, "json", KEY); //인터페이스의 getList메소드를 통해, 원하는 데이터 가져오기.
 
-        call.enqueue(new Callback<Chaeyong>() {
+        if (nowArea.equals("서울") || nowArea.equals("경기")) ;
+        {
+            dataSet.clear();
+            adapter.notifyDataSetChanged();
+        }
+
+        call.enqueue(new Callback<ReqItems>() {
             @Override
-            public void onResponse(Call<Chaeyong> call, Response<Chaeyong> response) {
+            public void onResponse(Call<ReqItems> call, Response<ReqItems> response) {
                 if (response.isSuccessful()) {
-                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList()); //items의 항목들을 받아온다.
-                    totalCnt = response.body().getResponse().getBody().getTotalCount();
-
+                    dataSet.addAll(dataSet.size(), response.body().getRequestList());
                     adapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<Chaeyong> call, Throwable t) {
-                if (t.getMessage() != null)
-                    Log.d("jy", "call API on Failure.. : " + t.getMessage());
+            public void onFailure(Call<ReqItems> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("jy", t.getMessage());
             }
         });
     }
 
+    /*
+    지역 btn
+     */
+    public void onRegionClick(View v) {
+        int btnId = v.getId();
 
+        switch (btnId) {
+            case R.id.region_gyeongi:
+                callRegionAPI(ServerGenerator.getRequestService(), "경기도");
+                callRegionAPI(ServerGenerator.getRequestService(), "서울특별시");
+                break;
+            case R.id.region_gangwon:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.gangwon));
+                break;
+            case R.id.region_chungbook:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.chungbook));
+                break;
+            case R.id.region_chungnam:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.chungnam));
+                break;
+            case R.id.region_kyeongbook:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.kyeongbook));
+                break;
+            case R.id.region_kyeongnam:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.kyeongnam));
+                break;
+            case R.id.region_jeonbook:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.jeonbook));
+                break;
+            case R.id.region_jeonnam:
+                callRegionAPI(ServerGenerator.getRequestService(), getString(R.string.jeonnam));
+                break;
+        }
+    }
+
+    /*
+    객체 생성 및 토큰 받아오기
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        nowArea="경기도"; //이거 왜 500뜨지?
+
         fgManager = getFragmentManager();
         dataSet = new ArrayList<>();
 
-    }
+        mDBManager = UserDBManager.getInstance(getActivity());
 
+        Cursor c = mDBManager.query(new String[]{"token"}, null, null, null, null, null);
+
+        if (c != null && c.moveToFirst())
+            token = c.getString(0);
+        c.close();
+    }
 
 }

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kr.happy.myarmy.CompanyVp.ComPagerFragment;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
@@ -55,7 +54,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     @Override
     public void onBindViewHolder(JobViewHolder holder, final int position) {
         holder.companyName.setText(gongos.get(position).getEopcheNm());
-        holder.companyJaemok.setText(gongos.get(position).getCyjemokNm());
         holder.companyUpmoo.setText(gongos.get(position).getDdeopmuNm());
         holder.companyLocaPay.setText(gongos.get(position).convertGeunmujySido() + " | " +
                 gongos.get(position).getGyjogeonCdNm());
@@ -76,18 +74,15 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     public void onClick(View v) {
         int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
         Item clickGongo=gongos.get(curPos); //클릭한 공고
-        String favTag= v.findViewById(R.id.item_jobFavorite).getTag().toString();
 
         CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
-        ComPagerFragment comPagerFragment=new ComPagerFragment();
 
         Bundle args=new Bundle();
-        args.putParcelable(Item.class.getName(), clickGongo);
-        comPagerFragment.setArguments(args);
+        args.putInt("CUR_ID", clickGongo.getId());
 
         fgManager
                 .beginTransaction()
-                .add(R.id.frag, companyInfoFragment.newInstance(clickGongo))
+                .add(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId()))
                 .addToBackStack(null) //saved state
                 .commit();
     }
@@ -97,7 +92,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
         @BindView(R.id.item_jobLogo) ImageView logo;
         @BindView(R.id.item_jobTitle)TextView companyName; //업체이름
-        @BindView(R.id.item_jobContent1)TextView companyJaemok; //채용제목
         @BindView(R.id.item_jobContent2)TextView companyUpmoo; //담당업무
         @BindView(R.id.item_jobContent3)TextView companyLocaPay; //지역과 연봉
         @BindView(R.id.item_jobContent4)TextView companyDGyeongEdu; //마감일자(상시채용여부), 경력과 학력

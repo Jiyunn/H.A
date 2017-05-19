@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,6 @@ public class JobGroupFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Item> dataSet;
     private String token;
-
     private String nowJob;
 
     FragmentManager fgManager;
@@ -52,28 +50,28 @@ public class JobGroupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.jobgroup, container, false);
-        View view=binding.getRoot();
+        View view = binding.getRoot();
         binding.setJobgroup(this);
-
 
         binding.rvJob.setHasFixedSize(true);
         binding.rvJob.setItemAnimator(new DefaultItemAnimator());
         adapter = new GroupAdapter(getActivity(), dataSet, R.layout.item_job, binding.rvJob, fgManager);
         binding.rvJob.setAdapter(adapter);
-
-        callJobAPI(ServerGenerator.getRequestService(), nowJob); //API불러오기 시작
+        /*
+        직군별 데이터 가져오기
+         */
+        callJobAPI(ServerGenerator.getRequestService(), nowJob);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); //세로로 뿌리기
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.rvJob.setLayoutManager(mLayoutManager);
-
 
         return view;
     }
 
     /* get data*/
     public void callJobAPI(RetroInterface apiService, String job) {
-        Call<ReqItems> call= apiService.getJobList(token, job);
+        Call<ReqItems> call = apiService.getJobList(token, job);
 
         dataSet.clear();
         adapter.notifyDataSetChanged();
@@ -87,70 +85,76 @@ public class JobGroupFragment extends Fragment {
                     adapter.notifyDataSetChanged();
                 }
             }
+
             @Override
             public void onFailure(Call<ReqItems> call, Throwable t) {
-                if (t.getMessage() != null)
-                    t.printStackTrace();
-                    Log.d("jy", "call API on Failure.. : " + t.getMessage());
+                t.printStackTrace();
             }
         });
     }
 
-    /* for jobGroup btn*/
+    /*
+     직군 btn
+     */
     public void onJobClick(View v) {
         int btnId = v.getId();
 
         switch (btnId) {
-            case R.id.job_gigye :
-                callJobAPI(ServerGenerator.getRequestService(), "기계");
+            case R.id.job_gigye:
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.gigye));
                 break;
-            case R.id.job_jeonja :
+            case R.id.job_jeonja:
                 callJobAPI(ServerGenerator.getRequestService(), "전자");
                 break;
-            case R.id.job_jeongi :
+            case R.id.job_jeongi:
                 callJobAPI(ServerGenerator.getRequestService(), "전기");
                 break;
-            case R.id.job_saengsan :
-                callJobAPI(ServerGenerator.getRequestService(), "생산");
+            case R.id.job_saengsan:
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.saengsan));
                 break;
-            case R.id.job_euiyak :
+            case R.id.job_euiyak:
                 callJobAPI(ServerGenerator.getRequestService(), "의료의약");
                 break;
-            case R.id.job_it :
+            case R.id.job_it:
                 callJobAPI(ServerGenerator.getRequestService(), "정보처리");
                 break;
-            case R.id.job_gaebal :
+            case R.id.job_gaebal:
                 callJobAPI(ServerGenerator.getRequestService(), "연구");
                 break;
-            case R.id.job_whahak :
-                callJobAPI(ServerGenerator.getRequestService(), "화학");
+            case R.id.job_whahak:
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.whahak));
                 break;
             case R.id.job_cheolgang:
-                callJobAPI(ServerGenerator.getRequestService(), "철강");
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.cheolgang));
                 break;
-            case R.id.job_euiryu :
-                callJobAPI(ServerGenerator.getRequestService(), "의류");
+            case R.id.job_euiryu:
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.euiryu));
                 break;
-            case R.id.job_somyou :
-                callJobAPI(ServerGenerator.getRequestService(), "섬유");
+            case R.id.job_somyou:
+                callJobAPI(ServerGenerator.getRequestService(), getString(R.string.somyou));
                 break;
 
         }
     }
 
+    /*
+        객체 생성 및 토큰 받아오기
+         */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        nowJob="기계";
+        nowJob = "기계";
+
         fgManager = getFragmentManager();
         dataSet = new ArrayList<>();
-        mDBManager=UserDBManager.getInstance(getActivity());
 
-        Cursor c=mDBManager.query(new String[]{"token"}, null,null,null,null,null);
+        mDBManager = UserDBManager.getInstance(getActivity());
 
-        if(c !=null && c.moveToFirst())
-            token=c.getString(0);
+        Cursor c = mDBManager.query(new String[]{"token"}, null, null, null, null, null);
+
+        if (c != null && c.moveToFirst())
+            token = c.getString(0);
         c.close();
     }
 

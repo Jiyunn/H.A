@@ -1,9 +1,6 @@
 
 package kr.happy.myarmy.Server;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,8 +10,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Item implements Parcelable {
+public class Item  {
 
+    @SerializedName("id")
+    @Expose
+    private int id;
 
     @SerializedName("bokrihs")
     @Expose
@@ -30,7 +30,7 @@ public class Item implements Parcelable {
     private String cjhakryeok;
     @SerializedName("cygonggoNo")
     @Expose
-    private long gongoNo;
+    private String gongoNo;
     @SerializedName("cyjemokNm")
     @Expose
     private String cyjemokNm;
@@ -95,10 +95,6 @@ public class Item implements Parcelable {
     @Expose
     private String yuhyoYn;
 
-
-    public Item(Parcel in){
-        readFromParcel(in);
-    }
 
     public String getBokri() {
         return bokri;
@@ -308,65 +304,12 @@ public class Item implements Parcelable {
     }
 
 
-    public long getGongoNo() {
-        return gongoNo;
+
+
+
+    public int getId() {
+        return id;
     }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public Item(){
-
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(homepg);
-        dest.writeString(geunmujy);
-        dest.writeString(dpyeonrakcheoNo);
-        dest.writeString(eopjongGbcdNm);
-        dest.writeString(damdangjaFnm);
-        dest.writeString(ddjyeonrakcheoNo);
-
-        dest.writeLong(magamDt);
-        dest.writeString(jeopsu);
-        dest.writeString(cyjemokNm);
-        dest.writeString(ddeopmuNm);
-        dest.writeString(cjhakryeok);
-        dest.writeString(jeonGong);
-        dest.writeString(Oegukeo);
-        dest.writeString(OegukeoGusa);
-        dest.writeString(yeokjongBrcdNm);
-
-        dest.writeString(gyjogeonCdNm);
-        dest.writeString(bokri);
-    }
-
-    public void readFromParcel(Parcel in){
-        homepg = in.readString();
-        geunmujy= in.readString();
-        dpyeonrakcheoNo= in.readString();
-        eopjongGbcdNm= in.readString();
-        damdangjaFnm= in.readString();
-        ddjyeonrakcheoNo= in.readString();
-
-        magamDt= in.readLong();
-        jeopsu= in.readString();
-        cyjemokNm= in.readString();
-        ddeopmuNm= in.readString();
-        cjhakryeok= in.readString();
-        jeonGong= in.readString();
-        Oegukeo= in.readString();
-        OegukeoGusa= in.readString();
-        yeokjongBrcdNm= in.readString();
-
-        gyjogeonCdNm= in.readString();
-        bokri= in.readString();
-    }
-
 
     public String getOegukeo() {
         return Oegukeo;
@@ -376,16 +319,7 @@ public class Item implements Parcelable {
         return OegukeoGusa;
     }
 
-
-/* un-marshal, / de-serialize*/
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Item createFromParcel(Parcel in) {
-            return new Item(in);
-        }
-
-        @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
+    public String getGongoNo() {
+        return gongoNo;
+    }
 }
