@@ -74,13 +74,6 @@ public class SignupActivity extends AppCompatActivity {
             callJoinAPI(ServerGenerator.getRequestService());
     }
 
-    /*
-    already
-     */
-    public void alreadySignUp(View v) {
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-    }
-
 
     /* request join*/
     public void callJoinAPI(RetroInterface apiService) {

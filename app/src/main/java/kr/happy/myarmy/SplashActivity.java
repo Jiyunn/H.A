@@ -27,20 +27,12 @@ public class SplashActivity extends AppCompatActivity {
 
         backButtonHandler=new BackButtonHandler(this);
 
-        mDBManager=UserDBManager.getInstance(this);
-
-
-        c=mDBManager.query(new String[]{"token"}, null, null, null, null, null);
-
-//        if (c.getString(0) !=null )
-//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        c.close();
     }
 
     public void onClick(View v) {

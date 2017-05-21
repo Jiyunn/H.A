@@ -1,20 +1,23 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.databinding.ItemHomeBinding;
 
 /*regionviewholder use this?*/
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener {
@@ -25,12 +28,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public HomeAdapter(Context context, ArrayList<Item>gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager) {
+    public HomeAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager) {
         this.context = context;
         this.gongos = gongos;
         this.itemLayout = itemLayout;
-        this.mRecyclerview=mRecyclerView;
-        this.fgManager=fgManager;
+        this.mRecyclerview = mRecyclerView;
+        this.fgManager = fgManager;
     }
 
     @Override
@@ -43,13 +46,25 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public void onBindViewHolder(HomeViewHolder holder, int position) {
-        holder.companyName.setText(gongos.get(position).getEopcheNm());
-        holder.companyJaemok.setText(gongos.get(position).getCyjemokNm());
-        holder.companyUpmoo.setText(gongos.get(position).getDdeopmuNm());
-        holder.companyLocaPay.setText(gongos.get(position).convertGeunmujySido() + " | " +
+        Item item = gongos.get(position);
+        holder.binding.setItem(item);
+
+
+        /*
+        로고 이미지와, 근무지부분 , 연봉부분
+         */
+
+        Glide.with(context)
+                .load(gongos.get(position).getThumbnail())
+                .thumbnail(0.05f)
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(holder.binding.itemComLogo);
+
+
+        holder.binding.itemComContent3.setText(gongos.get(position).convertGeunmujySido() + " | " +
                 gongos.get(position).getGyjogeonCdNm());
-        holder.companyDGyeongEdu.setText(
-                (gongos.get(position).convertMagamDt()) + " | "+
+        holder.binding.itemComContent4.setText(
+                (gongos.get(position).convertMagamDt()) + " | " +
                         (gongos.get(position).getGyeongryeokGbcdNm()) + " | " +
                         (gongos.get(position).getCjhakryeok()));
     }
@@ -62,36 +77,33 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     /*show company's info specific*/
     @Override
     public void onClick(View v) {
-        int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
-        Item clickGongo=gongos.get(curPos); //클릭한 공고
+        int curPos = mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
+        Item clickGongo = gongos.get(curPos); //클릭한 공고
 
-
-        CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
+        CompanyInfoFragment companyInfoFragment = new CompanyInfoFragment();
         /*
         save data
          */
 
         fgManager
                 .beginTransaction()
-                .replace(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId()))
+                .add(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId(), clickGongo.getEopcheNm(),
+                        clickGongo.getCyjemokNm(), clickGongo.getThumbnail()))
                 .addToBackStack(null) //saved state
                 .commit();
     }
 
 
     /*HomeViewHolder class*/
-    static  class HomeViewHolder extends RecyclerView.ViewHolder {
+    static class HomeViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.item_comTitle)TextView companyName; //업체이름
-        @BindView(R.id.item_comContent1)TextView companyJaemok; //채용제목
-        @BindView(R.id.item_comContent2)TextView companyUpmoo; //담당업무
-        @BindView(R.id.item_comContent3)TextView companyLocaPay; //지역과 연봉
-        @BindView(R.id.item_comContent4)TextView companyDGyeongEdu; //마감일자(상시채용여부), 경력과 학력
+        ItemHomeBinding binding;
 
 
         public HomeViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 }

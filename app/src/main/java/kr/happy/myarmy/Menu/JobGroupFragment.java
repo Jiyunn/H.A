@@ -40,6 +40,8 @@ public class JobGroupFragment extends Fragment {
     private String token;
     private String nowJob;
 
+    private String[] url;
+
     FragmentManager fgManager;
     UserDBManager mDBManager;
 
@@ -74,14 +76,15 @@ public class JobGroupFragment extends Fragment {
         Call<ReqItems> call = apiService.getJobList(token, job);
 
         dataSet.clear();
-        adapter.notifyDataSetChanged();
-
 
         call.enqueue(new Callback<ReqItems>() {
             @Override
             public void onResponse(Call<ReqItems> call, Response<ReqItems> response) {
                 if (response.isSuccessful()) {
                     dataSet.addAll(dataSet.size(), response.body().getRequestList());
+
+                    for(int i=0; i< dataSet.size(); i++)
+                        dataSet.get(i).setThumbnail(url[i% url.length]);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -148,6 +151,14 @@ public class JobGroupFragment extends Fragment {
 
         fgManager = getFragmentManager();
         dataSet = new ArrayList<>();
+
+        url = new String[]{"http://img.jobkorea.kr/trans/c/200x80/c/o/JK_Co_coset1647.png",
+                "http://img.jobkorea.kr/trans/c/200x80/k/n/JK_Co_knlsystem.png",
+                "http://img.jobkorea.kr/trans/c/200x80/d/k/JK_Co_dkvascom1.png",
+                "http://img.jobkorea.kr/trans/c/200x80/a/c/JK_Co_acegluer.png",
+                "http://img.jobkorea.kr/trans/c/200x80/w/n/JK_Co_wnwpdldostl.png",
+                "http://img.jobkorea.kr/trans/c/200x80/n/a/JK_Co_nava007.png"};
+
 
         mDBManager = UserDBManager.getInstance(getActivity());
 

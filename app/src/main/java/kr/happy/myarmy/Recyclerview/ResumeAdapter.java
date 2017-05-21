@@ -1,18 +1,15 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import kr.happy.myarmy.R;
+import kr.happy.myarmy.databinding.ItemMyresumeBinding;
 
 /**
  * Created by JY on 2017-04-15.
@@ -22,13 +19,13 @@ import kr.happy.myarmy.R;
 public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder> {
 
     private Context context;
-    private ArrayList<Data> items;
+    private ArrayList<TwoData> twoDataSet;
     private int itemLayout;
 
 
-    public ResumeAdapter(Context context, ArrayList<Data> items, int itemLayout) {
+    public ResumeAdapter(Context context, ArrayList<TwoData>twoDataSet, int itemLayout) {
         this.context = context;
-        this.items = items;
+        this.twoDataSet =twoDataSet;
         this.itemLayout = itemLayout;
     }
 
@@ -41,32 +38,30 @@ public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeView
 
     @Override
     public void onBindViewHolder(ResumeViewHolder holder, int position) {
-        holder.title.setText(items.get(position).getTitle());
-        holder.content.setText(items.get(position).getContent());
+        TwoData twoData= twoDataSet.get(position);
+        holder.binding.setTwodata(twoData);
+
     }
 
     @Override
     public int getItemCount() {
-        return (items != null) ? items.size() : 0;
+        return (twoDataSet != null) ? twoDataSet.size() : 0;
     }
 
-    public void setItems(ArrayList<Data> items) {
-        this.items = items;
+    public void setItems(ArrayList<TwoData> items) {
+        this.twoDataSet = items;
     }
 
 
     /*ResumeViewHolder class*/
     static class ResumeViewHolder extends RecyclerView.ViewHolder {
-        @Nullable
-        @BindView(R.id.item_resTitle)
-        TextView title;
-        @Nullable
-        @BindView(R.id.item_resContent)
-        TextView content;
+
+        ItemMyresumeBinding binding;
+
 
         public ResumeViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 }

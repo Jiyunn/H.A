@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.roughike.bottombar.BottomBar;
 
 import kr.happy.myarmy.CompanyVp.ComPagerAdapter;
@@ -28,6 +30,7 @@ public class CompanyInfoFragment extends Fragment {
 
     private String speTitle;
     private String speContent;
+    private String speLogo;
 
     public CompanyInfoFragment() {
     }
@@ -35,11 +38,14 @@ public class CompanyInfoFragment extends Fragment {
     /*
     setArgument
      */
-    public static CompanyInfoFragment newInstance(int id) {
+    public static CompanyInfoFragment newInstance(int id, String speTitle, String speContent, String speLogo) {
         Bundle args = new Bundle();
         CompanyInfoFragment fragment = new CompanyInfoFragment();
 
         args.putInt("CUR_ID", id);
+        args.putString("SpeTitle", speTitle);
+        args.putString("SpeContent", speContent);
+        args.putString("SpeLogo", speLogo);
 
         fragment.setArguments(args);
 
@@ -59,11 +65,24 @@ public class CompanyInfoFragment extends Fragment {
         binding.speComTitle.setText(speTitle);
         binding.speComContent1.setText(speContent);
 
+        binding.speComLogo.post(new Runnable() {
+            @Override
+            public void run() {
+                Glide.with(getActivity())
+                        .load(speLogo)
+                        .thumbnail(0.05f)
+                        .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                        .into(binding.speComLogo);
+            }
+        });
+
         return view;
     }
 
 
-    /*    click favorite btn, change background    */
+    /*
+    click favorite btn, change background
+     */
     public void addFavorite(View view) {
         TextView v = (TextView) view;
 
@@ -85,9 +104,12 @@ public class CompanyInfoFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(getArguments() !=null)
-            id=getArguments().getInt("CUR_ID");
-
+        if(getArguments() !=null) {
+            id = getArguments().getInt("CUR_ID");
+            speTitle= getArguments().getString("SpeTitle");
+            speContent= getArguments().getString("SpeContent");
+            speLogo = getArguments().getString("SpeLogo");
+        }
     }
 
     @Override

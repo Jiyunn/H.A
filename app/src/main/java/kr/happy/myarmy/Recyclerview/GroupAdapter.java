@@ -1,24 +1,25 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import kr.happy.myarmy.Menu.CompanyInfoFragment;
 import kr.happy.myarmy.R;
 import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.databinding.ItemJobBinding;
 
 import static kr.happy.myarmy.R.drawable.group_4;
 import static kr.happy.myarmy.R.drawable.group_5;
@@ -31,7 +32,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
     private Context context;
     private ArrayList<Item> gongos;
-    private int itemLayout; //레이아웃 형식
+    private int itemLayout;
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
@@ -43,6 +44,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
         this.fgManager=fgManager;
     }
 
+
     @Override
     public JobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
@@ -53,11 +55,21 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
     @Override
     public void onBindViewHolder(JobViewHolder holder, final int position) {
-        holder.companyName.setText(gongos.get(position).getEopcheNm());
-        holder.companyUpmoo.setText(gongos.get(position).getDdeopmuNm());
-        holder.companyLocaPay.setText(gongos.get(position).convertGeunmujySido() + " | " +
+        Item item= gongos.get(position);
+        holder.binding.setItem(item);
+
+        /*
+        로고 이미지와, 근무지부분 , 연봉부분
+         */
+        Glide.with(context)
+                .load(gongos.get(position).getThumbnail())
+                .thumbnail(0.05f)
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(holder.binding.itemJobLogo);
+
+        holder.binding.itemJobContent3.setText(gongos.get(position).convertGeunmujySido() + " | " +
                 gongos.get(position).getGyjogeonCdNm());
-        holder.companyDGyeongEdu.setText(
+        holder.binding.itemJobContent4.setText(
                 (gongos.get(position).convertMagamDt()) + " | "+
                         (gongos.get(position).getGyeongryeokGbcdNm()) + " | " +
                         (gongos.get(position).getCjhakryeok()));
@@ -68,6 +80,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     public int getItemCount() {
         return (gongos != null) ? gongos.size() : 0;
     }
+
 
     /*show company's info specific*/
     @Override
@@ -82,26 +95,30 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
         fgManager
                 .beginTransaction()
-                .add(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId()))
+                .replace(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId(), clickGongo.getEopcheNm(),
+                        clickGongo.getCyjemokNm(), clickGongo.getThumbnail()))
                 .addToBackStack(null) //saved state
                 .commit();
     }
 
-    /*JobViewHolder class*/
-    class JobViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.item_jobLogo) ImageView logo;
-        @BindView(R.id.item_jobTitle)TextView companyName; //업체이름
-        @BindView(R.id.item_jobContent2)TextView companyUpmoo; //담당업무
-        @BindView(R.id.item_jobContent3)TextView companyLocaPay; //지역과 연봉
-        @BindView(R.id.item_jobContent4)TextView companyDGyeongEdu; //마감일자(상시채용여부), 경력과 학력
+
+    /*JobViewHolder class*/
+    public class JobViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        ItemJobBinding binding;
+
 
         public JobViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            binding= DataBindingUtil.bind(itemView);
+
+            binding.itemJobFavorite.setOnClickListener(this);
         }
 
-        @OnClick(R.id.item_jobFavorite)
+
+
         public void onClick(View v) {
             if (v.getId() == R.id.item_jobFavorite) {
                 if (v.getTag().equals("group_5")) {
@@ -114,7 +131,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
                     Toast.makeText(context, "관심기업이 해제되었습니다", Toast.LENGTH_SHORT).show();
                 }
             }
-        };
+        }
     }
 }
 

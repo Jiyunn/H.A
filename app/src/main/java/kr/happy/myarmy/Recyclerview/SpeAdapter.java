@@ -1,18 +1,15 @@
 package kr.happy.myarmy.Recyclerview;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import kr.happy.myarmy.R;
-import kr.happy.myarmy.Server.Item;
+import kr.happy.myarmy.databinding.ItemSpeBinding;
 
 /**
  * Created by JY on 2017-05-15.
@@ -20,16 +17,16 @@ import kr.happy.myarmy.Server.Item;
 
 public class SpeAdapter extends RecyclerView.Adapter<SpeAdapter.SpeViewHolder>{
 
-    private Item gongo;
     private Context context;
     private int itemLayout;
-    private ArrayList<Data> dataSet;
+    private ArrayList<TwoData> twoDataSet;
 
-    public SpeAdapter(Context context, ArrayList<Data> dataSet,int itemLayout) {
+    public SpeAdapter(Context context, ArrayList<TwoData> twoDataSet, int itemLayout) {
         this.context = context;
-        this.dataSet=dataSet;
+        this.twoDataSet = twoDataSet;
         this.itemLayout=itemLayout;
     }
+
 
     @Override
     public SpeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,25 +35,30 @@ public class SpeAdapter extends RecyclerView.Adapter<SpeAdapter.SpeViewHolder>{
         return new SpeViewHolder(itemView);
     }
 
+
     @Override
     public void onBindViewHolder(SpeViewHolder holder, int position) {
-        holder.title.setText(dataSet.get(position).getTitle());
-        holder.content.setText(dataSet.get(position).getContent());
+        TwoData twoData=twoDataSet.get(position);
+        holder.binding.setTwodata(twoData);
+
     }
+
 
     @Override
     public int getItemCount() {
-        return (dataSet !=null) ? dataSet.size() : 0;
+        return (twoDataSet !=null) ? twoDataSet.size() : 0;
     }
 
     static class SpeViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.item_speTitle)TextView title;
-        @BindView(R.id.item_speContent) TextView content;
+        ItemSpeBinding binding;
+
+
 
         public SpeViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            binding= DataBindingUtil.bind(itemView);
+
         }
     }
 }

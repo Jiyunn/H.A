@@ -10,6 +10,10 @@ import android.view.inputmethod.InputMethodManager;
  */
 
 public class SearchEdittext extends android.support.v7.widget.AppCompatEditText {
+
+    private OnFocusChangeListener onFocusChangeListener;
+
+
     public SearchEdittext(Context context) {
         super(context);
     }
@@ -20,6 +24,11 @@ public class SearchEdittext extends android.support.v7.widget.AppCompatEditText 
 
     public SearchEdittext(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public void setOnFocusChangeListener(OnFocusChangeListener onFocusChangeListener) {
+        this.onFocusChangeListener = onFocusChangeListener;
     }
 
     @Override
@@ -34,4 +43,5 @@ public class SearchEdittext extends android.support.v7.widget.AppCompatEditText 
 
         return super.onKeyPreIme(keyCode, event);
     }
+
 }

@@ -1,13 +1,15 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:colorControlHighlight">@color/whitegray_a</item>
+        <item name="android:colorActivatedHighlight">@color/skyblue_a</item>
+        <item name="android:colorControlNormal">@color/gch</item>
+        <item name="android:colorPrimary">@color/white</item>
+        <item name="android:colorPrimaryDark">@color/navy_a</item>
+        <item name="android:colorAccent">@color/navy_a</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="AppSpinnerDropDownItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
-        <item name="android:background">@drawable/infobackground</item>
-
-    </style>
 
     <style name="bottomTabIcon">
         <item name="android:layout_width">match_parent</item>
@@ -117,7 +119,7 @@
         <item name="android:tabStripEnabled">true</item>
         <item name="tabSelectedTextColor">@color/orange_a</item>
         <item name="tabIndicatorColor">@color/orange_a</item>
-         <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabIndicatorHeight">4dp</item>
     </style>
 
     <style name="tabLayoutText">
@@ -155,6 +157,7 @@
         <item name="layout_constraintHorizontal_bias">0</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="android:textColorHint">@color/nineb</item>
+        <item name="android:textColor">@color/whitegray_a</item>
         <item name="android:textSize">14dp</item>
         <item name="android:maxLines">1</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -164,8 +167,44 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">14dp</item>
-        <item name="android:textColor">@color/nineb</item>
+        <item name="android:textColor">@color/fora</item>
+        <item name="android:buttonTint">@color/orange_a</item>
+    </style>
 
+    <style name="infoTv">
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/nineb</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+
+    </style>
+
+    <style name="phoneNum">
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">4</item>
+        <item name="android:textColor">@color/fora</item>
+        <item name="android:background">@drawable/infobackground</item>
+    </style>
+
+    <style name="certiTexts">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColorHint">@color/nineb</item>
+        <item name="android:textColor">@color/fora</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 

@@ -1,6 +1,7 @@
 package kr.happy.myarmy.Custom;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -75,7 +76,7 @@ public class LPEdittext extends android.support.v7.widget.AppCompatEditText impl
             setClearIconVisible(getText().length() > 0);
             v.getBackground().setColorFilter(getCurrentHintTextColor(), PorterDuff.Mode.SRC_IN); //밑줄색깔
         }else {
-            v.getBackground().setColorFilter(null);
+            v.getBackground().setColorFilter(Color.parseColor("#F9F9F9"), PorterDuff.Mode.SRC_IN); //밑줄색깔
             setClearIconVisible(false);
         }
         if(onFocusChangeListener !=null)

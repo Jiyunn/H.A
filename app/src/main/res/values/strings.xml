@@ -31,11 +31,11 @@
     <string name="somyou">섬유</string>
     <string name="whahak">화학</string>
     <string name="euiryu">의류</string>
-    <string name="euiyak">의료 / 의약</string>
-    <string name="gaebal">연구 / 개발</string>
+    <string name="euiyak">의료/의약</string>
+    <string name="gaebal">연구/개발</string>
     <string name="gigye">기계</string>
 
-    <string name="gyeongi">경기/서울</string>
+    <string name="gyeongi">서울 / 경기</string>
     <string name="gangwon">강원도</string>
     <string name="chungbook">충청북도</string>
     <string name="chungnam">충청남도</string>
@@ -55,7 +55,7 @@
 
     <string name="plzinput">정보없음</string>
 
-   <string name="id">아이디</string>
+    <string name="id">아이디</string>
     <string name="email">이메일주소</string>
     <string name="pwd">패스워드</string>
     <string name="signup">회원가입</string>
@@ -90,19 +90,34 @@
     <string name="bokri">복리후생</string>
 
 
+    <string-array name="school">
+        <item>초등학교</item>
+        <item>중학교</item>
+        <item>고등학교</item>
+        <item>대학(2,3년제)</item>
+        <item>대학(4년제)</item>
+    </string-array>
+
+    <string-array name="schoolState">
+        <item>재학</item>
+        <item>졸업</item>
+        <item>중퇴</item>
+        <item>휴학</item>
+    </string-array>
+
     <string-array name="month">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
+        <item>01월</item>
+        <item>02월</item>
+        <item>03월</item>
+        <item>04월</item>
+        <item>05월</item>
+        <item>06월</item>
+        <item>07월</item>
+        <item>08월</item>
+        <item>09월</item>
+        <item>10월</item>
+        <item>11월</item>
+        <item>12월</item>
     </string-array>
 
 

@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +37,8 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private ArrayList<Item> dataSet;
-    private HomeAdapter adapter;
+    private ArrayList<Item> dataRec; //추천용 뷰
+    private HomeAdapter adapterSet;
     private StaggeredGridLayoutManager mLayoutManager;
     private String token;
 
@@ -43,31 +46,23 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     FragmentManager fgManager;
     HomeBinding binding;
 
+    private String[] url;
+
     public HomeFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater, R.layout.home, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false);
         View view = binding.getRoot();
 
         binding.swipeLayout.setColorSchemeResources(R.color.orange_a);
         binding.swipeLayout.setOnRefreshListener(this);
 
-       binding.rvHome.setHasFixedSize(true);
-
-        adapter = new HomeAdapter(getActivity(), dataSet, R.layout.item_home,   binding.rvHome, fgManager); //어댑터 등록
-        binding.rvHome.setAdapter(adapter);
-
+        initRecyclerview(binding.rvHome);
         callAPI(ServerGenerator.getRequestService());
 
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS); //알아서 잘 조정
-        binding.rvHome.setLayoutManager(mLayoutManager);
-
-
-        binding.rvHome.setItemAnimator(new DefaultItemAnimator());
 
         return view;
     }
@@ -77,19 +72,20 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         Call<ReqItems> call = apiService.getHomeList(token);
 
         dataSet.clear();
-        adapter.notifyDataSetChanged();
+        dataRec.clear();
 
         call.enqueue(new Callback<ReqItems>() {
             @Override
             public void onResponse(Call<ReqItems> call, Response<ReqItems> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        dataSet.addAll(dataSet.size(), response.body().getRequestList());
-                        adapter.notifyDataSetChanged();
 
-                    }catch(NumberFormatException e){
-                        e.printStackTrace();
-                    }
+                    dataSet.addAll(dataSet.size(), response.body().getRequestList());
+
+                    for (int i = 0; i < dataSet.size(); i++)
+                        dataSet.get(i).setThumbnail(url[i % url.length]);
+
+                    adapterSet.notifyDataSetChanged();
+
                 }
             }
 
@@ -100,18 +96,25 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         });
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDBManager=UserDBManager.getInstance(getActivity());
+
+        mDBManager = UserDBManager.getInstance(getActivity());
+        getTokenFromDB();
+
         fgManager = getFragmentManager();
         dataSet = new ArrayList<>();
+        dataRec = new ArrayList<>();
 
-        Cursor c=mDBManager.query(new String[]{"token"}, null, null, null, null, null);
 
-        if(c!=null && c.moveToFirst())
-            token=c.getString(0);
-        c.close();
+        url = new String[]{"http://img.jobkorea.kr/trans/c/200x80/c/o/JK_Co_coset1647.png",
+                "http://img.jobkorea.kr/trans/c/200x80/k/n/JK_Co_knlsystem.png",
+                "http://img.jobkorea.kr/trans/c/200x80/d/k/JK_Co_dkvascom1.png",
+                "http://img.jobkorea.kr/trans/c/200x80/a/c/JK_Co_acegluer.png",
+                "http://img.jobkorea.kr/trans/c/200x80/w/n/JK_Co_wnwpdldostl.png",
+                "http://img.jobkorea.kr/trans/c/200x80/n/a/JK_Co_nava007.png"};
     }
 
     /*refresh scroll*/
@@ -121,4 +124,34 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         binding.swipeLayout.setRefreshing(false);
     }
 
+    /*
+ Recyclerview 초기화
+  */
+    protected void initRecyclerview(RecyclerView rv) {
+        rv.setHasFixedSize(true);
+        rv.setItemAnimator(new DefaultItemAnimator());
+
+
+        if(rv.getId() == R.id.rv_home) {
+            adapterSet = new HomeAdapter(getActivity(), dataSet, R.layout.item_home, rv, fgManager);
+            rv.setAdapter(adapterSet);
+        }
+
+        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS); //알아서 잘 조정
+        rv.setLayoutManager(mLayoutManager);
+    }
+
+    /*
+    get token from db
+     */
+    public void getTokenFromDB() {
+        Cursor c = mDBManager.query(new String[]{"token", "email"}, null, null, null, null, null);
+        if (c != null && c.moveToFirst()) {
+            token = c.getString(0);
+            Log.d("jy", c.getString(1));
+        }
+        c.close();
+
+    }
 }

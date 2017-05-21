@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="kr.happy.myarmy.Server.Item"/>
+
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/basic_margin"
@@ -12,8 +22,11 @@
         android:layout_height="match_parent"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardElevation="0dp"
-        card_view:contentPaddingTop="10dp"
-        card_view:contentPadding="13dp">
+        card_view:contentPaddingTop="13dp"
+        card_view:contentPaddingBottom="13dp"
+        card_view:contentPaddingRight="8dp"
+        card_view:contentPaddingLeft="8dp"
+ >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,12 +37,11 @@
             <ImageView
                 android:id="@+id/item_comLogo"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="5"
-                android:scaleType="centerCrop"
-                android:src="@drawable/seventwo"
+
 
                 />
 
@@ -40,65 +52,62 @@
                 android:layout_margin="3dp"
                 android:background="#dcdcdc" />
 
-
-
             <TextView
                 android:id="@+id/item_comTitle"
+                style="@style/ellipsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                style="@style/ellipsize"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:padding="7dp"
-                android:text="기업이름"
-                android:textColor="@color/orange_a"
                 android:maxLines="1"
+                android:padding="7dp"
+                android:text="@{item.eopcheNm}"
+                android:textColor="@color/orange_a"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/item_comContent1"
+                style="@style/ellipsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
-                style="@style/ellipsize"
                 android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="(채용제목)"
-                android:textColor="#484848"
                 android:maxLines="1"
                 android:minLines="1"
+                android:paddingTop="2dp"
+                android:text="@{item.cyjemokNm}"
+                android:textColor="#484848"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/item_comContent2"
+                style="@style/ellipsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
-                style="@style/ellipsize"
                 android:gravity="center"
-                android:padding="1dp"
-                android:text="담당업무"
                 android:maxLines="1"
+                android:padding="1dp"
+                android:text="@{item.ddeopmuNm}"
                 android:textColor="#484848"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/item_comContent3"
+                style="@style/ellipsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="1dp"
-                style="@style/ellipsize"
-                android:layout_marginTop="8dp"
-                android:text="지역 | 연봉"
                 android:maxLines="1"
+                android:padding="1dp"
                 android:textColor="#85C1E9"
                 android:textSize="10dp" />
 
@@ -107,11 +116,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:padding="1dp"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="d-day|경력|학력"
                 android:maxLines="1"
+                android:padding="1dp"
                 android:textColor="#484848"
                 android:textSize="10dp"
                 android:textStyle="bold" />
@@ -122,3 +130,4 @@
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
+</layout>

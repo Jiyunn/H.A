@@ -41,6 +41,8 @@ public class RegionGroupFragment extends Fragment {
     private String nowArea;
     private String token;
 
+    private String[] url;
+
     FragmentManager fgManager;
     UserDBManager mDBManager;
 
@@ -87,6 +89,9 @@ public class RegionGroupFragment extends Fragment {
             public void onResponse(Call<ReqItems> call, Response<ReqItems> response) {
                 if (response.isSuccessful()) {
                     dataSet.addAll(dataSet.size(), response.body().getRequestList());
+
+                    for(int i=0; i< dataSet.size(); i++)
+                        dataSet.get(i).setThumbnail(url[i% url.length]);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -141,10 +146,17 @@ public class RegionGroupFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        nowArea="경기도"; //이거 왜 500뜨지?
+        nowArea="경기도";
 
         fgManager = getFragmentManager();
         dataSet = new ArrayList<>();
+
+        url = new String[]{"http://img.jobkorea.kr/trans/c/200x80/c/o/JK_Co_coset1647.png",
+                "http://img.jobkorea.kr/trans/c/200x80/k/n/JK_Co_knlsystem.png",
+                "http://img.jobkorea.kr/trans/c/200x80/d/k/JK_Co_dkvascom1.png",
+                "http://img.jobkorea.kr/trans/c/200x80/a/c/JK_Co_acegluer.png",
+                "http://img.jobkorea.kr/trans/c/200x80/w/n/JK_Co_wnwpdldostl.png",
+                "http://img.jobkorea.kr/trans/c/200x80/n/a/JK_Co_nava007.png"};
 
         mDBManager = UserDBManager.getInstance(getActivity());
 

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="myresume"
+            type="kr.happy.myarmy.Menu.MyResumeFragment"/>
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -21,7 +28,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
             style="@style/profileImg"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/company"
             app:civ_border_color="#F4F4F4"
             app:civ_border_width="5dp"
             android:scaleType="centerCrop"
@@ -45,7 +52,6 @@
         <TextView
             android:id="@+id/tv_profileName"
             style="@style/profileTvContent"
-
             app:layout_constraintLeft_toRightOf="@+id/name"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/name"
@@ -55,7 +61,6 @@
         <TextView
             android:id="@+id/tv_profileAge"
             style="@style/profileTvContent"
-
             app:layout_constraintLeft_toRightOf="@+id/age"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/age"
@@ -103,4 +108,4 @@
 
 </LinearLayout>
 
-
+</layout>

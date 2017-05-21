@@ -1,12 +1,12 @@
 package kr.happy.myarmy.CompanyVp;
 
 import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,38 +16,38 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import kr.happy.myarmy.R;
-import kr.happy.myarmy.Recyclerview.Data;
 import kr.happy.myarmy.Recyclerview.SpeAdapter;
+import kr.happy.myarmy.Recyclerview.TwoData;
 import kr.happy.myarmy.Server.Item;
 import kr.happy.myarmy.Server.RetroInterface;
 import kr.happy.myarmy.Server.ServerGenerator;
 import kr.happy.myarmy.UserDB.UserDBManager;
+import kr.happy.myarmy.databinding.SpeViewBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class ComPagerFragment extends Fragment {
+
+    SpeViewBinding binding;
+
     private int mPage;
     public static final String CUR_PAGE = "CUR_PAGE"; //현재페이지
 
-    @Nullable
-    @BindView(R.id.rv_spe)
-    RecyclerView mRecyclerview;
+    private int id;
+    private static final String CUR_ID = "CUR_ID";
 
     private SpeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<Data> dataSet;
-    private ArrayList<Item> dataSet2;
+
+    private ArrayList<TwoData> twoDataSet;
     private String[] itemTitle;
     private String[] itemContent;
+
     private Item item;
     private String token;
-    private int id;
-    private static final String CUR_ID = "CUR_ID";
 
     private UserDBManager mDBManager;
 
@@ -65,29 +65,28 @@ public class ComPagerFragment extends Fragment {
         return fragment;
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.spe_view, container, false);
-        ButterKnife.bind(this, view);
+        binding = DataBindingUtil.inflate(inflater, R.layout.spe_view, container, false);
+        View view = binding.getRoot();
 
-        mRecyclerview.setHasFixedSize(true);
+        binding.rvSpe.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        mRecyclerview.setLayoutManager(mLayoutManager);
+        binding.rvSpe.setLayoutManager(mLayoutManager);
 
-        adapter = new SpeAdapter(getActivity(), dataSet, R.layout.item_spe);
+        adapter = new SpeAdapter(getActivity(), twoDataSet, R.layout.item_spe);
 
-        mRecyclerview.setAdapter(adapter);
-        mRecyclerview.setItemAnimator(new DefaultItemAnimator());
+        binding.rvSpe.setAdapter(adapter);
+        binding.rvSpe.setItemAnimator(new DefaultItemAnimator());
 
         /*
         기업, 채용, 연봉정보 데이터 뿌려주기
          */
-        callSpeAPI(ServerGenerator.getRequestService(), id, mPage);
+            callSpeAPI(ServerGenerator.getRequestService(), id, mPage);
 
         return view;
     }
@@ -134,8 +133,7 @@ public class ComPagerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mDBManager = UserDBManager.getInstance(getActivity());
-        dataSet = new ArrayList<>();
-        dataSet2 = new ArrayList<>();
+        twoDataSet = new ArrayList<>();
         /*
         get TOKEN
          */
@@ -161,14 +159,14 @@ public class ComPagerFragment extends Fragment {
 
         itemContent = new String[]{item.getHomepg(), item.getGeunmujy(), item.getDpyeonrakcheoNo(), item.getEopjongGbcdNm(), item.getDamdangjaFnm(), item.getDdjyeonrakcheoNo()};
 
-        dataSet.clear();
+        twoDataSet.clear();
         adapter.notifyDataSetChanged();
 
         for (int i = 0; i < itemTitle.length; i++) {
             if (itemContent[i] == null)
                 itemContent[i] = " ";
 
-            dataSet.add(new Data(itemTitle[i], itemContent[i]));
+            twoDataSet.add(new TwoData(itemTitle[i], itemContent[i]));
         }
     }
 
@@ -182,14 +180,14 @@ public class ComPagerFragment extends Fragment {
         itemContent = new String[]{item.hangleMagamDt(), item.getJeopsu(), item.getDdeopmuNm(), item.getGyeongryeokGbcdNm() + " | " + item.getCjhakryeok(),
                 item.convertJeonGong(), item.getYeokjongBrcdNm()};
 
-        dataSet.clear();
+        twoDataSet.clear();
         adapter.notifyDataSetChanged();
 
         for (int i = 0; i < itemTitle.length; i++) {
             if (itemContent[i] == null)
                 itemContent[i] = " ";
 
-            dataSet.add(new Data(itemTitle[i], itemContent[i]));
+            twoDataSet.add(new TwoData(itemTitle[i], itemContent[i]));
         }
     }
 
@@ -199,16 +197,16 @@ public class ComPagerFragment extends Fragment {
     private void setYeonbongData() {
 
         itemTitle = new String[]{getString(R.string.bokri), getString(R.string.yeonbong),};
-        itemContent = new String[]{item.getBokri(), item.getGyeongryeokGbcdNm()};
+        itemContent = new String[]{item.getBokri(), item.getGyjogeonCdNm()};
 
-        dataSet.clear();
+        twoDataSet.clear();
         adapter.notifyDataSetChanged();
 
         for (int i = 0; i < itemTitle.length; i++) {
             if (itemContent[i] == null)
                 itemContent[i] = " ";
 
-            dataSet.add(new Data(itemTitle[i], itemContent[i]));
+            twoDataSet.add(new TwoData(itemTitle[i], itemContent[i]));
         }
 
 

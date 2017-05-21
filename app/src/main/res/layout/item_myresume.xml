@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="twodata"
+            type="kr.happy.myarmy.Recyclerview.TwoData"/>
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:layout_marginBottom="3dp"
-    android:padding="15dp">
+    android:padding="18dp">
 
     <TextView
         android:id="@+id/item_resTitle"
@@ -13,8 +21,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/item_resContent"
         app:layout_constraintHorizontal_chainStyle="spread"
-        android:text="희망직종"
+        android:text="@{twodata.title}"
         android:paddingLeft="4dp"
+        app:layout_constraintHorizontal_weight="1"
         android:textColor="#4A4A4A"
         android:textSize="14dp"
         android:gravity="left"
@@ -26,10 +35,13 @@
         app:layout_constraintLeft_toRightOf="@+id/item_resTitle"
         app:layout_constraintRight_toRightOf="parent"
         android:hint="@string/plzinput"
+        app:layout_constraintHorizontal_weight="2"
         android:textColorHint="#9b9b9b"
         android:gravity="right"
+        android:text="@{twodata.content}"
         android:textColor="@color/orange_a"
         android:textSize="14dp"
      />
 
 </android.support.constraint.ConstraintLayout>
+</layout>

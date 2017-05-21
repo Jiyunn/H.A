@@ -10,11 +10,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Item  {
+
+public class Item      {
 
     @SerializedName("id")
     @Expose
     private int id;
+
+    private String thumbnail;
 
     @SerializedName("bokrihs")
     @Expose
@@ -96,6 +99,8 @@ public class Item  {
     private String yuhyoYn;
 
 
+
+
     public String getBokri() {
         return bokri;
     }
@@ -156,7 +161,7 @@ public class Item  {
         String guen = ""; //수정된 근무지 시도 나타냄
         StringBuilder builder;
 
-        String[] temp = this.geunmujysido.split("[, ]+"); //콤마나 공백을 기준으로 문자열을 자름.
+        String[] temp = this.geunmujysido.split("[, /]+"); //콤마나 공백을 기준으로 문자열을 자름.
 
         for (int i = 0; i < temp.length; i++) {
             switch (temp[i].length()) {
@@ -243,6 +248,7 @@ public class Item  {
 
                 if (day == 0)
                     dDay = "내일마감";
+
                 else
                     dDay = "D-" + String.valueOf(day + 1);
 
@@ -322,4 +328,14 @@ public class Item  {
     public String getGongoNo() {
         return gongoNo;
     }
+
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 }
+

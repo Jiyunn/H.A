@@ -15,7 +15,7 @@ public class UserDBManager extends SQLiteOpenHelper {
 
     /*db명, 테이블명, 디비 버전*/
     static final String DB_USER = "Users.db";
-    static final String TABLE_USER = "Data";
+    static final String TABLE_USER = "User";
     static final int DB_VERSION = 1;
 
     Context mContext = null;
@@ -56,7 +56,7 @@ public class UserDBManager extends SQLiteOpenHelper {
                     "phone              TEXT ); ");
 
             db.execSQL("INSERT INTO " + TABLE_USER + "(email, pwd, name, birth, wantjob, specialnote, edu, certificate, address, etccareer, phone) " +
-                    "VALUES ('', '', '' , '', '', '', '', '', '', '','' ); "); //test
+                    "VALUES ('', '', '' , '', '', '', '', '', '', '','' ); ");
 
         } catch (SQLException e) {
             e.printStackTrace();

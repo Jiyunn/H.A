@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="twodata"
+            type="kr.happy.myarmy.Recyclerview.TwoData"/>
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -14,7 +23,7 @@
         android:layout_weight="4"
         android:gravity="left"
         android:paddingLeft="10dp"
-        android:text="웹사이트"
+        android:text="@{twodata.title}"
         android:textColor="#4a4a4a"
         android:textStyle="bold"
         android:textSize="14dp" />
@@ -25,9 +34,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:gravity="left"
-        android:text="www.win3win.me"
+        android:text="@{twodata.content}"
         android:ellipsize="end"
+        android:autoLink="web"
+        android:textColorLink="@color/skyblue_a"
         android:textColor="@color/nineb"
         android:textSize="14dp" />
 
 </LinearLayout>
+</layout>
