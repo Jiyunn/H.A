@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="smartmatch"
+            type="me.happy.win3win.Menu.SmartMatchFragment"/>
+    </data>
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:background="@color/navy_a"
     android:layout_height="match_parent">
@@ -12,7 +22,7 @@
         android:text="@string/oops"
         android:layout_centerInParent="true"
         android:padding="20dp"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textColor="#CBCBCB"
         android:layout_above="@+id/oops_resume"
         android:textStyle="bold"
@@ -28,9 +38,11 @@
         android:paddingLeft="28dp"
         android:paddingRight="28dp"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textColor="@color/white"
         android:layout_centerInParent="true"
         />
 
 </RelativeLayout>
+
+</layout>

@@ -6,26 +6,25 @@
     <data>
         <variable
             name="item"
-            type="kr.happy.myarmy.Server.Item"/>
-
+            type="me.happy.win3win.Server.Item"/>
     </data>
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/basic_margin"
+    android:layout_marginLeft="8dp"
     android:layout_marginTop="@dimen/basic_margin"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         card_view:cardBackgroundColor="@color/white"
-        card_view:cardElevation="0dp"
+        card_view:cardElevation="1dp"
         card_view:contentPaddingTop="13dp"
-        card_view:contentPaddingBottom="13dp"
-        card_view:contentPaddingRight="8dp"
-        card_view:contentPaddingLeft="8dp"
+        card_view:contentPaddingBottom="10dp"
+        card_view:contentPaddingRight="6dp"
+        card_view:contentPaddingLeft="6dp"
  >
 
         <LinearLayout
@@ -41,8 +40,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="5"
-
-
                 />
 
             <View
@@ -61,7 +58,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:maxLines="1"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:text="@{item.eopcheNm}"
                 android:textColor="@color/orange_a"
                 android:textSize="12dp"
@@ -69,32 +66,16 @@
 
 
             <TextView
-                android:id="@+id/item_comContent1"
-                style="@style/ellipsize"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:gravity="center_horizontal"
-                android:maxLines="1"
-                android:minLines="1"
-                android:paddingTop="2dp"
-                android:text="@{item.cyjemokNm}"
-                android:textColor="#484848"
-                android:textSize="10dp" />
-
-            <TextView
                 android:id="@+id/item_comContent2"
                 style="@style/ellipsize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_weight="2"
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="1dp"
                 android:text="@{item.ddeopmuNm}"
-                android:textColor="#484848"
+                android:textColor="@color/foureight"
                 android:textSize="10dp" />
 
             <TextView
@@ -103,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:maxLines="1"
@@ -120,7 +101,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="1dp"
-                android:textColor="#484848"
+                android:textColor="@color/foureight"
                 android:textSize="10dp"
                 android:textStyle="bold" />
 

@@ -1,13 +1,36 @@
 <resources>
-    <string name="app_name">MyArmy</string>
+    <string name="app_name">W3W</string>
 
+    <!--SPLASH ACTIVITY-->
+    <string name="join">회원가입</string>
+    <string name="login">로그인</string>
+    
+    <string name="id">아이디</string>
+    <string name="name">이름</string>
+    <string name="pwd">패스워드</string>
+    <string name="email">이메일주소</string>
+    <string name="send">전송</string>
+    <string name="join_email">기재된 이메일주소로 인증번호가 전송됩니다</string>
+    <string name="join_auth">인증번호 입력&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="join_birth">생년월일&#160;&#160;&#160;&#160;ex)19980413</string>
+    <string name="join_already">이미 회원이신가요?</string>
+
+    <string name="autologin">자동로그인</string>
+    <string name="saveid">아이디저장</string>
+
+    <!--BOTTOM TAB-->
     <string name="tab_resume">내 이력서 관리</string>
     <string name="tab_smartmatch">스마트매치</string>
+    <string name="tab_home">HOME</string>
     <string name="tab_jobgroup">직군별정보</string>
     <string name="tab_regiongroup">지역별정보</string>
 
+
+    <string name="inputPlz">입력해주세요</string>
+
+
+
     <string name="enrolid">등록아이디</string>
-    <string name="name">이름</string>
     <string name="age">나이</string>
     <string name="birth">생년월일</string>
     <string name="wantjob">희망직종</string>
@@ -44,7 +67,7 @@
     <string name="jeonbook">전라북도</string>
     <string name="jeonnam">전라남도</string>
 
-    <string name="oops">이런! \n이력서는 작성하셨나요?</string>
+    <string name="oops">이런! \n\n이력서는 작성하셨나요?</string>
 
     <string name="giupinfo">기업정보</string>
     <string name="chaeyonginfo">채용정보</string>
@@ -55,19 +78,10 @@
 
     <string name="plzinput">정보없음</string>
 
-    <string name="id">아이디</string>
-    <string name="email">이메일주소</string>
-    <string name="pwd">패스워드</string>
-    <string name="signup">회원가입</string>
-    <string name="login">로그인</string>
-    <string name="birth_signup">생년월일&#160;&#160;&#160;&#160;ex)19980413</string>
-    <string name="inputPlz">입력해주세요</string>
 
     <string name="wrongEmail">&#160;올바른 이메일 형식이 아닙니다</string>
     <string name="wrongPwd">&#160;8 ~20 자의 문자만 사용 가능합니다 </string>
     <string name="wrongPwdTwo">&#160;아이디 혹은 비밀번호가 일치하지 않습니다</string>
-
-    <string name="send">전송</string>
 
     <string name="matching">매칭중입니다 · · · .</string>
 
@@ -77,7 +91,8 @@
     <string name="jiwonJakuk">지원자격</string>
     <string name="jeongong">전공</string>
     <string name="whygok">어학능력</string>
-    <string name="yeok">고용형태</string>
+    <string name="yeok">역종구분</string>
+    <string name="yowon">요원구분</string>
 
     <string name="website">웹사이트</string>
     <string name="bonsa">근무지역</string>
@@ -119,6 +134,10 @@
         <item>11월</item>
         <item>12월</item>
     </string-array>
+
+    <string name="select">select</string>
+    <string name="nonselect">nonselect</string>
+
 
 
 </resources>

@@ -8,16 +8,16 @@
     <data>
         <variable
             name="mainActivity"
-            type="kr.happy.myarmy.MainActivity"/>
-
+            type="me.happy.win3win.MainActivity"/>
     </data>
+
 
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graybacground"
-    tools:context="kr.happy.myarmy.MainActivity">
+    tools:context="me.happy.win3win.MainActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

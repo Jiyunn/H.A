@@ -15,7 +15,7 @@
     <tab
         id="@+id/tab_HOME"
         icon="@drawable/hh"
-        title="HOME" />
+        title="@string/tab_home" />
     <tab
         id="@+id/tab_jobgroup"
         icon="@drawable/jj"

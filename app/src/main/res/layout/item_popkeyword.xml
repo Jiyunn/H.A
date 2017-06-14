@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="twodata"
+            type="me.happy.win3win.Recyclerview.TwoString"/>
+    </data>
+
+    <LinearLayout
+        android:layout_marginTop="2dp"
+
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="13dp">
+
+
+        <TextView
+            android:id="@+id/item_popNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="@{twodata.title}"
+            android:background="@color/skyblue_a"
+            android:textColor="@color/whitegray_a"
+            android:textStyle="bold"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/item_popTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@{twodata.content}"
+            android:paddingLeft="10dp"
+            android:ellipsize="end"
+            android:autoLink="web"
+            android:textStyle="bold"
+            android:textColorLink="@color/skyblue_a"
+            android:textColor="@color/fora"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+</layout>

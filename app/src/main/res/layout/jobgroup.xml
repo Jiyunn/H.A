@@ -6,10 +6,10 @@
     <data>
         <variable
             name="jobgroup"
-            type="kr.happy.myarmy.Menu.JobGroupFragment"/>
+            type="me.happy.win3win.Menu.JobGroupFragment"/>
     </data>
 
-    <kr.happy.myarmy.Custom.NestedCoordinatorLayout
+    <me.happy.win3win.Custom.NestedCoordinatorLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -40,7 +40,7 @@
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_jeonja"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:text="@string/jeonja"
                     app:layout_constraintLeft_toRightOf="@+id/job_gigye"
                     app:layout_constraintRight_toLeftOf="@+id/job_jeongi"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <TextView
@@ -61,7 +61,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
                     app:layout_constraintRight_toLeftOf="@+id/job_euiyak"
                     app:layout_constraintVertical_chainStyle="spread"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
 
@@ -72,7 +72,7 @@
                     android:text="@string/euiyak"
                     app:layout_constraintLeft_toRightOf="@+id/job_jeongi"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
 
@@ -86,7 +86,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_gaebal"
                     app:layout_constraintTop_toBottomOf="@+id/job_gigye"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
 
@@ -100,7 +100,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_it"
                     app:layout_constraintRight_toLeftOf="@+id/job_whahak"
                     app:layout_constraintTop_toBottomOf="@+id/job_jeonja"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <TextView
@@ -111,7 +111,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_gaebal"
                     app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
                     app:layout_constraintTop_toBottomOf="@+id/job_jeongi"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <TextView
@@ -122,7 +122,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_whahak"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/job_euiyak"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <!--셋째줄-->
@@ -136,7 +136,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/job_somyou"
                     app:layout_constraintTop_toBottomOf="@+id/job_it"
-                    android:onClick="@{jobgroup::onJobClick}"
+
                     />
 
                 <TextView
@@ -147,7 +147,6 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_euiryu"
                     app:layout_constraintRight_toLeftOf="@+id/job_saengsan"
                     app:layout_constraintTop_toBottomOf="@+id/job_gaebal"
-                    android:onClick="@{jobgroup::onJobClick}"
 
                     />
 
@@ -159,7 +158,6 @@
                     app:layout_constraintLeft_toRightOf="@+id/job_somyou"
                     app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
                     app:layout_constraintTop_toBottomOf="@+id/job_whahak"
-                    android:onClick="@{jobgroup::onJobClick}"
                     />
 
 
@@ -173,5 +171,5 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</kr.happy.myarmy.Custom.NestedCoordinatorLayout>
+</me.happy.win3win.Custom.NestedCoordinatorLayout>
 </layout>

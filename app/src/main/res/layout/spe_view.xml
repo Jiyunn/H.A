@@ -5,14 +5,22 @@
     <data>
         <variable
             name="speview"
-            type="kr.happy.myarmy.CompanyVp.ComPagerFragment"/>
+            type="me.happy.win3win.SpeSearch.ComPagerFragment"/>
+
+        <variable
+            name="recentsearch"
+            type="me.happy.win3win.SearchMenu.WhileSearchingFragment"/>
+
+        <variable
+            name="popsearch"
+            type="me.happy.win3win.SpeSearch.KeywordsFragment"/>
     </data>
 
 <LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="5dp"
-    android:background="@color/white">
+>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_spe"

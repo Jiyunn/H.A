@@ -3,13 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <data>
+        <variable
+            name="infoedit"
+            type="me.happy.win3win.Menu.InfoEditFragment" />
+
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp">
 
-        <EditText
+        <TextView
             android:id="@+id/item_certiName"
             style="@style/certiTexts"
             android:hint="자격증명을 입력하세요"
@@ -33,13 +40,11 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_certiName" />
 
-        <EditText
+        <TextView
             android:id="@+id/item_certiPub"
             style="@style/certiTexts"
-
             android:hint="발행처를 입력하세요"
             android:inputType="text"
-            android:maxLength="9"
             android:paddingBottom="10dp"
             android:paddingLeft="2dp"
             android:paddingRight="10dp"
@@ -58,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/item_certiPub" />
 
         <TextView
-            android:id="@+id/item_cerDt"
+            android:id="@+id/item_certiDt"
             style="@style/certiTexts"
             android:layout_width="0dp"
             android:hint="날짜"
@@ -76,16 +81,17 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_date_range_black_18dp"
             android:backgroundTint="@color/skyblue_a"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintLeft_toRightOf="@+id/item_cerDt"
+            app:layout_constraintLeft_toRightOf="@+id/item_certiDt"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line2" />
 
         <View
             android:id="@+id/line3"
             android:layout_width="0dp"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/nineb"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

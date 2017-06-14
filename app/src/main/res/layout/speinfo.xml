@@ -6,11 +6,15 @@
     <data>
         <variable
             name="speinfo"
-            type="kr.happy.myarmy.Menu.CompanyInfoFragment"/>
+            type="me.happy.win3win.Menu.CompanyInfoFragment"/>
+
+        <variable
+            name="item"
+            type="me.happy.win3win.Server.Item"/>
 
     </data>
 
-<kr.happy.myarmy.Custom.NestedCoordinatorLayout
+<me.happy.win3win.Custom.NestedCoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graybacground"
@@ -38,11 +42,11 @@
         <ImageView
             android:id="@+id/spe_comLogo"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="15dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="5"
-            android:src="@drawable/oneff"/>
+            android:src="@drawable/company"/>
 
         <TextView
             android:id="@+id/spe_comTitle"
@@ -51,7 +55,7 @@
             android:gravity="center"
             android:textSize="12dp"
             android:textColor="@color/nineb"
-            android:text="기업이름"
+            android:text="@{item.eopcheNm}"
             android:padding="3dp"
             android:maxLines="1"
             android:textStyle="bold"
@@ -62,10 +66,10 @@
             android:id="@+id/spe_comContent1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="16dp"
             android:textSize="14dp"
             android:gravity="center_horizontal"
-            android:text="채용제목"
+            android:text="@{item.cyjemoknm}"
             android:maxLines="1"
             android:ellipsize="end"
             android:textColor="#4a4a4a"
@@ -78,12 +82,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/nineb"
             android:text="     관심기업"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_weight="3"
             android:gravity="center"
             android:background="@drawable/interested"
-            android:layout_marginBottom="20dp"
-            android:onClick="@{speinfo::addFavorite}"/>
+            android:layout_marginBottom="12dp"
+        />
 
     </LinearLayout>
 
@@ -111,7 +115,7 @@
     </android.support.v4.view.ViewPager>
     </android.support.constraint.ConstraintLayout>
 
-</kr.happy.myarmy.Custom.NestedCoordinatorLayout>
+</me.happy.win3win.Custom.NestedCoordinatorLayout>
 
 
 </layout>

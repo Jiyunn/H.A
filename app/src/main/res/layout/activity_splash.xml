@@ -1,57 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+  >
     <data>
         <variable
-            name="activity"
-            type="kr.happy.myarmy.SplashActivity" />
-
+            name="splash"
+            type="me.happy.win3win.Splash.SplashActivity" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/activity_splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/navy_a"
-        android:gravity="center"
-        tools:context="kr.happy.myarmy.SplashActivity">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/oneff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15" />
-
-        <Button
-            android:id="@+id/signUp"
-            style="@style/firstScreen"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnshape_orange"
-            android:gravity="center"
-            android:text="회원가입"
-            app:layout_constraintVertical_bias="0.7"
-            android:onClick="@{activity::onClick}"
-
-            />
-
-        <Button
-            android:id="@+id/signIn"
-            style="@style/firstScreen"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnshape_blue"
-            android:text="로그인"
-            app:layout_constraintVertical_bias="0.82"
-            android:onClick="@{activity::onClick}"
-            />
+        <FrameLayout
+            android:id="@+id/splash_frag"
+            style="@style/constraintCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/navy_a"/>
 
 
-    </android.support.constraint.ConstraintLayout>
 </layout>

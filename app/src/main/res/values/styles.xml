@@ -8,18 +8,69 @@
         <item name="android:colorPrimaryDark">@color/navy_a</item>
         <item name="android:colorAccent">@color/navy_a</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorLink">@color/skyblue_a</item>
+        <item name="android:colorEdgeEffect">@color/navy_a</item>
+        <item name="android:colorBackgroundCacheHint">@color/navy_a</item>
     </style>
 
+    <style name=".Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/navy_a</item>
+    </style>
 
-    <style name="bottomTabIcon">
-        <item name="android:layout_width">match_parent</item>
+    <!--WRAP CONTENT-->
+    <style name="wrapContent">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:drawablePadding">2dp</item>
-        <item name="android:textSize">10dp</item>
-        <item name="android:gravity">center</item>
     </style>
+
+    <!--CONSTRAINT CENTER-->
+    <style name="constraintCenter">
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+    </style>
+
+
+    <!--SPLASH ACTIVITY-->
+    <style name="splashBtn">
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--SIGNUP AND LOGIN EDITTEXT-->
+    <style name="login_joinET" parent="constraintCenter">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintHorizontal_bias">0</item>
+        <item name="android:textColorHint">@color/nineb</item>
+        <item name="android:textColor">@color/whitegray_a</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <!--SIGNUP WARN TV-->
+    <style name="join_WarnTV" parent="wrapContent">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/orange_a</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
+    <!--BOTTOM TAB TEXT-->
+    <style name="CustomTitleTextAppearance">
+        <item name="android:textSize">10dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
 
 
     <style name="profileImg">
@@ -90,7 +141,7 @@
         <item name="layout_constraintHorizontal_weight">1</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="android:maxLines">1</item>
+
     </style>
 
     <style name="itemJobContent">
@@ -99,11 +150,6 @@
         <item name="layout_constraintLeft_toRightOf">@+id/line</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="android:ellipsize">end</item>
-    </style>
-
-    <style name="CustomTitleTextAppearance">
-        <item name="android:textSize">10dp</item>
-        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="tabLayout">
@@ -124,44 +170,32 @@
 
     <style name="tabLayoutText">
         <item name="android:textSize">14dp</item>
-    </style>
-
-    <style name="firstScreen">
-        <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintLeft_toLeftOf">parent</item>
-        <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="constraintCenter">
-        <item name="layout_constraintTop_toTopOf">parent</item>
+    <style name="tabLayoutSearch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="tabMode">fixed</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="tabTextColor">#9B9B9B</item>
+        <item name="android:tabStripEnabled">true</item>
+        <item name="tabSelectedTextColor">@color/skyblue_a</item>
+        <item name="tabIndicatorColor">@color/skyblue_a</item>
+        <item name="tabIndicatorHeight">4dp</item>
+
     </style>
+
 
     <style name="ellipsize">
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="login_signupEdittext">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintHorizontal_bias">0</item>
-        <item name="layout_constraintLeft_toLeftOf">parent</item>
-        <item name="android:textColorHint">@color/nineb</item>
-        <item name="android:textColor">@color/whitegray_a</item>
-        <item name="android:textSize">14dp</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:textCursorDrawable">@null</item>
-    </style>
+
 
     <style name="infoCheckbox">
         <item name="android:layout_height">wrap_content</item>

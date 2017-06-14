@@ -2,25 +2,22 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     >
-
     <data>
         <variable
-            name="activity"
-            type="kr.happy.myarmy.LoginActivity"/>
+            name="login"
+            type="me.happy.win3win.Splash.LoginFragment"/>
     </data>
 
 <android.support.constraint.ConstraintLayout
     android:id="@+id/loginParent"
-    tools:context="kr.happy.myarmy.LoginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:paddingLeft="50dp"
     android:paddingRight="50dp"
     android:background="@color/navy_a"
-    android:onClick="@{activity::hideSoftKeyboard}">
+ >
 
     <ImageView
         android:id="@+id/login_logo"
@@ -31,6 +28,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.1"
       />
+
+
 
     <TextView
         android:id="@+id/login_login"
@@ -44,9 +43,11 @@
         android:textSize="20dp"
         />
 
-    <kr.happy.myarmy.Custom.LPEdittext
+
+
+    <me.happy.win3win.Custom.LPEdittext
         android:id="@+id/login_id"
-        style="@style/login_signupEdittext"
+        style="@style/login_joinET"
         android:hint="@string/id"
         android:inputType="textEmailAddress"
         app:layout_constraintVertical_bias="0.45"
@@ -55,9 +56,9 @@
 
      />
 
-    <kr.happy.myarmy.Custom.LPEdittext
+    <me.happy.win3win.Custom.LPEdittext
         android:id="@+id/login_pwd"
-        style="@style/login_signupEdittext"
+        style="@style/login_joinET"
         android:hint="@string/pwd"
         android:inputType="textPassword"
         app:layout_constraintLeft_toLeftOf="@+id/login_logo"
@@ -67,32 +68,43 @@
        />
     <TextView
         android:id="@+id/warnPwd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/join_WarnTV"
         android:text=" "
-        android:textColor="@color/orange_a"
-        android:textSize="10dp"
         app:layout_constraintLeft_toLeftOf="@+id/login_pwd"
         app:layout_constraintTop_toBottomOf="@+id/login_pwd"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_bias="0.02"
-        android:maxLines="1"
         />
+
+    <CheckBox
+        style="@style/wrapContent"
+        app:layout_constraintTop_toBottomOf="@+id/warnPwd"
+        android:text="@string/autologin"
+        android:id="@+id/login_autologin"
+        android:buttonTint="@color/nineb"
+        android:textSize="13dp"
+        android:textColor="@color/cb"/>
+
+    <CheckBox
+        style="@style/wrapContent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintTop_toBottomOf="@+id/warnPwd"
+        app:layout_constraintLeft_toRightOf="@+id/login_autologin"
+        android:text="@string/saveid"
+        android:buttonTint="@color/nineb"
+        android:textSize="13dp"
+        android:textColor="@color/cb"/>
 
 
     <Button
-        android:id="@+id/signIn"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        style="@style/firstScreen"
+        android:id="@+id/login_signIn"
+        style="@style/splashBtn"
         android:text="@string/login"
         app:layout_constraintVertical_bias="0.87"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/btnshape_orange"
-        android:onClick="@{activity::loginClick}"
-
-         />
+        />
 
 
 

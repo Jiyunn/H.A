@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/basic_margin"
+    android:layout_height="match_parent">
+
+    <me.happy.win3win.Custom.LPEdittext
+        android:paddingTop="30dp"
+        android:inputType="text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:minLines="2"
+        android:id="@+id/info_memo"
+        android:textColor="@color/fora"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

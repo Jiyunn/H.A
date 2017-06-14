@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="infoedit"
-            type="kr.happy.myarmy.Menu.InfoEditFragment" />
+            type="me.happy.win3win.Menu.InfoEditFragment" />
 
         <variable
             name="userinfo"
-            type="kr.happy.myarmy.Recyclerview.UserInfo" />
+            type="me.happy.win3win.Recyclerview.UserInfo" />
     </data>
 
     <ScrollView
         android:id="@+id/infoScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:isScrollContainer="true"
+        >
 
         <LinearLayout
+            android:id="@+id/infoparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/graybacground"
-            android:onClick="@{infoedit::hideSoftKeyboard}"
             android:paddingBottom="10dp"
             android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingRight="5dp"
             android:paddingTop="8dp">
 
             <TextView
@@ -387,12 +387,11 @@
                     android:layout_marginTop="50dp"
                      />
 
-                <EditText
+                <TextView
                     android:id="@+id/info_etccareer1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/infobackground"
-                    android:inputType="text"
                     android:maxLines="1"
                     android:hint="경력을 기술해주세요"
                     android:paddingBottom="8dp"
@@ -405,16 +404,16 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/etcCareer" />
 
-                <EditText
+                <TextView
                     android:id="@+id/info_etccareer2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/infobackground"
-                    android:inputType="text"
                     android:maxLines="1"
                     android:hint="경력을 기술해주세요"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
+                    android:layout_marginTop="2dp"
                     android:textColor="@color/fora"
                     android:textSize="14dp"
                     app:layout_constraintHorizontal_bias="0"
@@ -436,12 +435,11 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/info_specialnote"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/infobackground"
-                    android:inputType="text"
                     android:maxLines="1"
                     android:hint="특기사항을 기술해주세요"
                     android:paddingBottom="8dp"
