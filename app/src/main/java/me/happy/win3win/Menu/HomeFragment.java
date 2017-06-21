@@ -42,7 +42,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    private  static final String KEY = "key";
+    private  static final String KEY = "";
 
     private ArrayList<Item> dataSet;
     private ArrayList<Item> dataRec; //추천용 뷰

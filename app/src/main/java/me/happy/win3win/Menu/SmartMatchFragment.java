@@ -24,7 +24,6 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import me.happy.win3win.R;
 import me.happy.win3win.Recyclerview.SmartAdapter;
 import me.happy.win3win.Server.Item;
@@ -43,7 +42,6 @@ import retrofit2.Response;
  */
 
 public class SmartMatchFragment extends Fragment {
-
 
     private int isResume = 1; //이력서 있음
 
@@ -73,7 +71,6 @@ public class SmartMatchFragment extends Fragment {
             oopsBinding = DataBindingUtil.inflate(inflater, R.layout.oops, container, false);
             view = oopsBinding.getRoot();
             oopsBinding.setSmartmatch(this);
-            ButterKnife.bind(this, view);
             return view;
         }
 
@@ -82,7 +79,7 @@ public class SmartMatchFragment extends Fragment {
         smartmatchBinding.setSmartmatch(this);
         ButterKnife.bind(this, view);
 
-        callSmartMatchAPI(ServerGenerator.getRequestService());
+        callSmartMatchAPI((ServerGenerator.getRequestService()));
 
         initRecyclerview(smartmatchBinding.rvSmart);
 
@@ -108,7 +105,6 @@ Recyclerview 초기화
     /*
     이력서 작성하기 클릭
      */
-    @OnClick(R.id.oops_resume)
     public void goToWriteResume(View v) {
         fgManager
                 .beginTransaction()
@@ -119,11 +115,15 @@ Recyclerview 초기화
     /*
       매칭 시작 버튼
        */
-    @OnClick(R.id.smart_go)
     public void sendResumeGo(View v) {
         setLoadingDialog();
         callSmartMatchAPI(ServerGenerator.getRequestService());
     }
+
+    /*
+    등록된 이력서 보기 클릭하면 이력서 화면으로 이동
+     */
+
 
     /*
 로딩 다이얼로그
@@ -204,6 +204,7 @@ Recyclerview 초기화
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful())
                     Log.d("jy", "이력서보내기 성공!");
+
             }
 
             @Override

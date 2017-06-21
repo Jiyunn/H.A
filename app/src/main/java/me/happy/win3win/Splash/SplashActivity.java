@@ -31,8 +31,6 @@ public class SplashActivity extends AppCompatActivity {
         backButtonHandler = new BackButtonHandler(this);
 
     }
-
-
     /*
     ATTACH OTHER FRAGMENT
     */

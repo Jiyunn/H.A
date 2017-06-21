@@ -40,6 +40,7 @@
         android:textStyle="bold"
         android:textSize="16dp"
         android:textColor="@color/white"
+        android:onClick="@{smartmatch::goToWriteResume}"
         android:layout_centerInParent="true"
         />
 

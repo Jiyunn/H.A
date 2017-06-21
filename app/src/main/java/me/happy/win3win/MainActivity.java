@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity  {
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
 
-
     private FragmentManager fgManager;
     private BackButtonHandler backButtonHandler;
 

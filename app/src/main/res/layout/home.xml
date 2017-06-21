@@ -32,6 +32,18 @@
                 android:orientation="vertical"
                 >
 
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="추천채용공고"
+                    android:textColor="@color/nineb"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                />
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_rec"
                     android:layout_width="match_parent"

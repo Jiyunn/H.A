@@ -77,7 +77,6 @@ public class CompanyInfoFragment extends Fragment {
         callSpeAPI(ServerGenerator.getRequestService(), id);
 
 
-
         binding.speComLogo.post(new Runnable() {
             @Override
             public void run() {
