@@ -72,7 +72,6 @@ public class JoinFragment extends Fragment {
     }
 
 
-
     /*
     When Click Join Btn
     */

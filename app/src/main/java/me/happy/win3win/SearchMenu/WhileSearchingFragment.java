@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 public class WhileSearchingFragment extends Fragment implements TextWatcher, View.OnClickListener {
 
-    private RecentsearchBinding binding;
+    private RecentsearchBinding binding; //초기화면 이걸로 붙임
 
     private PopSearchAdapter adapter;
     private ArrayList<Item> dataResult; //검색 결과

@@ -114,7 +114,7 @@ Recyclerview 초기화
 
     /*
       매칭 시작 버튼
-       */
+      */
     public void sendResumeGo(View v) {
         setLoadingDialog();
         callSmartMatchAPI(ServerGenerator.getRequestService());
@@ -189,6 +189,9 @@ Recyclerview 초기화
         });
     }
 
+    /*
+    이력서 가져오기
+     */
     public void callGetResumeAPI(RetroInterface apiService) {
         Call<MyResume> call = apiService.getMyResume(token);
     }

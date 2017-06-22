@@ -4,6 +4,7 @@ package me.happy.win3win.Server;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+//이력서가져오는 클래스
 public class MyResume {
 
     @SerializedName("code")

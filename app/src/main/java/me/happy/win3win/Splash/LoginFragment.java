@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
 
-    LoginBinding binding;
+    private LoginBinding binding;
 
     private String id;
     private String pwd;
@@ -41,7 +41,6 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mDBManager = UserDBManager.getInstance(getActivity());
-
     }
 
     @Nullable
@@ -52,7 +51,6 @@ public class LoginFragment extends Fragment {
         View view = binding.getRoot();
         ButterKnife.bind(this,view);
 
-
         /*
         아이디 띄워주기
          */
@@ -60,8 +58,6 @@ public class LoginFragment extends Fragment {
 
         if (c != null && c.moveToFirst())
             binding.loginId.setText(c.getString(0));
-
-
 
         return view;
     }

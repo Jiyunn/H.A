@@ -22,7 +22,7 @@ import me.happy.win3win.databinding.ItemRecBinding;
  * Created by JY on 2017-05-22.
  */
 
-public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewHolder> implements View.OnClickListener{
+public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecViewHolder> implements View.OnClickListener{
 
 
     private Context context;
@@ -31,7 +31,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewHolder> i
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public RecAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager) {
+    public RecommendAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager) {
         this.context = context;
         this.gongos = gongos;
         this.itemLayout = itemLayout;

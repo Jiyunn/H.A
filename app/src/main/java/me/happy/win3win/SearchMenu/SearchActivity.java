@@ -34,7 +34,6 @@ import me.happy.win3win.databinding.SearchBinding;
 public class SearchActivity extends AppCompatActivity implements TextWatcher, TextView.OnEditorActionListener {
 
     private SearchBinding binding;
-
     private ArrayList<Item> dataSet;
     private String query = "";
 
@@ -59,13 +58,9 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher, Te
                 .replace(R.id.sfrag, new KeywordFragment())
                 .commit();
 
-
         binding.searchSearch.toolbarSearch.addTextChangedListener(this);
         binding.searchSearch.toolbarSearch.setOnEditorActionListener(this);
     }
-
-
-
 
     /*
     백버튼 누르면 홈화면으로 가기

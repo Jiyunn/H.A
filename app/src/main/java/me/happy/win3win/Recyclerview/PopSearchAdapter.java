@@ -47,7 +47,7 @@ public class PopSearchAdapter extends RecyclerView.Adapter<PopSearchAdapter.Sear
         TwoString twoString = twodataSet.get(position);
         holder.binding.setTwodata(twoString);
 
-        if( position >3)
+        if( position >3)  //3위안에 드는 검색어만 색상 변경
             holder.binding.itemPopNum.setBackgroundResource(R.color.nineb);
     }
 

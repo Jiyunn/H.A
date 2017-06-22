@@ -43,15 +43,11 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
     private HomeAdapter adapterSet;
     private StaggeredGridLayoutManager mLayoutManager;
 
-
     private String token;
-
     private UserDBManager mDBManager;
-
     private FragmentManager fgManager;
 
     private static String text;
-
     private String[] url;
 
 
@@ -84,14 +80,13 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
         binding.rvSResult.setLayoutManager(mLayoutManager);
 
 
-
         callSearchAPI(ServerGenerator.getRequestService());
 
         return view;
     }
 
     /*
-    검색항목
+    검색내용 서버에서 가져오기
   */
     public void callSearchAPI(RetroInterface apiService) {
 
@@ -115,9 +110,7 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
 
                     binding.srTv.setText(ssb);
                 }
-
             }
-
             @Override
             public void onFailure(Call<ReqItems> call, Throwable t) {
                 t.printStackTrace();
@@ -139,6 +132,7 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
         Log.d("jy", "검색내용 : " +text);
         dataSet = new ArrayList<>();
 
+        //로고 url
         url = new String[]{"http://img.jobkorea.kr/trans/c/200x80/c/o/JK_Co_coset1647.png",
                 "http://img.jobkorea.kr/trans/c/200x80/k/n/JK_Co_knlsystem.png",
                 "http://img.jobkorea.kr/trans/c/200x80/d/k/JK_Co_dkvascom1.png",
@@ -157,7 +151,6 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
             token = c.getString(0);
         }
         c.close();
-
     }
 
     /*

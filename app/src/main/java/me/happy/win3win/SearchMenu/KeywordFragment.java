@@ -18,7 +18,7 @@ import me.happy.win3win.databinding.WhilesearchingBinding;
 
 public class KeywordFragment extends Fragment  {
 
-    WhilesearchingBinding binding;
+    WhilesearchingBinding binding; //검색하는 화면
 
     public KeywordFragment() {
     }

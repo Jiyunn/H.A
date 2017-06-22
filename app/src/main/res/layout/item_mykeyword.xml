@@ -9,8 +9,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -22,14 +21,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="left"
-            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintHorizontal_weight="4"
             android:text="@{twodata.content}"
             android:paddingLeft="10dp"
             android:ellipsize="end"
-            android:autoLink="web"
             app:layout_constraintRight_toLeftOf="@+id/item_myDel"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_weight="4"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +37,7 @@
         <TextView
             android:id="@+id/item_myDel"
             android:layout_width="0dp"
+            android:paddingLeft="10dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintHorizontal_weight="1"

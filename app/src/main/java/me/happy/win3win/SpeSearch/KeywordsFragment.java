@@ -71,7 +71,7 @@ public class KeywordsFragment extends Fragment {
             adapterPop = new PopSearchAdapter(getActivity(), dataSet, R.layout.item_popkeyword, fgManager, binding.rvSpe);
             binding.rvSpe.setAdapter(adapterPop);
         } else if (mPage == 1) {
-            adapterMy = new MySearchAdapter(getActivity(), dataSet, R.layout.item_mykeyword, binding.rvSpe);
+            adapterMy = new MySearchAdapter(getActivity(), dataSet, R.layout.item_mykeyword, fgManager, binding.rvSpe);
             binding.rvSpe.setAdapter(adapterMy);
         }
 
@@ -83,7 +83,7 @@ public class KeywordsFragment extends Fragment {
     }
 
     /*
-    인기검색어 임의로 셋팅, 유저의 검색어 디비에서 읽어오기
+    인기검색어 임의로 셋팅 /  유저의 검색어 디비에서 읽어오기
      */
     protected void setPopKeyword() {
         String[] popKeyword = new String[]{"개발", "보충역", "연구", "연봉 2400만원 이상", "설비", "병역특례정보", "전자기기", "대전광역시", "충청북도지역공고", "의약분야", "현역"};

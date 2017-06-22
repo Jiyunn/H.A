@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import me.happy.win3win.Custom.EndlessRecyclerViewScrollListener;
 import me.happy.win3win.R;
 import me.happy.win3win.Recyclerview.HomeAdapter;
-import me.happy.win3win.Recyclerview.RecAdapter;
+import me.happy.win3win.Recyclerview.RecommendAdapter;
 import me.happy.win3win.Server.Item;
 import me.happy.win3win.Server.ReqItems;
 import me.happy.win3win.Server.RetroInterface;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private ArrayList<Item> dataSet;
     private ArrayList<Item> dataRec; //추천용 뷰
     private HomeAdapter adapterSet;
-    private RecAdapter adapterRec;
+    private RecommendAdapter adapterRec;
 
     private StaggeredGridLayoutManager mLayoutManager;
     private LinearLayoutManager mLayoutManager2;
@@ -259,7 +259,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
 
         } else if (rv.getId() == R.id.rv_rec) {
-            adapterRec = new RecAdapter(getActivity(), dataRec, R.layout.item_rec, rv, fgManager);
+            adapterRec = new RecommendAdapter(getActivity(), dataRec, R.layout.item_rec, rv, fgManager);
             rv.setAdapter(adapterRec);
             mLayoutManager2= new LinearLayoutManager(getActivity());
             mLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);

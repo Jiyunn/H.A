@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
@@ -66,7 +67,8 @@ dependencies {
     /* indi*/
     compile 'com.wang.avi:library:2.1.3'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
-
-
-
+    /*pushalert*/
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
 }
+apply plugin: 'com.google.gms.google-services'
