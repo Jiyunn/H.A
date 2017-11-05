@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="me.happy.win3win.Server.Item"/>
+            type="me.happy.win3win.network.Item"/>
     </data>
 
 <LinearLayout

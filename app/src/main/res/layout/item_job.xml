@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="me.happy.win3win.Server.Item"/>
+            type="me.happy.win3win.network.Item"/>
     </data>
 
 <android.support.constraint.ConstraintLayout
@@ -93,7 +93,6 @@
         android:layout_height="wrap_content"
         style="@style/itemJobContent"
         android:paddingTop="1dp"
-        android:text="지역 | 연봉"
         android:maxLines="1"
         android:textColor="#85C1E9"
         app:layout_constraintTop_toBottomOf="@+id/item_jobContent2"
@@ -110,7 +109,7 @@
         android:textColor="#484848"
         android:textSize="12dp"
         android:textStyle="bold"
-        android:text="d-day| 경력 | 학력"/>
+     />
 
 </android.support.constraint.ConstraintLayout>
 </layout>

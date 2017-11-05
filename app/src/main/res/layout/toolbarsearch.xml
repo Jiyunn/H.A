@@ -8,7 +8,7 @@
     <data>
         <variable
             name="activity"
-            type="me.happy.win3win.SearchMenu.SearchActivity"/>
+            type="me.happy.win3win.searchMenu.SearchActivity"/>
     </data>
 <android.support.constraint.ConstraintLayout
 
@@ -32,7 +32,7 @@
         app:layout_constraintRight_toLeftOf="@+id/toolbar_search"
         app:layout_constraintTop_toTopOf="@+id/toolbar_search" />
 
-    <me.happy.win3win.Custom.SearchEdittext
+    <me.happy.win3win.custom.SearchEdittext
         android:id="@+id/toolbar_search"
         android:hint="검색어를 입력하세요"
         android:layout_width="0dp"

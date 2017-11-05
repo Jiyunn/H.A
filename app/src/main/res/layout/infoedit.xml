@@ -5,11 +5,11 @@
     <data>
         <variable
             name="infoedit"
-            type="me.happy.win3win.Menu.InfoEditFragment" />
+            type="me.happy.win3win.menu.InfoEditFragment" />
 
         <variable
             name="userinfo"
-            type="me.happy.win3win.Recyclerview.UserInfo" />
+            type="me.happy.win3win.recyclerview.UserInfo" />
     </data>
 
     <ScrollView
@@ -54,7 +54,7 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/infoTv"
-                    android:text="이름"
+                    android:text="@string/name"
                     app:layout_constraintBaseline_toBaselineOf="@+id/info_name"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintRight_toLeftOf="@+id/info_name" />
@@ -272,7 +272,7 @@
                     android:background="@drawable/infobackground"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:hint="ex) 서울시 구로구"
+                    android:hint="@string/hint_address"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:textColor="@color/fora"
@@ -410,7 +410,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/infobackground"
                     android:maxLines="1"
-                    android:hint="경력을 기술해주세요"
+                    android:hint="@string/hint_career"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:layout_marginTop="2dp"
@@ -441,7 +441,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/infobackground"
                     android:maxLines="1"
-                    android:hint="특기사항을 기술해주세요"
+                    android:hint="@string/hint_teok"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:textColor="@color/fora"

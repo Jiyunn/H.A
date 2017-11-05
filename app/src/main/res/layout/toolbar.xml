@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <me.happy.win3win.Custom.SearchEdittext
+        <me.happy.win3win.custom.SearchEdittext
             android:id="@+id/toolbar_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

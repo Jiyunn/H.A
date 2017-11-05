@@ -6,14 +6,14 @@
 
         <variable
             name="item"
-            type="me.happy.win3win.Server.Item" />
+            type="me.happy.win3win.network.Item" />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:paddingBottom="5dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
@@ -40,7 +40,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="5"
-
 
                     />
 
@@ -107,7 +106,7 @@
                     android:maxLines="1"
                     android:padding="1dp"
                     android:textColor="#484848"
-                    android:textSize="10dp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
 

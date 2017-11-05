@@ -5,15 +5,15 @@
     <data>
         <variable
             name="speview"
-            type="me.happy.win3win.SpeSearch.ComPagerFragment"/>
+            type="me.happy.win3win.search.ComPagerFragment"/>
 
         <variable
             name="recentsearch"
-            type="me.happy.win3win.SearchMenu.WhileSearchingFragment"/>
+            type="me.happy.win3win.searchMenu.WhileSearchingFragment"/>
 
         <variable
             name="popsearch"
-            type="me.happy.win3win.SpeSearch.KeywordsFragment"/>
+            type="me.happy.win3win.search.KeywordsFragment"/>
     </data>
 
 <LinearLayout

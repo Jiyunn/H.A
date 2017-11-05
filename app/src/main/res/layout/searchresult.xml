@@ -5,7 +5,7 @@
     <data>
         <variable
             name="searchresult"
-            type="me.happy.win3win.SearchMenu.SearchResultFragment" />
+            type="me.happy.win3win.searchMenu.SearchResultFragment" />
     </data>
 
 

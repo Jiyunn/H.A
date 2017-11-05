@@ -6,7 +6,7 @@
     <data>
         <variable
             name="login"
-            type="me.happy.win3win.Splash.LoginFragment"/>
+            type="me.happy.win3win.startscreen.LoginFragment"/>
     </data>
 
 <android.support.constraint.ConstraintLayout
@@ -45,7 +45,7 @@
 
 
 
-    <me.happy.win3win.Custom.LPEdittext
+    <me.happy.win3win.custom.LPEdittext
         android:id="@+id/login_id"
         style="@style/login_joinET"
         android:hint="@string/id"
@@ -56,7 +56,7 @@
 
      />
 
-    <me.happy.win3win.Custom.LPEdittext
+    <me.happy.win3win.custom.LPEdittext
         android:id="@+id/login_pwd"
         style="@style/login_joinET"
         android:hint="@string/pwd"

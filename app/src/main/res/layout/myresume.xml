@@ -5,7 +5,7 @@
     <data>
         <variable
             name="myresume"
-            type="me.happy.win3win.Menu.MyResumeFragment"/>
+            type="me.happy.win3win.menu.MyResumeFragment"/>
     </data>
 <LinearLayout
     android:layout_width="match_parent"
@@ -13,7 +13,7 @@
     android:orientation="vertical"
     android:background="@color/graybacground"
     android:weightSum="10">
-    >
+
 
 
     <android.support.constraint.ConstraintLayout

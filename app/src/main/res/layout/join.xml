@@ -7,7 +7,7 @@
 
         <variable
             name="join"
-            type="me.happy.win3win.Splash.JoinFragment"
+            type="me.happy.win3win.startscreen.JoinFragment"
             />
     </data>
 
@@ -30,7 +30,7 @@
             app:layout_constraintVertical_bias="0.08"
             />
 
-        <me.happy.win3win.Custom.LPEdittext
+        <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_id"
             style="@style/login_joinET"
             android:hint="@string/id"
@@ -49,7 +49,7 @@
             />
 
 
-        <me.happy.win3win.Custom.LPEdittext
+        <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_name"
             style="@style/login_joinET"
             android:hint="@string/name"
@@ -60,7 +60,7 @@
             />
 
         <!--email-->
-        <me.happy.win3win.Custom.LPEdittext
+        <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_email"
             style="@style/login_joinET"
             android:layout_marginRight="5dp"
@@ -121,7 +121,7 @@
             />
 
 
-        <me.happy.win3win.Custom.LPEdittext
+        <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_birth"
             style="@style/login_joinET"
             android:hint="@string/join_birth"
@@ -140,7 +140,7 @@
             />
 
 
-        <me.happy.win3win.Custom.LPEdittext
+        <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_pwd"
             style="@style/login_joinET"
             android:hint="@string/pwd"

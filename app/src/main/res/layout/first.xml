@@ -4,7 +4,7 @@
     <data>
         <variable
             name="first"
-            type="me.happy.win3win.Splash.FirstFragment"/>
+            type="me.happy.win3win.startscreen.FirstFragment"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

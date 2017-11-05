@@ -17,20 +17,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
-import me.happy.win3win.Custom.BackButtonHandler;
-import me.happy.win3win.Menu.HomeFragment;
-import me.happy.win3win.Menu.JobGroupFragment;
-import me.happy.win3win.Menu.MyResumeFragment;
-import me.happy.win3win.Menu.RegionGroupFragment;
-import me.happy.win3win.Menu.SmartMatchFragment;
-import me.happy.win3win.SearchMenu.SearchActivity;
-import me.happy.win3win.Splash.SplashActivity;
+import me.happy.win3win.custom.BackButtonHandler;
+import me.happy.win3win.menu.HomeFragment;
+import me.happy.win3win.menu.JobGroupFragment;
+import me.happy.win3win.menu.MyResumeFragment;
+import me.happy.win3win.menu.RegionGroupFragment;
+import me.happy.win3win.menu.SmartMatchFragment;
+import me.happy.win3win.searchMenu.SearchActivity;
+import me.happy.win3win.startscreen.SplashActivity;
 
 
 public class MainActivity extends AppCompatActivity  {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
@@ -38,15 +36,23 @@ public class MainActivity extends AppCompatActivity  {
     private FragmentManager fgManager;
     private BackButtonHandler backButtonHandler;
 
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
+
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
         bottomBar.setDefaultTab(R.id.tab_HOME);
 
@@ -88,6 +94,7 @@ public class MainActivity extends AppCompatActivity  {
                 });
             }
         });
+
 
     }
 

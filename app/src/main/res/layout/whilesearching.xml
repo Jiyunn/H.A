@@ -3,7 +3,7 @@
     <data>
         <variable
             name="keword"
-            type="me.happy.win3win.SearchMenu.KeywordFragment"/>
+            type="me.happy.win3win.searchMenu.KeywordFragment"/>
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

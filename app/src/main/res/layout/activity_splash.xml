@@ -4,7 +4,7 @@
     <data>
         <variable
             name="splash"
-            type="me.happy.win3win.Splash.SplashActivity" />
+            type="me.happy.win3win.startscreen.SplashActivity" />
     </data>
 
 

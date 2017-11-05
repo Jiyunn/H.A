@@ -5,7 +5,7 @@
     <data>
         <variable
             name="twodata"
-            type="me.happy.win3win.Recyclerview.TwoString"/>
+            type="me.happy.win3win.recyclerview.TwoString"/>
     </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

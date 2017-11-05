@@ -4,7 +4,7 @@
     android:padding="@dimen/basic_margin"
     android:layout_height="match_parent">
 
-    <me.happy.win3win.Custom.LPEdittext
+    <me.happy.win3win.custom.LPEdittext
         android:paddingTop="30dp"
         android:inputType="text"
         android:layout_marginLeft="20dp"

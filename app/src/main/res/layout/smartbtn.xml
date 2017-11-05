@@ -7,7 +7,7 @@
     <data>
         <variable
             name="smart"
-            type="me.happy.win3win.Menu.SmartMatchFragment"/>
+            type="me.happy.win3win.menu.SmartMatchFragment"/>
     </data>
 <android.support.constraint.ConstraintLayout
 
@@ -20,7 +20,7 @@
         android:textSize="12dp"
         android:textStyle="bold"
         android:textColor="@color/whitegray_a"
-        android:text="나와 맞는 기업 매칭하기"
+        android:text="@string/gomatching"
         android:id="@+id/smart_go"
         android:gravity="center"
         android:background="@color/navy_a"

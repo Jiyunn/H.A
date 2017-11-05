@@ -57,6 +57,7 @@
     <string name="euiyak">의료/의약</string>
     <string name="gaebal">연구/개발</string>
     <string name="gigye">기계</string>
+    <string name ="it">정보처리</string>
 
     <string name="gyeongi">서울 / 경기</string>
     <string name="gangwon">강원도</string>
@@ -67,7 +68,13 @@
     <string name="jeonbook">전라북도</string>
     <string name="jeonnam">전라남도</string>
 
+    <string name="gomatching">나와 맞는 기업 매칭하기</string>
+    <string name="showr_resume">등록된 이력서보기</string>
     <string name="oops">이런! \n\n이력서는 작성하셨나요?</string>
+
+    <string name="hint_address">ex) 서울시 구로구</string>
+    <string name="hint_career">경력사항을 기술해주세요</string>
+    <string name="hint_teok">특기사항을 기술해주세요</string>
 
     <string name="giupinfo">기업정보</string>
     <string name="chaeyonginfo">채용정보</string>

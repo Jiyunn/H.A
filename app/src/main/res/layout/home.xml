@@ -7,7 +7,7 @@
 
         <variable
             name="home"
-            type="me.happy.win3win.Menu.HomeFragment"
+            type="me.happy.win3win.menu.HomeFragment"
             />
 
     </data>
