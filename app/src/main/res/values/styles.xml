@@ -13,9 +13,6 @@
         <item name="android:colorBackgroundCacheHint">@color/navy_a</item>
     </style>
 
-    <style name=".Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowBackground">@color/navy_a</item>
-    </style>
 
     <!--WRAP CONTENT-->
     <style name="wrapContent">
