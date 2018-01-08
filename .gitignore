@@ -8,6 +8,11 @@
 /captures
 .externalNativeBuild
 
+build.gradle
+google-services.json
+*.pro
+*.bat
+/gradle/wrapper
 
 # Created by https://www.gitignore.io/api/java,android,intellij+all,androidstudio
 
