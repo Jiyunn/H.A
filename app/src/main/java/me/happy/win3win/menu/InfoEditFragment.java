@@ -31,14 +31,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.MainActivity;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.InfoeditBinding;
 import me.happy.win3win.recyclerview.UserInfo;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.InfoeditBinding;
 
 import static me.happy.win3win.R.array.month;
 
@@ -53,8 +54,8 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     private UserInfo userInfo;
 
     private ArrayAdapter<String> adapter;
-    private ArrayList<String> year;
-    private ArrayList<String> dayOfMonth;
+    private List<String> year;
+    private List<String> dayOfMonth;
 
     private ArrayList<String> wantJob;
 

@@ -18,15 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.R;
-import me.happy.win3win.recyclerview.HomeAdapter;
+import me.happy.win3win.databinding.SearchresultBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+import me.happy.win3win.recyclerview.HomeAdapter;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.SearchresultBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +40,7 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
 
     private SearchresultBinding binding;
 
-    private ArrayList<Item> dataSet;
+    private List<Item> dataSet;
     private HomeAdapter adapterSet;
     private StaggeredGridLayoutManager mLayoutManager;
 

@@ -14,17 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import me.happy.win3win.custom.SearchEdittext;
 import me.happy.win3win.R;
-import me.happy.win3win.recyclerview.PopSearchAdapter;
-import me.happy.win3win.recyclerview.TwoString;
+import me.happy.win3win.custom.SearchEdittext;
+import me.happy.win3win.databinding.RecentsearchBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+import me.happy.win3win.recyclerview.PopSearchAdapter;
+import me.happy.win3win.recyclerview.TwoString;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.RecentsearchBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,9 +39,9 @@ public class WhileSearchingFragment extends Fragment implements TextWatcher, Vie
     private RecentsearchBinding binding; //초기화면 이걸로 붙임
 
     private PopSearchAdapter adapter;
-    private ArrayList<Item> dataResult; //검색 결과
-    private ArrayList<Item> dataSet;
-    private ArrayList<TwoString> searchResult;
+    private List<Item> dataResult; //검색 결과
+    private List<Item> dataSet;
+    private List<TwoString> searchResult;
     private FragmentManager fgManager;
 
     private SearchEdittext searchEdittext;

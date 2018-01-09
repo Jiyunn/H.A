@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.databinding.ItemMyresumeBinding;
 
@@ -19,11 +19,11 @@ import me.happy.win3win.databinding.ItemMyresumeBinding;
 public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder> {
 
     private Context context;
-    private ArrayList<TwoString> twoStringSet;
+    private List<TwoString> twoStringSet;
     private int itemLayout;
 
 
-    public ResumeAdapter(Context context, ArrayList<TwoString> twoStringSet, int itemLayout) {
+    public ResumeAdapter(Context context, List<TwoString> twoStringSet, int itemLayout) {
         this.context = context;
         this.twoStringSet = twoStringSet;
         this.itemLayout = itemLayout;
@@ -48,7 +48,7 @@ public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeView
         return (twoStringSet != null) ? twoStringSet.size() : 0;
     }
 
-    public void setItems(ArrayList<TwoString> items) {
+    public void setItems(List<TwoString> items) {
         this.twoStringSet = items;
     }
 

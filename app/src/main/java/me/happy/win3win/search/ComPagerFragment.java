@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.R;
 import me.happy.win3win.recyclerview.SpeAdapter;
@@ -42,7 +42,7 @@ public class ComPagerFragment extends Fragment {
     private SpeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
 
-    private ArrayList<TwoString> twoStringSet;
+    private List<TwoString> twoStringSet;
     private String[] itemTitle;
     private String[] itemContent;
 
@@ -133,7 +133,7 @@ public class ComPagerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mDBManager = UserDBManager.getInstance(getActivity());
-        twoStringSet = new ArrayList<>();
+        twoStringSet = new List<>();
         /*
         get TOKEN
          */

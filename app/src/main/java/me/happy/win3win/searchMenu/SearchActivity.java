@@ -18,14 +18,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.MainActivity;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.SearchBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.SearchBinding;
 
 /**
  * Created by JY on 2017-05-22.
@@ -34,7 +35,7 @@ import me.happy.win3win.databinding.SearchBinding;
 public class SearchActivity extends AppCompatActivity implements TextWatcher, TextView.OnEditorActionListener {
 
     private SearchBinding binding;
-    private ArrayList<Item> dataSet;
+    private List<Item> dataSet;
     private String query = "";
 
     private UserDBManager mDBManger;

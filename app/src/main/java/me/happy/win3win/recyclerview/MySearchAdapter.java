@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.R;
 import me.happy.win3win.searchMenu.SearchResultFragment;
@@ -21,12 +21,12 @@ import me.happy.win3win.databinding.ItemMykeywordBinding;
 public class MySearchAdapter extends RecyclerView.Adapter<MySearchAdapter.MyViewHolder> implements View.OnClickListener {
 
     private Context context;
-    private ArrayList<TwoString> twodataSet;
+    private List<TwoString> twodataSet;
     private int itemLayout;
     private RecyclerView mRecyclerView;
     private FragmentManager fgManager;
 
-    public MySearchAdapter(Context context, ArrayList<TwoString> twodataSet, int itemLayout, FragmentManager fgManager, RecyclerView mRecyclerView) {
+    public MySearchAdapter(Context context, List<TwoString> twodataSet, int itemLayout, FragmentManager fgManager, RecyclerView mRecyclerView) {
         this.context = context;
         this.twodataSet = twodataSet;
         this.itemLayout = itemLayout;

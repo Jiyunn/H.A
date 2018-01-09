@@ -20,17 +20,18 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import me.happy.win3win.custom.EndlessRecyclerViewScrollListener;
 import me.happy.win3win.R;
-import me.happy.win3win.recyclerview.HomeAdapter;
-import me.happy.win3win.recyclerview.RecommendAdapter;
+import me.happy.win3win.custom.EndlessRecyclerViewScrollListener;
+import me.happy.win3win.databinding.HomeBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+import me.happy.win3win.recyclerview.HomeAdapter;
+import me.happy.win3win.recyclerview.RecommendAdapter;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.HomeBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,8 +47,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private  static final String KEY = "";
 
-    private ArrayList<Item> dataSet;
-    private ArrayList<Item> dataRec; //추천용 뷰
+    private List<Item> dataSet;
+    private List<Item> dataRec; //추천용 뷰
     private HomeAdapter adapterSet;
     private RecommendAdapter adapterRec;
 

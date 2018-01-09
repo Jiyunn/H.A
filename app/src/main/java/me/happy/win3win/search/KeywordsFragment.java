@@ -13,13 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.SpeViewBinding;
 import me.happy.win3win.recyclerview.MySearchAdapter;
 import me.happy.win3win.recyclerview.PopSearchAdapter;
 import me.happy.win3win.recyclerview.TwoString;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.SpeViewBinding;
 
 /**
  * Created by JY on 2017-05-22.
@@ -36,7 +37,7 @@ public class KeywordsFragment extends Fragment {
     private PopSearchAdapter adapterPop;
     private MySearchAdapter adapterMy;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<TwoString> dataSet;
+    private List<TwoString> dataSet;
     private FragmentManager fgManager;
 
     private UserDBManager mDBManager;

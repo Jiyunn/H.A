@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,17 +21,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import me.happy.win3win.R;
-import me.happy.win3win.recyclerview.SmartAdapter;
+import me.happy.win3win.databinding.OopsBinding;
+import me.happy.win3win.databinding.SmartmatchBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.MyResume;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+import me.happy.win3win.recyclerview.SmartAdapter;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.OopsBinding;
-import me.happy.win3win.databinding.SmartmatchBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +50,7 @@ public class SmartMatchFragment extends Fragment {
     private OopsBinding oopsBinding;
 
     private String token;
-    private ArrayList<Item> dataSet;
+    private List<Item> dataSet;
     private RetroInterface.Resume resume;
 
     private Dialog dialog;
@@ -205,8 +205,7 @@ Recyclerview 초기화
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful())
-                    Log.d("jy", "이력서보내기 성공!");
+
 
             }
 

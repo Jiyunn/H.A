@@ -30,16 +30,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gun0912.tedbottompicker.TedBottomPicker;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.MyresumeBinding;
 import me.happy.win3win.recyclerview.ResumeAdapter;
 import me.happy.win3win.recyclerview.TwoString;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.MyresumeBinding;
 
 /**
  * Created by JY on 2017-04-11.
@@ -51,7 +53,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<TwoString> twoStringSet;
+    private List<TwoString> twoStringSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent; //항목 내용들
     private String[] columns; //데이터베이스 컬럼
@@ -114,7 +116,6 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
             /*
             get profile img. and set profileimg
             */
-
                 byte[] img = c.getBlob(0);
                     if(img !=null){
                     Bitmap bmp = BitmapFactory.decodeByteArray(img, 0, img.length);
@@ -125,7 +126,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
                 itemContent[i] = c.getString(i + 1);
             }
             binding.tvProfileName.setText(itemContent[0]);
-            binding.tvProfileAge.setText(countAge(itemContent[1]) + " 세");
+            binding.tvProfileAge.setText(countAge(itemContent[1]));
 
         }
         c.close();
