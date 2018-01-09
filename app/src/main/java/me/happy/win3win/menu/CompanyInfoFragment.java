@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.roughike.bottombar.BottomBar;
@@ -22,12 +21,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.MainActivity;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.SpeinfoBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
 import me.happy.win3win.search.ComPagerAdapter;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.SpeinfoBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -83,7 +82,6 @@ public class CompanyInfoFragment extends Fragment {
                 Glide.with(getActivity())
                         .load(speLogo)
                         .thumbnail(0.05f)
-                        .diskCacheStrategy(DiskCacheStrategy.RESULT)
                         .into(binding.speComLogo);
             }
         });

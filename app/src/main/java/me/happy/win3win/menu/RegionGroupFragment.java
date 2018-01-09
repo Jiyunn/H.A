@@ -13,17 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.R;
-import me.happy.win3win.recyclerview.GroupAdapter;
+import me.happy.win3win.databinding.RegiongroupBinding;
 import me.happy.win3win.network.Item;
 import me.happy.win3win.network.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+import me.happy.win3win.recyclerview.GroupAdapter;
 import me.happy.win3win.userdb.UserDBManager;
-import me.happy.win3win.databinding.RegiongroupBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +39,7 @@ public class RegionGroupFragment extends Fragment {
 
     private GroupAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private ArrayList<Item> dataSet;
+    private List<Item> dataSet;
     private String nowArea;
     private String token;
 

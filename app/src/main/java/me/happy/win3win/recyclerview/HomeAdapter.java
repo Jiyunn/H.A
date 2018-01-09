@@ -9,25 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import me.happy.win3win.databinding.ItemHomeBinding;
 import me.happy.win3win.menu.CompanyInfoFragment;
 import me.happy.win3win.network.Item;
-import me.happy.win3win.databinding.ItemHomeBinding;
 
 /*regionviewholder use this?*/
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener {
 
     private Context context;
-    private ArrayList<Item> gongos;
+    private List<Item> gongos;
     private int itemLayout; //레이아웃 형식
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
     private int frag;
 
-    public HomeAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager, int frag) {
+    public HomeAdapter(Context context, List<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager, int frag) {
         this.context = context;
         this.gongos = gongos;
         this.itemLayout = itemLayout;
@@ -55,7 +54,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         Glide.with(context)
                 .load(gongos.get(position).getThumbnail())
                 .thumbnail(0.05f)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.binding.itemComLogo);
 
 

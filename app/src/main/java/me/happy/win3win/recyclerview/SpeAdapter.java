@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import me.happy.win3win.databinding.ItemSpeBinding;
 
@@ -19,9 +19,9 @@ public class SpeAdapter extends RecyclerView.Adapter<SpeAdapter.SpeViewHolder>{
 
     private Context context;
     private int itemLayout;
-    private ArrayList<TwoString> twoStringSet;
+    private List<TwoString> twoStringSet;
 
-    public SpeAdapter(Context context, ArrayList<TwoString> twoStringSet, int itemLayout) {
+    public SpeAdapter(Context context, List<TwoString> twoStringSet, int itemLayout) {
         this.context = context;
         this.twoStringSet = twoStringSet;
         this.itemLayout=itemLayout;

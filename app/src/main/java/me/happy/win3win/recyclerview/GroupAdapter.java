@@ -11,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
-import me.happy.win3win.menu.CompanyInfoFragment;
 import me.happy.win3win.R;
-import me.happy.win3win.network.Item;
 import me.happy.win3win.databinding.ItemJobBinding;
+import me.happy.win3win.menu.CompanyInfoFragment;
+import me.happy.win3win.network.Item;
 
 import static me.happy.win3win.R.drawable.group_4;
 import static me.happy.win3win.R.drawable.group_5;
@@ -31,12 +30,12 @@ import static me.happy.win3win.R.drawable.group_5;
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolder> implements View.OnClickListener{
 
     private Context context;
-    private ArrayList<Item> gongos;
+    private List<Item> gongos;
     private int itemLayout;
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public GroupAdapter(Context context, ArrayList<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
+    public GroupAdapter(Context context, List<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
         this.context = context;
         this.gongos=gongos;
         this.itemLayout = itemLayout;
@@ -64,7 +63,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
         Glide.with(context)
                 .load(gongos.get(position).getThumbnail())
                 .thumbnail(0.05f)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.binding.itemJobLogo);
 
         holder.binding.itemJobContent3.setText(gongos.get(position).convertGeunmujySido() + " | " +
