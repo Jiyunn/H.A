@@ -13,8 +13,8 @@
 
     <android.support.design.widget.TabLayout
         android:id="@+id/search_tab"
-        style="@style/tabLayoutSearch"
-        app:tabTextAppearance="@style/tabLayoutText"
+        style="@style/TabLayoutSearch"
+        app:tabTextAppearance="@style/TabLayoutText"
         />
 
     <android.support.v4.view.ViewPager

@@ -32,7 +32,7 @@
                     <!--첫쨰줄-->
                     <TextView
                         android:id="@+id/region_gyeongi"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map01"
                         android:text="@string/gyeongi"
                         app:layout_constraintHorizontal_chainStyle="spread"
@@ -43,7 +43,7 @@
 
                     <TextView
                         android:id="@+id/region_gangwon"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map02"
                         android:text="@string/gangwon"
                         app:layout_constraintBottom_toBottomOf="@+id/region_gyeongi"
@@ -52,7 +52,7 @@
 
                     <TextView
                         android:id="@+id/region_chungbook"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map03"
                         android:text="@string/chungbook"
                         app:layout_constraintBottom_toBottomOf="@+id/region_gyeongi"
@@ -63,7 +63,7 @@
 
                     <TextView
                         android:id="@+id/region_chungnam"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map04"
                         android:text="@string/chungnam"
                         app:layout_constraintBottom_toBottomOf="@+id/region_gyeongi"
@@ -74,7 +74,7 @@
                     <!--둘째줄-->
                     <TextView
                         android:id="@+id/region_kyeongbook"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map05"
                         android:text="@string/kyeongbook"
                         app:layout_constraintHorizontal_chainStyle="spread"
@@ -84,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/region_kyeongnam"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map06"
                         android:text="@string/kyeongnam"
                         app:layout_constraintBaseline_toBaselineOf="@+id/region_kyeongbook"
@@ -94,7 +94,7 @@
 
                     <TextView
                         android:id="@+id/region_jeonbook"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map07"
                         android:text="@string/jeonbook"
                         app:layout_constraintBaseline_toBaselineOf="@+id/region_kyeongbook"
@@ -104,7 +104,7 @@
 
                     <TextView
                         android:id="@+id/region_jeonnam"
-                        style="@style/jobBtn"
+                        style="@style/JobBtn"
                         android:drawableTop="@drawable/map08"
                         android:text="@string/jeonnam"
                         app:layout_constraintBaseline_toBaselineOf="@+id/region_kyeongbook"

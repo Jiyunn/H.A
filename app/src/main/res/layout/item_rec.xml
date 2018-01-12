@@ -52,7 +52,7 @@
 
                 <TextView
                     android:id="@+id/item_recTitle"
-                    style="@style/ellipsize"
+                    style="@style/Ellipsize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -68,7 +68,7 @@
 
                 <TextView
                     android:id="@+id/item_recContent1"
-                    style="@style/ellipsize"
+                    style="@style/Ellipsize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -84,7 +84,7 @@
 
                 <TextView
                     android:id="@+id/item_recContent3"
-                    style="@style/ellipsize"
+                    style="@style/Ellipsize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

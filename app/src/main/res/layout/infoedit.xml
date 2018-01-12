@@ -53,7 +53,7 @@
                 <!--이름-->
                 <TextView
                     android:id="@+id/name"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/name"
                     app:layout_constraintBaseline_toBaselineOf="@+id/info_name"
                     app:layout_constraintHorizontal_weight="1"
@@ -80,7 +80,7 @@
                 <!--생년월일-->
                 <TextView
                     android:id="@+id/birth"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/birth"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.08" />
@@ -119,7 +119,7 @@
                 <!--희망직종-->
                 <TextView
                     android:id="@+id/wantJob"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:paddingTop="5dp"
                     android:text="@string/wantjob"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -127,14 +127,14 @@
 
                 <CheckBox
                     android:id="@+id/info_ckGigye"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/gigye"
                     app:layout_constraintLeft_toLeftOf="@+id/info_name"
                     app:layout_constraintTop_toTopOf="@+id/wantJob" />
 
                 <CheckBox
                     android:id="@+id/info_ckJeonja"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/jeonja"
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toRightOf="@+id/info_ckGigye"
@@ -143,7 +143,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckJeongi"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/jeongi"
                     app:layout_constraintHorizontal_bias="0.2"
                     app:layout_constraintLeft_toRightOf="@+id/info_ckJeonja"
@@ -153,7 +153,7 @@
                 <!--두번쨰줄-->
                 <CheckBox
                     android:id="@+id/info_ckWhahak"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:layout_marginTop="3dp"
                     android:text="@string/whahak"
                     app:layout_constraintLeft_toLeftOf="@+id/info_name"
@@ -161,7 +161,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckCheolgang"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/cheolgang"
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toRightOf="@+id/info_ckWhahak"
@@ -170,7 +170,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckGaebal"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/gaebal"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintLeft_toLeftOf="@+id/info_ckJeongi"
@@ -181,7 +181,7 @@
                 <!--세번째줄-->
                 <CheckBox
                     android:id="@+id/info_ckIT"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:layout_marginTop="3dp"
                     android:text="IT"
                     app:layout_constraintLeft_toLeftOf="@+id/info_name"
@@ -189,7 +189,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckSomyou"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/somyou"
@@ -201,7 +201,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckEuiyak"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/euiyak"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintLeft_toLeftOf="@+id/info_ckGaebal"
@@ -211,7 +211,7 @@
                 <!--네번째줄-->
                 <CheckBox
                     android:id="@+id/info_ckSaengsan"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:layout_marginTop="3dp"
                     android:background="@null"
                     android:text="@string/saengsan"
@@ -221,7 +221,7 @@
 
                 <CheckBox
                     android:id="@+id/info_ckEuiryu"
-                    style="@style/infoCheckbox"
+                    style="@style/InfoCheckbox"
                     android:text="@string/euiryu"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintLeft_toLeftOf="@+id/info_ckSomyou"
@@ -232,7 +232,7 @@
                 <!--최종학력-->
                 <TextView
                     android:id="@+id/hakreok"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/education"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.4" />
@@ -260,7 +260,7 @@
                 <!-- 거주지역-->
                 <TextView
                     android:id="@+id/address"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/address"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.5" />
@@ -287,14 +287,14 @@
                 <!-- 연락처-->
                 <TextView
                     android:id="@+id/phone"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/phone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.6" />
 
                 <EditText
                     android:id="@+id/info_phone1"
-                    style="@style/phoneNum"
+                    style="@style/PhoneNum"
                     android:layout_width="50dp"
                     android:text="010"
                     app:layout_constraintBaseline_toBaselineOf="@+id/phone"
@@ -315,7 +315,7 @@
 
                 <EditText
                     android:id="@+id/info_phone2"
-                    style="@style/phoneNum"
+                    style="@style/PhoneNum"
                     app:layout_constraintBaseline_toBaselineOf="@+id/phone"
                     app:layout_constraintHorizontal_bias="0.4"
                     app:layout_constraintLeft_toLeftOf="@+id/info_name"
@@ -333,7 +333,7 @@
 
                 <EditText
                     android:id="@+id/info_phone3"
-                    style="@style/phoneNum"
+                    style="@style/PhoneNum"
                     android:layout_height="wrap_content"
                     app:layout_constraintBaseline_toBaselineOf="@+id/phone"
                     app:layout_constraintHorizontal_bias="0.85"
@@ -345,7 +345,7 @@
                 <!-- 자격증-->
                 <TextView
                     android:id="@+id/certificate"
-                    style="@style/infoTv"
+                    style="@style/InfoTv"
                     android:text="@string/certificate"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.7" />

@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:id="@+id/spe_linear"
-        style="@style/constraintCenter"
+        style="@style/ConstraintCenter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -94,8 +94,8 @@
     <!--탭-->
     <android.support.design.widget.TabLayout
         android:id="@+id/spe_tab"
-        style="@style/tabLayout"
-        app:tabTextAppearance="@style/tabLayoutText"
+        style="@style/TabLayout"
+        app:tabTextAppearance="@style/TabLayoutText"
         app:layout_constraintTop_toBottomOf="@+id/spe_linear"
         app:layout_constraintBottom_toTopOf="@+id/spe_vp"
      />

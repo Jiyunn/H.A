@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/item_resTitle"
-        style="@style/resAndInfo"
+        style="@style/ResAndInfo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/item_resContent"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/item_resContent"
-        style="@style/resAndInfo"
+        style="@style/ResAndInfo"
         app:layout_constraintLeft_toRightOf="@+id/item_resTitle"
         app:layout_constraintRight_toRightOf="parent"
         android:hint="@string/plzinput"

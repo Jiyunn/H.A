@@ -15,7 +15,7 @@
 
 
         <ImageView
-            style="@style/constraintCenter"
+            style="@style/ConstraintCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_transparent_big"
@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/signUp"
-            style="@style/splashBtn"
+            style="@style/SplashBtn"
             android:background="@drawable/btnshape_orange"
             android:text="@string/join"
             app:layout_constraintVertical_bias="0.7"
@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/signIn"
-            style="@style/splashBtn"
+            style="@style/SplashBtn"
             android:background="@drawable/btnshape_blue"
             android:text="@string/login"
             app:layout_constraintVertical_bias="0.82"

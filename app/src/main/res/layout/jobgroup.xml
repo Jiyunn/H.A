@@ -33,7 +33,7 @@
                 <!--첫쨰줄-->
                 <TextView
                     android:id="@+id/job_gigye"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/gigye"
                     android:text="@string/gigye"
                     app:layout_constraintHorizontal_chainStyle="spread"
@@ -44,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/job_jeonja"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/hyunjang"
                     android:text="@string/jeonja"
                     app:layout_constraintLeft_toRightOf="@+id/job_gigye"
@@ -54,7 +54,7 @@
 
                 <TextView
                     android:id="@+id/job_jeongi"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/jeonja"
                     android:text="@string/jeongi"
                     app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
@@ -66,7 +66,7 @@
 
                 <TextView
                     android:id="@+id/job_euiyak"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/euiyak"
                     android:text="@string/euiyak"
                     app:layout_constraintLeft_toRightOf="@+id/job_jeongi"
@@ -78,7 +78,7 @@
                 <!--둘째줄-->
                 <TextView
                     android:id="@+id/job_it"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/it"
                     android:text="IT"
                     app:layout_constraintHorizontal_chainStyle="spread"
@@ -91,7 +91,7 @@
 
                 <TextView
                     android:id="@+id/job_gaebal"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/gaebal"
                     android:text="@string/gaebal"
                     app:layout_constraintBaseline_toBaselineOf="@+id/job_it"
@@ -104,7 +104,7 @@
 
                 <TextView
                     android:id="@+id/job_whahak"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/whahak"
                     android:text="@string/whahak"
                     app:layout_constraintLeft_toRightOf="@+id/job_gaebal"
@@ -115,7 +115,7 @@
 
                 <TextView
                     android:id="@+id/job_cheolgang"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/cheolgang"
                     android:text="@string/cheolgang"
                     app:layout_constraintLeft_toRightOf="@+id/job_whahak"
@@ -128,7 +128,7 @@
 
                 <TextView
                     android:id="@+id/job_euiryu"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/euiryu"
                     android:text="@string/euiryu"
                     app:layout_constraintHorizontal_chainStyle="spread"
@@ -140,7 +140,7 @@
 
                 <TextView
                     android:id="@+id/job_somyou"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/somyou"
                     android:text="@string/somyou"
                     app:layout_constraintLeft_toRightOf="@+id/job_euiryu"
@@ -151,7 +151,7 @@
 
                 <TextView
                     android:id="@+id/job_saengsan"
-                    style="@style/jobBtn"
+                    style="@style/JobBtn"
                     android:drawableTop="@drawable/saengsan"
                     android:text="@string/saengsan"
                     app:layout_constraintLeft_toRightOf="@+id/job_somyou"
