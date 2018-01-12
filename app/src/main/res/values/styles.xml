@@ -15,13 +15,13 @@
 
 
     <!--WRAP CONTENT-->
-    <style name="wrapContent">
+    <style name="WrapContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <!--CONSTRAINT CENTER-->
-    <style name="constraintCenter">
+    <style name="ConstraintCenter">
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
@@ -30,7 +30,7 @@
 
 
     <!--SPLASH ACTIVITY-->
-    <style name="splashBtn">
+    <style name="SplashBtn">
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
@@ -43,7 +43,7 @@
     </style>
 
     <!--SIGNUP AND LOGIN EDITTEXT-->
-    <style name="login_joinET" parent="constraintCenter">
+    <style name="Login_joinET" parent="ConstraintCenter">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintHorizontal_bias">0</item>
@@ -54,7 +54,7 @@
     </style>
 
     <!--SIGNUP WARN TV-->
-    <style name="join_WarnTV" parent="wrapContent">
+    <style name="Join_WarnTV" parent="WrapContent">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/orange_a</item>
         <item name="android:textSize">10dp</item>
@@ -70,7 +70,7 @@
 
 
 
-    <style name="profileImg">
+    <style name="ProfileImg">
         <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
@@ -81,7 +81,7 @@
     </style>
 
 
-    <style name="profileTvTitle">
+    <style name="ProfileTvTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#9B9B9B</item>
@@ -95,7 +95,7 @@
     </style>
 
 
-    <style name="profileTvContent">
+    <style name="ProfileTvContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#4A4A4A</item>
@@ -105,7 +105,7 @@
     </style>
 
 
-    <style name="jobBtn">
+    <style name="JobBtn">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
@@ -116,7 +116,7 @@
         <item name="android:textColor">#CBCBCB</item>
     </style>
 
-    <style name="infoID">
+    <style name="InfoID">
         <item name="android:padding">18dp</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textColorHint">#9B9B9B</item>
@@ -131,7 +131,7 @@
         <item name="layout_constraintRight_toRightOf">parent</item>
     </style>
 
-    <style name="resAndInfo">
+    <style name="ResAndInfo">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
@@ -141,7 +141,7 @@
 
     </style>
 
-    <style name="itemJobContent">
+    <style name="ItemJobContent">
         <item name="android:gravity">left</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="layout_constraintLeft_toRightOf">@+id/line</item>
@@ -149,7 +149,7 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="tabLayout">
+    <style name="TabLayout">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -165,12 +165,12 @@
         <item name="tabIndicatorHeight">4dp</item>
     </style>
 
-    <style name="tabLayoutText">
+    <style name="TabLayoutText">
         <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="tabLayoutSearch">
+    <style name="TabLayoutSearch">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">1dp</item>
@@ -187,14 +187,14 @@
     </style>
 
 
-    <style name="ellipsize">
+    <style name="Ellipsize">
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
     </style>
 
 
 
-    <style name="infoCheckbox">
+    <style name="InfoCheckbox">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">14dp</item>
@@ -202,7 +202,7 @@
         <item name="android:buttonTint">@color/orange_a</item>
     </style>
 
-    <style name="infoTv">
+    <style name="InfoTv">
         <item name="android:textSize">14dp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -213,7 +213,7 @@
 
     </style>
 
-    <style name="phoneNum">
+    <style name="PhoneNum">
         <item name="android:paddingRight">12dp</item>
         <item name="android:paddingLeft">12dp</item>
         <item name="android:inputType">number</item>
@@ -227,7 +227,7 @@
         <item name="android:background">@drawable/infobackground</item>
     </style>
 
-    <style name="certiTexts">
+    <style name="CertiTexts">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>

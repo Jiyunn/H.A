@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/item_certiName"
-            style="@style/certiTexts"
+            style="@style/CertiTexts"
             android:hint="자격증명을 입력하세요"
             android:inputType="text"
             android:maxLength="9"
@@ -42,7 +42,7 @@
 
         <TextView
             android:id="@+id/item_certiPub"
-            style="@style/certiTexts"
+            style="@style/CertiTexts"
             android:hint="발행처를 입력하세요"
             android:inputType="text"
             android:paddingBottom="10dp"
@@ -64,7 +64,7 @@
 
         <TextView
             android:id="@+id/item_certiDt"
-            style="@style/certiTexts"
+            style="@style/CertiTexts"
             android:layout_width="0dp"
             android:hint="날짜"
             android:paddingBottom="10dp"

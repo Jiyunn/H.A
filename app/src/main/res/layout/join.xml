@@ -22,7 +22,7 @@
 
         <ImageView
             android:id="@+id/signup_logo"
-            style="@style/constraintCenter"
+            style="@style/ConstraintCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_transparent"
@@ -32,7 +32,7 @@
 
         <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_id"
-            style="@style/login_joinET"
+            style="@style/Login_joinET"
             android:hint="@string/id"
             android:inputType="textUri"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
@@ -42,7 +42,7 @@
 
         <TextView
             android:id="@+id/warnId"
-            style="@style/join_WarnTV"
+            style="@style/Join_WarnTV"
             android:text=" "
             app:layout_constraintLeft_toLeftOf="@+id/signup_id"
             app:layout_constraintTop_toBottomOf="@+id/signup_id"
@@ -51,7 +51,7 @@
 
         <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_name"
-            style="@style/login_joinET"
+            style="@style/Login_joinET"
             android:hint="@string/name"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
@@ -62,7 +62,7 @@
         <!--email-->
         <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_email"
-            style="@style/login_joinET"
+            style="@style/Login_joinET"
             android:layout_marginRight="5dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/signup_sendEmail"
-            style="@style/wrapContent"
+            style="@style/WrapContent"
             android:background="@drawable/sendtnshape"
             android:gravity="center"
             android:paddingBottom="10dp"
@@ -94,7 +94,7 @@
 
         <TextView
             android:id="@+id/warnMail"
-            style="@style/join_WarnTV"
+            style="@style/Join_WarnTV"
             android:text="@string/join_email"
             app:layout_constraintLeft_toLeftOf="@+id/signup_email"
             app:layout_constraintTop_toBottomOf="@+id/signup_email"
@@ -104,7 +104,7 @@
         <!--이메일 인증-->
         <EditText
             android:id="@+id/signup_aEmail"
-            style="@style/wrapContent"
+            style="@style/WrapContent"
             android:background="@color/white"
             android:hint="@string/join_auth"
             android:inputType="number"
@@ -123,7 +123,7 @@
 
         <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_birth"
-            style="@style/login_joinET"
+            style="@style/Login_joinET"
             android:hint="@string/join_birth"
             android:inputType="number"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
@@ -133,7 +133,7 @@
 
         <TextView
             android:id="@+id/warnBirth"
-            style="@style/join_WarnTV"
+            style="@style/Join_WarnTV"
             android:text=" "
             app:layout_constraintLeft_toLeftOf="@+id/signup_birth"
             app:layout_constraintTop_toBottomOf="@+id/signup_birth"
@@ -142,7 +142,7 @@
 
         <me.happy.win3win.custom.LPEdittext
             android:id="@+id/signup_pwd"
-            style="@style/login_joinET"
+            style="@style/Login_joinET"
             android:hint="@string/pwd"
             android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
@@ -153,7 +153,7 @@
 
         <TextView
             android:id="@+id/warnPwd"
-            style="@style/join_WarnTV"
+            style="@style/Join_WarnTV"
             android:text=" "
             app:layout_constraintLeft_toLeftOf="@+id/signup_pwd"
             app:layout_constraintTop_toBottomOf="@+id/signup_pwd"

@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/toolbar_back"
-            style="@style/wrapContent"
+            style="@style/WrapContent"
             android:background="@drawable/ic_keyboard_arrow_left_white_36dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -46,7 +46,7 @@
 
         <ImageView
             android:id="@+id/toolbar_logo"
-            style="@style/constraintCenter"
+            style="@style/ConstraintCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/basic_margin"
