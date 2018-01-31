@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="join"
+            type="me.happy.win3win.fragment.login.JoinFragment"
+            />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/joinparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/navy_a"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/signup_logo"
+            style="@style/ConstraintCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_transparent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.08"
+            />
+
+        <me.happy.win3win.custom.LPEdittext
+            android:id="@+id/signup_id"
+            style="@style/Login_joinET"
+            android:hint="@string/id"
+            android:inputType="textUri"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintTop_toBottomOf="@+id/signup_logo"
+            app:layout_constraintVertical_bias="0.21"
+            />
+
+        <TextView
+            android:id="@+id/warnId"
+            style="@style/Join_WarnTV"
+            android:text=" "
+            app:layout_constraintLeft_toLeftOf="@+id/signup_id"
+            app:layout_constraintTop_toBottomOf="@+id/signup_id"
+            />
+
+
+        <me.happy.win3win.custom.LPEdittext
+            android:id="@+id/signup_name"
+            style="@style/Login_joinET"
+            android:hint="@string/name"
+            android:inputType="text"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintTop_toBottomOf="@+id/signup_id"
+            app:layout_constraintVertical_bias="0.31"
+            />
+
+        <!--email-->
+        <me.happy.win3win.custom.LPEdittext
+            android:id="@+id/signup_email"
+            style="@style/Login_joinET"
+            android:layout_marginRight="5dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintRight_toLeftOf="@+id/signup_sendEmail"
+            app:layout_constraintTop_toBottomOf="@+id/signup_name"
+            app:layout_constraintVertical_bias="0.41"
+            />
+
+        <TextView
+            android:id="@+id/signup_sendEmail"
+            style="@style/WrapContent"
+            android:background="@drawable/sendtnshape"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toRightOf="@+id/signup_email"
+            app:layout_constraintRight_toRightOf="@+id/signup_name"
+            app:layout_constraintTop_toTopOf="@+id/signup_email"
+            />
+
+
+        <TextView
+            android:id="@+id/warnMail"
+            style="@style/Join_WarnTV"
+            android:text="@string/join_email"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_email"
+            app:layout_constraintTop_toBottomOf="@+id/signup_email"
+            />
+
+
+        <!--이메일 인증-->
+        <EditText
+            android:id="@+id/signup_aEmail"
+            style="@style/WrapContent"
+            android:background="@color/white"
+            android:hint="@string/join_auth"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColor="@color/nineb"
+            android:textColorHint="@color/cb"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/signup_birth"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_email"
+            app:layout_constraintTop_toBottomOf="@+id/warnMail"
+            app:layout_constraintVertical_bias="0.48"
+            />
+
+
+        <me.happy.win3win.custom.LPEdittext
+            android:id="@+id/signup_birth"
+            style="@style/Login_joinET"
+            android:hint="@string/join_birth"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintTop_toBottomOf="@+id/signup_email"
+            app:layout_constraintVertical_bias="0.69"
+            />
+
+        <TextView
+            android:id="@+id/warnBirth"
+            style="@style/Join_WarnTV"
+            android:text=" "
+            app:layout_constraintLeft_toLeftOf="@+id/signup_birth"
+            app:layout_constraintTop_toBottomOf="@+id/signup_birth"
+            />
+
+
+        <me.happy.win3win.custom.LPEdittext
+            android:id="@+id/signup_pwd"
+            style="@style/Login_joinET"
+            android:hint="@string/pwd"
+            android:inputType="textPassword"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintTop_toBottomOf="@+id/signup_birth"
+            app:layout_constraintVertical_bias="0.79"
+
+            />
+
+        <TextView
+            android:id="@+id/warnPwd"
+            style="@style/Join_WarnTV"
+            android:text=" "
+            app:layout_constraintLeft_toLeftOf="@+id/signup_pwd"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd"
+            />
+
+        <Button
+            android:id="@+id/join"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnshape_blue"
+            android:text="@string/join"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/signup_logo"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/join_already"
+            android:textColor="@color/nineb"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/signup_pwd"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwd"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

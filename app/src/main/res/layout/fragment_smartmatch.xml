@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="smartmatch"
+<<<<<<< .merge_file_a15740
+            type="me.happy.win3win.fragment.tab.SmartMatchFragment"/>
+=======
+            type="me.happy.win3win.fragment.SmartMatchFragment"/>
+>>>>>>> .merge_file_a14800
+
+    </data>
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="1dp">
+
+        <include
+            android:id="@+id/smart_btns"
+            layout="@layout/smartbtn"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_height="wrap_content"
+
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_smart"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintTop_toBottomOf="@+id/smart_btns"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

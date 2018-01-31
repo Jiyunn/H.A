@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="infoedit"
+<<<<<<< .merge_file_a16776
+            type="me.happy.win3win.fragment.InfoEditFragment" />
+=======
+            type="me.happy.win3win.fragment.tab.InfoEditFragment" />
+>>>>>>> .merge_file_a12984
+
+        <variable
+            name="userinfo"
+            type="me.happy.win3win.model.UserInfo" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/infoScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        >
+
+        <LinearLayout
+            android:id="@+id/infoparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/graybacground"
+            android:paddingBottom="10dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:text="@string/enrolid"
+                android:textColor="@color/nineb"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="10dp">
+
+                <!--이름-->
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/InfoTv"
+                    android:text="@string/name"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/info_name"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintRight_toLeftOf="@+id/info_name" />
+
+                <EditText
+                    android:id="@+id/info_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/infobackground"
+                    android:inputType="text"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/fora"
+                    android:textSize="14dp"
+                    app:layout_constraintHorizontal_weight="2.5"
+                    app:layout_constraintLeft_toRightOf="@+id/name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <!--생년월일-->
+                <TextView
+                    android:id="@+id/birth"
+                    style="@style/InfoTv"
+                    android:text="@string/birth"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.08" />
+
+                <Spinner
+                    android:id="@+id/info_birthYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/white"
+                    android:popupTheme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toTopOf="@+id/birth" />
+
+                <Spinner
+                    android:id="@+id/info_birthMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/white"
+                    android:popupTheme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintLeft_toRightOf="@+id/info_birthYear"
+                    app:layout_constraintTop_toTopOf="@+id/birth" />
+
+
+                <Spinner
+                    android:id="@+id/info_birthDOM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupTheme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintLeft_toRightOf="@+id/info_birthMonth"
+                    app:layout_constraintTop_toTopOf="@+id/birth" />
+
+
+                <!--희망직종-->
+                <TextView
+                    android:id="@+id/wantJob"
+                    style="@style/InfoTv"
+                    android:paddingTop="5dp"
+                    android:text="@string/wantjob"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.18" />
+
+                <CheckBox
+                    android:id="@+id/info_ckGigye"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/gigye"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toTopOf="@+id/wantJob" />
+
+                <CheckBox
+                    android:id="@+id/info_ckJeonja"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/jeonja"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintLeft_toRightOf="@+id/info_ckGigye"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/wantJob" />
+
+                <CheckBox
+                    android:id="@+id/info_ckJeongi"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/jeongi"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintLeft_toRightOf="@+id/info_ckJeonja"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/wantJob" />
+
+                <!--두번쨰줄-->
+                <CheckBox
+                    android:id="@+id/info_ckWhahak"
+                    style="@style/InfoCheckbox"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/whahak"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toBottomOf="@+id/info_ckGigye" />
+
+                <CheckBox
+                    android:id="@+id/info_ckCheolgang"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/cheolgang"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintLeft_toRightOf="@+id/info_ckWhahak"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/info_ckWhahak" />
+
+                <CheckBox
+                    android:id="@+id/info_ckGaebal"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/gaebal"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_ckJeongi"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/info_ckWhahak" />
+
+
+                <!--세번째줄-->
+                <CheckBox
+                    android:id="@+id/info_ckIT"
+                    style="@style/InfoCheckbox"
+                    android:layout_marginTop="3dp"
+                    android:text="IT"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toBottomOf="@+id/info_ckWhahak" />
+
+                <CheckBox
+                    android:id="@+id/info_ckSomyou"
+                    style="@style/InfoCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/somyou"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_ckCheolgang"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/info_ckIT" />
+
+
+                <CheckBox
+                    android:id="@+id/info_ckEuiyak"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/euiyak"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_ckGaebal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/info_ckIT" />
+
+                <!--네번째줄-->
+                <CheckBox
+                    android:id="@+id/info_ckSaengsan"
+                    style="@style/InfoCheckbox"
+                    android:layout_marginTop="3dp"
+                    android:background="@null"
+                    android:text="@string/saengsan"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toBottomOf="@+id/info_ckIT" />
+
+
+                <CheckBox
+                    android:id="@+id/info_ckEuiryu"
+                    style="@style/InfoCheckbox"
+                    android:text="@string/euiryu"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_ckSomyou"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/info_ckSaengsan" />
+
+
+                <!--최종학력-->
+                <TextView
+                    android:id="@+id/hakreok"
+                    style="@style/InfoTv"
+                    android:text="@string/education"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <Spinner
+                    android:id="@+id/info_hakSchool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/white"
+                    android:popupTheme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintTop_toTopOf="@+id/hakreok" />
+
+                <Spinner
+                    android:id="@+id/info_hakState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/white"
+                    android:popupTheme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintLeft_toRightOf="@+id/info_hakSchool"
+                    app:layout_constraintTop_toTopOf="@+id/hakreok" />
+
+                <!-- 거주지역-->
+                <TextView
+                    android:id="@+id/address"
+                    style="@style/InfoTv"
+                    android:text="@string/address"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <EditText
+                    android:id="@+id/info_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/infobackground"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="@string/hint_address"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/fora"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/address"
+                    android:textSize="14dp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/address" />
+
+
+                <!-- 연락처-->
+                <TextView
+                    android:id="@+id/phone"
+                    style="@style/InfoTv"
+                    android:text="@string/phone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.6" />
+
+                <EditText
+                    android:id="@+id/info_phone1"
+                    style="@style/PhoneNum"
+                    android:layout_width="50dp"
+                    android:text="010"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/phone"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/phone" />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="1dp"
+                    android:background="@color/fora"
+                    app:layout_constraintBottom_toBottomOf="@+id/info_phone1"
+                    app:layout_constraintLeft_toRightOf="@+id/info_phone1"
+                    app:layout_constraintRight_toLeftOf="@+id/info_phone2"
+                    app:layout_constraintTop_toTopOf="@+id/info_phone1" />
+
+
+                <EditText
+                    android:id="@+id/info_phone2"
+                    style="@style/PhoneNum"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/phone"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/phone" />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="1dp"
+                    android:background="@color/fora"
+                    app:layout_constraintBottom_toBottomOf="@+id/info_phone1"
+                    app:layout_constraintLeft_toRightOf="@+id/info_phone2"
+                    app:layout_constraintRight_toLeftOf="@+id/info_phone3"
+                    app:layout_constraintTop_toTopOf="@+id/info_phone1" />
+
+                <EditText
+                    android:id="@+id/info_phone3"
+                    style="@style/PhoneNum"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/phone"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/phone" />
+
+
+                <!-- 자격증-->
+                <TextView
+                    android:id="@+id/certificate"
+                    style="@style/InfoTv"
+                    android:text="@string/certificate"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.7" />
+
+
+                <TextView
+                    android:id="@+id/info_cerAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnshape_navy"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="+ 추가"
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/certificate"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <include
+                    android:id="@+id/info_certificate"
+                    layout="@layout/item_certificate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toLeftOf="@+id/info_cerAdd"
+                    app:layout_constraintTop_toTopOf="@+id/info_cerAdd"
+                    />
+                <!-- 기타 경력사항-->
+                <TextView
+                    android:id="@+id/etcCareer"
+                    android:layout_width="0dp"
+                    android:textSize="14dp"
+                    android:textColor="@color/nineb"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etccareer"
+                    app:layout_constraintTop_toBottomOf="@+id/info_certificate"
+                    android:layout_marginTop="50dp"
+                     />
+
+                <TextView
+                    android:id="@+id/info_etccareer1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/infobackground"
+                    android:maxLines="1"
+                    android:hint="경력을 기술해주세요"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/fora"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/etcCareer"
+                    android:textSize="14dp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/etcCareer" />
+
+                <TextView
+                    android:id="@+id/info_etccareer2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/infobackground"
+                    android:maxLines="1"
+                    android:hint="@string/hint_career"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/fora"
+                    android:textSize="14dp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_etccareer1" />
+
+
+                <!-- 특기사항-->
+                <TextView
+                    android:id="@+id/specialnote"
+                    android:layout_width="0dp"
+                    android:textSize="14dp"
+                    android:textColor="@color/nineb"
+                    android:layout_height="wrap_content"
+                    android:text="@string/specialnote"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toBottomOf="@+id/info_etccareer2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/info_specialnote"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/infobackground"
+                    android:maxLines="1"
+                    android:hint="@string/hint_teok"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/fora"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/specialnote"
+                    android:textSize="14dp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="@+id/info_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/specialnote" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</layout>

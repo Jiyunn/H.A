@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="login"
+            type="me.happy.win3win.fragment.login.LoginFragment"/>
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/loginParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:background="@color/navy_a"
+ >
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ConstraintCenter"
+        android:src="@drawable/logo_transparent_small"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.1"
+      />
+
+
+
+    <TextView
+        android:id="@+id/login_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ConstraintCenter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.3"
+        android:text="Log In"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        />
+
+
+
+    <me.happy.win3win.custom.LPEdittext
+        android:id="@+id/login_id"
+        style="@style/Login_joinET"
+        android:hint="@string/id"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintLeft_toLeftOf="@+id/login_logo"
+        app:layout_constraintRight_toRightOf="parent"
+
+     />
+
+    <me.happy.win3win.custom.LPEdittext
+        android:id="@+id/login_pwd"
+        style="@style/Login_joinET"
+        android:hint="@string/pwd"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="@+id/login_logo"
+        app:layout_constraintTop_toBottomOf="@+id/login_id"
+        app:layout_constraintVertical_bias="0.58"
+        app:layout_constraintRight_toRightOf="parent"
+       />
+    <TextView
+        android:id="@+id/warnPwd"
+        style="@style/Join_WarnTV"
+        android:text=" "
+        app:layout_constraintLeft_toLeftOf="@+id/login_pwd"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        />
+
+    <CheckBox
+        style="@style/WrapContent"
+        app:layout_constraintTop_toBottomOf="@+id/warnPwd"
+        android:text="@string/autologin"
+        android:id="@+id/login_autologin"
+        android:buttonTint="@color/nineb"
+        android:textSize="13dp"
+        android:textColor="@color/cb"/>
+
+    <CheckBox
+        style="@style/WrapContent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintTop_toBottomOf="@+id/warnPwd"
+        app:layout_constraintLeft_toRightOf="@+id/login_autologin"
+        android:text="@string/saveid"
+        android:buttonTint="@color/nineb"
+        android:textSize="13dp"
+        android:textColor="@color/cb"/>
+
+
+    <Button
+        android:id="@+id/login_signIn"
+        style="@style/SplashBtn"
+        android:text="@string/login"
+        app:layout_constraintVertical_bias="0.87"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/btnshape_orange"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>
