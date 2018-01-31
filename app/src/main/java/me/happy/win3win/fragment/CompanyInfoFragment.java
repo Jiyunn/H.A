@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.fragment;
 
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
@@ -19,7 +19,7 @@ import com.roughike.bottombar.BottomBar;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.happy.win3win.MainActivity;
+import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.SpeinfoBinding;
 import me.happy.win3win.network.Item;

@@ -1,4 +1,4 @@
-package me.happy.win3win.recyclerview;
+package me.happy.win3win.fragment.tab.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ItemJobBinding;
-import me.happy.win3win.menu.CompanyInfoFragment;
+import me.happy.win3win.fragment.tab.CompanyInfoFragment;
 import me.happy.win3win.network.Item;
 
 import static me.happy.win3win.R.drawable.group_4;
