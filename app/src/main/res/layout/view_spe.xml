@@ -5,7 +5,11 @@
     <data>
         <variable
             name="speview"
+<<<<<<< HEAD:app/src/main/res/layout/spe_view.xml
+            type="me.happy.win3win.fragment.ComPagerFragment"/>
+=======
             type="me.happy.win3win.fragment.search.ComPagerFragment"/>
+>>>>>>> develop:app/src/main/res/layout/view_spe.xml
 
         <variable
             name="recentsearch"

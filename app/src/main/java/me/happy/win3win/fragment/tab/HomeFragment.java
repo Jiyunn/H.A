@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.fragment.tab;
 
 import android.app.Dialog;
 import android.database.Cursor;
@@ -25,13 +25,20 @@ import java.util.List;
 import me.happy.win3win.R;
 import me.happy.win3win.custom.EndlessRecyclerViewScrollListener;
 import me.happy.win3win.databinding.HomeBinding;
-import me.happy.win3win.network.Item;
-import me.happy.win3win.network.ReqItems;
+import me.happy.win3win.model.Chaeyong;
+import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
+import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
+import me.happy.win3win.fragment.tab.adapter.RecommendAdapter;
+import me.happy.win3win.db.UserDBManager;
+=======
 import me.happy.win3win.recyclerview.HomeAdapter;
 import me.happy.win3win.adapter.RecommendAdapter;
 import me.happy.win3win.userdb.UserDBManager;
+>>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,8 +54,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private  static final String KEY = "";
 
-    private List<Item> dataSet;
-    private List<Item> dataRec; //추천용 뷰
+    private List<Gonggo> dataSet;
+    private List<Gonggo> dataRec; //추천용 뷰
     private HomeAdapter adapterSet;
     private RecommendAdapter adapterRec;
 
@@ -75,7 +82,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View view = binding.getRoot();
         binding.setHome(this);
 
@@ -127,7 +134,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 if (response.isSuccessful()) {
 
-                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getItems().getItemList());
+                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getGonggos().getGonggoList());
 
                     for (int i = 0; i < dataSet.size(); i++) {
                         dataSet.get(i).setThumbnail(url[i % url.length]);

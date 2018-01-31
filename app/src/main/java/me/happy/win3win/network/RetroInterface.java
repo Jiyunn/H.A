@@ -2,7 +2,9 @@ package me.happy.win3win.network;
 
 import com.google.gson.JsonObject;
 
-import me.happy.win3win.menu.Chaeyong;
+import me.happy.win3win.model.Chaeyong;
+import me.happy.win3win.model.MyResume;
+import me.happy.win3win.model.ReqItems;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

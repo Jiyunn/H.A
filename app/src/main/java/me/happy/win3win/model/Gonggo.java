@@ -1,3 +1,7 @@
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/model/Gonggo.java
+
+=======
+>>>>>>> develop:app/src/main/java/me/happy/win3win/model/Gonggo.java
 package me.happy.win3win.model;
 
 import android.os.Parcel;
@@ -13,7 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class Item   implements Parcelable {
+public class Gonggo implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -101,7 +105,7 @@ public class Item   implements Parcelable {
     private String yuhyoYn;
 
 
-    protected Item(Parcel in) {
+    protected Gonggo(Parcel in) {
         id = in.readInt();
         thumbnail = in.readString();
         bokri = in.readString();
@@ -132,15 +136,15 @@ public class Item   implements Parcelable {
         yuhyoYn = in.readString();
     }
 
-    public static final Creator<Item> CREATOR = new Creator<Item>() {
+    public static final Creator<Gonggo> CREATOR = new Creator<Gonggo>() {
         @Override
-        public Item createFromParcel(Parcel in) {
-            return new Item(in);
+        public Gonggo createFromParcel(Parcel in) {
+            return new Gonggo(in);
         }
 
         @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
+        public Gonggo[] newArray(int size) {
+            return new Gonggo[size];
         }
     };
 

@@ -1,4 +1,4 @@
-package me.happy.win3win.startscreen;
+package me.happy.win3win.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import me.happy.win3win.custom.BackButtonHandler;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ActivitySplashBinding;
+import me.happy.win3win.fragment.login.FirstFragment;
 
 
 public class SplashActivity extends AppCompatActivity {

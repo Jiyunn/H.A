@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.fragment.tab;
 
 import android.Manifest;
 import android.content.ContentValues;
@@ -30,7 +30,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,9 +38,10 @@ import butterknife.OnClick;
 import gun0912.tedbottompicker.TedBottomPicker;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.MyresumeBinding;
-import me.happy.win3win.recyclerview.ResumeAdapter;
-import me.happy.win3win.recyclerview.TwoString;
-import me.happy.win3win.userdb.UserDBManager;
+import me.happy.win3win.fragment.InfoEditFragment;
+import me.happy.win3win.fragment.tab.adapter.ResumeAdapter;
+import me.happy.win3win.model.Keyword;
+import me.happy.win3win.db.UserDBManager;
 
 /**
  * Created by JY on 2017-04-11.
@@ -53,7 +53,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private List<TwoString> twoStringSet;
+    private List<Keyword> keywordSet;
     private String[] itemName; //항목 이름들
     private String[] itemContent; //항목 내용들
     private String[] columns; //데이터베이스 컬럼
@@ -82,7 +82,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.rvMyresume.setLayoutManager(mLayoutManager);
 
-        adapter = new ResumeAdapter(getActivity(), twoStringSet, R.layout.item_myresume);
+        adapter = new ResumeAdapter(getActivity(), keywordSet, R.layout.item_myresume);
         binding.rvMyresume.setAdapter(adapter);
         binding.rvMyresume.setItemAnimator(new DefaultItemAnimator());
 
@@ -97,7 +97,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         super.onCreate(savedInstanceState);
         mGlideRequestManager = Glide.with(getActivity()); //glide
         mDBManager = UserDBManager.getInstance(getActivity()); //dbmanager
-        twoStringSet = new ArrayList<>();
+        keywordSet = new ArrayList<>();
     }
 
 
@@ -132,10 +132,10 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
         c.close();
 
         for (int i = 0; i < itemName.length; i++) { //데이터 넣어주기
-            twoStringSet.add(new TwoString(itemName[i], itemContent[i + 2])); //itemcontent is start wantjob
+            keywordSet.add(new Keyword(itemName[i], itemContent[i + 2])); //itemcontent is start wantjob
         }
 
-        adapter.setItems(twoStringSet);
+        adapter.setItems(keywordSet);
         adapter.notifyDataSetChanged();
     }
 
@@ -286,7 +286,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onPause() {
-        twoStringSet.clear();
+        keywordSet.clear();
         super.onPause();
     }
 

@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.fragment.tab;
 
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
@@ -19,12 +19,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.RegiongroupBinding;
-import me.happy.win3win.network.Item;
-import me.happy.win3win.network.ReqItems;
+import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.recyclerview.GroupAdapter;
-import me.happy.win3win.userdb.UserDBManager;
+import me.happy.win3win.fragment.tab.adapter.GroupAdapter;
+import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +39,7 @@ public class RegionGroupFragment extends Fragment {
 
     private GroupAdapter adapter;
     private LinearLayoutManager mLayoutManager;
-    private List<Item> dataSet;
+    private List<Gonggo> dataSet;
     private String nowArea;
     private String token;
 

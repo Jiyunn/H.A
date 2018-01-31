@@ -3,8 +3,6 @@ package me.happy.win3win.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import me.happy.win3win.network.Items;
-
 /**
  * Created by JY on 2017-05-24.
  */
@@ -81,7 +79,7 @@ public class Chaeyong {
 
         @SerializedName("items")
         @Expose
-        private Items items;
+        private Gonggos gonggos;
         @SerializedName("numOfRows")
         @Expose
         private Long numOfRows;
@@ -92,8 +90,8 @@ public class Chaeyong {
         @Expose
         private Long totalCount;
 
-        public Items getItems() {
-            return items;
+        public Gonggos getGonggos() {
+            return gonggos;
         }
 
 

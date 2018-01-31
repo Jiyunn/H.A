@@ -8,7 +8,7 @@
     <data>
         <variable
             name="mainActivity"
-            type="me.happy.win3win.MainActivity"/>
+            type="me.happy.win3win.activity.MainActivity"/>
     </data>
 
 
@@ -17,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graybacground"
-    tools:context="me.happy.win3win.MainActivity">
+    tools:context="me.happy.win3win.activity.MainActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

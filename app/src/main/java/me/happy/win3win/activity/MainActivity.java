@@ -1,4 +1,4 @@
-package me.happy.win3win;
+package me.happy.win3win.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,14 +17,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import me.happy.win3win.R;
 import me.happy.win3win.custom.BackButtonHandler;
-import me.happy.win3win.menu.HomeFragment;
-import me.happy.win3win.menu.JobGroupFragment;
-import me.happy.win3win.menu.MyResumeFragment;
-import me.happy.win3win.menu.RegionGroupFragment;
-import me.happy.win3win.menu.SmartMatchFragment;
-import me.happy.win3win.searchMenu.SearchActivity;
-import me.happy.win3win.startscreen.SplashActivity;
+import me.happy.win3win.fragment.tab.HomeFragment;
+import me.happy.win3win.fragment.tab.JobGroupFragment;
+import me.happy.win3win.fragment.tab.MyResumeFragment;
+import me.happy.win3win.fragment.tab.RegionGroupFragment;
+import me.happy.win3win.fragment.tab.SmartMatchFragment;
 
 
 public class MainActivity extends AppCompatActivity  {

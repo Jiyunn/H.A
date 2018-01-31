@@ -17,8 +17,13 @@ import java.util.List;
 import butterknife.ButterKnife;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ItemJobBinding;
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/adapter/GroupAdapter.java
+import me.happy.win3win.fragment.CompanyInfoFragment;
+import me.happy.win3win.model.Gonggo;
+=======
 import me.happy.win3win.fragment.tab.CompanyInfoFragment;
 import me.happy.win3win.network.Item;
+>>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/adapter/GroupAdapter.java
 
 import static me.happy.win3win.R.drawable.group_4;
 import static me.happy.win3win.R.drawable.group_5;
@@ -30,12 +35,12 @@ import static me.happy.win3win.R.drawable.group_5;
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolder> implements View.OnClickListener{
 
     private Context context;
-    private List<Item> gongos;
+    private List<Gonggo> gongos;
     private int itemLayout;
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
 
-    public GroupAdapter(Context context, List<Item> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
+    public GroupAdapter(Context context, List<Gonggo> gongos, int itemLayout, RecyclerView mRecyclerview, FragmentManager fgManager) {
         this.context = context;
         this.gongos=gongos;
         this.itemLayout = itemLayout;
@@ -54,8 +59,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
 
     @Override
     public void onBindViewHolder(JobViewHolder holder, final int position) {
-        Item item= gongos.get(position);
-        holder.binding.setItem(item);
+        Gonggo gonggo = gongos.get(position);
+        holder.binding.setItem(gonggo);
 
         /*
         로고 이미지와, 근무지부분 , 연봉부분
@@ -84,7 +89,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.JobViewHolde
     @Override
     public void onClick(View v) {
         int curPos= mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
-        Item clickGongo=gongos.get(curPos); //클릭한 공고
+        Gonggo clickGongo=gongos.get(curPos); //클릭한 공고
 
         CompanyInfoFragment companyInfoFragment=new CompanyInfoFragment();
 

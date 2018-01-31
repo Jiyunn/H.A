@@ -6,7 +6,7 @@
     <data>
         <variable
             name="infoedit"
-            type="me.happy.win3win.menu.InfoEditFragment" />
+            type="me.happy.win3win.fragment.InfoEditFragment" />
 
     </data>
 

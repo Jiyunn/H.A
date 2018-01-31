@@ -2,16 +2,16 @@ package me.happy.win3win.model;
 
 
 
-public class TwoString {
+public class Keyword {
     private String title;
     private String content;
 
-    public TwoString(String title, String content) {
+    public Keyword(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    public TwoString(String title) {
+    public Keyword(String title) {
         this.title=title;
     }
 

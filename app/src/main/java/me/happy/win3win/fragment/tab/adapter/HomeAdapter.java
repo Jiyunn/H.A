@@ -13,20 +13,20 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemHomeBinding;
-import me.happy.win3win.menu.CompanyInfoFragment;
-import me.happy.win3win.network.Item;
+import me.happy.win3win.fragment.CompanyInfoFragment;
+import me.happy.win3win.model.Gonggo;
 
 /*regionviewholder use this?*/
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener {
 
     private Context context;
-    private List<Item> gongos;
+    private List<Gonggo> gongos;
     private int itemLayout; //레이아웃 형식
     private RecyclerView mRecyclerview;
     private FragmentManager fgManager;
     private int frag;
 
-    public HomeAdapter(Context context, List<Item> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager, int frag) {
+    public HomeAdapter(Context context, List<Gonggo> gongos, int itemLayout, RecyclerView mRecyclerView, FragmentManager fgManager, int frag) {
         this.context = context;
         this.gongos = gongos;
         this.itemLayout = itemLayout;
@@ -45,8 +45,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public void onBindViewHolder(HomeViewHolder holder, int position) {
-        Item item = gongos.get(position);
-        holder.binding.setItem(item);
+        Gonggo gonggo = gongos.get(position);
+        holder.binding.setItem(gonggo);
 
         /*
         로고 이미지와, 근무지부분 , 연봉부분
@@ -74,7 +74,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onClick(View v) {
         int curPos = mRecyclerview.getChildAdapterPosition(v); //클릭된 차일드의 현재 포지션
-        Item clickGongo = gongos.get(curPos); //클릭한 공고
+        Gonggo clickGongo = gongos.get(curPos); //클릭한 공고
 
         CompanyInfoFragment companyInfoFragment = new CompanyInfoFragment();
         /*

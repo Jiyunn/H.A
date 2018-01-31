@@ -7,7 +7,7 @@
 
         <variable
             name="join"
-            type="me.happy.win3win.startscreen.JoinFragment"
+            type="me.happy.win3win.fragment.login.JoinFragment"
             />
     </data>
 

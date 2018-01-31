@@ -22,11 +22,11 @@ import butterknife.OnClick;
 import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.SpeinfoBinding;
-import me.happy.win3win.network.Item;
+import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.search.ComPagerAdapter;
-import me.happy.win3win.userdb.UserDBManager;
+import me.happy.win3win.fragment.adapter.ComPagerAdapter;
+import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +41,7 @@ public class CompanyInfoFragment extends Fragment {
 
     private String speLogo;
 
-    private Item item;
+    private Gonggo gonggo;
     private String token;
 
     private UserDBManager mDBManager;
@@ -104,10 +104,10 @@ public class CompanyInfoFragment extends Fragment {
                 if (response.isSuccessful()) {
 
                     Gson gson = new Gson();
-                    item = gson.fromJson(response.body().get("result").getAsJsonObject(), Item.class);
+                    gonggo = gson.fromJson(response.body().get("result").getAsJsonObject(), Gonggo.class);
 
-                    binding.speComTitle.setText(item.getEopcheNm());
-                    binding.speComContent1.setText(item.getCyjemoknm());
+                    binding.speComTitle.setText(gonggo.getEopcheNm());
+                    binding.speComContent1.setText(gonggo.getCyjemoknm());
                 }
             }
 

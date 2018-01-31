@@ -1,4 +1,4 @@
-package me.happy.win3win.searchMenu;
+package me.happy.win3win.activity;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,11 +22,12 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.happy.win3win.MainActivity;
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.SearchBinding;
-import me.happy.win3win.network.Item;
-import me.happy.win3win.userdb.UserDBManager;
+import me.happy.win3win.databinding.ActivitySearchBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.search.KeywordFragment;
+import me.happy.win3win.fragment.search.SearchResultFragment;
+import me.happy.win3win.model.Gonggo;
 
 /**
  * Created by JY on 2017-05-22.
@@ -34,8 +35,8 @@ import me.happy.win3win.userdb.UserDBManager;
 
 public class SearchActivity extends AppCompatActivity implements TextWatcher, TextView.OnEditorActionListener {
 
-    private SearchBinding binding;
-    private List<Item> dataSet;
+    private ActivitySearchBinding binding;
+    private List<Gonggo> dataSet;
     private String query = "";
 
     private UserDBManager mDBManger;
@@ -46,7 +47,7 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher, Te
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataSet = new ArrayList<>();
-        binding = DataBindingUtil.setContentView(this, R.layout.search);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
         ButterKnife.bind(this);
         binding.setActivity(this);
 

@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemMyresumeBinding;
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/adapter/ResumeAdapter.java
+import me.happy.win3win.model.Keyword;
+=======
 import me.happy.win3win.model.TwoString;
+>>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/adapter/ResumeAdapter.java
 
 /**
  * Created by JY on 2017-04-15.
@@ -20,13 +24,13 @@ import me.happy.win3win.model.TwoString;
 public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder> {
 
     private Context context;
-    private List<TwoString> twoStringSet;
+    private List<Keyword> keywordSet;
     private int itemLayout;
 
 
-    public ResumeAdapter(Context context, List<TwoString> twoStringSet, int itemLayout) {
+    public ResumeAdapter(Context context, List<Keyword> keywordSet, int itemLayout) {
         this.context = context;
-        this.twoStringSet = twoStringSet;
+        this.keywordSet = keywordSet;
         this.itemLayout = itemLayout;
     }
 
@@ -39,18 +43,18 @@ public class ResumeAdapter extends RecyclerView.Adapter<ResumeAdapter.ResumeView
 
     @Override
     public void onBindViewHolder(ResumeViewHolder holder, int position) {
-        TwoString twoString = twoStringSet.get(position);
-        holder.binding.setTwodata(twoString);
+        Keyword keyword = keywordSet.get(position);
+        holder.binding.setTwodata(keyword);
 
     }
 
     @Override
     public int getItemCount() {
-        return (twoStringSet != null) ? twoStringSet.size() : 0;
+        return (keywordSet != null) ? keywordSet.size() : 0;
     }
 
-    public void setItems(List<TwoString> items) {
-        this.twoStringSet = items;
+    public void setItems(List<Keyword> items) {
+        this.keywordSet = items;
     }
 
 

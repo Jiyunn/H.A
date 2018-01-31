@@ -1,4 +1,4 @@
-package me.happy.win3win.network;
+package me.happy.win3win.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,14 +15,14 @@ public class ReqItems {
 
 
     @SerializedName("result")
-    private ArrayList<Item> requestList;
+    private ArrayList<Gonggo> requestList;
 
     public long getCode() {
         return code;
     }
 
 
-    public ArrayList<Item> getRequestList() {
+    public ArrayList<Gonggo> getRequestList() {
         return requestList;
     }
 }

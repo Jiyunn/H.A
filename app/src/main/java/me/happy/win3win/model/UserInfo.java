@@ -1,4 +1,4 @@
-package me.happy.win3win.recyclerview;
+package me.happy.win3win.model;
 
 /**
  * Created by JY on 2017-05-20.
