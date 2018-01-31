@@ -30,7 +30,7 @@ import me.happy.win3win.databinding.OopsBinding;
 import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.fragment.tab.adapter.SmartAdapter;
 import me.happy.win3win.model.Gonggo;
-import me.happy.win3win.model.MyResume;
+import me.happy.win3win.model.Resume;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
 import retrofit2.Call;
@@ -193,7 +193,7 @@ Recyclerview 초기화
     이력서 가져오기
      */
     public void callGetResumeAPI(RetroInterface apiService) {
-        Call<MyResume> call = apiService.getMyResume(token);
+        Call<Resume> call = apiService.getMyResume(token);
     }
 
     /*

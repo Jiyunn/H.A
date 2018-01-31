@@ -50,9 +50,7 @@ public class CompanyInfoFragment extends Fragment {
     public CompanyInfoFragment() {
     }
 
-    /*
-    setArgument
-     */
+
     public static CompanyInfoFragment newInstance(int id, String speLogo) {
         Bundle args = new Bundle();
         CompanyInfoFragment fragment = new CompanyInfoFragment();

@@ -1,21 +1,20 @@
+
 package me.happy.win3win.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 import lombok.Data;
 
-/**
- * Created by JY on 2017-05-25.
- */
 @Data
-public class Gonggos {
+public class Resume {
 
-    @SerializedName("item")
+    @SerializedName("code")
     @Expose
-    private ArrayList<Gonggo> gonggoList = null;
+    private Long code;
+    @SerializedName("result")
+    @Expose
+    private Result result;
 
 
 
