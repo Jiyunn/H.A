@@ -8,7 +8,7 @@
     <data>
         <variable
             name="activity"
-            type="me.happy.win3win.searchMenu.SearchActivity"/>
+            type="me.happy.win3win.activity.SearchActivity"/>
     </data>
 <android.support.constraint.ConstraintLayout
 

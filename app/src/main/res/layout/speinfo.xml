@@ -6,11 +6,11 @@
     <data>
         <variable
             name="speinfo"
-            type="me.happy.win3win.menu.CompanyInfoFragment"/>
+            type="me.happy.win3win.fragment.CompanyInfoFragment"/>
 
         <variable
             name="item"
-            type="me.happy.win3win.network.Item"/>
+            type="me.happy.win3win.model.Gonggo"/>
 
     </data>
 

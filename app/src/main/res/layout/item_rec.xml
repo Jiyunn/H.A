@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="me.happy.win3win.network.Item" />
+            type="me.happy.win3win.model.Gonggo" />
 
     </data>
 

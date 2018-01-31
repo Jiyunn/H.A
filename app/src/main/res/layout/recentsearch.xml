@@ -5,7 +5,7 @@
     <data>
         <variable
             name="recentsearch"
-            type="me.happy.win3win.searchMenu.WhileSearchingFragment"/>
+            type="me.happy.win3win.fragment.search.WhileSearchingFragment"/>
     </data>
 
     <LinearLayout

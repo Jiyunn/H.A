@@ -20,14 +20,14 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
-        <activity android:name=".startscreen.SplashActivity">
+        <activity android:name=".activity.SplashActivity">
 
 
 
         </activity>
-        <activity android:name=".searchMenu.SearchActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:windowSoftInputMode="adjustResize|adjustPan">
 

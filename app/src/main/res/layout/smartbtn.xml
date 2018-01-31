@@ -7,7 +7,7 @@
     <data>
         <variable
             name="smart"
-            type="me.happy.win3win.menu.SmartMatchFragment"/>
+            type="me.happy.win3win.fragment.tab.SmartMatchFragment"/>
     </data>
 <android.support.constraint.ConstraintLayout
 

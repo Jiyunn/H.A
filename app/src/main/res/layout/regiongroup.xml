@@ -5,7 +5,7 @@
     <data>
         <variable
             name="regiongroup"
-            type="me.happy.win3win.menu.RegionGroupFragment" />
+            type="me.happy.win3win.fragment.tab.RegionGroupFragment" />
     </data>
 
     <me.happy.win3win.Custom.NestedCoordinatorLayout

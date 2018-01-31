@@ -6,7 +6,7 @@
     <data>
         <variable
             name="login"
-            type="me.happy.win3win.startscreen.LoginFragment"/>
+            type="me.happy.win3win.fragment.login.LoginFragment"/>
     </data>
 
 <android.support.constraint.ConstraintLayout

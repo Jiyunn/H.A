@@ -5,11 +5,11 @@
     <data>
         <variable
             name="infoedit"
-            type="me.happy.win3win.menu.InfoEditFragment" />
+            type="me.happy.win3win.fragment.InfoEditFragment" />
 
         <variable
             name="userinfo"
-            type="me.happy.win3win.recyclerview.UserInfo" />
+            type="me.happy.win3win.model.UserInfo" />
     </data>
 
     <ScrollView

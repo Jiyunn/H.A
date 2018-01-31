@@ -5,7 +5,7 @@
     <data>
         <variable
             name="myresume"
-            type="me.happy.win3win.menu.MyResumeFragment"/>
+            type="me.happy.win3win.fragment.tab.MyResumeFragment"/>
     </data>
 <LinearLayout
     android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="jobgroup"
-            type="me.happy.win3win.menu.JobGroupFragment"/>
+            type="me.happy.win3win.fragment.tab.JobGroupFragment"/>
     </data>
 
     <me.happy.win3win.Custom.NestedCoordinatorLayout
