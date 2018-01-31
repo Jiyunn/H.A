@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.SearchresultBinding;
+import me.happy.win3win.databinding.FragmentSearchResultBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
 import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
-import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +38,7 @@ import retrofit2.Response;
 
 public class SearchResultFragment  extends Fragment implements View.OnFocusChangeListener{
 
-    private SearchresultBinding binding;
+    private FragmentSearchResultBinding binding;
 
     private List<Gonggo> dataSet;
     private HomeAdapter adapterSet;
@@ -67,7 +67,7 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.searchresult, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_result, container, false);
         View view= binding.getRoot();
 
         binding.rvSResult.setHasFixedSize(true);
@@ -162,7 +162,7 @@ public class SearchResultFragment  extends Fragment implements View.OnFocusChang
         if(v.getId() == R.id.toolbar_search){
             fgManager
                     .beginTransaction()
-                    .replace(R.id.sfrag, new WhileSearchingFragment())
+                    .replace(R.id.sfrag, new WhileSearchFragment())
                     .commit();
         }
     }

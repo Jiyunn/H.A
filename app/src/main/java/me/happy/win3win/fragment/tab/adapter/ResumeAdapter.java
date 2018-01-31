@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemMyresumeBinding;
-<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/adapter/ResumeAdapter.java
 import me.happy.win3win.model.Keyword;
-=======
-import me.happy.win3win.model.TwoString;
->>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/adapter/ResumeAdapter.java
+
 
 /**
  * Created by JY on 2017-04-15.

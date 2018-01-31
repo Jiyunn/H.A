@@ -5,12 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="smartmatch"
-<<<<<<< HEAD:app/src/main/res/layout/smartmatch.xml
+            name="fragment"
             type="me.happy.win3win.fragment.tab.SmartMatchFragment"/>
-=======
-            type="me.happy.win3win.fragment.SmartMatchFragment"/>
->>>>>>> develop:app/src/main/res/layout/fragment_smartmatch.xml
 
     </data>
 
@@ -26,7 +22,7 @@
 
         <include
             android:id="@+id/smart_btns"
-            layout="@layout/smartbtn"
+            layout="@layout/smart_btn"
             android:layout_width="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"

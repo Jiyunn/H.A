@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.FragmentKeywordBinding;
 import me.happy.win3win.fragment.search.adapter.KeywordPagerAdapter;
-import me.happy.win3win.databinding.WhilesearchingBinding;
 
 /**
  * Created by JY on 2017-05-23.
@@ -18,7 +18,7 @@ import me.happy.win3win.databinding.WhilesearchingBinding;
 
 public class KeywordFragment extends Fragment  {
 
-    WhilesearchingBinding binding; //검색하는 화면
+    FragmentKeywordBinding binding; //검색하는 화면
 
     public KeywordFragment() {
     }
@@ -27,7 +27,7 @@ public class KeywordFragment extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.whilesearching, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_keyword, container, false);
         View view = binding.getRoot();
 
         binding.searchVp.setAdapter(new KeywordPagerAdapter(getFragmentManager()));

@@ -18,13 +18,13 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.RegiongroupBinding;
+import me.happy.win3win.databinding.FragmentRegiongroupBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.tab.adapter.GroupAdapter;
 import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.fragment.tab.adapter.GroupAdapter;
-import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 public class RegionGroupFragment extends Fragment {
 
-    RegiongroupBinding binding;
+    FragmentRegiongroupBinding binding;
 
     private GroupAdapter adapter;
     private LinearLayoutManager mLayoutManager;
@@ -54,9 +54,9 @@ public class RegionGroupFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.regiongroup, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_regiongroup, container, false);
         View view = binding.getRoot();
-        binding.setRegiongroup(this);
+        binding.setFragment(this);
         ButterKnife.bind(this, view);
 
         binding.rvRegion.setHasFixedSize(true);

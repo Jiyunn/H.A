@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="recentsearch"
-            type="me.happy.win3win.fragment.search.WhileSearchingFragment"/>
+            name="fragment"
+            type="me.happy.win3win.fragment.search.WhileSearchFragment"/>
     </data>
 
     <LinearLayout

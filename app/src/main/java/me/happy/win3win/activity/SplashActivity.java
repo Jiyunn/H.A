@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        binding.setSplash(this);
+        binding.setActivity(this);
 
         fgManager = getSupportFragmentManager();
         changeFragment(new FirstFragment());

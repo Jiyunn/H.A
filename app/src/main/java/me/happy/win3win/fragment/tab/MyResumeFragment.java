@@ -37,11 +37,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gun0912.tedbottompicker.TedBottomPicker;
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.MyresumeBinding;
-import me.happy.win3win.fragment.InfoEditFragment;
+import me.happy.win3win.databinding.FragmentMyresumeBinding;
+import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.fragment.tab.adapter.ResumeAdapter;
 import me.happy.win3win.model.Keyword;
-import me.happy.win3win.db.UserDBManager;
 
 /**
  * Created by JY on 2017-04-11.
@@ -49,7 +48,7 @@ import me.happy.win3win.db.UserDBManager;
 
 public class MyResumeFragment extends android.support.v4.app.Fragment {
 
-    private MyresumeBinding binding;
+    private FragmentMyresumeBinding binding;
 
     private ResumeAdapter adapter;
     private LinearLayoutManager mLayoutManager;
@@ -72,7 +71,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override //뷰 생성
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.myresume, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_myresume, container, false);
         View view = binding.getRoot();
         ButterKnife.bind(this, view);
 
@@ -206,7 +205,7 @@ public class MyResumeFragment extends android.support.v4.app.Fragment {
                 return;
             }
         };
-        new TedPermission(getActivity())
+        TedPermission.with(getActivity())
                 .setPermissionListener(permissionListener)
                 .setRationaleMessage(R.string.rationaleMessage)
                 .setDeniedMessage(R.string.deniedMessage)

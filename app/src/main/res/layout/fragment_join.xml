@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="join"
+            name="fragment"
             type="me.happy.win3win.fragment.login.JoinFragment"
             />
     </data>
