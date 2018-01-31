@@ -4,12 +4,9 @@
 
     <data>
         <variable
-            name="infoedit"
-<<<<<<< HEAD:app/src/main/res/layout/infoedit.xml
-            type="me.happy.win3win.fragment.InfoEditFragment" />
-=======
+            name="fragment"
             type="me.happy.win3win.fragment.tab.InfoEditFragment" />
->>>>>>> develop:app/src/main/res/layout/fragment_infoedit.xml
+
 
         <variable
             name="userinfo"

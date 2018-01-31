@@ -19,14 +19,14 @@ import java.util.List;
 import me.happy.win3win.R;
 import me.happy.win3win.activity.SearchActivity;
 import me.happy.win3win.custom.SearchEdittext;
-import me.happy.win3win.databinding.RecentsearchBinding;
+import me.happy.win3win.databinding.FragmentWhileSearchBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.search.adapter.PopSearchAdapter;
 import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.model.Keyword;
 import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.fragment.search.adapter.PopSearchAdapter;
-import me.happy.win3win.model.Keyword;
-import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,9 +35,9 @@ import retrofit2.Response;
  * Created by JY on 2017-05-23.
  */
 
-public class WhileSearchingFragment extends Fragment implements TextWatcher, View.OnClickListener {
+public class WhileSearchFragment extends Fragment implements TextWatcher, View.OnClickListener {
 
-    private RecentsearchBinding binding; //초기화면 이걸로 붙임
+    private FragmentWhileSearchBinding binding; //초기화면 이걸로 붙임
 
     private PopSearchAdapter adapter;
     private List<Gonggo> dataResult; //검색 결과
@@ -55,15 +55,15 @@ public class WhileSearchingFragment extends Fragment implements TextWatcher, Vie
 
     private LinearLayoutManager mLayoutManager;
 
-    public WhileSearchingFragment() {
+    public WhileSearchFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.recentsearch, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_while_search, container, false);
         View view = binding.getRoot();
-        binding.setRecentsearch(this);
+        binding.setFragment(this);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -81,7 +81,7 @@ public class WhileSearchingFragment extends Fragment implements TextWatcher, Vie
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-       searchEdittext = (SearchEdittext) (((SearchActivity) getContext()).findViewById(R.id.toolbar_search)); //바텀바 안보이게
+       searchEdittext = (((SearchActivity) getContext()).findViewById(R.id.toolbar_search)); //바텀바 안보이게
         searchEdittext.addTextChangedListener(this);
         searchEdittext.setOnClickListener(this);
     }

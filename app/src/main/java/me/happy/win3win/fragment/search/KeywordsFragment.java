@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.SpeViewBinding;
+import me.happy.win3win.databinding.ViewSpeBinding;
+import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.fragment.search.adapter.MySearchAdapter;
 import me.happy.win3win.fragment.search.adapter.PopSearchAdapter;
 import me.happy.win3win.model.Keyword;
-import me.happy.win3win.db.UserDBManager;
 
 /**
  * Created by JY on 2017-05-22.
@@ -29,7 +29,7 @@ import me.happy.win3win.db.UserDBManager;
 
 public class KeywordsFragment extends Fragment {
 
-    SpeViewBinding binding;
+    ViewSpeBinding binding;
 
     private int mPage;
     public static final String CUR_PAGE = "CUR_PAGE"; //현재페이지
@@ -60,7 +60,7 @@ public class KeywordsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.spe_view, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.view_spe, container, false);
         View view = binding.getRoot();
 
         binding.rvSpe.setHasFixedSize(true);

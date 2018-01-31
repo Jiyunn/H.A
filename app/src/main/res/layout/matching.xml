@@ -26,7 +26,6 @@
         android:textSize="16sp"
         android:textColor="#CBCBCB"
         android:text="@string/matching"
-        tools:layout_editor_absoluteY="274dp"
-        tools:layout_editor_absoluteX="115dp" />
+         />
 
 </android.support.constraint.ConstraintLayout>

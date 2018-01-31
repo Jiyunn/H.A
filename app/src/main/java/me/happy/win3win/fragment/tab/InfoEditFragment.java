@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.fragment.tab;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -35,13 +35,12 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.InfoeditBinding;
-import me.happy.win3win.recyclerview.UserInfo;
-import me.happy.win3win.userdb.UserDBManager;
+import me.happy.win3win.activity.MainActivity;
+import me.happy.win3win.databinding.FragmentInfoeditBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.model.UserInfo;
 
-import static me.happy.win3win.R.array.month;
 
 /**
  * Created by JY on 2017-04-15.
@@ -49,7 +48,7 @@ import static me.happy.win3win.R.array.month;
 
 public class InfoEditFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnFocusChangeListener {
 
-    InfoeditBinding binding;
+    FragmentInfoeditBinding binding;
 
     private UserInfo userInfo;
 
@@ -70,9 +69,9 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.infoedit, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_infoedit, container, false);
         View view = binding.getRoot();
-        binding.setInfoedit(this);
+        binding.setFragment(this);
         ButterKnife.bind(this, view);
 
 
@@ -277,9 +276,6 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.infoBirthYear.setAdapter(adapter);
 
-        adapter = new ArrayAdapter<>(getActivity(), R.layout.xspinner, getResources().getStringArray(month));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.infoBirthMonth.setAdapter(adapter);
 
         adapter = new ArrayAdapter<>(getActivity(), R.layout.xspinner, dayOfMonth);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -297,7 +293,7 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        bottomBar = (BottomBar) (((MainActivity) getContext()).findViewById(R.id.bottom_bar)); //바텀바 안보이게
+        bottomBar = (((MainActivity) getContext()).findViewById(R.id.bottom_bar)); //바텀바 안보이게
         bottomBar.setVisibility(View.INVISIBLE);
     }
 

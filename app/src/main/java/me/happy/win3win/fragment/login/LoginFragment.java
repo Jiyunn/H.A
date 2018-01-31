@@ -15,12 +15,12 @@ import android.view.inputmethod.InputMethodManager;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.R;
+import me.happy.win3win.activity.MainActivity;
+import me.happy.win3win.databinding.FragmentLoginBinding;
+import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.db.UserDBManager;
-import me.happy.win3win.databinding.LoginBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
 
-    private LoginBinding binding;
+    private FragmentLoginBinding binding;
 
     private String id;
     private String pwd;
@@ -46,8 +46,8 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.login, container, false);
-        binding.setLogin(this);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
+        binding.setFragment(this);
         View view = binding.getRoot();
         ButterKnife.bind(this,view);
 

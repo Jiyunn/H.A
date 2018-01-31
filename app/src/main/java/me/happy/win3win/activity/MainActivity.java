@@ -45,13 +45,9 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-
-
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0, 0); //툴바 양쪽 공백없애기
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
 
         bottomBar.setDefaultTab(R.id.tab_HOME);
 

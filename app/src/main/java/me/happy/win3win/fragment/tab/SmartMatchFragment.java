@@ -25,14 +25,14 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.FragmentSmartmatchBinding;
 import me.happy.win3win.databinding.OopsBinding;
-import me.happy.win3win.databinding.SmartmatchBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.tab.adapter.SmartAdapter;
 import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.model.MyResume;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.fragment.tab.adapter.SmartAdapter;
-import me.happy.win3win.db.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +46,7 @@ public class SmartMatchFragment extends Fragment {
     private int isResume = 1; //이력서 있음
 
     private UserDBManager mDBManager;
-    private SmartmatchBinding smartmatchBinding;
+    private FragmentSmartmatchBinding smartmatchBinding;
     private OopsBinding oopsBinding;
 
     private String token;
@@ -74,9 +74,9 @@ public class SmartMatchFragment extends Fragment {
             return view;
         }
 
-        smartmatchBinding = DataBindingUtil.inflate(inflater, R.layout.smartmatch, container, false);
+        smartmatchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_smartmatch, container, false);
         view = smartmatchBinding.getRoot();
-        smartmatchBinding.setSmartmatch(this);
+        smartmatchBinding.setFragment(this);
         ButterKnife.bind(this, view);
 
         callSmartMatchAPI((ServerGenerator.getRequestService()));

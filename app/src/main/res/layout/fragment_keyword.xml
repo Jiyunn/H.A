@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable
-            name="keword"
+            name="fragment"
             type="me.happy.win3win.fragment.search.KeywordFragment"/>
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

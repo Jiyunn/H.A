@@ -18,7 +18,7 @@
      android:id="@+id/search_search"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     layout="@layout/toolbarsearch"/>
+     layout="@layout/toolbar_search"/>
 
     <TextView
         android:id="@+id/search_info"

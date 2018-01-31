@@ -24,21 +24,15 @@ import java.util.List;
 
 import me.happy.win3win.R;
 import me.happy.win3win.custom.EndlessRecyclerViewScrollListener;
-import me.happy.win3win.databinding.HomeBinding;
+import me.happy.win3win.databinding.FragmentHomeBinding;
+import me.happy.win3win.db.UserDBManager;
+import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
+import me.happy.win3win.fragment.tab.adapter.RecommendAdapter;
 import me.happy.win3win.model.Chaeyong;
 import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
-import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
-import me.happy.win3win.fragment.tab.adapter.RecommendAdapter;
-import me.happy.win3win.db.UserDBManager;
-=======
-import me.happy.win3win.recyclerview.HomeAdapter;
-import me.happy.win3win.adapter.RecommendAdapter;
-import me.happy.win3win.userdb.UserDBManager;
->>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,7 +63,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private UserDBManager mDBManager;
     private FragmentManager fgManager;
-    private HomeBinding binding;
+    private FragmentHomeBinding binding;
 
     private Dialog dialog;
 
@@ -134,7 +128,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 if (response.isSuccessful()) {
 
-                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getGonggos().getGonggoList());
+//                    dataSet.addAll(dataSet.size(), response.body().getResponse().getBody().getGonggos().getGonggoList());
 
                     for (int i = 0; i < dataSet.size(); i++) {
                         dataSet.get(i).setThumbnail(url[i % url.length]);
@@ -277,8 +271,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         if (c != null && c.moveToFirst()) {
             token = c.getString(0);
             name= c.getString(1);
+            c.close();
         }
-        c.close();
+
 
     }
 

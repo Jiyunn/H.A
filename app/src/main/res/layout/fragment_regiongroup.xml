@@ -4,11 +4,11 @@
 
     <data>
         <variable
-            name="regiongroup"
+            name="fragment"
             type="me.happy.win3win.fragment.tab.RegionGroupFragment" />
     </data>
 
-    <me.happy.win3win.Custom.NestedCoordinatorLayout
+    <me.happy.win3win.custom.NestedCoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -123,5 +123,5 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    </me.happy.win3win.Custom.NestedCoordinatorLayout>
+    </me.happy.win3win.custom.NestedCoordinatorLayout>
 </layout>

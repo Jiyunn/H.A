@@ -21,10 +21,10 @@ import com.google.gson.JsonParseException;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.R;
+import me.happy.win3win.databinding.FragmentJoinBinding;
+import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
-import me.happy.win3win.db.UserDBManager;
-import me.happy.win3win.databinding.JoinBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 public class JoinFragment extends Fragment {
 
-    JoinBinding binding;
+    FragmentJoinBinding binding;
 
     String username;
     String pwd;
@@ -57,8 +57,8 @@ public class JoinFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.join, container, false);
-        binding.setJoin(this);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_join, container, false);
+        binding.setFragment(this);
         View view = binding.getRoot();
         ButterKnife.bind(this, view);
 

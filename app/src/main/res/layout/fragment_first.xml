@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="first"
+            name="fragment"
             type="me.happy.win3win.fragment.login.FirstFragment"/>
     </data>
 

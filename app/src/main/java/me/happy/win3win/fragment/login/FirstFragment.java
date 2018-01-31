@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.happy.win3win.R;
-import me.happy.win3win.databinding.FirstBinding;
+import me.happy.win3win.databinding.FragmentFirstBinding;
 
 /**
  * Created by JY on 2017-05-30.
@@ -20,7 +20,7 @@ import me.happy.win3win.databinding.FirstBinding;
 
 public class FirstFragment extends Fragment {
 
-    private FirstBinding binding;
+    private FragmentFirstBinding binding;
 
     private FragmentManager fgManager;
 
@@ -36,7 +36,7 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater , R.layout.fragment_first, container, false);
         View view = binding.getRoot();
-        binding.setFirst(this);
+        binding.setFragment(this);
         ButterKnife.bind(this, view);
 
 

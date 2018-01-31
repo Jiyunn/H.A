@@ -14,7 +14,7 @@
 
     </data>
 
-<me.happy.win3win.Custom.NestedCoordinatorLayout
+<me.happy.win3win.custom.NestedCoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graybacground"
@@ -115,7 +115,7 @@
     </android.support.v4.view.ViewPager>
     </android.support.constraint.ConstraintLayout>
 
-</me.happy.win3win.Custom.NestedCoordinatorLayout>
+</me.happy.win3win.custom.NestedCoordinatorLayout>
 
 
 </layout>

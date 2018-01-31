@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="myresume"
+            name="fragment"
             type="me.happy.win3win.fragment.tab.MyResumeFragment"/>
     </data>
 <LinearLayout

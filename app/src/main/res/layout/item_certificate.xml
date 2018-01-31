@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="infoedit"
-            type="me.happy.win3win.fragment.InfoEditFragment" />
+            name="fragment"
+            type="me.happy.win3win.fragment.tab.InfoEditFragment" />
 
     </data>
 

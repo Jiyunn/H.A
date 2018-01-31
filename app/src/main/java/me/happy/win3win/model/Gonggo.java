@@ -1,9 +1,5 @@
-<<<<<<< HEAD:app/src/main/java/me/happy/win3win/model/Gonggo.java
 
-=======
->>>>>>> develop:app/src/main/java/me/happy/win3win/model/Gonggo.java
 package me.happy.win3win.model;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
