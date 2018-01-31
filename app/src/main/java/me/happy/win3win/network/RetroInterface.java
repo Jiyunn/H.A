@@ -3,7 +3,6 @@ package me.happy.win3win.network;
 import com.google.gson.JsonObject;
 
 import me.happy.win3win.model.Chaeyong;
-import me.happy.win3win.model.MyResume;
 import me.happy.win3win.model.ReqItems;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -145,7 +144,7 @@ public interface RetroInterface {
     GET RESUME
      */
     @GET("resume/")
-    Call<MyResume> getMyResume(
+    Call<me.happy.win3win.model.Resume> getMyResume(
             @Header("x-auth-token") String token );
 
     /*

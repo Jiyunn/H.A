@@ -3,10 +3,12 @@ package me.happy.win3win.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import lombok.Data;
+
 /**
  * Created by JY on 2017-05-24.
  */
-
+@Data
 public class Chaeyong {
 
     @SerializedName("response")
@@ -31,21 +33,7 @@ public class Chaeyong {
         @Expose
         private Body body;
 
-        public Header getHeader() {
-            return header;
-        }
 
-        public void setHeader(Header header) {
-            this.header = header;
-        }
-
-        public Body getBody() {
-            return body;
-        }
-
-        public void setBody(Body body) {
-            this.body = body;
-        }
 
     }
 
@@ -58,22 +46,7 @@ public class Chaeyong {
         @Expose
         private String resultMsg;
 
-        public String getResultCode() {
-            return resultCode;
-        }
-
-        public void setResultCode(String resultCode) {
-            this.resultCode = resultCode;
-        }
-
-        public String getResultMsg() {
-            return resultMsg;
-        }
-
-        public void setResultMsg(String resultMsg) {
-            this.resultMsg = resultMsg;
-        }
-    }
+           }
 
     static class Body {
 
@@ -89,27 +62,6 @@ public class Chaeyong {
         @SerializedName("totalCount")
         @Expose
         private Long totalCount;
-
-        public Gonggos getGonggos() {
-            return gonggos;
-        }
-
-
-        public Long getNumOfRows() {
-            return numOfRows;
-        }
-
-
-
-        public Long getPageNo() {
-            return pageNo;
-        }
-
-
-        public Long getTotalCount() {
-            return totalCount;
-        }
-
 
     }
 }

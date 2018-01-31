@@ -10,7 +10,7 @@
 
         <variable
             name="userinfo"
-            type="me.happy.win3win.model.UserInfo" />
+            type="me.happy.win3win.model.User" />
     </data>
 
     <ScrollView

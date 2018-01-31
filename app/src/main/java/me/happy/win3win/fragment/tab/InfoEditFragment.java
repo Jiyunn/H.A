@@ -39,7 +39,7 @@ import me.happy.win3win.R;
 import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.databinding.FragmentInfoeditBinding;
 import me.happy.win3win.db.UserDBManager;
-import me.happy.win3win.model.UserInfo;
+import me.happy.win3win.model.User;
 
 
 /**
@@ -50,7 +50,7 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
 
     FragmentInfoeditBinding binding;
 
-    private UserInfo userInfo;
+    private User user;
 
     private ArrayAdapter<String> adapter;
     private List<String> year;
@@ -126,31 +126,31 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
      */
     protected void saveUserData() {
 
-        userInfo.setName(binding.infoName.getText().toString()); //이름
+        user.setName(binding.infoName.getText().toString()); //이름
 
         String year = binding.infoBirthYear.getSelectedItem().toString().replace("년", ""); //생일
         String month = binding.infoBirthMonth.getSelectedItem().toString().replace("월", "");
         String dom = binding.infoBirthDOM.getSelectedItem().toString().replace("일", "");
-        userInfo.setBirth(year + month + dom);
+        user.setBirth(year + month + dom);
 
         //최종학력
-        userInfo.setEdu(binding.infoHakSchool.getSelectedItem().toString() + "," + binding.infoHakState.getSelectedItem().toString());
+        user.setEdu(binding.infoHakSchool.getSelectedItem().toString() + "," + binding.infoHakState.getSelectedItem().toString());
         //거주지역
-        userInfo.setAddress(binding.infoAddress.getText().toString());
+        user.setAddress(binding.infoAddress.getText().toString());
         //핸드폰
-        userInfo.setPhone(binding.infoPhone1.getText().toString().trim() + "-" + binding.infoPhone2.getText().toString().trim() + "-" + binding.infoPhone3.getText().toString().trim());
+        user.setPhone(binding.infoPhone1.getText().toString().trim() + "-" + binding.infoPhone2.getText().toString().trim() + "-" + binding.infoPhone3.getText().toString().trim());
         //희망직종
         String s = Arrays.toString(wantJob.toArray());
-        userInfo.setWantJob(s.substring(1, s.length() - 1));
-        Log.d("jy", userInfo.getWantJob());
+        user.setWantJob(s.substring(1, s.length() - 1));
+        Log.d("jy", user.getWantJob());
 
         //자격증
         String cerNm = binding.infoCertificate.itemCertiName.getText().toString();
-        userInfo.setCertificate(cerNm);
+        user.setCertificate(cerNm);
         //기타경력사항
-        userInfo.setEtccareer(binding.infoEtccareer1.getText().toString() + "," + binding.infoEtccareer2.getText().toString());
+        user.setEtccareer(binding.infoEtccareer1.getText().toString() + "," + binding.infoEtccareer2.getText().toString());
         //특기사항
-        userInfo.setSpecialNote(binding.infoSpecialnote.getText().toString());
+        user.setSpecialNote(binding.infoSpecialnote.getText().toString());
 
     }
 
@@ -160,15 +160,15 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     public void updateUserData() {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put("name", userInfo.getName());
-        contentValues.put("birth", userInfo.getBirth());
-        contentValues.put("phone", userInfo.getPhone());
-        contentValues.put("address", userInfo.getAddress());
-        contentValues.put("edu", userInfo.getEdu());
-        contentValues.put("wantjob", userInfo.getWantJob());
-        contentValues.put("etccareer", userInfo.getEtccareer());
-        contentValues.put("specialnote", userInfo.getSpecialNote());
-        contentValues.put("certificate", userInfo.getCertificate());
+        contentValues.put("name", user.getName());
+        contentValues.put("birth", user.getBirth());
+        contentValues.put("phone", user.getPhone());
+        contentValues.put("address", user.getAddress());
+        contentValues.put("edu", user.getEdu());
+        contentValues.put("wantjob", user.getWantJob());
+        contentValues.put("etccareer", user.getEtccareer());
+        contentValues.put("specialnote", user.getSpecialNote());
+        contentValues.put("certificate", user.getCertificate());
 
         mDBManager.update(contentValues, "_id=? ", new String[]{"1"});
     }
@@ -193,7 +193,7 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userInfo = new UserInfo();
+        user = new User();
         mDBManager = UserDBManager.getInstance(getActivity()); //dbmanager
         pref = getActivity().getSharedPreferences("pref", Activity.MODE_PRIVATE);
         wantJob = new ArrayList<>();
@@ -304,14 +304,14 @@ public class InfoEditFragment extends Fragment implements CompoundButton.OnCheck
     protected void savePreference() {
         SharedPreferences.Editor editor = pref.edit();
 
-        editor.putString("name", userInfo.getName());
-        editor.putString("birth", userInfo.getBirth());
-        editor.putString("phone", userInfo.getPhone());
-        editor.putString("specialnote", userInfo.getSpecialNote());
-        editor.putString("etccareer", userInfo.getEtccareer());
-        editor.putString("address", userInfo.getAddress());
+        editor.putString("name", user.getName());
+        editor.putString("birth", user.getBirth());
+        editor.putString("phone", user.getPhone());
+        editor.putString("specialnote", user.getSpecialNote());
+        editor.putString("etccareer", user.getEtccareer());
+        editor.putString("address", user.getAddress());
 
-        editor.putString("certiNm", userInfo.getCertificate());
+        editor.putString("certiNm", user.getCertificate());
         editor.putString("certiPub", binding.infoCertificate.itemCertiPub.getText().toString());
         editor.putString("certiDt", binding.infoCertificate.itemCertiDt.getText().toString());
 

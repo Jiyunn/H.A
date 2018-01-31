@@ -1,5 +1,6 @@
 
 package me.happy.win3win.model;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -12,7 +13,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import lombok.Data;
 
+@Data
 public class Gonggo implements Parcelable {
 
     @SerializedName("id")
@@ -159,46 +162,6 @@ public class Gonggo implements Parcelable {
     }
 
 
-    public String getCyjemoknm() {
-        return cyjemoknm;
-    }
-
-
-    public String getDamdangjaFnm() {
-        return damdangjaFnm;
-    }
-
-
-    public String getDdeopmuNm() {
-        return ddeopmuNm;
-    }
-
-
-    public String getDdjyeonrakcheoNo() {
-        return ddjyeonrakcheoNo;
-    }
-
-
-    public String getDpyeonrakcheoNo() {
-        return dpyeonrakcheoNo;
-    }
-
-
-    public String getEopcheNm() {
-        return eopcheNm;
-    }
-
-
-    public String getEopjongGbcdNm() {
-        return eopjongGbcdNm;
-    }
-
-
-    public String getGeunmujy() {
-        return geunmujy;
-    }
-
-
     /*edit genmujysideo*/
     public String convertGeunmujySido() {
         String guen = ""; //수정된 근무지 시도 나타냄
@@ -232,24 +195,6 @@ public class Gonggo implements Parcelable {
         }
 
         return guen;
-    }
-
-    public String getGeunmujysido() {
-        return geunmujysido;
-    }
-
-    public String getGyeongryeokGbcdNm() {
-        return gyeongryeokGbcdNm;
-    }
-
-
-    public String getGyjogeonCdNm() {
-        return gyjogeonCdNm;
-    }
-
-
-    public String getHomepg() {
-        return homepg;
     }
 
 
@@ -303,38 +248,6 @@ public class Gonggo implements Parcelable {
         }
     }
 
-    public long getMagamDt() {
-        return magamDt;
-    }
-
-
-    public String getSschaeyongYn() {
-
-        return sschaeyongYn;
-    }
-
-
-    public String getYeokjongBrcdNm() {
-        return yeokjongBrcdNm;
-    }
-
-
-    public String getYowonGbcdNm() {
-        return yowonGbcdNm;
-    }
-
-
-    public String getYuhyoYn() {
-        return yuhyoYn;
-    }
-
-    public String getJeopsu() {
-        return jeopsu;
-    }
-
-    public String getJeonGong() {
-        return jeonGong;
-    }
 
     public String convertJeonGong(){
         if(this.jeonGong ==null )
@@ -343,35 +256,9 @@ public class Gonggo implements Parcelable {
             return this.jeonGong;
     }
 
-    public long getCcdLDtm() {
-        return ccdLDtm;
-    }
-
-
-    public long getCjdLDtm() {
-        return cjdLDtm;
-    }
-
-
-
-
-
     public int getId() {
         return id;
     }
-
-    public String getOegukeo() {
-        return Oegukeo;
-    }
-
-    public String getOegukeoGusa() {
-        return OegukeoGusa;
-    }
-
-    public String getGongoNo() {
-        return gongoNo;
-    }
-
 
     public String getThumbnail() {
         return thumbnail;
