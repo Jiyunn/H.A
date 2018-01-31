@@ -34,7 +34,7 @@ public class FirstFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater , R.layout.first, container, false);
+        binding = DataBindingUtil.inflate(inflater , R.layout.fragment_first, container, false);
         View view = binding.getRoot();
         binding.setFirst(this);
         ButterKnife.bind(this, view);
