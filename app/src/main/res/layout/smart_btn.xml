@@ -7,12 +7,8 @@
     <data>
         <variable
             name="smart"
-<<<<<<< .merge_file_a18624
             type="me.happy.win3win.fragment.tab.SmartMatchFragment"/>
-=======
-            type="me.happy.win3win.fragment.SmartMatchFragment"/>
->>>>>>> .merge_file_a01196
-    </data>
+ </data>
 <android.support.constraint.ConstraintLayout
 
     android:layout_width="match_parent"

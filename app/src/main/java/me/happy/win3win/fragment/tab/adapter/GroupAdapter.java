@@ -17,8 +17,13 @@ import java.util.List;
 import butterknife.ButterKnife;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ItemJobBinding;
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/adapter/GroupAdapter.java
 import me.happy.win3win.fragment.CompanyInfoFragment;
 import me.happy.win3win.model.Gonggo;
+=======
+import me.happy.win3win.fragment.tab.CompanyInfoFragment;
+import me.happy.win3win.network.Item;
+>>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/adapter/GroupAdapter.java
 
 import static me.happy.win3win.R.drawable.group_4;
 import static me.happy.win3win.R.drawable.group_5;

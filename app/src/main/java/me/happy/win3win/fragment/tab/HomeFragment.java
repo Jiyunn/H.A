@@ -30,9 +30,15 @@ import me.happy.win3win.model.Gonggo;
 import me.happy.win3win.model.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
+<<<<<<< HEAD:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
 import me.happy.win3win.fragment.tab.adapter.HomeAdapter;
 import me.happy.win3win.fragment.tab.adapter.RecommendAdapter;
 import me.happy.win3win.db.UserDBManager;
+=======
+import me.happy.win3win.recyclerview.HomeAdapter;
+import me.happy.win3win.adapter.RecommendAdapter;
+import me.happy.win3win.userdb.UserDBManager;
+>>>>>>> develop:app/src/main/java/me/happy/win3win/fragment/tab/HomeFragment.java
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

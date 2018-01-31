@@ -6,7 +6,11 @@
     <data>
         <variable
             name="smartmatch"
+<<<<<<< HEAD:app/src/main/res/layout/smartmatch.xml
             type="me.happy.win3win.fragment.tab.SmartMatchFragment"/>
+=======
+            type="me.happy.win3win.fragment.SmartMatchFragment"/>
+>>>>>>> develop:app/src/main/res/layout/fragment_smartmatch.xml
 
     </data>
 
