@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="jobgroup"
+            type="me.happy.win3win.fragment.tab.JobGroupFragment"/>
+    </data>
+
+    <me.happy.win3win.Custom.NestedCoordinatorLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/navy_a"
+                android:paddingBottom="@dimen/basic_margin"
+                app:layout_collapseMode="pin">
+
+                <!--첫쨰줄-->
+                <TextView
+                    android:id="@+id/job_gigye"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/gigye"
+                    android:text="@string/gigye"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/job_jeonja"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_jeonja"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/hyunjang"
+                    android:text="@string/jeonja"
+                    app:layout_constraintLeft_toRightOf="@+id/job_gigye"
+                    app:layout_constraintRight_toLeftOf="@+id/job_jeongi"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_jeongi"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/jeonja"
+                    android:text="@string/jeongi"
+                    app:layout_constraintLeft_toRightOf="@+id/job_jeonja"
+                    app:layout_constraintRight_toLeftOf="@+id/job_euiyak"
+                    app:layout_constraintVertical_chainStyle="spread"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/job_euiyak"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/euiyak"
+                    android:text="@string/euiyak"
+                    app:layout_constraintLeft_toRightOf="@+id/job_jeongi"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    />
+
+
+                <!--둘째줄-->
+                <TextView
+                    android:id="@+id/job_it"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/it"
+                    android:text="IT"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/job_gaebal"
+                    app:layout_constraintTop_toBottomOf="@+id/job_gigye"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/job_gaebal"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/gaebal"
+                    android:text="@string/gaebal"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/job_it"
+                    app:layout_constraintBottom_toTopOf="@+id/job_somyou"
+                    app:layout_constraintLeft_toRightOf="@+id/job_it"
+                    app:layout_constraintRight_toLeftOf="@+id/job_whahak"
+                    app:layout_constraintTop_toBottomOf="@+id/job_jeonja"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_whahak"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/whahak"
+                    android:text="@string/whahak"
+                    app:layout_constraintLeft_toRightOf="@+id/job_gaebal"
+                    app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
+                    app:layout_constraintTop_toBottomOf="@+id/job_jeongi"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_cheolgang"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/cheolgang"
+                    android:text="@string/cheolgang"
+                    app:layout_constraintLeft_toRightOf="@+id/job_whahak"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/job_euiyak"
+
+                    />
+
+                <!--셋째줄-->
+
+                <TextView
+                    android:id="@+id/job_euiryu"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/euiryu"
+                    android:text="@string/euiryu"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/job_somyou"
+                    app:layout_constraintTop_toBottomOf="@+id/job_it"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_somyou"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/somyou"
+                    android:text="@string/somyou"
+                    app:layout_constraintLeft_toRightOf="@+id/job_euiryu"
+                    app:layout_constraintRight_toLeftOf="@+id/job_saengsan"
+                    app:layout_constraintTop_toBottomOf="@+id/job_gaebal"
+
+                    />
+
+                <TextView
+                    android:id="@+id/job_saengsan"
+                    style="@style/JobBtn"
+                    android:drawableTop="@drawable/saengsan"
+                    android:text="@string/saengsan"
+                    app:layout_constraintLeft_toRightOf="@+id/job_somyou"
+                    app:layout_constraintRight_toLeftOf="@+id/job_cheolgang"
+                    app:layout_constraintTop_toBottomOf="@+id/job_whahak"
+                    />
+
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_job"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</me.happy.win3win.Custom.NestedCoordinatorLayout>
+</layout>

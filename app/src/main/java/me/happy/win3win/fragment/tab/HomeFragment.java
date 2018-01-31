@@ -30,7 +30,7 @@ import me.happy.win3win.network.ReqItems;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
 import me.happy.win3win.recyclerview.HomeAdapter;
-import me.happy.win3win.recyclerview.RecommendAdapter;
+import me.happy.win3win.adapter.RecommendAdapter;
 import me.happy.win3win.userdb.UserDBManager;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package me.happy.win3win.recyclerview;
+package me.happy.win3win.fragment.tab.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemMyresumeBinding;
+import me.happy.win3win.model.TwoString;
 
 /**
  * Created by JY on 2017-04-15.

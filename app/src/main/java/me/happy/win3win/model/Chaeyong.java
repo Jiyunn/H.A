@@ -1,4 +1,4 @@
-package me.happy.win3win.menu;
+package me.happy.win3win.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
