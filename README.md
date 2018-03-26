@@ -12,9 +12,9 @@
 
 ## 주요 기능
 
-> * ### 공고 확인하고 상세정보 보기
+* ### 공고 확인하고 상세정보 보기
 <img width="400" src="https://github.com/Jiyunn/W3W/blob/develop/screenshot/home.jpg/">  <img width="400" src="https://github.com/Jiyunn/W3W/blob/develop/screenshot/specific.jpg/">
-<br><br/>
+<br><br/><br><br/>
 * ### 이력서 등록 후 나와 꼭 맞는 공고를 찾아주는 스마트매치 확인하기
 <img width="400" src="https://github.com/Jiyunn/W3W/blob/develop/screenshot/resume.jpg/"> <img width="400" src="https://github.com/Jiyunn/W3W/blob/develop/screenshot/smartmatch.jpg/">
 
