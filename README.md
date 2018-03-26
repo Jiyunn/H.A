@@ -23,6 +23,8 @@
 ### 개발환경
 > * Android studio
 > * java
+> * REST API
+
 <br><br/>
 ### 플레이스토어
 <a href="https://play.google.com/store/apps/details?id=com.gc.demomaterialdesign">
