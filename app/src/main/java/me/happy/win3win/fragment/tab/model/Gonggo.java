@@ -1,5 +1,5 @@
 
-package me.happy.win3win.model;
+package me.happy.win3win.fragment.tab.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

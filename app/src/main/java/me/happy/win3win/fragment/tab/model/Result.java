@@ -1,5 +1,5 @@
 
-package me.happy.win3win.model;
+package me.happy.win3win.fragment.tab.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

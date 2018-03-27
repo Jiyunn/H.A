@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +16,13 @@ import java.util.List;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ItemRecBinding;
 import me.happy.win3win.fragment.CompanyInfoFragment;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 
 /**
  * Created by JY on 2017-05-22.
  */
 
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecViewHolder> implements View.OnClickListener{
-
 
     private Context context;
     private List<Gonggo> gongos;
@@ -50,7 +50,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecV
     public void onBindViewHolder(RecViewHolder holder, int position) {
         Gonggo gonggo = gongos.get(position);
         holder.binding.setItem(gonggo);
-
+        Log.d("jy", "rec viewholder");
         /*
         로고 이미지와, 근무지부분 , 연봉부분
          */
@@ -82,7 +82,6 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecV
         /*
         save data
          */
-
         fgManager
                 .beginTransaction()
                 .add(R.id.frag, companyInfoFragment.newInstance(clickGongo.getId(), clickGongo.getThumbnail()))
@@ -94,9 +93,9 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecV
 
     static class RecViewHolder extends RecyclerView.ViewHolder{
 
-        ItemRecBinding binding;
+        private ItemRecBinding binding;
 
-        public RecViewHolder(View itemView) {
+        private RecViewHolder(View itemView) {
             super(itemView);
             binding= DataBindingUtil.bind(itemView);
         }

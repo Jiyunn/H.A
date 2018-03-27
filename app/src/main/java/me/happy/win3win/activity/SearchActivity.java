@@ -27,7 +27,7 @@ import me.happy.win3win.databinding.ActivitySearchBinding;
 import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.fragment.search.KeywordFragment;
 import me.happy.win3win.fragment.search.SearchResultFragment;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 
 /**
  * Created by JY on 2017-05-22.

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="twodata"
-            type="me.happy.win3win.model.Keyword"/>
+            type="me.happy.win3win.fragment.tab.model.Keyword"/>
     </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

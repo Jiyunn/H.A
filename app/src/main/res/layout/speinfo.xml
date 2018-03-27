@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="me.happy.win3win.model.Gonggo"/>
+            type="me.happy.win3win.fragment.tab.model.Gonggo"/>
 
     </data>
 

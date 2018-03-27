@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.R;
-import me.happy.win3win.model.Keyword;
+import me.happy.win3win.fragment.tab.model.Keyword;
 import me.happy.win3win.fragment.search.SearchResultFragment;
 import me.happy.win3win.databinding.ItemMykeywordBinding;
 
