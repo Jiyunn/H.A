@@ -14,7 +14,7 @@ import java.util.List;
 
 import me.happy.win3win.databinding.ItemHomeBinding;
 import me.happy.win3win.fragment.CompanyInfoFragment;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 
 /**
  * Created by JY on 2017-05-24.

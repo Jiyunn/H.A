@@ -39,7 +39,7 @@ import me.happy.win3win.R;
 import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.databinding.FragmentInfoeditBinding;
 import me.happy.win3win.db.UserDBManager;
-import me.happy.win3win.model.User;
+import me.happy.win3win.fragment.tab.model.User;
 
 
 /**

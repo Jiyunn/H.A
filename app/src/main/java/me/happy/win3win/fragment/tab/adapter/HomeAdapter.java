@@ -14,7 +14,7 @@ import java.util.List;
 
 import me.happy.win3win.databinding.ItemHomeBinding;
 import me.happy.win3win.fragment.CompanyInfoFragment;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 
 /*regionviewholder use this?*/
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener {
@@ -95,7 +95,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         ItemHomeBinding binding;
 
 
-        public HomeViewHolder(View itemView) {
+        private HomeViewHolder(View itemView) {
             super(itemView);
             binding = DataBindingUtil.bind(itemView);;
         }

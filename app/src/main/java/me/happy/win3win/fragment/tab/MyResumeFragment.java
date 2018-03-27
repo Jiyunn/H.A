@@ -40,7 +40,7 @@ import me.happy.win3win.R;
 import me.happy.win3win.databinding.FragmentMyresumeBinding;
 import me.happy.win3win.db.UserDBManager;
 import me.happy.win3win.fragment.tab.adapter.ResumeAdapter;
-import me.happy.win3win.model.Keyword;
+import me.happy.win3win.fragment.tab.model.Keyword;
 
 /**
  * Created by JY on 2017-04-11.

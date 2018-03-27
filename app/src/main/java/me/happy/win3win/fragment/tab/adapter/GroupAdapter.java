@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.ItemJobBinding;
 import me.happy.win3win.fragment.CompanyInfoFragment;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 
 import static me.happy.win3win.R.drawable.group_4;
 import static me.happy.win3win.R.drawable.group_5;

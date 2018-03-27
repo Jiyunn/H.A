@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemSpeBinding;
-import me.happy.win3win.model.Keyword;
+import me.happy.win3win.fragment.tab.model.Keyword;
 
 /**
  * Created by JY on 2017-05-15.

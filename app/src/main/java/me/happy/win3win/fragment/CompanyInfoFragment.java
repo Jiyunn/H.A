@@ -22,7 +22,7 @@ import butterknife.OnClick;
 import me.happy.win3win.activity.MainActivity;
 import me.happy.win3win.R;
 import me.happy.win3win.databinding.SpeinfoBinding;
-import me.happy.win3win.model.Gonggo;
+import me.happy.win3win.fragment.tab.model.Gonggo;
 import me.happy.win3win.network.RetroInterface;
 import me.happy.win3win.network.ServerGenerator;
 import me.happy.win3win.fragment.adapter.ComPagerAdapter;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import me.happy.win3win.databinding.ItemMyresumeBinding;
-import me.happy.win3win.model.Keyword;
+import me.happy.win3win.fragment.tab.model.Keyword;
 
 
 /**
